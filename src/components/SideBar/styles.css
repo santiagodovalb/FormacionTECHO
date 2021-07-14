@@ -1,0 +1,15 @@
+.sidebar {
+    background-color: #0092DD;
+    height: 100vw;
+    width: 250px;
+    color: white;
+}
+
+.sidebar-links {
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    text-decoration: none;
+}
