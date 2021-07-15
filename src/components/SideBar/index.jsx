@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import links from './links'
+import Links from './links'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css'
 
@@ -11,22 +11,22 @@ const Sidebar = () => {
 
     const user = useSelector(state => state.user)
 
-    const roleType = function(id){
-        if(id === null) {
-            return ["Mis bloques"]
-        }
-        if(id === 1){
-            return ["Gestionar bloques", "Gestionar usuarios", "Gestionar sedes"]
-        }
-        if(id === 2){
-            return ["Gestionar voluntarios", "Gestionar entregas"]
-        }
-        if(id >= 3){
-            return ["Mis bloques", "Mis entregas"]
-        }
-    }
+    // const roleType = function(id){
+    //     if(id === null) {
+    //         return ["Mis bloques"]
+    //     }
+    //     if(id === 1){
+    //         return ["Gestionar bloques", "Gestionar usuarios", "Gestionar sedes"]
+    //     }
+    //     if(id === 2){
+    //         return ["Gestionar voluntarios", "Gestionar entregas"]
+    //     }
+    //     if(id >= 3){
+    //         return ["Mis bloques", "Mis entregas"]
+    //     }
+    // }
 
-    const rol = roleType(user.rolId) 
+    // const rol = roleType(user.rolId) 
 
     return (
         <>
@@ -43,7 +43,7 @@ const Sidebar = () => {
                         </a>
                         </Link>
                     </li>
-                    {links}
+                    <Links />
 
                     {/* {rol && rol.map(link => {
                         return <li>
