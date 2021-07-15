@@ -1,0 +1,26 @@
+.volunteer_content_div{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.content_div {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+
+}
+
+.content_div::-webkit-scrollbar {
+    display: none;
+}
+
+.content_div {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+.single_content_div{
+    display: flex;
+    padding: 10px;
+}

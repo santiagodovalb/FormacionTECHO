@@ -1,10 +1,11 @@
 import './App.css';
-import Sidebar from './components/SideBar';
+// import VolunteerContent from './containers/Volunteer/VolunteerContent';
+import VolunteerProfile from './containers/Volunteer/VolunteerProfile';
 
 function App() {
   return (
     <div className="App">
-      <Sidebar />
+      <VolunteerProfile />
     </div>
   );
 }
