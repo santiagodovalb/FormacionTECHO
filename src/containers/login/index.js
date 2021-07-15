@@ -54,13 +54,6 @@ const Login = () => {
             Ingresar
           </button> */}
           <div className="m-3" onClick={onOtherSubmit}>
-            <button id="Google" className="btn btn-danger mb-3">
-              Ingresar con Google
-            </button>
-            <br />
-            <button id="Facebook" className="btn btn-primary">
-              Ingresar con Facebook
-            </button>
           </div>
           <div className=" fs-8 mt-5">
             <strong>
@@ -70,6 +63,17 @@ const Login = () => {
             </strong>
           </div>
         </form>
+            <a href="http://localhost:3001/api/auth/google"> 
+            <button id="Google" className="btn btn-danger mb-3">
+              Ingresar con Google
+            </button>
+            </a>
+            <br />
+            <a href="http://localhost:3001/api/auth/facebook" > 
+            <button id="Facebook" className="btn btn-primary">
+              Ingresar con Facebook
+            </button>
+            </a>
       </div>
     </div>
   );
