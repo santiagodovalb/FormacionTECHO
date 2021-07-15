@@ -4,9 +4,11 @@ import { useDispatch } from "react-redux";
 import { setUser } from "../../redux/login";
 import { sectionStyle } from "./style";
 import Logo from "../../assets/logo.png";
+import { useHistory } from "react-router";
 
 const Login = () => {
   const  dispatch = useDispatch()
+  const history = useHistory()
   const [form, setForm] = useState({});
   const [other, setOther] = useState("");
 
@@ -19,6 +21,8 @@ const Login = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     dispatch(setUser(form))
+    .then(user => {
+      history.push(`/user/${user.payload.id}`)})
   };
 
   const onOtherSubmit = (e) => setOther(e.target.id);

@@ -17,6 +17,7 @@ module.exports = (app) => {
         callbackURL: "http://localhost:3001/api/auth/google/callback",
       },
       function (token, tokenSecret, profile, done) {
+        console.log("SADDSADSA",profile)
         Users.findOne({ where: { googleId: profile.id } }).then(
           async (user) => {
             if (user) {

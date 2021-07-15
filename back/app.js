@@ -7,6 +7,9 @@ require('./config')(app)
 //logins
 require('./authentication')(app)
 
+//logins
+require('./authentication')(app)
+
 //redirigimos todos los pedidos con /api
 app.use('/api', require('./routes'))
 
