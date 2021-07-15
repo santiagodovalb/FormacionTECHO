@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./index.css";
 import { sectionStyle } from "./style";
 import Logo from "../../assets/logo.png";
 
 const Login = () => {
   const [form, setForm] = useState({});
+  const [other, setOther] = useState("");
 
   const onChange = (e) => {
     const { target } = e;
@@ -13,8 +14,14 @@ const Login = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    Object.keys(form).map((key) => console.log(`[${key}] : ${form[key]}`));
   };
+
+  const onOtherSubmit = (e) => setOther(e.target.id);
+
+  useEffect(() => {
+    Object.keys(form).map((key) => console.log(`[${key}] : ${form[key]}`));
+    console.log(`${other}`);
+  }, [form, other]);
 
   return (
     <div
@@ -46,6 +53,16 @@ const Login = () => {
           <button type="submit" className="btn btn-secondary mt-3">
             Ingresar
           </button>
+          <div className="m-3" onClick={onOtherSubmit}>
+            <p className="text-light">Ò</p>
+            <button id="Google" className="btn btn-danger mb-3">
+              Ingresar con Google
+            </button>
+            <br />
+            <button id="Facebook" className="btn btn-primary">
+              Ingresar con Facebook
+            </button>
+          </div>
           <div className=" fs-8 mt-5">
             <strong>
               <a href="url" className="text-light">
