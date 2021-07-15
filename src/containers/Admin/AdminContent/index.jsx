@@ -1,5 +1,5 @@
 import React from 'react';
-import Sidebar from '../../../components/Sidebar';
+import Sidebar from "../../../components/SideBar/index";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 

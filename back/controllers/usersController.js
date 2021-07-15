@@ -34,8 +34,8 @@ const usersController = {
         res.send(req.user);
     },
     logOut(req, res, next) {
-        req.logOut();
-        res.sendStatus(200);
+        req.logout();
+        res.status(200).send({})
     },
     isLogged(req, res, next) {
         if (!req.user) return res.sendStatus(401);

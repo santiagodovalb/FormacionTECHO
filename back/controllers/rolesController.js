@@ -41,7 +41,7 @@ const rolesController = {
 
         if (rol === 1) throw 'Permission denied'
         if (userRole === 2 && rol <= 2) throw 'Permission denied'
-        Users.findByPK({where:{id}})
+        Users.findByPk({where:{id}})
         .then((user)=>{
             user.setRol(rol)
             res.status(201)
