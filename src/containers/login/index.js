@@ -34,7 +34,7 @@ const Login = () => {
           <i className="bi bi-person-circle form-img" />
         </div>
         <form className="pb-3" onChange={onChange} onSubmit={onSubmit}>
-          <div className="mb-3">
+          {/* <div className="mb-3">
             <input
               type="email"
               className="form-control"
@@ -52,9 +52,8 @@ const Login = () => {
           </div>
           <button type="submit" className="btn btn-secondary mt-3">
             Ingresar
-          </button>
+          </button> */}
           <div className="m-3" onClick={onOtherSubmit}>
-            <p className="text-light">Ò</p>
             <button id="Google" className="btn btn-danger mb-3">
               Ingresar con Google
             </button>
