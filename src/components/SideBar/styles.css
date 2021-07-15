@@ -1,0 +1,23 @@
+.sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    min-height: 100vh;
+    background-color: #0092dd;
+    color: white;
+    float: left;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        margin-left: -250px;
+    }
+    .sidebar.active {
+        margin-left: 0;
+    }
+}
+
+a {
+    text-decoration: none;
+    margin-top: 15px;
+}
+
