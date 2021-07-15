@@ -23,7 +23,7 @@ function App() {
       <Route exact path="/login" component={Login} />
       <Route exact path="/user/:id" component={VolunteerProfile} />
       <Route exact path="/user/:id/misbloques" component={VolunteerContent} />
-      <Route exact path="/user/:id/gestionarbloques" component={AdminContent} />
+      <Route exact path="/user/:id/bloques" component={AdminContent} />
       <Redirect from="*" to="/login" />
     </Switch>
     </div>

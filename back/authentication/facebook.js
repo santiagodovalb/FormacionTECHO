@@ -2,7 +2,8 @@ const passport = require("passport");
 const session = require("express-session");
 const FacebookStrategy = require("passport-facebook").Strategy;
 const Users = require("../models/users");
-// const bcrypt = require("bcrypt");
+require('dotenv').config()
+const { FACEBOOK_CLIENT, FACEBOOK_SECRET } = process.env
 
 module.exports = (app) => {
   app.use(session({ secret: "techo", resave: true, saveUninitialized: true }));
@@ -12,8 +13,8 @@ module.exports = (app) => {
   passport.use(
     new FacebookStrategy(
       {
-        clientID: "506778867053695",
-        clientSecret: "b5a618be5557fac054f95c2a111a76c7",
+        clientID: FACEBOOK_CLIENT,
+        clientSecret: FACEBOOK_SECRET,
         callbackURL: "/api/auth/facebook/callback",
         profileFields: ["id", "email", "name", "picture"],
       },
