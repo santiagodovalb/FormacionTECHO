@@ -14,19 +14,19 @@ function Links () {
         {user.rolId === 1 &&
 
         <div>
-        <Link to={`/user/:id/bloques`}>
+        <Link to={`/user/:id/admin-bloques`}>
         <h6 className="nav-link link-light">
             Gestionar Bloques
         </h6>
         </Link>
 
-        <Link to={`/user/:id/usuarios`}>
+        <Link to={`/user/:id/admin-usuarios`}>
         <h6 className="nav-link link-light">
             Gestionar Usuarios
         </h6>
         </Link>
 
-        <Link to={`/user/:id/sedes`}>
+        <Link to={`/user/:id/admin-sedes`}>
         <h6 className="nav-link link-light">
             Gestionar Sedes
         </h6>
