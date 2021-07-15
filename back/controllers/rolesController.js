@@ -34,17 +34,22 @@ const rolesController = {
     },
 
     setUserRole(req, res, next) {
-        const id = req.body.userId
+        console.log('LLEGA', req.body)
+        const id = req.body.userId 
         const rol = req.body.rolId
         const userRole = req.user.rolId
         const userLogged = req.user
 
-        if (rol === 1) throw 'Permission denied'
-        if (userRole === 2 && rol <= 2) throw 'Permission denied'
+        
+        // if (rol === 1) throw 'Permission denied'
+        // if (userRole === 2 && rol <= 2) throw 'Permission denied'
         Users.findByPk({where:{id}})
         .then((user)=>{
-            user.setRol(rol)
-            res.status(201)
+            Roles.findByPk(rol)
+            .then(rol => {
+                Object.keys(Roles.Prototype)
+                user.setRol(rol)
+                res.status(201)})
         })
         .catch(next)
     }

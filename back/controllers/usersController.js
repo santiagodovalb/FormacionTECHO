@@ -1,10 +1,9 @@
 const Users = require ("../models/users")
-
-
+const Roles = require ("../models/roles")
 
 const usersController = {
     findAll(req,res,next){
-        Users.findAll()
+        Users.findAll({include: [{model: Roles, as: 'rol'}]})
         .then(user => res.status(200).json(user))
         .catch(next)
     },
@@ -34,6 +33,7 @@ const usersController = {
         res.send(req.user);
     },
     logOut(req, res, next) {
+        console.log("DESLOGEANDO")
         req.logout();
         res.status(200).send({})
     },

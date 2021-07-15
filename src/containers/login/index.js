@@ -21,14 +21,11 @@ const Login = () => {
   const isEmail = () => validator.isEmail(form.email)
   const onSubmit = (e) => {
     e.preventDefault();
-    if(!form.email || !form.password){
-      alert("Las credenciales son invalidas")
-    }else if(isEmail()){
+   if(isEmail()){
       dispatch(setUser(form))
       .then(user => {
-       user ?   history.push(`/user/${user.payload.id}`) : alert("Las credenciales son invalidas")
+        history.push(`/user/${user.payload.id}`)
       })
-
     }else{
       alert("Las credenciales son invalidas")
     }

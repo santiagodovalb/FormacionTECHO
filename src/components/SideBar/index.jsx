@@ -13,7 +13,7 @@ const Sidebar = () => {
     const user = useSelector(state => state.user)
     const dispatch = useDispatch()
     const handleLogout = () =>{
-        if(user.id) dispatch(userLogout)
+        if(user.id) dispatch(userLogout())
     }
 
     // const roleType = function(id){
@@ -61,7 +61,8 @@ const Sidebar = () => {
                     })} */}
                 </ul>
                 <hr />
-                <button onClick={handleLogout}> Cerrar sesion</button>
+                <Link to ="/login">  <button onClick={handleLogout}> Cerrar sesion</button></Link>
+                
             </div>
         </>
     );
