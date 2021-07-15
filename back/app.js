@@ -21,6 +21,9 @@ app.use(express.json());
 //Permite configurar cookies en nuestro servidor
 app.use(cookieParser());
 
+//logins
+require('./authentication')(app)
+
 //redirigimos todos los pedidos con /api
 app.use('/api', require('./routes'))
 
@@ -31,8 +34,6 @@ app.use((err, req, res, next) => {
     res.status(err.status || 500).send(err.message || "Internal server error.");
 })
 
-//logins
-require('./authentication')(app)
 
 const createApp = () => {
     server.on('request', app)
@@ -45,7 +46,7 @@ const createServer = () => {
     })
 }
 
-db.sync({force : true})
+db.sync({force : false})
 .then(createApp)
 .then(createServer)
 .catch(err => {
