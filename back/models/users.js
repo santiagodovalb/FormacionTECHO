@@ -25,6 +25,9 @@ Users.init({
     },
     img:{
         type: S.STRING,
+    },
+    password:{
+        type: S.STRING
     }
 },{sequelize:db , modelName:"users"})
 
