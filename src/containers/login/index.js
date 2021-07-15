@@ -1,20 +1,29 @@
 import React, { useEffect, useState } from "react";
 import "./index.css";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../redux/login";
 import { sectionStyle } from "./style";
 import Logo from "../../assets/logo.png";
+import { useHistory } from "react-router";
 
 const Login = () => {
+  const  dispatch = useDispatch()
+  const history = useHistory()
   const [form, setForm] = useState({});
   const [other, setOther] = useState("");
 
   const onChange = (e) => {
     const { target } = e;
     setForm({ ...form, [target.name]: target.value });
+    
   };
 
-  // const onSubmit = (e) => {
-  //   e.preventDefault();
-  // };
+  const onSubmit = (e) => {
+    e.preventDefault();
+    dispatch(setUser(form))
+    .then(user => {
+      history.push(`/user/${user.payload.id}`)})
+  };
 
   const onOtherSubmit = (e) => setOther(e.target.id);
 
@@ -33,8 +42,8 @@ const Login = () => {
         <div className="m-4">
           <i className="bi bi-person-circle form-img" />
         </div>
-        <form className="pb-3" onChange={onChange} >
-          {/* <div className="mb-3">
+        <form className="pb-3" onChange={onChange} onSubmit={onSubmit}>
+          <div className="mb-3">
             <input
               type="email"
               className="form-control"
@@ -52,9 +61,8 @@ const Login = () => {
           </div>
           <button type="submit" className="btn btn-secondary mt-3">
             Ingresar
-          </button> */}
-          <div className="m-3" >
-            
+          </button>
+          <div className="m-3" onClick={onOtherSubmit}>
           </div>
           <div className=" fs-8 mt-5">
             <strong>
@@ -64,12 +72,13 @@ const Login = () => {
             </strong>
           </div>
         </form>
+            <a href="http://localhost:3001/api/auth/google"> 
             <button id="Google" className="btn btn-danger mb-3">
               Ingresar con Google
             </button>
-            
+            </a>
             <br />
-            <a href='http://localhost:3001/api/auth/facebook/'>
+            <a href="http://localhost:3001/api/auth/facebook" > 
             <button id="Facebook" className="btn btn-primary">
               Ingresar con Facebook
             </button>

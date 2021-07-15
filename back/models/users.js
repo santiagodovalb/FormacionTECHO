@@ -22,6 +22,12 @@ Users.init({
     },
     googleId:{
         type: S.STRING,
+    },
+    img:{
+        type: S.STRING,
+    },
+    password:{
+        type: S.STRING
     }
 },{sequelize:db , modelName:"users"})
 
