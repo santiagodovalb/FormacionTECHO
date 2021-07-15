@@ -1,19 +1,24 @@
 import React, { useEffect, useState } from "react";
 import "./index.css";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../redux/login";
 import { sectionStyle } from "./style";
 import Logo from "../../assets/logo.png";
 
 const Login = () => {
+  const  dispatch = useDispatch()
   const [form, setForm] = useState({});
   const [other, setOther] = useState("");
 
   const onChange = (e) => {
     const { target } = e;
     setForm({ ...form, [target.name]: target.value });
+    
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
+    dispatch(setUser(form))
   };
 
   const onOtherSubmit = (e) => setOther(e.target.id);
@@ -34,7 +39,7 @@ const Login = () => {
           <i className="bi bi-person-circle form-img" />
         </div>
         <form className="pb-3" onChange={onChange} onSubmit={onSubmit}>
-          {/* <div className="mb-3">
+          <div className="mb-3">
             <input
               type="email"
               className="form-control"
@@ -52,7 +57,7 @@ const Login = () => {
           </div>
           <button type="submit" className="btn btn-secondary mt-3">
             Ingresar
-          </button> */}
+          </button>
           <div className="m-3" onClick={onOtherSubmit}>
           </div>
           <div className=" fs-8 mt-5">

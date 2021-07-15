@@ -2,22 +2,21 @@ const passport = require("passport");
 const session = require("express-session");
 const Users = require("../models/users");
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+require('dotenv').config()
+const { GOOGLE_CLIENT, GOOGLE_SECRET } = process.env
 
 module.exports = (app) => {
   app.use(session({ secret: "techo", resave: true, saveUninitialized: true }));
   app.use(passport.initialize());
   app.use(passport.session());
-
   passport.use(
     new GoogleStrategy(
       {
-        clientID:
-          "971364725971-qilntqti62plme9kbmbuc1ik6ilab9l9.apps.googleusercontent.com",
-        clientSecret: "chn0_pMDqxKWJp4MNcP8fUMM",
+        clientID: GOOGLE_CLIENT,
+        clientSecret: GOOGLE_SECRET,
         callbackURL: "http://localhost:3001/api/auth/google/callback",
       },
       function (token, tokenSecret, profile, done) {
-        console.log("SADDSADSA",profile)
         Users.findOne({ where: { googleId: profile.id } }).then(
           async (user) => {
             if (user) {
