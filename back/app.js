@@ -1,25 +1,15 @@
 const express = require('express');
 const app = express();
-const volleyball = require("volleyball");
-const cookieParser = require("cookie-parser");
-const cors = require("cors");
+
 const db = require('./db')
-const models = require('./models')
 const chalk = require('chalk')
 const server = require('http').createServer();
 
-//Evita problemas con el acceso CORS cuando hacemos peticiones AJAX desde un front a un back con puertos diferentes.
-app.use(cors());
+//logger & parsers
+require('./config')(app)
 
-//Permite ver en la consola los request del cliente y los reponses del servidor
-app.use(volleyball);
-
-//Convierte los body request en formato JSON
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
-//Permite configurar cookies en nuestro servidor
-app.use(cookieParser());
+//logins
+require('./authentication')(app)
 
 //redirigimos todos los pedidos con /api
 app.use('/api', require('./routes'))
@@ -30,9 +20,6 @@ app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(err.status || 500).send(err.message || "Internal server error.");
 })
-
-//logins
-require('./authentication')(app)
 
 const createApp = () => {
     server.on('request', app)

@@ -2,7 +2,6 @@ const passport = require("passport");
 const session = require("express-session");
 const FacebookStrategy = require("passport-facebook").Strategy;
 const Users = require("../models/users");
-const bcrypt = require("bcrypt");
 
 module.exports = (app) => {
   app.use(session({ secret: "techo", resave: true, saveUninitialized: true }));
