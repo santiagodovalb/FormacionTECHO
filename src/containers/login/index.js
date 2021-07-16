@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./index.css";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../redux/user";

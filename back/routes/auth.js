@@ -8,7 +8,7 @@ const login = (req, res, next) => {
 router.get("/facebook", passport.authenticate('facebook', { scope: ['email'] }), login)
 
 router.get("/facebook/callback", passport.authenticate('facebook', {
-        successRedirect: `http://localhost:3000/`,
+        successRedirect: `http://localhost:3000/user/1`,
         failureRedirect:'/login'
     }))
 
