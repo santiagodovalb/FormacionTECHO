@@ -6,7 +6,7 @@ import { setUserLogged } from '../../../redux/login';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-const AdminContent = () => {
+const GestorContent = () => {
 
     const dispatch = useDispatch();
     const history = useHistory();
@@ -20,7 +20,7 @@ const AdminContent = () => {
     if (user.loggedIn === null) {
       return <></>;
     }
-    if (user.loggedIn === false || user.roleId !== 1) {
+    if (user.loggedIn === false || user.roleId !== 2) {
       history.push("/");
       return <></>;
     }
@@ -30,11 +30,12 @@ const AdminContent = () => {
         <div>
             <Sidebar />
             <div className="admin_content_div">
-                <h1>ESTA VIEW ES SOLO DE ADMIN</h1>
+                <h1>ESTA VIEW ES SOLO DE GESTOR</h1>
             </div>
         </div>
         </>
     )
 }
 
-export default AdminContent;
+export default GestorContent;
+

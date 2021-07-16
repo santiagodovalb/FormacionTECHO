@@ -2,6 +2,7 @@ const router = require("express").Router();
 const passport = require("passport")
 const usersController = require("../controllers/usersController")
 
+
 router.get('/me', usersController.isLogged)
 router.post("/login", passport.authenticate("local"), usersController.login);
 router.post("/logout", usersController.logOut)
