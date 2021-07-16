@@ -5,7 +5,7 @@ router.get("/" , sedesController.findAll)
 router.get("/:id",sedesController.findOne)
 router.post("/", sedesController.createSede)
 router.delete("/:id",sedesController.deleteSede) 
-router.put("/:id", sedesController.deleteSede) 
+router.put("/:id", sedesController.updateSede) 
 
 
 module.exports= router;
