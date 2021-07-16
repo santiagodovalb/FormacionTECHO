@@ -8,6 +8,7 @@ import { useHistory } from "react-router";
 import axios from 'axios'
 import { message } from 'antd'
 import 'antd/dist/antd.css';
+import validator from 'validator';
 
 const Login = () => {
   const  dispatch = useDispatch()
@@ -20,9 +21,11 @@ const Login = () => {
     setForm({ ...form, [target.name]: target.value });
     
   };
+  const isEmail = () => validator.isEmail(form.email)
 
   const onSubmit = (e) => {
     e.preventDefault();
+    if(isEmail()) {
     axios.post("/api/users/login", form)
     .then(res => res.data)
     .then(user => {
@@ -34,15 +37,13 @@ const Login = () => {
     .catch(err => {
       message.error('Bad credentials')
       return err
+    
     })
-  };
+    
+  }};
 
   const onOtherSubmit = (e) => setOther(e.target.id);
 
-  useEffect(() => {
-    Object.keys(form).map((key) => console.log(`[${key}] : ${form[key]}`));
-    console.log(`${other}`);
-  }, [form, other]);
 
   return (
     <div
@@ -61,6 +62,7 @@ const Login = () => {
               className="form-control"
               name="email"
               placeholder="Correo"
+              required="true"
             />
           </div>
           <div className="mb-3">
@@ -69,19 +71,13 @@ const Login = () => {
               className="form-control"
               name="password"
               placeholder="Contraseña"
+              required="true"
             />
           </div>
           <button type="submit" className="btn btn-secondary mt-3">
             Ingresar
           </button>
           <div className="m-3" onClick={onOtherSubmit}>
-          </div>
-          <div className=" fs-8 mt-5">
-            <strong>
-              <a href="url" className="text-light">
-                ¿Olvidaste tu contraseña?
-              </a>
-            </strong>
           </div>
         </form>
             <a href="http://localhost:3001/api/auth/google"> 
