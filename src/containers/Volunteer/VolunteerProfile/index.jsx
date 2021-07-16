@@ -1,5 +1,5 @@
 import React from "react";
-import Sidebar from "../../../components/Sidebar";
+import Sidebar from "../../../components/SideBar";
 import { useSelector } from "react-redux";
 import "./styles.css"
 
@@ -7,7 +7,6 @@ import "./styles.css"
 const VolunteerProfile = () => {
 
     const user = useSelector(state => state.user)
-    console.log(user)
     const newUser = function(rolId, sedeId){
         if(rolId == null || sedeId == null){
             return <p>Por favor, pongase en contacto con su gestor para que se le asigne un rol y una sede</p>

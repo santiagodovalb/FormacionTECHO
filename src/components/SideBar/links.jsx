@@ -14,19 +14,19 @@ function Links () {
         {user.rolId === 1 &&
 
         <div>
-        <Link to={`/user/:id/admin-bloques`}>
+        <Link to={`/user//admin-bloques`}>
         <h6 className="nav-link link-light">
             Gestionar Bloques
         </h6>
         </Link>
 
-        <Link to={`/user/:id/admin-usuarios`}>
+        <Link to={`/user/${user.id}/admin-usuarios`}>
         <h6 className="nav-link link-light">
             Gestionar Usuarios
         </h6>
         </Link>
 
-        <Link to={`/user/:id/admin-sedes`}>
+        <Link to={`/user/${user.id}admin-sedes`}>
         <h6 className="nav-link link-light">
             Gestionar Sedes
         </h6>
@@ -38,13 +38,13 @@ function Links () {
 
         <div>
             
-        <Link to={`/user/:id/voluntarios`}>
+        <Link to={`/user/${user.id}/voluntarios`}>
         <h6 className="nav-link link-light">
             Gestionar voluntarios
         </h6>
         </Link>
             
-        <Link to={`/user/:id/entregas}`}>
+        <Link to={`/user/${user.id}/entregas}`}>
         <h6 className="nav-link link-light">
             Gestionar entregas
         </h6>
@@ -56,13 +56,13 @@ function Links () {
         {user.rolId >= 3 && 
         <div>
         
-        <Link to={`/user/:id/micontenido`}>
+        <Link to={`/user/${user.id}/micontenido`}>
         <h6 className="nav-link link-light">
             Mis Bloques
         </h6>
         </Link>
 
-        <Link to={`/user/:id/misentregas`}>
+        <Link to={`/user/${user.id}/misentregas`}>
         <h6 className="nav-link link-light">
             Mis Entregas
         </h6>

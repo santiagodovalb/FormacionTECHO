@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./index.css";
 import { useDispatch } from "react-redux";
-import { setUser } from "../../redux/login";
+import { setUser } from "../../redux/user";
 import { sectionStyle } from "./style";
 import Logo from "../../assets/logo.png";
 import { useHistory } from "react-router";
+import axios from 'axios'
+import { message } from 'antd'
+import 'antd/dist/antd.css';
 
 const Login = () => {
   const  dispatch = useDispatch()
@@ -20,9 +23,18 @@ const Login = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(setUser(form))
+    axios.post("/api/users/login", form)
+    .then(res => res.data)
     .then(user => {
-      history.push(`/user/${user.payload.id}`)})
+      dispatch(setUser(user))
+      message.success('Logged in')
+      return user
+      })
+      .then((user) => history.push(`/user/${user.id}`))
+    .catch(err => {
+      message.error('Bad credentials')
+      return err
+    })
   };
 
   const onOtherSubmit = (e) => setOther(e.target.id);

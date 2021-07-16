@@ -17,9 +17,10 @@ function Users () {
         setRol(e.target.value)
     }
 
-    const handleClick = (userId, rolId) => {
+    const handleClick = (e, userId, rolId) => {
         console.log('DATA', userId, rolId)
-        axios.put(`/api/roles/set/`, {userId, rolId})
+        e.preventDefault()
+        axios.put('http://localhost:3001/api/roles/set/', {userId, rolId})
         .then(() => dispatch(setUsers()))
     }
     console.log("USERS del admin", users)
@@ -36,7 +37,7 @@ function Users () {
                             <option value='2'>Gestor</option>
                             <option value='3'>Referente Comunitario</option>
                         </select>
-                        <button onClick={() => handleClick(user.id, rol)} type='button'>Asignar rol</button>
+                        <button onClick={(e) => handleClick(e, user.id, parseInt(rol))} type='button'>Asignar rol</button>
                     </div>
                 )
             })}
