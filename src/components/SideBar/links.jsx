@@ -56,7 +56,7 @@ function Links () {
         {user.rolId >= 3 && 
         <div>
         
-        <Link to={`/user/:id/micontenido`}>
+        <Link to={`/user/${user.id}/misbloques`}>
         <h6 className="nav-link link-light">
             Mis Bloques
         </h6>

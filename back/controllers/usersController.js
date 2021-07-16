@@ -9,7 +9,8 @@ const usersController = {
     },
     findOne(req,res,next){
         Users.findByPk({
-            where:{id: req.params.id}
+            where:{id: req.params.id},
+            include: [{model: Roles, as: 'rol'}]
         })
         .then(user => res.status(200).json(user))
         .catch(next)

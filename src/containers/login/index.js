@@ -27,10 +27,10 @@ const Login = () => {
 
   const onOtherSubmit = (e) => setOther(e.target.id);
 
-  useEffect(() => {
-    Object.keys(form).map((key) => console.log(`[${key}] : ${form[key]}`));
-    console.log(`${other}`);
-  }, [form, other]);
+  // useEffect(() => {
+  //   Object.keys(form).map((key) => console.log(`[${key}] : ${form[key]}`));
+  //   console.log(`${other}`);
+  // }, [form, other]);
 
   return (
     <div

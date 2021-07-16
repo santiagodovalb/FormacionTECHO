@@ -10,24 +10,6 @@ const Sidebar = () => {
 
 
     const user = useSelector(state => state.user)
-
-    // const roleType = function(id){
-    //     if(id === null) {
-    //         return ["Mis bloques"]
-    //     }
-    //     if(id === 1){
-    //         return ["Gestionar bloques", "Gestionar usuarios", "Gestionar sedes"]
-    //     }
-    //     if(id === 2){
-    //         return ["Gestionar voluntarios", "Gestionar entregas"]
-    //     }
-    //     if(id >= 3){
-    //         return ["Mis bloques", "Mis entregas"]
-    //     }
-    // }
-
-    // const rol = roleType(user.rolId) 
-
     return (
         <>
             <div className="sidebar d-flex flex-column flex-shrink-0 p-3" style={{ width: '280px' }}>
@@ -38,22 +20,12 @@ const Sidebar = () => {
                 <ul className="nav nav-pills flex-column mb-auto">
                     <li className="nav-item">
                         <Link to="/user/:id">
-                        <a href="?" className="nav-link link-light">
+                        <h6 className="nav-link link-light">
                             Mi perfil
-                        </a>
+                         </h6>
                         </Link>
                     </li>
                     <Links />
-
-                    {/* {rol && rol.map(link => {
-                        return <li>
-                                <Link to={`/user/:id/${link.toLowerCase().replace(/\s/g, "")}`}>
-                                <h6 className="nav-link link-light">
-                                    {link}
-                                </h6>
-                                </Link>
-                                </li>
-                    })} */}
                 </ul>
                 <hr />
                 <p>Cerrar sesion</p>

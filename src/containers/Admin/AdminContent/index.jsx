@@ -17,12 +17,9 @@ const AdminContent = () => {
   
     const user = useSelector((state) => state.user);
   
-    if (user.loggedIn === null) {
-      return <></>;
-    }
-    if (user.loggedIn === false || user.roleId !== 1) {
-      history.push("/");
-      return <></>;
+    if (user.rolId !== 1) {
+      history.push("/unauthorized");
+      return <><h1>No autorizado</h1></>;
     }
 
     return (
