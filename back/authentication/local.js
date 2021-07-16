@@ -16,6 +16,7 @@ module.exports = (app) => {
         passwordField: "password",
       },
       function (email, password, done) {
+        console.log('PASSPORT')
         Users.findOne({
           where: { email: email },
         })
@@ -44,6 +45,7 @@ module.exports = (app) => {
   });
 
   passport.deserializeUser((id, done) => {
-    User.findByPk(id).then((user) => done(null, user));
+    Users.findByPk(id).then((user) => {
+      done(null, user)});
   });
 };

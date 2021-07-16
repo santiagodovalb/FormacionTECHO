@@ -10,7 +10,6 @@ const rolesController = {
     },
 
     findOne(req, res, next){
-        console.log("EL ID",req.params.id)
         Roles.findByPk(req.params.id)
         .then(rol => res.status(200).json(rol))
         .catch(next)
@@ -41,22 +40,21 @@ const rolesController = {
     },
 
     setUserRole(req, res, next) {
-        console.log('LLEGA', req.body)
+        console.log('LLEGA', req.user)
         const id = req.body.userId 
-        const rol = req.body.rolId
-        const userRole = req.user.rolId
-        const userLogged = req.user
-
+        const rolId = req.body.rolId
+        const userRole = req.body.user.rolId
         
-        // if (rol === 1) throw 'Permission denied'
-        // if (userRole === 2 && rol <= 2) throw 'Permission denied'
-        Users.findByPk({where:{id}})
+        
+        if (rolId === 1) throw 'Permission denied'
+        if (userRole === 2 && rolId <= 2) throw 'Permission denied'
+
+        Users.findByPk(id)
         .then((user)=>{
-            Roles.findByPk(rol)
+            Roles.findByPk(rolId)
             .then(rol => {
-                Object.keys(Roles.Prototype)
                 user.setRol(rol)
-                res.status(201)})
+                res.sendStatus(201)})
         })
         .catch(next)
     }
