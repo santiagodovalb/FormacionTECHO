@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const LoginAdmin = () => {
+const LoginUser = () => {
 
     return (
       <>
@@ -21,4 +21,4 @@ const LoginAdmin = () => {
 
 }
 
-export default LoginAdmin;
+export default LoginUser;

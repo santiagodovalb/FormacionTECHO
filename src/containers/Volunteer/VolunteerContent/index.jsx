@@ -7,7 +7,6 @@ const VolunteerContent = () => {
   return (
     <>
       <div>
-        <Sidebar />
         <div className="volunteer_content_div">
           <h2>Bloques minimos</h2>
           <div className="content_div">

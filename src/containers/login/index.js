@@ -3,10 +3,14 @@ import "./index.css";
 import { sectionStyle } from "./style";
 import Logo from "../../assets/logo.png";
 import 'antd/dist/antd.css';
-import LoginAdmin from "./loginAdmin";
-import LoginUser from "./loginUser";
+import { Route } from "react-router";
+import LoginAdmin from "./ModuleLogin/LoginAdmin";
+import LoginUser from "./ModuleLogin/LoginUser";
+import { useLocation } from "react-router-dom";
 
 const Login = () => {
+
+  const location = useLocation();
 
   return (
     <div
@@ -18,8 +22,9 @@ const Login = () => {
         <div className="m-4">
           <i className="bi bi-person-circle form-img" />
         </div>
-        {LoginUser()} 
-        {LoginAdmin()}
+        {console.log(location.pathname)}
+        {location.pathname === "/adminlogin" && LoginAdmin()}
+        {location.pathname === "/login" && LoginUser()} 
       </div>
     </div>
   );
