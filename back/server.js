@@ -17,7 +17,7 @@ const createServer = () => {
     })
 }
 
-db.sync({force : false})
+db.sync({force : true})
 .then(createApp)
 .then(createServer)
 .catch(err => {
