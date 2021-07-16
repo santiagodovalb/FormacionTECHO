@@ -1,9 +1,17 @@
 const Users = require ("../models/users")
 const Roles = require ("../models/roles")
+const { Op } = require("sequelize");
 
 const usersController = {
     findAll(req,res,next){
-        Users.findAll({include: [{model: Roles, as: 'rol'}]})
+        Users.findAll({
+            include: [{model: Roles, as: 'rol'}],
+            where: {
+                id: {
+                    [Op.ne]: req.user.id
+                }
+            }
+        })
         .then(user => res.status(200).json(user))
         .catch(next)
     },

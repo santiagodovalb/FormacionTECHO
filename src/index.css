@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@800&display=swap");
+.title {
+  font-family: "Kanit", sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  color: #5a6978;
+}
+
+.button-style {
+  color: white;
+  border: none;
+  border-radius: 10px;
+  width: 400px;
+}
+
+.button-style:hover {
+  color: white;
+}
+
+.light-blue {
+  background-color: #0092dd;
+}
+
+.light-blue:hover {
+  background-color: #017bb8;
+}
+
+.green {
+  background-color: #77d352;
+}
+
+.green:hover {
+  background-color: #52c226;
+}

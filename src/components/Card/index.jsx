@@ -1,20 +1,42 @@
 import React from "react";
-import './styles.css'
+import "./styles.css";
+import { Link } from "react-router-dom";
 
+const Card = ({ img, title, button, icon }) => {
+  return (
+    <>
+      <div
+        className="card position-relative"
+        style={{ width: "20rem", borderRadius: "10px" }}
+      >
+        {icon && icon.length ? (
+          <div class="position-absolute top-0 end-0">
+            <i class={icon}></i>
+          </div>
+        ) : (
+          ""
+        )}
 
-const Card = () => {
+        {title && title.length ? (
+          <div className="card-body">
+            <h3 className="card-title text-center">{title}</h3>
+          </div>
+        ) : (
+          ""
+        )}
 
-    return (
-        <>
-            <div className="card" style={{ width: "18rem" }}>
-                <img src="https://www.telediariodigital.net/wp-content/uploads/2014/09/art21-foto3.jpg" alt="" />
-                <div className="card-body">
-                    <h5 class="card-title">Titulo del bloque</h5>
-                    <a href="?" class="btn btn-primary">Ver modulos</a>
-                </div>
-            </div>
-        </>
-    );
+        <img src={img} alt="" />
+        <Link to="/">
+          <div
+            className={` ${button.styles} p-3 text-center`}
+            style={{ width: "100%" }}
+          >
+            {button.text}
+          </div>
+        </Link>
+      </div>
+    </>
+  );
 };
 
 export default Card;

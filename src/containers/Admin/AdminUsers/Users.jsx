@@ -10,6 +10,7 @@ function Users () {
     const dispatch = useDispatch();
     const history = useHistory();
     const users = useSelector(state => state.users)
+    const user = useSelector((state) => state.user);
 
     useEffect(() => {
         dispatch(setUsers())
@@ -19,17 +20,15 @@ function Users () {
         setRol(e.target.value)
     }
 
-    const handleClick = (e, userId, rolId) => {
-        console.log('DATA', userId, rolId)
-        e.preventDefault()
-        axios.put('http://localhost:3001/api/roles/set/', {userId, rolId})
-        .then(() => dispatch(setUsers()))
+    const handleClick = (userId, rolId) => {
+        return axios.post('http://localhost:3001/api/roles/set/', {userId, rolId, user})
+        .then(() => {
+            console.log('ENTRA')
+            dispatch(setUsers())})
     }
-    console.log("USERS del admin", users)
 
-    const user = useSelector((state) => state.user);
   
-    if (user.rolId !== 1) {
+    if (user.rolId && user.rolId !== 1) {
       history.push("/unauthorized");
       return <><h1>No autorizado</h1></>;
     }
@@ -46,7 +45,7 @@ function Users () {
                             <option value='2'>Gestor</option>
                             <option value='3'>Referente Comunitario</option>
                         </select>
-                        <button onClick={(e) => handleClick(e, user.id, parseInt(rol))} type='button'>Asignar rol</button>
+                        <button onClick={(e) => handleClick(user.id, parseInt(rol))} type='button'>Asignar rol</button>
                     </div>
                 )
             })}
