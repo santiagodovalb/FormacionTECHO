@@ -30,8 +30,9 @@ const sedesController = {
         .catch(next)
     },
     deleteSede(req,res,next){
+        console.log(req.params)
         const id = req.params.id
-        Sedes.destroy({where:id}).then(()=>{
+        Sedes.destroy({where:{id}}).then(()=>{
             res.sendStatus(204)
         })
         .catch(next)

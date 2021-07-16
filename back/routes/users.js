@@ -10,6 +10,7 @@ router.post('/create', usersController.createUser)
 router.get("/:id", usersController.findOne)
 router.put("/:id", usersController.setUser)
 router.delete("/:id", usersController.deleteUser)
+router.get('/sede/:id', usersController.findBySede)
 router.get("/",usersController.findAll)
 
 module.exports = router

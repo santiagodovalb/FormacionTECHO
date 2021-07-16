@@ -1,15 +1,16 @@
 import React from 'react';
 import { useEffect } from 'react';
 import Sidebar from '../../../components/SideBar';
+import Sedes from './Sedes';
 import Users from './Users'
 
 function AdminUsers () {
 
     return (
         <div>
-            <h1>Administrar roles de usuarios</h1>
-            <h2></h2>
-            <Users />
+            
+            <h2>Acceder a una sede para ver sus voluntarios y gestores</h2>
+            <Sedes />
         </div>    
     )
 }

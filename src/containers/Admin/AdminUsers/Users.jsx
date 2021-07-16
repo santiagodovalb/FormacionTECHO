@@ -2,19 +2,23 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useDispatch, useSelector} from 'react-redux'
 import { setUsers } from '../../../redux/users'
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 function Users () {
 
     const [rol, setRol] = useState(0);
-    const dispatch = useDispatch();
+    const [users, setUsers] = useState([])
+    const user = useSelector(state => state.user)
     const history = useHistory();
-    const users = useSelector(state => state.users)
-    const user = useSelector((state) => state.user);
+    const location = useLocation()
+    const id = location.pathname.slice(21)
+    console.log(users)
 
     useEffect(() => {
-        dispatch(setUsers())
-    }, [dispatch])
+        axios.get(`/api/users/sede/${id}`)
+        .then(res => res.data)
+        .then(users => setUsers(users))
+    }, [])
 
     const handleChange = (e) => {
         setRol(e.target.value)
@@ -22,9 +26,6 @@ function Users () {
 
     const handleClick = (userId, rolId) => {
         return axios.post('http://localhost:3001/api/roles/set/', {userId, rolId, user})
-        .then(() => {
-            console.log('ENTRA')
-            dispatch(setUsers())})
     }
 
   
@@ -35,6 +36,8 @@ function Users () {
 
     return (
         <div>
+            <h1>Administrar roles</h1>
+            {!users.length && <h1>No hay voluntarios/gestores en esta sede</h1>}
             {users && users.map(user => {
                 return (
                     <div key={user.id}>

@@ -23,6 +23,16 @@ const usersController = {
         .then(user => res.status(200).json(user))
         .catch(next)
     },
+    findBySede(req, res, next) {
+        const sedeId = req.params.id
+        Users.findAll({
+            where: {
+                sedeId: sedeId
+            }
+        })
+        .then(user => res.status(200).json(user))
+        .catch(next)
+    },
     createUser(req, res, next) {
         Users.create(req.body)
         .then(user => res.status(200).json(user))

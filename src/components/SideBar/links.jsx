@@ -18,7 +18,7 @@ function Links () {
         <h6 className="nav-link link-light">
             Crear Gestor
         </h6>
-        
+
         <Link to={`/admin-bloques`}>
         <h6 className="nav-link link-light">
             Gestionar Bloques
@@ -63,13 +63,13 @@ function Links () {
         {user.rolId >= 3 && 
         <div>
         
-        <Link to={`/misbloques`}>
+        <Link to={`/mis-bloques`}>
         <h6 className="nav-link link-light">
             Mis Bloques
         </h6>
         </Link>
 
-        <Link to={`/misentregas`}>
+        <Link to={`/mis-entregas`}>
         <h6 className="nav-link link-light">
             Mis Entregas
         </h6>

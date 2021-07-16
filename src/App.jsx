@@ -16,12 +16,18 @@ import axios from "axios";
 import Sidebar from "./components/SideBar";
 import { useLocation } from "react-router";
 import CrearGestor from "./containers/Admin/CrearGestor";
+import { getSedes } from "./redux/sedes";
+import Users from "./containers/Admin/AdminUsers/Users";
+import AdminSedes from './containers/Admin/AdminSedes' 
 
 function App() {
   const dispatch = useDispatch();
   let location = useLocation();
 
   useEffect(() => {
+
+    dispatch(getSedes())
+
     axios
       .get("/api/users/me")
       .then((res) => res.data)
@@ -35,12 +41,14 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/sede" component={Sede} />
         <Route exact path="/user" component={VolunteerProfile} />
-        <Route path="/misbloques" component={VolunteerContent} />
-        <Route path="/mismodulos" component={VolunteerModuls} />
+        <Route path="/mis-bloques" component={VolunteerContent} />
+        <Route path="/mis-modulos" component={VolunteerModuls} />
         <Route path="/bloques" component={AdminContent} />
         <Route path="/gestor" component={GestorContent} />
         <Route path="/admin-bloques" component={AdminContent} />
-        <Route path="/admin-usuarios" component={AdminUsers} />
+        <Route exact path="/admin-usuarios" component={AdminUsers} />
+        <Route exact path="/admin-sedes" component={AdminSedes} />
+        <Route path="/admin-usuarios/sede/:id" component={Users} />
         <Route path="/admin-crear-gestor" component={CrearGestor} />
         <Route path="/unauthorized" component={Unauthorized} />
         <Redirect from="*" to="/login" />
