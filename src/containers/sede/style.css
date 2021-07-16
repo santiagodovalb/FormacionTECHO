@@ -1,0 +1,11 @@
+.check-style {
+  color: white;
+  font-size: 40px;
+  /* border-width: 5px;
+  border-color: white;
+  border-radius: 50px; */
+}
+
+.check-style:hover {
+  color: #0092dd;
+}
