@@ -5,6 +5,9 @@ const cors = require("cors");
 const helmet = require("helmet");
 
 module.exports = (app) => {
+
+  console.log('LOGGERS')
+
   //15 middlewares inteligentes que mejoran la seguridad de los headers requests
   app.use(helmet());
 

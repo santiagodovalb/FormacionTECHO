@@ -1,28 +1,21 @@
 import Sidebar from "../../../components/SideBar/index";
-import React, {useEffect} from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
-import { setUserLogged } from '../../../redux/login';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const GestorContent = () => {
 
-    const dispatch = useDispatch();
     const history = useHistory();
   
-    useEffect(() => {
-      dispatch(setUserLogged());
-    }, [dispatch]);
   
-    const user = useSelector((state) => state.user);
+    const user = useSelector((state) => state.user)
+    console.log("IDD", user)
   
-    if (user.loggedIn === null) {
-      return <></>;
-    }
-    if (user.loggedIn === false || user.roleId !== 2) {
-      history.push("/");
-      return <></>;
+    if (user.rolId && user.rolId !== 2) {
+      history.push("/unauthorized");
+      return <><h1>No autorizado</h1></>;
     }
 
     return (

@@ -9,6 +9,13 @@ const rolesController = {
         .catch(next)
     },
 
+    findOne(req, res, next){
+        console.log("EL ID",req.params.id)
+        Roles.findByPk(req.params.id)
+        .then(rol => res.status(200).json(rol))
+        .catch(next)
+    },
+
     createRole(req, res, next) {
         Roles.create(req.body)
         .then(role => res.status(201).json(role))

@@ -1,28 +1,19 @@
-import Sidebar from "../../../components/SideBar/index";
 import React, {useEffect} from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
-import { setUserLogged } from '../../../redux/login';
+import Sidebar from '../../../components/SideBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const AdminContent = () => {
 
-    const dispatch = useDispatch();
     const history = useHistory();
-  
-    useEffect(() => {
-      dispatch(setUserLogged());
-    }, [dispatch]);
   
     const user = useSelector((state) => state.user);
   
-    if (user.loggedIn === null) {
-      return <></>;
-    }
-    if (user.loggedIn === false || user.roleId !== 1) {
-      history.push("/");
-      return <></>;
+    if (user.rolId && user.rolId !== 1) {
+      history.push("/unauthorized");
+      return <><h1>No autorizado</h1></>;
     }
 
     return (

@@ -1,5 +1,5 @@
 import React from "react";
-import Sidebar from "../../../components/SideBar/index";
+import Sidebar from "../../../components/SideBar";
 import Card from "../../../components/Card"
 import "./styles.css"
 

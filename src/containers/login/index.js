@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./index.css";
 import { useDispatch } from "react-redux";
-import { setUser } from "../../redux/login";
+import { setUser } from "../../redux/user";
 import { sectionStyle } from "./style";
 import Logo from "../../assets/logo.png";
 import { useHistory } from "react-router";
+import axios from 'axios'
+import { message } from 'antd'
+import 'antd/dist/antd.css';
 import validator from 'validator';
 
 const Login = () => {
@@ -19,25 +22,28 @@ const Login = () => {
     
   };
   const isEmail = () => validator.isEmail(form.email)
+
   const onSubmit = (e) => {
     e.preventDefault();
-   if(isEmail()){
-      dispatch(setUser(form))
-      .then(user => {
-        history.push(`/user/${user.payload.id}`)
+    if(isEmail()) {
+    axios.post("/api/users/login", form)
+    .then(res => res.data)
+    .then(user => {
+      dispatch(setUser(user))
+      message.success('Logged in')
+      return user
       })
-    }else{
-      alert("Las credenciales son invalidas")
-    }
+      .then((user) => history.push(`/user/${user.id}`))
+    .catch(err => {
+      message.error('Bad credentials')
+      return err
     
-  };
+    })
+    
+  }};
 
   const onOtherSubmit = (e) => setOther(e.target.id);
 
- /*  useEffect(() => {
-    Object.keys(form).map((key) => console.log(`[${key}] : ${form[key]}`));
-    console.log(`${other}`);
-  }, [form, other]); */
 
   return (
     <div
@@ -72,13 +78,6 @@ const Login = () => {
             Ingresar
           </button>
           <div className="m-3" onClick={onOtherSubmit}>
-          </div>
-          <div className=" fs-8 mt-5">
-            <strong>
-              <a href="url" className="text-light">
-                ¿Olvidaste tu contraseña?
-              </a>
-            </strong>
           </div>
         </form>
             <a href="http://localhost:3001/api/auth/google"> 

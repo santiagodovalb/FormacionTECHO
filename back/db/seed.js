@@ -21,12 +21,37 @@ const seed = () =>{
     })
 
     Users.create({
-        full_name: 'juancito admin',
+        full_name: 'Juancito Admin',
         email: 'admin@admin.com',
         password: 'admin',
+        img: 'https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg',
     })
     .then(user => {
         Roles.findByPk(1).then(rol=>{
+            user.setRol(rol)
+        })
+    })
+
+    Users.create({
+        full_name: 'Sergio Gestor',
+        email: 'gestor@gestor.com',
+        password: 'gestor',
+        img: 'https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg',
+    })
+    .then(user => {
+        Roles.findByPk(2).then(rol=>{
+            user.setRol(rol)
+        })
+    })
+
+    Users.create({
+        full_name: 'Victor Voluntario',
+        email: 'voluntario@voluntario.com',
+        password: 'voluntario',
+        img: 'https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg',
+    })
+    .then(user => {
+        Roles.findByPk(3).then(rol=>{
             user.setRol(rol)
         })
     })
