@@ -23,6 +23,11 @@ const usersController = {
         .then(user => res.status(200).json(user))
         .catch(next)
     },
+    createUser(req, res, next) {
+        Users.create(req.body)
+        .then(user => res.status(200).json(user))
+        .catch(next)
+    },
     setUser(req,res,next){
         Users.update(req.body,{
             where:{id:req.params.id},
@@ -42,7 +47,6 @@ const usersController = {
         res.send(req.user);
     },
     logOut(req, res, next) {
-        console.log("DESLOGEANDO")
         req.logout();
         res.status(200).send({})
     },

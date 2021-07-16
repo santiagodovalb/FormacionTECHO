@@ -19,7 +19,6 @@ const AdminContent = () => {
     return (
         <>
         <div>
-            <Sidebar />
             <div className="admin_content_div">
                 <h1>ESTA VIEW ES SOLO DE ADMIN</h1>
             </div>

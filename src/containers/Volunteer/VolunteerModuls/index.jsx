@@ -5,7 +5,6 @@ import CanchaFutbol from "./../../../assets/volunteer/CanchaFutbol.png";
 const VolunteerModuls = () => {
   return (
     <div>
-      <Sidebar />
       <div className="container-fluid">
         <div className="row">
           <h1 className="p-5 fs-1 title">

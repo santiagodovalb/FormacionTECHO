@@ -13,9 +13,13 @@ import { useDispatch } from "react-redux";
 import { setUser } from "./redux/user";
 import { Route, Switch, Redirect } from "react-router-dom";
 import axios from "axios";
+import Sidebar from "./components/SideBar";
+import { useLocation } from "react-router";
+import CrearGestor from "./containers/Admin/CrearGestor";
 
 function App() {
   const dispatch = useDispatch();
+  let location = useLocation();
 
   useEffect(() => {
     axios
@@ -26,17 +30,19 @@ function App() {
 
   return (
     <div className="App">
+      {!location.pathname.includes('login') && <Sidebar />}
       <Switch>
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/sede" component={Sede} />
-        <Route exact path="/user/:id" component={VolunteerProfile} />
-        <Route exact path="/user/:id/misbloques" component={VolunteerContent} />
-        <Route exact path="/user/:id/mismodulos" component={VolunteerModuls} />
-        <Route exact path="/user/:id/bloques" component={AdminContent} />
-        <Route exact path="/user/:id/gestor" component={GestorContent} />
-        <Route exact path="/user/:id/admin-bloques" component={AdminContent} />
-        <Route exact path="/user/:id/admin-usuarios" component={AdminUsers} />
-        <Route exact path="/unauthorized" component={Unauthorized} />
+        <Route path="/login" component={Login} />
+        <Route path="/sede" component={Sede} />
+        <Route exact path="/user" component={VolunteerProfile} />
+        <Route path="/misbloques" component={VolunteerContent} />
+        <Route path="/mismodulos" component={VolunteerModuls} />
+        <Route path="/bloques" component={AdminContent} />
+        <Route path="/gestor" component={GestorContent} />
+        <Route path="/admin-bloques" component={AdminContent} />
+        <Route path="/admin-usuarios" component={AdminUsers} />
+        <Route path="/admin-crear-gestor" component={CrearGestor} />
+        <Route path="/unauthorized" component={Unauthorized} />
         <Redirect from="*" to="/login" />
       </Switch>
     </div>

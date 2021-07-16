@@ -21,7 +21,6 @@ const GestorContent = () => {
     return (
         <>
         <div>
-            <Sidebar />
             <div className="admin_content_div">
                 <h1>ESTA VIEW ES SOLO DE GESTOR</h1>
             </div>

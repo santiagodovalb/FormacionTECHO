@@ -25,7 +25,6 @@ const VolunteerProfile = () => {
     return (
         <>
             <div>
-                <Sidebar />
                 <div className="volunteer_profile_div">
                     <img src={user.img} alt="volunteer" />
                     <h2>{user.full_name}</h2>
