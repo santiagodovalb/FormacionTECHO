@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, {useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import { getSedes } from '../../../redux/sedes'
 
 export default function Sedes() {
@@ -9,6 +10,8 @@ export default function Sedes() {
 
     const sedes = useSelector(state => state.sedes)
     const dispatch = useDispatch()
+    const history = useHistory();
+    const user = useSelector(state => state.user)
 
     const toggleForm = (id) => {
         console.log(document.getElementById(id))
@@ -16,7 +19,7 @@ export default function Sedes() {
     }
 
     const handleSubmit = (id) => {
-        axios.post(`/api/sedes/${id}`, form)
+        axios.post(`/api/sedes/`, form)
         .then(res => res.data)
         .then(() => dispatch(getSedes()))
     }
@@ -28,7 +31,12 @@ export default function Sedes() {
     const handleDelete = (id) => {
         axios.delete(`/api/sedes/${id}`)
         .then(() => dispatch(getSedes()))
-    } 
+    }
+
+    if (user.rolId && user.rolId !== 1) {
+        history.push("/unauthorized");
+        return <><h1>No autorizado</h1></>;
+      }
 
     return (
         <div>
