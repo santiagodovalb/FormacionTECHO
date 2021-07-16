@@ -1,6 +1,6 @@
 import React from "react";
-import Sidebar from "../../../components/Sidebar";
-import { useDispatch, useSelector } from "react-redux";
+import Sidebar from "../../../components/Sidebar/index";
+import { useSelector } from "react-redux";
 import "./styles.css"
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -16,12 +16,11 @@ const VolunteerProfile = () => {
         }
     }
 
-
     useEffect(()=>{
         return axios.get(`/api/roles/${user.rolId}`)
             .then(res => {
                 setRol(res.data) })
-    },[])
+    },[user.rolId])
 
     return (
         <>

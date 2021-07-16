@@ -2,6 +2,7 @@ import './App.css';
 import VolunteerProfile from '../src/containers/Volunteer/VolunteerProfile'
 import VolunteerContent from '../src/containers/Volunteer/VolunteerContent'
 import AdminContent from '../src/containers/Admin/AdminContent'
+import GestorContent from '../src/containers/Gestor/gestorContent'
 import AdminUsers from "../src/containers/Admin/AdminUsers/index"
 import Unauthorized from './containers/Unauthorized';
 import Login from "./containers/login";
@@ -25,6 +26,8 @@ function App() {
       <Route exact path="/login" component={Login} />
       <Route exact path="/user/:id" component={VolunteerProfile} />
       <Route exact path="/user/:id/misbloques" component={VolunteerContent} />
+      <Route exact path="/user/:id/bloques" component={AdminContent} />
+      <Route exact path="/user/:id/gestor" component={GestorContent}/>
       <Route exact path="/user/:id/admin-bloques" component={AdminContent} />
       <Route exact path="/user/:id/admin-usuarios" component={AdminUsers} />
       <Route exact path="/unauthorized" component={Unauthorized} />

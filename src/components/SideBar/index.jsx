@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector , useDispatch} from "react-redux";
+import { userLogout } from "../../redux/login";
 import Links from './links'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css'
@@ -10,6 +11,12 @@ const Sidebar = () => {
 
 
     const user = useSelector(state => state.user)
+    const dispatch = useDispatch()
+    const handleLogout = () =>{
+        if(user.id) dispatch(userLogout())
+    }
+
+
     return (
         <>
             <div className="sidebar d-flex flex-column flex-shrink-0 p-3" style={{ width: '280px' }}>
@@ -28,7 +35,8 @@ const Sidebar = () => {
                     <Links />
                 </ul>
                 <hr />
-                <p>Cerrar sesion</p>
+                <Link to ="/login">  <button onClick={handleLogout}> Cerrar sesion</button></Link>
+                
             </div>
         </>
     );

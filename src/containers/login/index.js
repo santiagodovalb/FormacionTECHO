@@ -5,6 +5,7 @@ import { setUser } from "../../redux/login";
 import { sectionStyle } from "./style";
 import Logo from "../../assets/logo.png";
 import { useHistory } from "react-router";
+import validator from 'validator';
 
 const Login = () => {
   const  dispatch = useDispatch()
@@ -17,20 +18,26 @@ const Login = () => {
     setForm({ ...form, [target.name]: target.value });
     
   };
-
+  const isEmail = () => validator.isEmail(form.email)
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(setUser(form))
-    .then(user => {
-      history.push(`/user/${user.payload.id}`)})
+   if(isEmail()){
+      dispatch(setUser(form))
+      .then(user => {
+        history.push(`/user/${user.payload.id}`)
+      })
+    }else{
+      alert("Las credenciales son invalidas")
+    }
+    
   };
 
   const onOtherSubmit = (e) => setOther(e.target.id);
 
-  // useEffect(() => {
-  //   Object.keys(form).map((key) => console.log(`[${key}] : ${form[key]}`));
-  //   console.log(`${other}`);
-  // }, [form, other]);
+ /*  useEffect(() => {
+    Object.keys(form).map((key) => console.log(`[${key}] : ${form[key]}`));
+    console.log(`${other}`);
+  }, [form, other]); */
 
   return (
     <div
@@ -49,6 +56,7 @@ const Login = () => {
               className="form-control"
               name="email"
               placeholder="Correo"
+              required="true"
             />
           </div>
           <div className="mb-3">
@@ -57,6 +65,7 @@ const Login = () => {
               className="form-control"
               name="password"
               placeholder="Contraseña"
+              required="true"
             />
           </div>
           <button type="submit" className="btn btn-secondary mt-3">

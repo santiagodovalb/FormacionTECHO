@@ -6,7 +6,7 @@ import { setUserLogged } from '../../../redux/login';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-const AdminContent = () => {
+const GestorContent = () => {
 
     const dispatch = useDispatch();
     const history = useHistory();
@@ -15,9 +15,10 @@ const AdminContent = () => {
       dispatch(setUserLogged());
     }, [dispatch]);
   
-    const user = useSelector((state) => state.user);
+    const user = useSelector((state) => state.user)
+    console.log("IDD", user)
   
-    if (user.rolId !== 1) {
+    if (user.rolId !== 2) {
       history.push("/unauthorized");
       return <><h1>No autorizado</h1></>;
     }
@@ -27,11 +28,12 @@ const AdminContent = () => {
         <div>
             <Sidebar />
             <div className="admin_content_div">
-                <h1>ESTA VIEW ES SOLO DE ADMIN</h1>
+                <h1>ESTA VIEW ES SOLO DE GESTOR</h1>
             </div>
         </div>
         </>
     )
 }
 
-export default AdminContent;
+export default GestorContent;
+
