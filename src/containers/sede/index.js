@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router";
+import { setUser } from "../../redux/user";
+import axios from 'axios';
 import Card from "../../components/Card";
 import localPeru from "../../assets/sedes/lima-peru.png";
 import "./style.css";
 
 const Sede = () => {
+  const dispatch = useDispatch()
+  const history = useHistory()
+  const user = useSelector(state => state.user)
   const sedesPrueba = useSelector(state=>state.sedes)
   const [form, setForm] = useState({});
-  const [sedes, setSedes] = useState([...sedesPrueba]);
+  const [sedes, setSedes] = useState([]);
   const [selectSede, setSelectSede] = useState("");
   const [stateIcon, setStateIcon] = useState({
     key: "",
@@ -38,14 +44,22 @@ const Sede = () => {
 
   const onSaveSede = () => {
     console.log("Sede", selectSede);
+    axios.put(`/api/users/${user.id}`, {sedeId: selectSede})
+    .then(res => res.data)
+    .then(user => {
+      console.log('USER', user[1][0])
+      dispatch(setUser(user[1][0]))})
+    .then(() => history.push('/user'))
+    .catch(err => err)
   };
 
   useEffect(() => {
+    if(!sedes.length) setSedes([...sedesPrueba])
     setStateIcon({
       ...stateIcon,
       key: selectSede,
     });
-  }, [form, selectSede]);
+  }, [form, selectSede,sedes]);
 
   return (
     <div>
@@ -76,7 +90,7 @@ const Sede = () => {
           {sedes?.map((sede, index) => {  return(
             
             <Card
-              keyU={`sede-${sede.id}`}
+              keyU={`${sede.id}`}
               img={localPeru}
               button={{
                 text: `${sede.nombre}`,

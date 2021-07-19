@@ -18,7 +18,9 @@ module.exports = (app) => {
       },
       function (token, tokenSecret, profile, done) {
         console.log("SADDSADSA",profile)
-        Users.findOne({ where: { googleId: profile.id } }).then(
+        Users.findOne({ 
+          where: { googleId: profile.id },
+        }).then(
           async (user) => {
             if (user) {
               return done(null, user);

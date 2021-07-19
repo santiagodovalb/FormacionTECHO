@@ -60,7 +60,7 @@ function Links () {
 
         }
 
-        {user.rolId >= 3 && 
+        {user.rolId >= 3 || user.rolId === null  && 
         <div>
         
         <Link to={`/mis-bloques`}>
@@ -72,6 +72,12 @@ function Links () {
         <Link to={`/mis-entregas`}>
         <h6 className="nav-link link-light">
             Mis Entregas
+        </h6>
+        </Link>
+
+        <Link to={`/sede`}>
+        <h6 className="nav-link link-light">
+            Elegir o modificar sede
         </h6>
         </Link>
         </div>

@@ -12,9 +12,6 @@ Bloques.init({
         type: S.STRING,
         allowNull: false
     },
-    roles: {
-        type: S.ARRAY(S.STRING)
-    },
     minimo: {
         type: S.BOOLEAN
     }
