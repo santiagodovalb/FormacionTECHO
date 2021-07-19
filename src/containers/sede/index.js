@@ -3,16 +3,25 @@ import Sidebar from "../../components/SideBar";
 import Card from "../../components/Card";
 import localPeru from "../../assets/sedes/lima-peru.png";
 import "./style.css";
+import { useSelector } from "react-redux";
 
 const Sede = () => {
-  const sedesPrueba = ["Lince", "Lima", "SJM", "SMP", "Olivos"];
+  const sedesPrueba = useSelector(state => state.sedes)
   const [form, setForm] = useState({});
-  const [sedes, setSedes] = useState(sedesPrueba);
+  const [sedes, setSedes] = useState([]);
   const [selectSede, setSelectSede] = useState("");
   const [stateIcon, setStateIcon] = useState({
     key: "",
     style: "btn bi bi-check-circle-fill check-style",
   });
+  
+  useEffect(() => {
+    if(!sedes.length) setSedes([...sedesPrueba])
+    setStateIcon({
+      ...stateIcon,
+      key: selectSede,
+    });
+  }, [form, selectSede, sedes]);
 
   const onChange = (e) => {
     const { target } = e;
@@ -24,7 +33,7 @@ const Sede = () => {
     if (form.search && form.search.length)
       setSedes(
         sedesPrueba.filter(
-          (sede) => sede.toLowerCase().indexOf(form.search.toLowerCase()) >= 0
+          (sede) => sede.nombre.toLowerCase().indexOf(form.search.toLowerCase()) >= 0
         )
       );
     else {
@@ -40,16 +49,9 @@ const Sede = () => {
     console.log("Sede", selectSede);
   };
 
-  useEffect(() => {
-    setStateIcon({
-      ...stateIcon,
-      key: selectSede,
-    });
-  }, [form, selectSede]);
 
   return (
     <div>
-      <Sidebar />
       <div className="row justify-content-center align-items-center">
         <div>
           <h1 className="p-5 fs-1 title">
@@ -74,12 +76,12 @@ const Sede = () => {
           </form>
         </div>
         <div className="row justify-content-center align-items-center mt-5">
-          {sedes.map((ele, index) => (
+          {sedes?.map((sede, index) => (
             <Card
-              keyU={`sede-${ele}`}
+              keyU={`sede-${sede.id}`}
               img={localPeru}
               button={{
-                text: `Buscar Sede ${ele}`,
+                text: `${sede.nombre}`,
                 styles: "button-style light-blue fs-4",
               }}
               icon="btn bi bi-circle-fill uncheck-style"

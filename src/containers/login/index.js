@@ -4,8 +4,8 @@ import { sectionStyle } from "./style";
 import Logo from "../../assets/logo.png";
 import 'antd/dist/antd.css';
 import { Route } from "react-router";
-import LoginAdmin from "./ModuleLogin/LoginAdmin";
-import LoginUser from "./ModuleLogin/LoginUser";
+import LoginAdmin from "./ModuleLogin/loginAdmin";
+import LoginUser from "./ModuleLogin/loginUser";
 import { useLocation } from "react-router-dom";
 
 const Login = () => {
