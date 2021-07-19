@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import Sidebar from "../../components/SideBar";
+import { useSelector } from "react-redux";
 import Card from "../../components/Card";
 import localPeru from "../../assets/sedes/lima-peru.png";
 import "./style.css";
 
 const Sede = () => {
-  const sedesPrueba = ["Lince", "Lima", "SJM", "SMP", "Olivos"];
+  const sedesPrueba = useSelector(state=>state.sedes)
   const [form, setForm] = useState({});
-  const [sedes, setSedes] = useState(sedesPrueba);
+  const [sedes, setSedes] = useState([...sedesPrueba]);
   const [selectSede, setSelectSede] = useState("");
   const [stateIcon, setStateIcon] = useState({
     key: "",
@@ -24,7 +24,7 @@ const Sede = () => {
     if (form.search && form.search.length)
       setSedes(
         sedesPrueba.filter(
-          (sede) => sede.toLowerCase().indexOf(form.search.toLowerCase()) >= 0
+          (sede) => sede.nombre.toLowerCase().indexOf(form.search.toLowerCase()) >= 0
         )
       );
     else {
@@ -49,7 +49,6 @@ const Sede = () => {
 
   return (
     <div>
-      <Sidebar />
       <div className="row justify-content-center align-items-center">
         <div>
           <h1 className="p-5 fs-1 title">
@@ -74,19 +73,20 @@ const Sede = () => {
           </form>
         </div>
         <div className="row justify-content-center align-items-center mt-5">
-          {sedes.map((ele, index) => (
+          {sedes?.map((sede, index) => {  return(
+            
             <Card
-              keyU={`sede-${ele}`}
+              keyU={`sede-${sede.id}`}
               img={localPeru}
               button={{
-                text: `Buscar Sede ${ele}`,
+                text: `${sede.nombre}`,
                 styles: "button-style light-blue fs-4",
               }}
               icon="btn bi bi-circle-fill uncheck-style"
               setState={setSelectSede}
               stateIcon={stateIcon}
             />
-          ))}
+            )})}
         </div>
         <div className="col-auto">
           <button
@@ -98,7 +98,7 @@ const Sede = () => {
         </div>
       </div>
     </div>
-  );
+        );
 };
 
 export default Sede;
