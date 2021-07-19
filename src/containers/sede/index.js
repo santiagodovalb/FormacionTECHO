@@ -19,6 +19,14 @@ const Sede = () => {
     key: "",
     style: "btn bi bi-check-circle-fill check-style",
   });
+  
+  useEffect(() => {
+    if(!sedes.length) setSedes([...sedesPrueba])
+    setStateIcon({
+      ...stateIcon,
+      key: selectSede,
+    });
+  }, [form, selectSede, sedes]);
 
   const onChange = (e) => {
     const { target } = e;
