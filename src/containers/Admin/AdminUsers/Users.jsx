@@ -9,11 +9,10 @@ function Users () {
     const [rol, setRol] = useState(0);
     const [users, setUsers] = useState([])
     const user = useSelector(state => state.user)
+    const roles = useSelector(state=>state.roles.filter((rol)=> rol.id!==1))
     const history = useHistory();
     const location = useLocation()
     const id = location.pathname.slice(21)
-    console.log(users)
-
     useEffect(() => {
         axios.get(`/api/users/sede/${id}`)
         .then(res => res.data)
@@ -45,8 +44,11 @@ function Users () {
                         <label htmlFor='rol'>Seleccionar rol</label>
                         <select onChange={handleChange}>
                             <option>Seleccionar rol</option>
-                            <option value='2'>Gestor</option>
-                            <option value='3'>Referente Comunitario</option>
+                            {roles && roles.map(rol=>{
+                                return(
+                                <option value={rol.id}> {rol.tipo} </option>
+                                )
+                            })}
                         </select>
                         <button onClick={(e) => handleClick(user.id, parseInt(rol))} type='button'>Asignar rol</button>
                     </div>

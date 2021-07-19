@@ -15,9 +15,11 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import axios from "axios";
 import Sidebar from "./components/SideBar";
 import { useLocation } from "react-router";
+import { getRoles } from "./redux/roles";
 import CrearGestor from "./containers/Admin/CrearGestor";
 import { getSedes } from "./redux/sedes";
 import Users from "./containers/Admin/AdminUsers/Users";
+import { getBloques } from "../src/redux/bloques"
 import AdminSedes from './containers/Admin/AdminSedes' 
 
 function App() {
@@ -25,8 +27,9 @@ function App() {
   let location = useLocation();
 
   useEffect(() => {
-
+    dispatch(getBloques())
     dispatch(getSedes())
+    dispatch(getRoles())
 
     axios
       .get("/api/users/me")

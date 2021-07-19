@@ -60,7 +60,7 @@ function Links () {
 
         }
 
-        {user.rolId >= 3 || user.rolId === null  && 
+        {(user.rolId && user.rolId > 2 || user.rolId === null ) && 
         <div>
         
         <Link to={`/mis-bloques`}>

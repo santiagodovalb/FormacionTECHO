@@ -3,7 +3,7 @@ const Roles = require("../models/roles");
 
 const bloquesController = {
   findAll(req, res, next) {
-    Bloques.findAll()
+    Bloques.findAll({include:Roles,as:"rol"})
       .then((bloques) => {
         return res.status(200).send(bloques);
       })
