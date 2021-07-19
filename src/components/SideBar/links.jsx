@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { BsFiles } from "react-icons/bs";
+import { MdLocationOn } from "react-icons/md";
+
 
 function Links () {
 
@@ -65,7 +68,7 @@ function Links () {
         
         <Link to={`/mis-bloques`}>
         <h6 className="nav-link link-light">
-            Mis Bloques
+            <BsFiles /> Mis Bloques
         </h6>
         </Link>
 
@@ -77,7 +80,7 @@ function Links () {
 
         <Link to={`/sede`}>
         <h6 className="nav-link link-light">
-            Elegir o modificar sede
+           <MdLocationOn /> Elegir o modificar sede
         </h6>
         </Link>
         </div>

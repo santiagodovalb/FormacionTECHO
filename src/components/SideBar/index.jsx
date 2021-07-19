@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useSelector , useDispatch} from "react-redux";
 import { userLogout } from "../../redux/login";
 import Links from './links'
+import { BsPeopleCircle } from "react-icons/bs";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css'
 
@@ -28,7 +29,7 @@ const Sidebar = () => {
                     <li className="nav-item">
                         <Link to={`/user`}>
                         <h6 className="nav-link link-light">
-                            Mi perfil
+                           <BsPeopleCircle /> Mi perfil
                          </h6>
                         </Link>
                     </li>

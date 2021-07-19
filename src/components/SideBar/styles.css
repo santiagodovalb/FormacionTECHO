@@ -32,4 +32,15 @@
 
 .sidebar h4 {
   margin: 20px auto;
+  color: white;
+}
+
+.sidebar h6 {
+  margin-left: 10px;
+}
+
+.sidebar button {
+  border: none;
+  color: white;
+  background-color: transparent;
 }
