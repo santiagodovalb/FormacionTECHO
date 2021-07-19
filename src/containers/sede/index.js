@@ -6,7 +6,6 @@ import axios from 'axios';
 import Card from "../../components/Card";
 import localPeru from "../../assets/sedes/lima-peru.png";
 import "./style.css";
-import { useSelector } from "react-redux";
 
 const Sede = () => {
   const dispatch = useDispatch()

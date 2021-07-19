@@ -37,11 +37,12 @@ function Users () {
     return (
         <div>
             <h1>Administrar roles</h1>
+            {console.log('USERS', users)}
             {!users.length && <h1>No hay voluntarios/gestores en esta sede</h1>}
             {users && users.map(user => {
                 return (
                     <div key={user.id}>
-                        <h2>Nombre: {user.full_name} Rol: {user.rol?.tipo}</h2>
+                        <h2>Nombre: {user.full_name} Rol: {user.rolId}</h2>
                         <label htmlFor='rol'>Seleccionar rol</label>
                         <select onChange={handleChange}>
                             <option>Seleccionar rol</option>

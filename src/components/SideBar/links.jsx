@@ -59,8 +59,8 @@ function Links () {
         </div>
 
         }
-
-        {user.rolId >= 3 || user.rolId === null  && 
+        {console.log('LOG', typeof user.rolId)}
+        {(user.rolId >= 3 || user.rolId === null) && 
         <div>
         
         <Link to={`/mis-bloques`}>
