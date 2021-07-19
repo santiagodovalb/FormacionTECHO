@@ -24,7 +24,7 @@ const bloquesController = {
       .then((bloque) => {
         for (let i = 0; i < rolesId.length; i++) {
           Roles.findByPk(rolesId[i]).then((rol) => {
-            bloque.setRol(rol);
+            bloque.addRole(rol);
           });
         }
         return res.status(201).send(bloque);
