@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from "react";
-import Sidebar from "../../components/SideBar";
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router";
+import { setUser } from "../../redux/user";
+import axios from 'axios';
 import Card from "../../components/Card";
 import localPeru from "../../assets/sedes/lima-peru.png";
 import "./style.css";
 import { useSelector } from "react-redux";
 
 const Sede = () => {
-  const sedesPrueba = useSelector(state => state.sedes)
+  const dispatch = useDispatch()
+  const history = useHistory()
+  const user = useSelector(state => state.user)
+  const sedesPrueba = useSelector(state=>state.sedes)
   const [form, setForm] = useState({});
   const [sedes, setSedes] = useState([]);
   const [selectSede, setSelectSede] = useState("");
@@ -47,8 +53,22 @@ const Sede = () => {
 
   const onSaveSede = () => {
     console.log("Sede", selectSede);
+    axios.put(`/api/users/${user.id}`, {sedeId: selectSede})
+    .then(res => res.data)
+    .then(user => {
+      console.log('USER', user[1][0])
+      dispatch(setUser(user[1][0]))})
+    .then(() => history.push('/user'))
+    .catch(err => err)
   };
 
+  useEffect(() => {
+    if(!sedes.length) setSedes([...sedesPrueba])
+    setStateIcon({
+      ...stateIcon,
+      key: selectSede,
+    });
+  }, [form, selectSede,sedes]);
 
   return (
     <div>
@@ -76,9 +96,10 @@ const Sede = () => {
           </form>
         </div>
         <div className="row justify-content-center align-items-center mt-5">
-          {sedes?.map((sede, index) => (
+          {sedes?.map((sede, index) => {  return(
+            
             <Card
-              keyU={`sede-${sede.id}`}
+              keyU={`${sede.id}`}
               img={localPeru}
               button={{
                 text: `${sede.nombre}`,
@@ -88,7 +109,7 @@ const Sede = () => {
               setState={setSelectSede}
               stateIcon={stateIcon}
             />
-          ))}
+            )})}
         </div>
         <div className="col-auto">
           <button
@@ -100,7 +121,7 @@ const Sede = () => {
         </div>
       </div>
     </div>
-  );
+        );
 };
 
 export default Sede;
