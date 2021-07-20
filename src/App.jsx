@@ -19,8 +19,8 @@ import { getRoles } from "./redux/roles";
 import CrearGestor from "./containers/Admin/CrearGestor";
 import { getSedes } from "./redux/sedes";
 import Users from "./containers/Admin/AdminUsers/Users";
-import { getBloques } from "../src/redux/bloques"
-import AdminSedes from './containers/Admin/AdminSedes' 
+import { getBloques } from "../src/redux/bloques";
+import AdminSedes from "./containers/Admin/AdminSedes";
 import CrearBloque from "./containers/Admin/AdminBloques/CrearBloque";
 
 function App() {
@@ -28,9 +28,9 @@ function App() {
   let location = useLocation();
 
   useEffect(() => {
-    dispatch(getBloques())
-    dispatch(getSedes())
-    dispatch(getRoles())
+    dispatch(getBloques());
+    dispatch(getSedes());
+    dispatch(getRoles());
 
     axios
       .get("/api/users/me")
@@ -40,14 +40,15 @@ function App() {
 
   return (
     <div className="App">
-      {!location.pathname.includes('login') && <Sidebar />}
+      {!location.pathname.includes("login") && <Sidebar />}
       <Switch>
         <Route exact path="/login" component={Login} />
         <Route exact path="/adminlogin" component={Login} />
         <Route path="/sede" component={Sede} />
         <Route exact path="/user" component={VolunteerProfile} />
+        <Route path="/mis-bloques/:id" component={VolunteerModuls} />
         <Route path="/mis-bloques" component={VolunteerContent} />
-        <Route path="/mis-modulos" component={VolunteerModuls} />
+
         <Route path="/bloques" component={AdminContent} />
         <Route path="/gestor" component={GestorContent} />
         {/* <Route exact path="/admin-bloques" component={} /> */}

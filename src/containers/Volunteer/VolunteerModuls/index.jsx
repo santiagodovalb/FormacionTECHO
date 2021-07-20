@@ -1,8 +1,24 @@
+import { useSelector } from "react-redux";
 import Sidebar from "../../../components/SideBar";
 import "./style.css";
 import CanchaFutbol from "./../../../assets/volunteer/CanchaFutbol.png";
+import { useParams } from "react-router";
+import axios from "axios";
 
 const VolunteerModuls = () => {
+  const { id } = useParams();
+  console.log("Bloque: ", id);
+  axios
+    .get("/api/unidades", { bloqueId: id })
+    .then((res) => res.data)
+    .then((data) => console.log("Data: ", data));
+
+  // const user = useSelector((state) => state.user);
+
+  // const modulos = useSelector((state) => state.getUnidades);
+
+  // console.log("modulos: ", modulos);
+
   return (
     <div>
       <div className="container-fluid">

@@ -2,7 +2,16 @@ import React, { useState } from "react";
 import "./styles.css";
 import { Link } from "react-router-dom";
 
-const Card = ({ keyU, img, title, button, icon, setState, stateIcon }) => {
+const Card = ({
+  keyU,
+  img,
+  title,
+  button,
+  icon,
+  setState,
+  stateIcon,
+  path,
+}) => {
   return (
     <div className="col-auto" key={keyU}>
       <div
@@ -30,7 +39,7 @@ const Card = ({ keyU, img, title, button, icon, setState, stateIcon }) => {
         )}
 
         <img src={img} alt="" />
-        <Link to="/">
+        <Link to={`${path}`}>
           <div
             className={` ${button.styles} p-3 text-center`}
             style={{ width: "100%" }}
