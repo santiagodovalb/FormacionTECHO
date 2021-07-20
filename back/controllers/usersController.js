@@ -16,10 +16,10 @@ const usersController = {
         .catch(next)
     },
     findOne(req,res,next){
-        Users.findByPk({
-            where:{id: req.params.id},
+        Users.findByPk(req.params.id,{
             include: [{model: Roles, as: 'rol'}]
         })
+
         .then(user => res.status(200).json(user))
         .catch(next)
     },
@@ -43,7 +43,9 @@ const usersController = {
             where:{id:req.params.id},
             returning:true,
         })
-        .then(user => res.status(200).json(user))
+        .then((user) => {
+            res.status(200).json(user)
+        })
         .catch(next)
     },
     deleteUser(req,res,next){
