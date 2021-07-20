@@ -2,7 +2,8 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getBloques } from '../../../redux/bloques';
 
 export default function CrearBloque() {
 
@@ -10,6 +11,7 @@ export default function CrearBloque() {
     const [roles, setRoles] = useState([])
     const user = useSelector((state) => state.user);
     const history = useHistory();
+    const dispatch = useDispatch();
 
     useEffect(() => {
         axios.get('/api/roles')
@@ -42,8 +44,9 @@ export default function CrearBloque() {
     const handleSubmit = (e) => {
         e.preventDefault()
         axios.post('/api/bloques', form)
-        .then(res => res.data)
-        .then(() => history.push('/admin-bloques'))
+        .then(res => {
+            dispatch(getBloques())
+            history.push('/admin-bloques')})
     }
 
     return (

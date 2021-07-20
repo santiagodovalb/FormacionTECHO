@@ -22,6 +22,8 @@ import Users from "./containers/Admin/AdminUsers/Users";
 import { getBloques } from "../src/redux/bloques"
 import AdminSedes from './containers/Admin/AdminSedes' 
 import CrearBloque from "./containers/Admin/AdminBloques/CrearBloque";
+import AdminBloques from "./containers/Admin/AdminBloques";
+import ModificarBloque from "./containers/Admin/AdminBloques/ModificarBloque";
 
 function App() {
   const dispatch = useDispatch();
@@ -47,11 +49,12 @@ function App() {
         <Route path="/sede" component={Sede} />
         <Route exact path="/user" component={VolunteerProfile} />
         <Route path="/mis-bloques" component={VolunteerContent} />
-        <Route path="/mis-modulos" component={VolunteerModuls} />
+        <Route path="/bloque/:id" component={VolunteerModuls} />
         <Route path="/bloques" component={AdminContent} />
         <Route path="/gestor" component={GestorContent} />
-        {/* <Route exact path="/admin-bloques" component={} /> */}
+        <Route exact path="/admin-bloques" component={AdminBloques} />
         <Route path="/admin-bloques-crear" component={CrearBloque} />
+        <Route path="/admin-bloques/:id" component={ModificarBloque} />
         <Route exact path="/admin-usuarios" component={AdminUsers} />
         <Route exact path="/admin-sedes" component={AdminSedes} />
         <Route path="/admin-usuarios/sede/:id" component={Users} />
