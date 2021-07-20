@@ -36,7 +36,6 @@ const bloquesController = {
     const { titulo, descripcion, minimo, rolesId } = req.body;
     Bloques.update({ titulo, descripcion, minimo }, { where: { id }, returning: true })
       .then((bloque) => {
-        console.log(Object.keys(bloque[1][0].__proto__));
         bloque[1][0].removeRoles([3, 4, 5]);
         for (let i = 0; i < rolesId.length; i++) {
           Roles.findByPk(rolesId[i]).then((rol) => {
