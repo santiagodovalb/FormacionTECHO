@@ -26,7 +26,7 @@ const Sidebar = () => {
                     <h4>{user.full_name}</h4>
                 <ul className="nav nav-pills flex-column mb-auto">
                     <li className="nav-item">
-                        <Link to={`/user/${user.id}`}>
+                        <Link to={`/user`}>
                         <h6 className="nav-link link-light">
                             Mi perfil
                          </h6>

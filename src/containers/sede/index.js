@@ -1,12 +1,76 @@
-import Sidebar from "../../components/SideBar";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router";
+import { setUser } from "../../redux/user";
+import axios from 'axios';
 import Card from "../../components/Card";
 import localPeru from "../../assets/sedes/lima-peru.png";
 import "./style.css";
 
 const Sede = () => {
+  const dispatch = useDispatch()
+  const history = useHistory()
+  const user = useSelector(state => state.user)
+  const sedesPrueba = useSelector(state=>state.sedes)
+  const [form, setForm] = useState({});
+  const [sedes, setSedes] = useState([]);
+  const [selectSede, setSelectSede] = useState("");
+  const [stateIcon, setStateIcon] = useState({
+    key: "",
+    style: "btn bi bi-check-circle-fill check-style",
+  });
+  
+  useEffect(() => {
+    if(!sedes.length) setSedes([...sedesPrueba])
+    setStateIcon({
+      ...stateIcon,
+      key: selectSede,
+    });
+  }, [form, selectSede, sedes]);
+
+  const onChange = (e) => {
+    const { target } = e;
+    setForm({ ...form, [target.name]: target.value });
+  };
+
+  const onSearch = (e) => {
+    e.preventDefault();
+    if (form.search && form.search.length)
+      setSedes(
+        sedesPrueba.filter(
+          (sede) => sede.nombre.toLowerCase().indexOf(form.search.toLowerCase()) >= 0
+        )
+      );
+    else {
+      setSedes(sedesPrueba);
+      setStateIcon({
+        ...stateIcon,
+        key: "",
+      });
+    }
+  };
+
+  const onSaveSede = () => {
+    console.log("Sede", selectSede);
+    axios.put(`/api/users/${user.id}`, {sedeId: selectSede})
+    .then(res => res.data)
+    .then(user => {
+      console.log('USER', user[1][0])
+      dispatch(setUser(user[1][0]))})
+    .then(() => history.push('/user'))
+    .catch(err => err)
+  };
+
+  useEffect(() => {
+    if(!sedes.length) setSedes([...sedesPrueba])
+    setStateIcon({
+      ...stateIcon,
+      key: selectSede,
+    });
+  }, [form, selectSede,sedes]);
+
   return (
     <div>
-      <Sidebar />
       <div className="row justify-content-center align-items-center">
         <div>
           <h1 className="p-5 fs-1 title">
@@ -14,10 +78,15 @@ const Sede = () => {
           </h1>
         </div>
         <div className="row justify-content-center align-items-center">
-          <form className="d-flex col-auto text-center">
+          <form
+            className="d-flex col-auto text-center"
+            onChange={onChange}
+            onSubmit={onSearch}
+          >
             <input
+              type="text"
+              name="search"
               className="form-control me-2 fs-3"
-              type="search"
               placeholder="Buscar sede"
             />
             <button className="btn btn-outline-secondary" type="submit">
@@ -26,111 +95,32 @@ const Sede = () => {
           </form>
         </div>
         <div className="row justify-content-center align-items-center mt-5">
-          {[1, 2, 3, 4, 5].map((ele) => (
-            <div class="col-auto ">
-              <Card
-                img={localPeru}
-                button={{
-                  text: `Buscar Sede ${ele}`,
-                  styles: "button-style light-blue fs-4",
-                }}
-                icon="btn bi bi-circle-fill check-style"
-              />
-            </div>
-          ))}
+          {sedes?.map((sede, index) => {  return(
+            
+            <Card
+              keyU={`${sede.id}`}
+              img={localPeru}
+              button={{
+                text: `${sede.nombre}`,
+                styles: "button-style light-blue fs-4",
+              }}
+              icon="btn bi bi-circle-fill uncheck-style"
+              setState={setSelectSede}
+              stateIcon={stateIcon}
+            />
+            )})}
         </div>
         <div className="col-auto">
-          <button className="mb-3 mt-3 p-4 fs-3 button-style green">
+          <button
+            className="mb-3 mt-3 p-4 fs-3 button-style green"
+            onClick={onSaveSede}
+          >
             Guardar
           </button>
         </div>
-        {/* <div style={{ width: "100%" }}>
-          <div
-            style={{
-              height: "0",
-              paddingBottom: "133.33333333333331%",
-              position: "relative",
-              width: "100%",
-            }}
-          >
-            <iframe
-              allowfullscreen={""}
-              frameBorder={"0"}
-              height={"100%"}
-              src={"https://giphy.com/embed/3cUHdXqaO8g4PkGBzW/video"}
-              style={{ left: "0", position: "absolute", top: "0" }}
-              width={"100%"}
-            ></iframe>
-          </div>
-        </div> */}
-        {/* <div class="ratio ratio-16x9">
-          <iframe
-            src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"
-            title="YouTube video"
-            allowfullscreen
-          ></iframe>
-        </div> */}
-        {/* <div
-          id="carouselExampleIndicators"
-          className="carousel slide row"
-          data-ride="carousel"
-        >
-          <ol className="carousel-indicators">
-            <li
-              data-target="#carouselExampleIndicators"
-              data-slide-to="0"
-              className="active"
-            ></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-          </ol>
-          <div className="carousel-inner">
-            <div className="carousel-item active">
-              <img className="d-block w-50" src={localPeru} alt="First slide" />
-            </div>
-            <div className="carousel-item">
-              <img
-                className="d-block w-50"
-                src="https://www.telediariodigital.net/wp-content/uploads/2014/09/art21-foto3.jpg"
-                alt="Second slide"
-              />
-            </div>
-            <div className="carousel-item">
-              <img
-                className="d-block w-50"
-                src="https://www.telediariodigital.net/wp-content/uploads/2014/09/art21-foto3.jpg"
-                alt="Third slide"
-              />
-            </div>
-          </div>
-          <a
-            className="carousel-control-prev"
-            href="#carouselExampleIndicators"
-            role="button"
-            data-slide="prev"
-          >
-            <span
-              className="carousel-control-prev-icon"
-              aria-hidden="true"
-            ></span>
-            <span className="sr-only">Previous</span>
-          </a>
-          <a
-            className="carousel-control-next"
-            href="#carouselExampleIndicators"
-            role="button"
-            data-slide="next"
-          >
-            <span
-              className="carousel-control-next-icon"
-              aria-hidden="true"
-            ></span>
-            <span className="sr-only">Next</span>
-          </a>
-        </div> */}
       </div>
     </div>
-  );
+        );
 };
 
 export default Sede;

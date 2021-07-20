@@ -14,21 +14,34 @@ function Links () {
         {user.rolId === 1 &&
 
         <div>
-        <Link to={`/user/${user.id}/admin-bloques`}>
+        <Link to={`/admin-crear-gestor`}>
+        <h6 className="nav-link link-light">
+            Crear Gestor
+        </h6>
+
+        <Link to={`/admin-bloques`}>
         <h6 className="nav-link link-light">
             Gestionar Bloques
         </h6>
         </Link>
 
-        <Link to={`/user/${user.id}/admin-usuarios`}>
+        </Link>
+
+        <Link to={`/admin-usuarios`}>
         <h6 className="nav-link link-light">
             Gestionar Usuarios
         </h6>
         </Link>
 
-        <Link to={`/user/${user.id}admin-sedes`}>
+        <Link to={`/admin-sedes`}>
         <h6 className="nav-link link-light">
             Gestionar Sedes
+        </h6>
+        </Link>
+
+        <Link to={`/admin-roles`}>
+        <h6 className="nav-link link-light">
+            Gestionar Roles
         </h6>
         </Link>
         </div>
@@ -38,13 +51,13 @@ function Links () {
 
         <div>
             
-        <Link to={`/user/${user.id}/voluntarios`}>
+        <Link to={`/voluntarios`}>
         <h6 className="nav-link link-light">
             Gestionar voluntarios
         </h6>
         </Link>
             
-        <Link to={`/user/${user.id}/entregas}`}>
+        <Link to={`/entregas}`}>
         <h6 className="nav-link link-light">
             Gestionar entregas
         </h6>
@@ -53,18 +66,24 @@ function Links () {
 
         }
 
-        {user.rolId >= 3 && 
+        {(user.rolId && user.rolId > 2 || user.rolId === null ) && 
         <div>
         
-        <Link to={`/user/${user.id}/misbloques`}>
+        <Link to={`/mis-bloques`}>
         <h6 className="nav-link link-light">
             Mis Bloques
         </h6>
         </Link>
 
-        <Link to={`/user/${user.id}/misentregas`}>
+        <Link to={`/mis-entregas`}>
         <h6 className="nav-link link-light">
             Mis Entregas
+        </h6>
+        </Link>
+
+        <Link to={`/sede`}>
+        <h6 className="nav-link link-light">
+            Elegir o modificar sede
         </h6>
         </Link>
         </div>
