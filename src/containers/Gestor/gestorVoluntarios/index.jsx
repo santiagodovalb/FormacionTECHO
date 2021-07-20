@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { useSelector} from 'react-redux'
+import { useSelector, useDispatch} from 'react-redux'
 import { useHistory} from 'react-router-dom';
+
+
 
 function GestorVoluntarios () {
 
@@ -20,6 +22,8 @@ function GestorVoluntarios () {
     const handleChange = (e) => {
         setRol(e.target.value)
     }
+
+ 
 
     const handleClick = (userId, rolId) => {
         return axios.post('http://localhost:3001/api/roles/set/', {userId, rolId, user})
