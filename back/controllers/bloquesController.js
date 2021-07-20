@@ -46,8 +46,9 @@ const bloquesController = {
       .catch(next);
   },
   deleteBloque(req, res, next) {
+    console.log(req.params.id)
     const id = req.params.id;
-    Bloques.destroy({ where: id })
+    Bloques.destroy({ where: {id} })
       .then(() => {
         res.sendStatus(204);
       })

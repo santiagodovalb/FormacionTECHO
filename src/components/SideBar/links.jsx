@@ -38,6 +38,12 @@ function Links () {
             Gestionar Sedes
         </h6>
         </Link>
+
+        <Link to={`/admin-roles`}>
+        <h6 className="nav-link link-light">
+            Gestionar Roles
+        </h6>
+        </Link>
         </div>
         }
 
