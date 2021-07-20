@@ -32,9 +32,9 @@ function App() {
   let location = useLocation();
 
   useEffect(() => {
-    dispatch(getBloques())
-    dispatch(getSedes())
-    dispatch(getRoles())
+    dispatch(getBloques());
+    dispatch(getSedes());
+    dispatch(getRoles());
 
     axios
       .get("/api/users/me")
@@ -44,12 +44,13 @@ function App() {
 
   return (
     <div className="App">
-      {!location.pathname.includes('login') && <Sidebar />}
+      {!location.pathname.includes("login") && <Sidebar />}
       <Switch>
         <Route exact path="/login" component={Login} />
         <Route exact path="/adminlogin" component={Login} />
         <Route path="/sede" component={Sede} />
         <Route exact path="/user" component={VolunteerProfile} />
+        <Route path="/mis-bloques/:id" component={VolunteerModuls} />
         <Route path="/mis-bloques" component={VolunteerContent} />
         <Route path="/bloque/:id" component={VolunteerModuls} />
         <Route path="/bloques" component={AdminContent} />
