@@ -10,7 +10,7 @@ import { useHistory } from 'react-router-dom'
 
 const VolunteerModuls = () => {
 
-  const [contenido, setContenido] = useState({})
+  const [contenido, setContenido] = useState('')
   const [bloque, setBloque] = useState({})
   const { id } = useParams();
   const user = useSelector(state => state.user)
@@ -32,7 +32,7 @@ const VolunteerModuls = () => {
   }
 
   const handleChange = (e) => {
-    setContenido({contenido: e.target.value})
+    setContenido(e.target.value)
   }
 
   return (
@@ -65,7 +65,7 @@ const VolunteerModuls = () => {
                 <strong>PREGUNTA DEL BLOQUE</strong>
               </p>
               <textarea name='contenido' onChange={handleChange}/>
-              <button handleSubmit={handleSubmit} className="my-3 p-4 fs-3 button-style green">
+              <button onClick={() => handleSubmit()} className="my-3 p-4 fs-3 button-style green">
                 Entregar
               </button>
             </div>
