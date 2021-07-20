@@ -25,6 +25,7 @@ import AdminSedes from './containers/Admin/AdminSedes'
 import CrearBloque from "./containers/Admin/AdminBloques/CrearBloque";
 import AdminBloques from "./containers/Admin/AdminBloques";
 import ModificarBloque from "./containers/Admin/AdminBloques/ModificarBloque";
+import AdminRoles from "./containers/Admin/AdminRoles";
 
 function App() {
   const dispatch = useDispatch();
@@ -60,6 +61,7 @@ function App() {
         <Route path="/admin-bloques/:id" component={ModificarBloque} />
         <Route exact path="/admin-usuarios" component={AdminUsers} />
         <Route exact path="/admin-sedes" component={AdminSedes} />
+        <Route exact path="/admin-roles" component={AdminRoles} />
         <Route path="/admin-usuarios/sede/:id" component={Users} />
         <Route path="/admin-crear-gestor" component={CrearGestor} />
         <Route path="/unauthorized" component={Unauthorized} />
