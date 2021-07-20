@@ -3,7 +3,7 @@ const Roles = require("../models/roles");
 
 const bloquesController = {
   findAll(req, res, next) {
-    Bloques.findAll()
+    Bloques.findAll({include:Roles,as:"rol"})
       .then((bloques) => {
         return res.status(200).send(bloques);
       })
@@ -12,7 +12,7 @@ const bloquesController = {
 
   findOne(req, res, next) {
     const id = req.params.id;
-    Bloques.findByPk(id)
+    Bloques.findByPk(id, {include:Roles,as:"rol"})
       .then((bloque) => {
         return res.status(200).send(bloque);
       })
@@ -33,8 +33,15 @@ const bloquesController = {
   },
   updateBloque(req, res, next) {
     const id = req.params.id;
-    Bloques.update(req.body, { where: { id }, returning: true })
+    const { titulo, descripcion, minimo, rolesId } = req.body;
+    Bloques.update({ titulo, descripcion, minimo }, { where: { id }, returning: true })
       .then((bloque) => {
+        console.log(Object.keys(bloque[1][0].__proto__));
+        bloque[1][0].removeRoles([3, 4, 5]);
+        for (let i = 0; i < rolesId.length; i++) {
+          Roles.findByPk(rolesId[i]).then((rol) => {
+            bloque[1][0].addRole(rol);
+          })}
         return res.status(201).send(bloque);
       })
       .catch(next);

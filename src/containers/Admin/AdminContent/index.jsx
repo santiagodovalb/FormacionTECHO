@@ -1,7 +1,6 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
-import Sidebar from '../../../components/SideBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 

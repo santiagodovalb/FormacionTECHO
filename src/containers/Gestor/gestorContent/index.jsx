@@ -1,4 +1,3 @@
-import Sidebar from "../../../components/SideBar/index";
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
@@ -11,7 +10,6 @@ const GestorContent = () => {
   
   
     const user = useSelector((state) => state.user)
-    console.log("IDD", user)
   
     if (user.rolId && user.rolId !== 2) {
       history.push("/unauthorized");

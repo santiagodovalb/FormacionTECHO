@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { BsFiles } from "react-icons/bs";
 import { MdLocationOn } from "react-icons/md";
+import {FaPen} from 'react-icons/fa';
 
 
 function Links () {
@@ -63,7 +64,7 @@ function Links () {
 
         }
 
-        {user.rolId >= 3 || user.rolId === null  && 
+        {(user.rolId && user.rolId > 2 || user.rolId === null ) && 
         <div>
         
         <Link to={`/mis-bloques`}>
@@ -74,7 +75,7 @@ function Links () {
 
         <Link to={`/mis-entregas`}>
         <h6 className="nav-link link-light">
-            Mis Entregas
+           <FaPen /> Mis Entregas
         </h6>
         </Link>
 
