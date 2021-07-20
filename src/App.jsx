@@ -52,7 +52,7 @@ function App() {
         <Route path="/mis-bloques" component={VolunteerContent} />
         <Route path="/bloque/:id" component={VolunteerModuls} />
         <Route path="/bloques" component={AdminContent} />
-        <Route path="/gestor" component={GestorContent} />
+        <Route path="/gestor-password" component={GestorContent} />
         <Route path="/voluntarios" component={GestorVoluntarios} />
         {/* <Route exact path="/admin-bloques" component={} /> */}
         <Route exact path="/admin-bloques" component={AdminBloques} />

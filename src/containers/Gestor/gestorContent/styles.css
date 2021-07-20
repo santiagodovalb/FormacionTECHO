@@ -1,5 +1,10 @@
-.gestor_content_div {
-    display: flex;
-    flex-direction: row;
-  }
-  
+.change_password_div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.change_password_div h1 {
+  margin-top: 50px;
+}

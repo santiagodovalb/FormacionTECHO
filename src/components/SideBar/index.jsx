@@ -36,6 +36,7 @@ const Sidebar = () => {
                     <Links />
                 </ul>
                 <hr />
+                {user.rolId && user.rolId === 2 && <Link to="/gestor-password"> <button> Cambiar contraseña </button></Link>}
                 <Link to ="/login">  <button onClick={handleLogout}> Cerrar sesion</button></Link>
                 
             </div>

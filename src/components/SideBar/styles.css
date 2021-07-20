@@ -1,7 +1,7 @@
 .sidebar {
   min-width: 250px;
   max-width: 250px;
-  min-height: 100vh;
+  min-height: 100vmin;
   background-color: #0092dd;
   color: white;
   float: left;

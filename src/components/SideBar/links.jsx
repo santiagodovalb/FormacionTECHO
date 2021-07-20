@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import { BsFiles } from "react-icons/bs";
 import { MdLocationOn } from "react-icons/md";
 import {FaPen} from 'react-icons/fa';
+import {FaUsers} from 'react-icons/fa';
+import {FaEdit} from 'react-icons/fa';
 
 
 function Links () {
@@ -20,12 +22,12 @@ function Links () {
         <div>
         <Link to={`/admin-crear-gestor`}>
         <h6 className="nav-link link-light">
-            Crear Gestor
+            <FaEdit />   Crear Gestor
         </h6>
 
         <Link to={`/admin-bloques`}>
         <h6 className="nav-link link-light">
-            Gestionar Bloques
+            <BsFiles />   Gestionar Bloques
         </h6>
         </Link>
 
@@ -33,13 +35,13 @@ function Links () {
 
         <Link to={`/admin-usuarios`}>
         <h6 className="nav-link link-light">
-            Gestionar Usuarios
+            <FaUsers />   Gestionar Usuarios
         </h6>
         </Link>
 
         <Link to={`/admin-sedes`}>
         <h6 className="nav-link link-light">
-            Gestionar Sedes
+            <MdLocationOn />   Gestionar Sedes
         </h6>
         </Link>
         </div>
@@ -51,13 +53,13 @@ function Links () {
             
         <Link to={`/voluntarios`}>
         <h6 className="nav-link link-light">
-            Gestionar voluntarios
+            <FaUsers />   Ver voluntarios
         </h6>
         </Link>
             
         <Link to={`/entregas}`}>
         <h6 className="nav-link link-light">
-            Gestionar entregas
+            <FaPen />   Gestionar entregas
         </h6>
         </Link>
         </div>
@@ -69,19 +71,19 @@ function Links () {
         
         <Link to={`/mis-bloques`}>
         <h6 className="nav-link link-light">
-            <BsFiles /> Mis Bloques
+            <BsFiles />   Mis Bloques
         </h6>
         </Link>
 
         <Link to={`/mis-entregas`}>
         <h6 className="nav-link link-light">
-           <FaPen /> Mis Entregas
+           <FaPen />   Mis Entregas
         </h6>
         </Link>
 
         <Link to={`/sede`}>
         <h6 className="nav-link link-light">
-           <MdLocationOn /> Elegir o modificar sede
+           <MdLocationOn />   Elegir o modificar sede
         </h6>
         </Link>
         </div>
