@@ -23,6 +23,7 @@ const VolunteerContent = () => {
                 <Card
                   img="https://www.telediariodigital.net/wp-content/uploads/2014/09/art21-foto3.jpg"
                   title={bloque.titulo}
+                  url={`/bloque/${bloque.id}`}
                   button={{
                     text: "Ver modulos",
                     styles: "btn btn-primary",

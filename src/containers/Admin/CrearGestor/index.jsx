@@ -14,7 +14,7 @@ export default function CrearGestor() {
     const history = useHistory()
 
     useEffect(() => {
-        let options = "<option>Seleccionar Sede </sede>";
+        let options = "<option>Seleccionar Sede</sede>";
         for (var i = 0; i < sedes.length; i++) {
           options += `<option value=${sedes[i]?.id}>${sedes[i]?.nombre}</option>`;
         }
