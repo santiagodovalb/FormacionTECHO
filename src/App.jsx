@@ -20,6 +20,7 @@ import CrearGestor from "./containers/Admin/CrearGestor";
 import { getSedes } from "./redux/sedes";
 import Users from "./containers/Admin/AdminUsers/Users";
 import { getBloques } from "../src/redux/bloques"
+import GestorVoluntarios from "./containers/Gestor/gestorVoluntarios";
 import AdminSedes from './containers/Admin/AdminSedes' 
 import CrearBloque from "./containers/Admin/AdminBloques/CrearBloque";
 
@@ -50,6 +51,7 @@ function App() {
         <Route path="/mis-modulos" component={VolunteerModuls} />
         <Route path="/bloques" component={AdminContent} />
         <Route path="/gestor" component={GestorContent} />
+        <Route path="/voluntarios" component={GestorVoluntarios} />
         {/* <Route exact path="/admin-bloques" component={} /> */}
         <Route path="/admin-bloques-crear" component={CrearBloque} />
         <Route exact path="/admin-usuarios" component={AdminUsers} />

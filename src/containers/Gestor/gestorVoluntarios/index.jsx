@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useSelector} from 'react-redux'
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory} from 'react-router-dom';
 
-function Users () {
+function GestorVoluntarios () {
 
     const [rol, setRol] = useState(0);
     const [users, setUsers] = useState([])
     const user = useSelector(state => state.user)
     const roles = useSelector(state=>state.roles.filter((rol)=> rol.id!==1))
     const history = useHistory();
-    const location = useLocation()
-    const id = location.pathname.slice(21)
+
     useEffect(() => {
-        axios.get(`/api/users/sede/${id}`)
+        axios.get(`/api/users/sede/${user.sedeId}`)
         .then(res => res.data)
-        .then(users => setUsers(users))
+        .then(users => setUsers(users.filter(userFilter=>userFilter.id !== user.id)))
     }, [])
 
     const handleChange = (e) => {
@@ -27,7 +26,7 @@ function Users () {
     }
 
   
-    if (user.rolId && user.rolId !== 1) {
+    if (user.rolId && user.rolId !== 2) {
       history.push("/unauthorized");
       return <><h1>No autorizado</h1></>;
     }
@@ -58,4 +57,4 @@ function Users () {
     )
 }
 
-export default Users
+export default GestorVoluntarios
