@@ -17,6 +17,16 @@ const entregasController = {
       .then((entregas) => res.status(200).send(entregas))
       .catch(next);
   },
+  findByUser(req, res, next) {
+      Entregas.findByUser(parseInt(req.params.id))
+        .then((entregas) => res.status(200).send(entregas))
+        .catch(next);
+    },
+  findBySede(req, res, next) {
+    Entregas.findBySede(parseInt(req.params.id))
+    .then(entregas => res.status(200).send(entregas))
+    .catch(next)
+  },
   findOne(req, res, next) {
     const id = req.params.id;
     Entregas.findByPk(id, {
@@ -34,15 +44,27 @@ const entregasController = {
       .then((entrega) => res.status(200).send(entrega))
       .catch(next);
   },
-  createEntrega(req, res, next) {
-      const {contenido, bloqueId,userId}  = req.body
-    Entregas.create({ contenido })
-      .then((entrega) => {
-            entrega.setUser(userId)
-            entrega.setBloque(bloqueId)
-        return res.status(201).send(entrega);
-      })
-      .catch(next);
+  createEntrega : async (req, res, next) => {
+    const {contenido, bloqueId, userId}  = req.body
+    let currentEntrega = await Entregas.findOne({where: {bloqueId, userId}});
+
+    if(currentEntrega){ 
+      currentEntrega.update({ contenido });
+    }
+    else {
+      currentEntrega = await Entregas.create({ contenido })
+    }
+
+    currentEntrega.setUser(userId)
+    currentEntrega.setBloque(bloqueId)
+    res.status(201).send(currentEntrega)
+
+  },
+  aprobar(req, res, next){
+    Entregas.findByPk(req.params.id)
+    .then(entrega => entrega.aprobar())
+    .then(() => res.sendStatus(200))
+    .catch(next)
   },
   updateEntrega(req,res,next){
       const {contenido,aprobado} = req.body

@@ -1,10 +1,11 @@
 .sidebar {
   min-width: 250px;
   max-width: 250px;
-  min-height: 100vh;
+  min-height: 100vmin;
   background-color: #0092dd;
   color: white;
   float: left;
+  position: fixed;
 }
 
 @media (max-width: 768px) {
@@ -32,4 +33,16 @@
 
 .sidebar h4 {
   margin: 20px auto;
+  color: white;
+}
+
+.sidebar h6 {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.sidebar button {
+  border: none;
+  color: white;
+  background-color: transparent;
 }

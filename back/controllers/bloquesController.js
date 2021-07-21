@@ -1,9 +1,10 @@
 const Bloques = require("../models/bloques.js");
 const Roles = require("../models/roles");
+const Unidades = require("../models/unidades")
 
 const bloquesController = {
   findAll(req, res, next) {
-    Bloques.findAll({include:Roles,as:"rol"})
+    Bloques.findAll({include:[{model: Roles}, {model: Unidades, as: 'unidades'}]})
       .then((bloques) => {
         return res.status(200).send(bloques);
       })
@@ -12,7 +13,7 @@ const bloquesController = {
 
   findOne(req, res, next) {
     const id = req.params.id;
-    Bloques.findByPk(id, {include:Roles,as:"rol"})
+    Bloques.findByPk(id, {include:[{model: Roles}, {model: Unidades, as: 'unidades'}]})
       .then((bloque) => {
         return res.status(200).send(bloque);
       })

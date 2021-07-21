@@ -1,6 +1,7 @@
 const Users = require ("../models/users")
 const Roles = require ("../models/roles")
 const { Op } = require("sequelize");
+const { Entregas } = require("../models");
 
 const usersController = {
     findAll(req,res,next){
@@ -16,10 +17,10 @@ const usersController = {
         .catch(next)
     },
     findOne(req,res,next){
-        Users.findByPk({
-            where:{id: req.params.id},
+        Users.findByPk(req.params.id,{
             include: [{model: Roles, as: 'rol'}]
         })
+
         .then(user => res.status(200).json(user))
         .catch(next)
     },
@@ -43,15 +44,20 @@ const usersController = {
             where:{id:req.params.id},
             returning:true,
         })
-        .then(user => res.status(200).json(user))
+        .then((user) => {
+            res.status(200).json(user)
+        })
         .catch(next)
     },
     deleteUser(req,res,next){
+        Entregas.destroy({where: {userId: req.params.id}})
+        .then(() => {
         Users.destroy({
             where:{id:req.params.id}
         })
         .then(user => res.sendStatus(204))
         .catch(next)
+    })
     },
     login(req, res, next) {
         res.send(req.user);

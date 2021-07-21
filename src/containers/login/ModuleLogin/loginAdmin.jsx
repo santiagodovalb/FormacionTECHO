@@ -25,6 +25,7 @@ const LoginAdmin = () => {
       
     };
     const isEmail = () => validator.isEmail(form.email)
+
   
     const onSubmit = (e) => {
       e.preventDefault();
