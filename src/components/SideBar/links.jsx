@@ -57,13 +57,13 @@ function Links () {
 
         <div>
             
-        <Link to={`/voluntarios`}>
+        <Link to={`/gestor/voluntarios`}>
         <h6 className="nav-link link-light">
             <FaUsers />   Ver voluntarios
         </h6>
         </Link>
             
-        <Link to={`/entregas}`}>
+        <Link to={`/gestor/entregas`}>
         <h6 className="nav-link link-light">
             <FaPen />   Gestionar entregas
         </h6>

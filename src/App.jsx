@@ -25,6 +25,9 @@ import CrearBloque from "./containers/Admin/AdminBloques/CrearBloque";
 import AdminBloques from "./containers/Admin/AdminBloques";
 import ModificarBloque from "./containers/Admin/AdminBloques/ModificarBloque";
 import AdminRoles from "./containers/Admin/AdminRoles";
+import VolunteerEntregas from "./containers/Volunteer/VolunteerEntregas";
+import GestorEntregas from "./containers/Gestor/GestorEntregas";
+import EntregaIndividual from "./containers/Gestor/EntregaIndividual";
 
 function App() {
   const dispatch = useDispatch();
@@ -51,10 +54,14 @@ function App() {
         <Route exact path="/user" component={VolunteerProfile} />
         <Route path="/mis-bloques/:id" component={VolunteerModuls} />
         <Route path="/mis-bloques" component={VolunteerContent} />
+        <Route path="/mis-entregas" component={VolunteerEntregas} />
         <Route path="/bloque/:id" component={VolunteerModuls} />
         <Route path="/bloques" component={AdminContent} />
         <Route path="/gestor-password" component={GestorContent} />
-        <Route path="/voluntarios" component={GestorVoluntarios} />
+        <Route exact path="/gestor" component={GestorContent} />
+        <Route path="/gestor/voluntarios" component={GestorVoluntarios} />
+        <Route exact path="/gestor/entregas" component={GestorEntregas} />
+        <Route exact path="/gestor/entregas/:id" component={EntregaIndividual} />
         <Route exact path="/admin-bloques" component={AdminBloques} />
         <Route path="/admin-bloques-crear" component={CrearBloque} />
         <Route path="/admin-bloques/:id" component={ModificarBloque} />
