@@ -17,6 +17,16 @@ const entregasController = {
       .then((entregas) => res.status(200).send(entregas))
       .catch(next);
   },
+  findByUser(req, res, next) {
+      Entregas.findByUser(parseInt(req.params.id))
+        .then((entregas) => res.status(200).send(entregas))
+        .catch(next);
+    },
+  findBySede(req, res, next) {
+    Entregas.findBySede(parseInt(req.params.id))
+    .then(entregas => res.status(200).send(entregas))
+    .catch(next)
+  },
   findOne(req, res, next) {
     const id = req.params.id;
     Entregas.findByPk(id, {
@@ -43,6 +53,12 @@ const entregasController = {
         return res.status(201).send(entrega);
       })
       .catch(next);
+  },
+  aprobar(req, res, next){
+    Entregas.findByPk(req.params.id)
+    .then(entrega => entrega.aprobar())
+    .then(() => res.sendStatus(200))
+    .catch(next)
   },
   updateEntrega(req,res,next){
       const {contenido,aprobado} = req.body
