@@ -1,4 +1,3 @@
-import "./App.css";
 import VolunteerProfile from "../src/containers/Volunteer/VolunteerProfile";
 import VolunteerContent from "../src/containers/Volunteer/VolunteerContent";
 import VolunteerModuls from "../src/containers/Volunteer/VolunteerModuls";
