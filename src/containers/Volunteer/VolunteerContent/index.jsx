@@ -25,6 +25,7 @@ const VolunteerContent = () => {
               {bloquesDelUser.map((bloque) => (
                 bloque.minimo &&
                 <Card
+                  bloque={bloque}
                   img="https://www.telediariodigital.net/wp-content/uploads/2014/09/art21-foto3.jpg"
                   title={bloque.titulo}
                   url={`/bloque/${bloque.id}`}
@@ -44,6 +45,7 @@ const VolunteerContent = () => {
                 (bloque) =>
                   !bloque.minimo && (
                     <Card
+                      bloque={bloque}
                       img="https://www.telediariodigital.net/wp-content/uploads/2014/09/art21-foto3.jpg"
                       title={bloque.titulo}
                       button={{

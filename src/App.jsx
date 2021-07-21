@@ -1,4 +1,3 @@
-import "./App.css";
 import VolunteerProfile from "../src/containers/Volunteer/VolunteerProfile";
 import VolunteerContent from "../src/containers/Volunteer/VolunteerContent";
 import VolunteerModuls from "../src/containers/Volunteer/VolunteerModuls";
@@ -29,6 +28,7 @@ import AdminRoles from "./containers/Admin/AdminRoles";
 import VolunteerEntregas from "./containers/Volunteer/VolunteerEntregas";
 import GestorEntregas from "./containers/Gestor/GestorEntregas";
 import EntregaIndividual from "./containers/Gestor/EntregaIndividual";
+import "./App.css";
 
 function App() {
   const dispatch = useDispatch();
@@ -48,6 +48,7 @@ function App() {
   return (
     <div className="App">
       {!location.pathname.includes("login") && <Sidebar />}
+      <div className='content'>
       <Switch>
         <Route exact path="/login" component={Login} />
         <Route exact path="/adminlogin" component={Login} />
@@ -62,6 +63,7 @@ function App() {
         <Route path="/gestor/voluntarios" component={GestorVoluntarios} />
         <Route exact path="/gestor/entregas" component={GestorEntregas} />
         <Route exact path="/gestor/entregas/:id" component={EntregaIndividual} />
+        <Route path="/gestor-password" component={GestorContent} />
         <Route exact path="/admin-bloques" component={AdminBloques} />
         <Route path="/admin-bloques-crear" component={CrearBloque} />
         <Route path="/admin-bloques/:id" component={ModificarBloque} />
@@ -73,6 +75,7 @@ function App() {
         <Route path="/unauthorized" component={Unauthorized} />
         <Redirect from="*" to="/login" />
       </Switch>
+      </div>
     </div>
   );
 }

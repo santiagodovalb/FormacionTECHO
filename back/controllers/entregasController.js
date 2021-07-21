@@ -44,15 +44,21 @@ const entregasController = {
       .then((entrega) => res.status(200).send(entrega))
       .catch(next);
   },
-  createEntrega(req, res, next) {
-      const {contenido, bloqueId,userId}  = req.body
-    Entregas.create({ contenido })
-      .then((entrega) => {
-            entrega.setUser(userId)
-            entrega.setBloque(bloqueId)
-        return res.status(201).send(entrega);
-      })
-      .catch(next);
+  createEntrega : async (req, res, next) => {
+    const {contenido, bloqueId, userId}  = req.body
+    let currentEntrega = await Entregas.findOne({where: {bloqueId, userId}});
+
+    if(currentEntrega){ 
+      currentEntrega.update({ contenido });
+    }
+    else {
+      currentEntrega = await Entregas.create({ contenido })
+    }
+
+    currentEntrega.setUser(userId)
+    currentEntrega.setBloque(bloqueId)
+    res.status(201).send(currentEntrega)
+
   },
   aprobar(req, res, next){
     Entregas.findByPk(req.params.id)
