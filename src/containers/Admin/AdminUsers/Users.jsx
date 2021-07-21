@@ -26,6 +26,13 @@ function Users () {
         return axios.post('http://localhost:3001/api/roles/set/', {userId, rolId, user})
     }
 
+    const handleDelete = (userId) => {
+        return axios.delete(`/api/users/${userId}`)
+        .then(() => axios.get(`/api/users/sede/${id}`)
+            .then(res => res.data)
+            .then(users => setUsers(users)))
+    }
+
   
     if (user.rolId && user.rolId !== 1) {
       history.push("/unauthorized");
@@ -51,6 +58,7 @@ function Users () {
                             })}
                         </select>
                         <button onClick={(e) => handleClick(user.id, parseInt(rol))} type='button'>Asignar rol</button>
+                        <button onClick={() => handleDelete(user.id)} type="button"> Eliminar usuario</button>
                     </div>
                 )
             })}
