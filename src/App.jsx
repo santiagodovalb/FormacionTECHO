@@ -48,10 +48,11 @@ function App() {
   return (
     <div className="App">
       {!location.pathname.includes("login") && <Sidebar />}
-      <div className='content'>
+
       <Switch>
-        <Route exact path="/login" component={Login} />
         <Route exact path="/adminlogin" component={Login} />
+        <Route exact path="/login" component={Login} />
+      <div className='content'>
         <Route path="/sede" component={Sede} />
         <Route exact path="/user" component={VolunteerProfile} />
         <Route path="/mis-bloques/:id" component={VolunteerModuls} />
@@ -73,9 +74,9 @@ function App() {
         <Route path="/admin-usuarios/sede/:id" component={Users} />
         <Route path="/admin-crear-gestor" component={CrearGestor} />
         <Route path="/unauthorized" component={Unauthorized} />
+      </div>
         <Redirect from="*" to="/login" />
       </Switch>
-      </div>
     </div>
   );
 }
