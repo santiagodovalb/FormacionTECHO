@@ -1,14 +1,13 @@
 const Unidades = require('../models/unidades.js')
 const Bloques = require('../models/bloques.js')
 
-
-
-
-
-
 const unidadesController = {
+    
     findAll(req,res,next){
-        Unidades.findAll({where:{bloqueId: req.body.bloqueId}}).then((unidades)=>{
+        const bloque = req.params.id
+        console.log(bloque)
+        Unidades.findAll({where:{bloqueId: bloque}})
+        .then((unidades)=>{
             return res.status(200).send(unidades)
         })
         .catch(next)

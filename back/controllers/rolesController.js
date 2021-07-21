@@ -33,10 +33,12 @@ const rolesController = {
     },
 
     deleteRole(req, res, next) {
+        const id = req.params.id
         Roles.destroy({
-            where: req.params.id
+            where: {id}
         })
-        .then(() => res.status(204))
+        .then(() => res.sendStatus(204))
+        .catch(next)
     },
 
     setUserRole(req, res, next) {

@@ -63,6 +63,13 @@ export default function ModificarBloque() {
         })
     }
 
+    const handleDelete = () => {
+        axios.delete(`/api/bloques/${id}`)
+        .then(() => {
+            dispatch(getBloques())
+            history.push('/admin-bloques')
+        })
+    }
   
     if (user.rolId && user.rolId !== 1) {
       history.push("/unauthorized");
@@ -94,6 +101,7 @@ export default function ModificarBloque() {
                 })}
                 <button type='submit'>Modificar</button>
             </form>}
+            <button type='button' onClick={handleDelete}>Eliminar bloque</button>
         </div>
     )
 }

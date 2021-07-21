@@ -24,15 +24,16 @@ import AdminSedes from './containers/Admin/AdminSedes'
 import CrearBloque from "./containers/Admin/AdminBloques/CrearBloque";
 import AdminBloques from "./containers/Admin/AdminBloques";
 import ModificarBloque from "./containers/Admin/AdminBloques/ModificarBloque";
+import AdminRoles from "./containers/Admin/AdminRoles";
 
 function App() {
   const dispatch = useDispatch();
   let location = useLocation();
 
   useEffect(() => {
-    dispatch(getBloques())
-    dispatch(getSedes())
-    dispatch(getRoles())
+    dispatch(getBloques());
+    dispatch(getSedes());
+    dispatch(getRoles());
 
     axios
       .get("/api/users/me")
@@ -42,23 +43,24 @@ function App() {
 
   return (
     <div className="App">
-      {!location.pathname.includes('login') && <Sidebar />}
+      {!location.pathname.includes("login") && <Sidebar />}
       <Switch>
         <Route exact path="/login" component={Login} />
         <Route exact path="/adminlogin" component={Login} />
         <Route path="/sede" component={Sede} />
         <Route exact path="/user" component={VolunteerProfile} />
+        <Route path="/mis-bloques/:id" component={VolunteerModuls} />
         <Route path="/mis-bloques" component={VolunteerContent} />
         <Route path="/bloque/:id" component={VolunteerModuls} />
         <Route path="/bloques" component={AdminContent} />
         <Route path="/gestor-password" component={GestorContent} />
         <Route path="/voluntarios" component={GestorVoluntarios} />
-        {/* <Route exact path="/admin-bloques" component={} /> */}
         <Route exact path="/admin-bloques" component={AdminBloques} />
         <Route path="/admin-bloques-crear" component={CrearBloque} />
         <Route path="/admin-bloques/:id" component={ModificarBloque} />
         <Route exact path="/admin-usuarios" component={AdminUsers} />
         <Route exact path="/admin-sedes" component={AdminSedes} />
+        <Route exact path="/admin-roles" component={AdminRoles} />
         <Route path="/admin-usuarios/sede/:id" component={Users} />
         <Route path="/admin-crear-gestor" component={CrearGestor} />
         <Route path="/unauthorized" component={Unauthorized} />
