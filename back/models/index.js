@@ -10,6 +10,7 @@ Users.belongsTo(Sedes, {as: 'sede'}, {foreignKey: 'sedeID'})
 Users.belongsTo(Roles, {as: 'rol'}, {foreignKey: 'rolID'})
 
 Unidades.belongsTo(Bloques, {as: 'bloque'}, {foreignKey: 'bloqueID'})
+Bloques.hasMany(Unidades, {as: 'unidades'}, {foreignKey: 'unidadId'})
 
 Bloques.belongsToMany(Roles,{through:"bloques_rol"})
 Roles.belongsToMany(Bloques,{through:"bloques_rol"})
