@@ -33,9 +33,9 @@ const VolunteerContent = () => {
                       url={`/bloque/${bloque.id}`}
                       button={{
                         text: "Ver modulos",
-                        styles: "button-style light-blue fs-4",
+                        styles: "btn btn-primary",
                       }}
-                      url={`${location}/${bloque.id}`}
+                      url={`bloque/${bloque.id}`}
                     />
                   )
               )}
@@ -56,7 +56,7 @@ const VolunteerContent = () => {
                         text: "Ver modulos",
                         styles: "button-style light-blue fs-4",
                       }}
-                      url={`${location}/${bloque.id}`}
+                      url={`bloque/${bloque.id}`}
                     />
                   )
               )}

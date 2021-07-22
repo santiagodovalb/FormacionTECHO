@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./styles.css";
 import { Link, useLocation } from "react-router-dom";
+import { Progress } from "antd";
 
 const Card = ({
   id,
@@ -50,9 +51,15 @@ const Card = ({
         )}
 
         {location === "/mis-bloques" ? (
-          <span>
-            Modulos completados: {completed.length}/{bloque?.unidades.length}
-          </span>
+          <div className="circle">
+            <Progress
+              type="circle"
+              percent={Math.floor(
+                (completed.length * 100) / bloque?.unidades.length
+              )}
+              format={() => `${completed.length}/${bloque?.unidades.length}`}
+            />
+          </div>
         ) : (
           <img src={img} />
         )}

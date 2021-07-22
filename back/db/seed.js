@@ -29,6 +29,7 @@ const BloquesSeed = [
       "Marco general del trabajo en las comunidades, los distintas formas de llegar al territorio y que buscamos alcanzar como organización",
     roles: [3, 4, 5],
     minimo: true,
+    pregunta:"que comiste hoy ?"
   },
 
   {
@@ -37,6 +38,7 @@ const BloquesSeed = [
       "Misión, visión, valores e historia de TECHO. ¿Que esperamos del voluntariado? ¿Que nos identifica?",
     roles: [3, 4, 5],
     minimo: true,
+    pregunta:"que merendaste hoy ?"
   },
 
   {
@@ -45,6 +47,7 @@ const BloquesSeed = [
       "Voluntariado y participación activa en TECHO, ¿quienes conformamos la organización? ¿como nos organizamos?",
     roles: [3, 4, 5],
     minimo: false,
+    pregunta:"que desayunaste hoy ?"
   },
 
   {
@@ -53,6 +56,7 @@ const BloquesSeed = [
       "Descripciones generales de las responsabilidades del rol y que es lo que buscamos alcanzar",
     roles: [4],
     minimo: true,
+    pregunta:"que cenaste hoy ?"
   },
 
   {
@@ -61,6 +65,7 @@ const BloquesSeed = [
       "Problematica habitacional y como se relaciona con el habitat y el trabajo de TECHO en territorio.",
     roles: [4],
     minimo: true,
+    pregunta:"que amorzaste hoy ?"
   },
 ];
 
@@ -130,6 +135,7 @@ const seed = () => {
       titulo: bloqueCreado.titulo,
       descripcion: bloqueCreado.descripcion,
       minimo: bloqueCreado.minimo,
+      pregunta: bloqueCreado.pregunta,
     }).then((bloque) => {
       for (let i = 0; i < bloqueCreado.roles.length; i++) {
         Roles.findByPk(bloqueCreado.roles[i]).then((rol) => {

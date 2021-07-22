@@ -27,6 +27,7 @@ const usersController = {
     findBySede(req, res, next) {
         const sedeId = req.params.id
         Users.findAll({
+            include: [{model: Roles, as: 'rol'}],
             where: {
                 sedeId: sedeId
             }

@@ -76,7 +76,7 @@ const VolunteerModuls = () => {
             </div>
             <div className="fs-4 my-3">
               <p>
-                <strong>¿Como fue tu experiencia?</strong>
+                <strong>{bloque.pregunta}</strong>
               </p>
               <textarea
                 class="form-control"

@@ -7,11 +7,17 @@ function Links() {
   const user = useSelector((state) => state.user);
   const location = useLocation().pathname;
 
+  console.log("Rolid, ", user.rolId);
+
   const findNavbar = (array, key) =>
-    array.find((navbar) => navbar.rolId === key);
+    user.rolId === null
+      ? array.find((navbar) => navbar.rolId === 3)
+      : array.find((navbar) => navbar.rolId === key);
 
   const buildNavbar = (array, rolId) => {
     const navbar = findNavbar(array, rolId);
+
+    console.log("rolId****, ", rolId);
     return navbar.list.map((ele, index) => (
       <li className="nav-item" key={`navbar-${rolId}-${index}`}>
         <Link to={`${ele.link}`} key={rolId}>
@@ -31,7 +37,12 @@ function Links() {
     ));
   };
 
-  return <div>{user.rolId && buildNavbar(listNavbars, user.rolId)} </div>;
+  return (
+    <div>
+      {(user.rolId !== undefined || user.rolId === null) &&
+        buildNavbar(listNavbars, user.rolId)}{" "}
+    </div>
+  );
 }
 
 export default Links;

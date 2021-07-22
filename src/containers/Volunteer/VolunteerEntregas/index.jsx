@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 
 export default function VolunteerEntregas() {
-  const [entregas, setEntregas] = useState();
+  const [entregas, setEntregas] = useState([]);
   const user = useSelector((state) => state.user);
 
   useEffect(() => {
@@ -25,7 +25,7 @@ export default function VolunteerEntregas() {
           <th>Contenido</th>
           <th>Estado</th>
         </tr>
-        {entregas && entregas.map(entrega => {
+        {entregas.length  && entregas.map(entrega => {
             return (
                 <tr>
           <td>{entrega.bloque.titulo}</td>

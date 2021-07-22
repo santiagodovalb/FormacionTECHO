@@ -30,7 +30,7 @@ export const listNavbars = [
     rolId: 2,
     list: [
       {
-        link: "//voluntarios",
+        link: "/voluntarios",
         name: "Gestionar voluntarios",
         icon: <FaUsers />,
       },
