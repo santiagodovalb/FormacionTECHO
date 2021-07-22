@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./styles.css";
 import { Link, useLocation } from "react-router-dom";
+import { Progress } from "antd";
 
 const Card = ({ keyU, img, title, button, icon, setState, stateIcon, url, bloque }) => {
 
@@ -13,7 +14,6 @@ const Card = ({ keyU, img, title, button, icon, setState, stateIcon, url, bloque
   }
   return (
     <div className="col-auto" key={keyU}>
-      {console.log(completed)}
       <div
         className="card position-relative"
         style={{ width: "20rem", borderRadius: "10px" }}
@@ -38,7 +38,13 @@ const Card = ({ keyU, img, title, button, icon, setState, stateIcon, url, bloque
           ""
         )}
 
-        {location === '/mis-bloques' ? <span>Modulos completados: {completed.length}/{bloque?.unidades.length}</span> : <img src={img} />}
+        {location === '/mis-bloques' ?
+
+        <div className='circle'> 
+        <Progress type='circle' percent={Math.floor(completed.length*100/bloque?.unidades.length)} format={() => `${completed.length}/${bloque?.unidades.length}`}/>
+        </div>
+
+        : <img src={img} />}
         <Link to={url}>
           <div
             className={` ${button.styles} p-3 text-center`}

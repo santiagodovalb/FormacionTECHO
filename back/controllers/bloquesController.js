@@ -1,10 +1,13 @@
 const Bloques = require("../models/bloques.js");
 const Roles = require("../models/roles");
-const Unidades = require("../models/unidades")
+const Unidades = require("../models/unidades");
+const Entregas = require("../models/entregas");
 
 const bloquesController = {
   findAll(req, res, next) {
-    Bloques.findAll({include:[{model: Roles}, {model: Unidades, as: 'unidades'}]})
+    Bloques.findAll({
+      include: [{ model: Roles }, { model: Unidades, as: "unidades" }],
+    })
       .then((bloques) => {
         return res.status(200).send(bloques);
       })
@@ -13,15 +16,17 @@ const bloquesController = {
 
   findOne(req, res, next) {
     const id = req.params.id;
-    Bloques.findByPk(id, {include:[{model: Roles}, {model: Unidades, as: 'unidades'}]})
+    Bloques.findByPk(id, {
+      include: [{ model: Roles }, { model: Unidades, as: "unidades" }],
+    })
       .then((bloque) => {
         return res.status(200).send(bloque);
       })
       .catch(next);
   },
   createBloque(req, res, next) {
-    const { titulo, descripcion, minimo, rolesId } = req.body;
-    Bloques.create({ titulo, descripcion, minimo })
+    const { titulo, descripcion, minimo, pregunta, rolesId } = req.body;
+    Bloques.create({ titulo, descripcion, minimo, pregunta })
       .then((bloque) => {
         for (let i = 0; i < rolesId.length; i++) {
           Roles.findByPk(rolesId[i]).then((rol) => {
@@ -34,24 +39,32 @@ const bloquesController = {
   },
   updateBloque(req, res, next) {
     const id = req.params.id;
-    const { titulo, descripcion, minimo, rolesId } = req.body;
-    Bloques.update({ titulo, descripcion, minimo }, { where: { id }, returning: true })
+    const { titulo, descripcion, minimo, pregunta, rolesId } = req.body;
+    Bloques.update(
+      { titulo, descripcion, minimo, pregunta },
+      { where: { id }, returning: true }
+    )
       .then((bloque) => {
         bloque[1][0].removeRoles([3, 4, 5]);
         for (let i = 0; i < rolesId.length; i++) {
           Roles.findByPk(rolesId[i]).then((rol) => {
             bloque[1][0].addRole(rol);
-          })}
+          });
+        }
         return res.status(201).send(bloque);
       })
       .catch(next);
   },
   deleteBloque(req, res, next) {
-    console.log(req.params.id)
     const id = req.params.id;
-    Bloques.destroy({ where: {id} })
+    Entregas.destroy({ where: { bloqueId: id } })
       .then(() => {
-        res.sendStatus(204);
+        Unidades.destroy({ where: { bloqueId: id } });
+      })
+      .then(() => {
+        Bloques.destroy({ where: { id } }).then(() => {
+          res.sendStatus(204);
+        });
       })
       .catch(next);
   },

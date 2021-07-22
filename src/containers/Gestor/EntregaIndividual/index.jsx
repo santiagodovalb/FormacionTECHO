@@ -26,7 +26,7 @@ export default function EntregaIndividual() {
             <h1>Voluntario: {entrega?.user.full_name}</h1>
             <h1>Bloque: {entrega?.bloque.titulo}</h1>
             <h1>Contenido: {entrega?.contenido}</h1>
-            <h1>PREGUNTA DE BLOQUE</h1>
+            <h1>Pregunta del bloque: {entrega?.bloque.pregunta}</h1>
             <button type='button' onClick={(e) => handleClick(e)}>Aprobar entrega</button>
         </div>
     )

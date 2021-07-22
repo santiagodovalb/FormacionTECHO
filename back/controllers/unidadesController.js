@@ -20,8 +20,8 @@ const unidadesController = {
         .catch(next)
     },
     createUnidad(req,res,next){
-        const {link,titulo,descripcion,bloqueId} = req.body
-        Unidades.create({link,titulo,descripcion}).then((unidad)=>{
+        const {link,titulo,bloqueId} = req.body
+        Unidades.create({link,titulo}).then((unidad)=>{
            return Bloques.findByPk(bloqueId).then((bloque)=>{
                 unidad.setBloque(bloque)
                 return res.status(201).send(unidad)
@@ -38,7 +38,7 @@ const unidadesController = {
     },
     deleteUnidad(req,res,next){
         const id = req.params.id
-        Unidades.destroy({where:id}).then(()=>{
+        Unidades.destroy({where:{id}}).then(()=>{
             res.sendStatus(204)
         })
         .catch(next)

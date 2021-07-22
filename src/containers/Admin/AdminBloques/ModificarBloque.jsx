@@ -3,22 +3,24 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { getBloques } from '../../../redux/bloques';
+import AdminUnidades from '../AdminUnidades/index.jsx'
+import Unidades from './Unidades.jsx'
 
 export default function ModificarBloque() {
 
     const [bloque, setBloque] = useState();
+    const [showForm, setShowForm] = useState(false)
     const [form, setForm] = useState({bloque});
     const { id } = useParams()
     const user = useSelector(state => state.user)
     const roles = useSelector(state => state.roles).filter(rol => rol.id > 2)
     const history = useHistory()
     const dispatch = useDispatch();
-
+    
     useEffect(() => {
         axios.get(`/api/bloques/${id}`)
         .then(res => res.data)
         .then(bloque => {
-            console.log('BLOQUE', bloque);
             setForm({
                 titulo: bloque.titulo,
                 descripcion: bloque.descripcion,
@@ -37,7 +39,7 @@ export default function ModificarBloque() {
             document.getElementById('minimoSi').checked = bloque.minimo && 'true'
             document.getElementById('minimoNo').checked = !bloque.minimo && 'true'
         })
-    }, [])
+    }, [showForm])
 
     const handleChange = (e) => {
         setForm({...form, [e.target.name]: e.target.value})
@@ -70,6 +72,10 @@ export default function ModificarBloque() {
             history.push('/admin-bloques')
         })
     }
+
+    const toggleUnidad = () => {
+        setShowForm(!showForm)
+    }
   
     if (user.rolId && user.rolId !== 1) {
       history.push("/unauthorized");
@@ -84,6 +90,8 @@ export default function ModificarBloque() {
                     <input type='text' name='titulo' onChange={handleChange} defaultValue={bloque.titulo}></input>
                 <label htmlFor='descripcion'>Descripcion</label>
                     <textarea name='descripcion' onChange={handleChange} defaultValue={bloque.descripcion}></textarea>
+                    <label htmlFor='pregunta'>Pregunta</label>
+                    <input type='text' name='pregunta' onChange={handleChange}  defaultValue={bloque.pregunta} ></input>    
                 <p>Es bloque minimo?</p>
                     <label htmlFor='si'>Si</label>
                     <input type="radio" name='minimo' id='si' id='minimoSi' onChange={handleMinimo}/>
@@ -101,7 +109,12 @@ export default function ModificarBloque() {
                 })}
                 <button type='submit'>Modificar</button>
             </form>}
+            <button type='button' onClick={toggleUnidad}>Agregar unidad al bloque</button>
             <button type='button' onClick={handleDelete}>Eliminar bloque</button>
+            {showForm && <AdminUnidades bloque={bloque} />}
+            <h2>Unidades del bloque</h2>
+            <Unidades unidades={bloque?.unidades} />
         </div>
+        
     )
 }

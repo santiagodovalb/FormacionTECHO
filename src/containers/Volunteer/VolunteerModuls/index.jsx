@@ -74,7 +74,7 @@ const VolunteerModuls = () => {
             </div>
             <div className="fs-4 my-3">
               <p>
-                <strong>PREGUNTA DEL BLOQUE</strong>
+                <strong>{bloque.pregunta}</strong>
               </p>
               <textarea name='contenido' onChange={handleChange}/>
               <button disabled={disabled} onClick={() => handleSubmit()} className="my-3 p-4 fs-3 button-style green">
