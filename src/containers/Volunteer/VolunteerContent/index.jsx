@@ -2,6 +2,8 @@ import React from "react";
 import Card from "../../../components/Card";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 import "./styles.css";
 
 const VolunteerContent = () => {
@@ -14,6 +16,21 @@ const VolunteerContent = () => {
   const bloquesDelUser = bloques.filter((bloque) =>
     bloque.roles.map((rol) => rol.id).includes(user.rolId)
   );
+
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 1
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1
+    }
+  };
 
   return (
     <>
