@@ -55,8 +55,8 @@ const Sede = () => {
     axios.put(`/api/users/${user.id}`, {sedeId: selectSede})
     .then(res => res.data)
     .then(user => {
-      console.log('USER', user[1][0])
-      dispatch(setUser(user[1][0]))})
+      console.log('USER', user)
+      dispatch(setUser(user))})
     .then(() => history.push('/user'))
     .catch(err => err)
   };

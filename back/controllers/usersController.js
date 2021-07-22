@@ -1,7 +1,7 @@
 const Users = require ("../models/users")
 const Roles = require ("../models/roles")
 const { Op } = require("sequelize");
-const { Entregas } = require("../models");
+const { Entregas, Sedes } = require("../models");
 
 const usersController = {
     findAll(req,res,next){
@@ -18,7 +18,7 @@ const usersController = {
     },
     findOne(req,res,next){
         Users.findByPk(req.params.id,{
-            include: [{model: Roles, as: 'rol'}]
+            include: [{model: Roles, as: 'rol'}, {model: Sedes, as: 'sede'}]
         })
 
         .then(user => res.status(200).json(user))
@@ -45,7 +45,13 @@ const usersController = {
             where:{id:req.params.id},
             returning:true,
         })
+        .then(user => {
+            return Users.findByPk(user[1][0].id,{
+                include: [{model: Roles, as: 'rol'}, {model: Sedes, as: 'sede'}]
+            })
+        })
         .then((user) => {
+            console.log(user)
             res.status(200).json(user)
         })
         .catch(next)

@@ -1,41 +1,36 @@
-import React from "react";
-import Sidebar from "../../../components/SideBar";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import "./styles.css"
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 
 const VolunteerProfile = () => {
 
-    const [rol, setRol] = useState({})
-    const [sede, setSede] = useState({})
     const user = useSelector(state => state.user)
-    
+    const history = useHistory();
 
-    useEffect(()=>{
-        if (user.sedeId) { 
-            axios.get(`/api/sedes/${user.sedeId}`)
-        .then(res => res.data)
-        .then((sede) => setSede(sede)) 
+    const handleClick = () => {
+        history.push('/sede')
     }
 
-         if (user.rolId) { 
-             axios.get(`/api/roles/${user.rolId}`)
-        .then(res => setRol(res.data))
-         }
-    },[user.rolId])
+    useEffect(() => {}, [user])
 
     return (
         <>
             <div>
                 <div className="volunteer_profile_div">
-                    <img src={user.img} alt="volunteer" />
-                    <h2>{user.full_name}</h2>
-                    <h5>Rol</h5>
-                    <p>{user.rolId ? rol.tipo : 'Por favor, pongase en contacto con su gestor para que se le asigne un rol'}</p>
-                    <h5>Sede</h5>
-                    <p>{sede.nombre ? sede.nombre : 'Debes elegir una sede'}</p>
+                    {console.log(user)}
+                    <h2>¡Bienvenido, {user.full_name}!</h2>
+                    {user.sedeId ? <h5>Tu sede es: {user.sede?.nombre}</h5> : <button onClick={handleClick}>Debes elegir una sede</button>}
+                    {user.rol?.tipo ? <h5>Tu rol es: {user.rol?.tipo}</h5> : <h5>Ponete en contacto con tu gestor para que te asigne un rol</h5>}
+                    <h6>¿Como funciona el sitio?</h6>
+                    <ul>
+                        <li>En mis bloques encontraras todos tus bloques de formacion</li>
+                        <li>Dentro de ellos, se encuentran los modulos correspondientes a cada uno</li>
+                        <li>Al finalizar un modulo, marcalo como completado</li>
+                        <li>Una vez completados todos, se te habilitara la entrega del bloque</li>
+                        <li>Para dar un modulo como finalizado, tenes que esperar a que tu gestor apruebe la entrega</li>
+                    </ul>
                 </div>
             </div>
         </>

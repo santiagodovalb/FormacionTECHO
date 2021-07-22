@@ -42,7 +42,10 @@ function App() {
     axios
       .get("/api/users/me")
       .then((res) => res.data)
-      .then((user) => dispatch(setUser(user)));
+      .then((user) => axios.get(`/api/users/${user.id}`))
+      .then(res => res.data)
+      .then(user => dispatch(setUser(user)))
+        
   }, [dispatch]);
 
   return (
