@@ -55,7 +55,7 @@ function App() {
       <div className='content'>
         <Route path="/sede" component={Sede} />
         <Route exact path="/user" component={VolunteerProfile} />
-        <Route path="/mis-bloques/:id" component={VolunteerModuls} />
+        <Route exact path="/mis-bloques/:id" component={VolunteerModuls} />
         <Route path="/mis-bloques" component={VolunteerContent} />
         <Route path="/mis-entregas" component={VolunteerEntregas} />
         <Route path="/bloque/:id" component={VolunteerModuls} />

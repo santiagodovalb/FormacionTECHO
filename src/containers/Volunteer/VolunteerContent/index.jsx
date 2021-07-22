@@ -33,7 +33,7 @@ const VolunteerContent = () => {
                     text: "Ver modulos",
                     styles: "btn btn-primary",
                   }}
-                  url={`${location}/${bloque.id}`}
+                  url={`bloque/${bloque.id}`}
                 />
               ))}
             </div>
@@ -52,7 +52,7 @@ const VolunteerContent = () => {
                         text: "Ver modulos",
                         styles: "btn btn-primary",
                       }}
-                      url={`${location}/${bloque.id}`}
+                      url={`bloque/${bloque.id}`}
                     />
                   )
               )}

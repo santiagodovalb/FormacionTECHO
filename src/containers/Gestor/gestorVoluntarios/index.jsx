@@ -17,7 +17,7 @@ function GestorVoluntarios () {
         axios.get(`/api/users/sede/${user.sedeId}`)
         .then(res => res.data)
         .then(users => setUsers(users.filter(userFilter=>userFilter.id !== user.id)))
-    }, [])
+    }, [user])
 
     const handleChange = (e) => {
         setRol(e.target.value)
@@ -26,7 +26,11 @@ function GestorVoluntarios () {
  
 
     const handleClick = (userId, rolId) => {
-        return axios.post('http://localhost:3001/api/roles/set/', {userId, rolId, user})
+        return axios.post('http://localhost:3001/api/roles/set/', {userId, rolId, user}).then(()=>{
+            axios.get(`/api/users/sede/${user.sedeId}`)
+            .then(res => res.data)
+            .then(users => setUsers(users.filter(userFilter=>userFilter.id !== user.id)))
+        })
     }
 
   
@@ -43,7 +47,7 @@ function GestorVoluntarios () {
             {users && users.map(user => {
                 return (
                     <div key={user.id}>
-                        <h2>Nombre: {user.full_name} Rol: {user.rolId}</h2>
+                        <h2>Nombre: {user.full_name} Rol: {user.rol && user.rol.tipo}</h2>
                         <label htmlFor='rol'>Seleccionar rol</label>
                         <select onChange={handleChange}>
                             <option>Seleccionar rol</option>
