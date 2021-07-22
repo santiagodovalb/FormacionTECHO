@@ -1,51 +1,56 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import "./style.css";
 import { useParams } from "react-router";
 import axios from "axios";
-import Unidades from './Unidades'
-import { useHistory } from 'react-router-dom'
-
+import Unidades from "./Unidades";
+import { useHistory } from "react-router-dom";
+import CanchaFutbol from "../../../assets/volunteer/CanchaFutbol.png";
 
 const VolunteerModuls = () => {
-
-  const [contenido, setContenido] = useState('')
-  const [checks, setChecks] = useState(0)
-  const [disabled, setDisabled] = useState(false)
-  const [bloque, setBloque] = useState({})
+  const [contenido, setContenido] = useState("");
+  const [checks, setChecks] = useState(0);
+  const [disabled, setDisabled] = useState(false);
+  const [bloque, setBloque] = useState({});
   const { id } = useParams();
-  const user = useSelector(state => state.user)
-  const history = useHistory()
+  const user = useSelector((state) => state.user);
+  const history = useHistory();
 
-  const completed = []
-  
+  const completed = [];
+
   useEffect(() => {
-    console.log('asd', checks)
-    axios.get(`/api/bloques/${id}`)
-    .then(res => res.data)
-    .then(bloque => {
-      for (let i = 0; i < bloque.unidades.length; i++) {
-        let status = localStorage.getItem(`check${bloque.unidades[i]?.id}`) === 'true' ? true : false
-        if (status === true) completed.push(status)
-      }
-      const status = completed.length === bloque.unidades.length ? false : true
-      setDisabled(status)
-      setBloque(bloque)})
-  }, [checks])
+    console.log("asd", checks);
+    axios
+      .get(`/api/bloques/${id}`)
+      .then((res) => res.data)
+      .then((bloque) => {
+        for (let i = 0; i < bloque.unidades.length; i++) {
+          let status =
+            localStorage.getItem(`check${bloque.unidades[i]?.id}`) === "true"
+              ? true
+              : false;
+          if (status === true) completed.push(status);
+        }
+        const status =
+          completed.length === bloque.unidades.length ? false : true;
+        setDisabled(status);
+        setBloque(bloque);
+      });
+  }, [checks]);
 
   const handleSubmit = () => {
-    axios.post('/api/entregas', {
-      contenido: contenido,
-      bloqueId: id,
-      userId: user.id
-    })
-    .then(() => history.push('/mis-entregas'))
-  }
+    axios
+      .post("/api/entregas", {
+        contenido: contenido,
+        bloqueId: id,
+        userId: user.id,
+      })
+      .then(() => history.push("/mis-entregas"));
+  };
 
   const handleChange = (e) => {
-    setContenido(e.target.value)
-  }
-
+    setContenido(e.target.value);
+  };
 
   return (
     <div>
@@ -56,28 +61,33 @@ const VolunteerModuls = () => {
           </h1>
         </div>
         <div className="row">
-          
-            <p className="m-5 fs-5 text-justify-2">
-              {bloque.descripcion}
-            </p>
-          
+          <div className="col m-5">
+            <img src={CanchaFutbol} className="mx-5 img-style" alt="block" />
+            <p className="m-5 fs-5 text-justify-2">{bloque.descripcion}</p>
+          </div>
           <div className="col m-5 px-5 text-justify-2">
             <div className=" fs-4">
               <p>
-                <strong>
-                  Modulos
-                </strong>
+                <strong>Modulos</strong>
               </p>
             </div>
             <div className="d-flex flex-column mb-5">
-              <Unidades setChecks={() => setChecks(checks + 1)}/>
+              <Unidades setChecks={() => setChecks(checks + 1)} />
             </div>
             <div className="fs-4 my-3">
               <p>
-                <strong>PREGUNTA DEL BLOQUE</strong>
+                <strong>¿Como fue tu experiencia?</strong>
               </p>
-              <textarea name='contenido' onChange={handleChange}/>
-              <button disabled={disabled} onClick={() => handleSubmit()} className="my-3 p-4 fs-3 button-style green">
+              <textarea
+                class="form-control"
+                name="contenido"
+                onChange={handleChange}
+              />
+              <button
+                disabled={disabled}
+                onClick={() => handleSubmit()}
+                className="my-3 p-4 fs-3 button-style green"
+              >
                 Entregar
               </button>
             </div>
