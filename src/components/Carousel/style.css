@@ -1,0 +1,31 @@
+.uncheck-style,
+.check-style {
+  color: white;
+  font-size: 40px;
+}
+.check-style,
+.uncheck-style:hover,
+.check-style:hover {
+  color: #0092dd;
+}
+
+.cards-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  background-color: #0092dd;
+  width: 5vh;
+  height: 5vh;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.carousel-indicators {
+  background-color: #4c9de0;
+  margin: 0 40%;
+  border-radius: 5px;
+  padding: 5px;
+}
