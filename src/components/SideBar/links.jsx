@@ -1,95 +1,37 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { listNavbars } from "./../../utils";
 
-function Links () {
+function Links() {
+  const user = useSelector((state) => state.user);
+  const location = useLocation().pathname;
 
-    const user = useSelector(state => state.user)
+  const findNavbar = (array, key) =>
+    array.find((navbar) => navbar.rolId === key);
 
-    return (
-        <div>
-        
-        {!user.rolId && ''}
-
-        {user.rolId === 1 &&
-
-        <div>
-        <Link to={`/admin-crear-gestor`}>
-        <h6 className="nav-link link-light">
-            Crear Gestor
-        </h6>
-
-        <Link to={`/admin-bloques`}>
-        <h6 className="nav-link link-light">
-            Gestionar Bloques
-        </h6>
+  const buildNavbar = (array, rolId) => {
+    const navbar = findNavbar(array, rolId);
+    return navbar.list.map((ele) => (
+      <li className="nav-item">
+        <Link to={`${ele.link}`} key={rolId}>
+          <strong>
+            <h6
+              className={
+                ele.link === location
+                  ? `nav-link link-light text-decoration-underline fs-4`
+                  : `nav-link link-light fs-5`
+              }
+            >
+              {ele.name}
+            </h6>
+          </strong>
         </Link>
+      </li>
+    ));
+  };
 
-        </Link>
-
-        <Link to={`/admin-usuarios`}>
-        <h6 className="nav-link link-light">
-            Gestionar Usuarios
-        </h6>
-        </Link>
-
-        <Link to={`/admin-sedes`}>
-        <h6 className="nav-link link-light">
-            Gestionar Sedes
-        </h6>
-        </Link>
-
-        <Link to={`/admin-roles`}>
-        <h6 className="nav-link link-light">
-            Gestionar Roles
-        </h6>
-        </Link>
-        </div>
-        }
-
-        {user.rolId === 2 && 
-
-        <div>
-            
-        <Link to={`/voluntarios`}>
-        <h6 className="nav-link link-light">
-            Gestionar voluntarios
-        </h6>
-        </Link>
-            
-        <Link to={`/entregas}`}>
-        <h6 className="nav-link link-light">
-            Gestionar entregas
-        </h6>
-        </Link>
-        </div>
-
-        }
-
-        {(user.rolId && user.rolId > 2 || user.rolId === null ) && 
-        <div>
-        
-        <Link to={`/mis-bloques`}>
-        <h6 className="nav-link link-light">
-            Mis Bloques
-        </h6>
-        </Link>
-
-        <Link to={`/mis-entregas`}>
-        <h6 className="nav-link link-light">
-            Mis Entregas
-        </h6>
-        </Link>
-
-        <Link to={`/sede`}>
-        <h6 className="nav-link link-light">
-            Elegir o modificar sede
-        </h6>
-        </Link>
-        </div>
-        }
-        </div>
-    )
+  return <div>{user.rolId && buildNavbar(listNavbars, user.rolId)} </div>;
 }
 
-export default Links
+export default Links;

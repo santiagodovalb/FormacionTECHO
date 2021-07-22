@@ -22,19 +22,21 @@ const VolunteerContent = () => {
           <h2>Bloques minimos</h2>
           <div className="content_div">
             <div className="single_content_div">
-              {bloquesDelUser.map((bloque) => (
-                bloque.minimo &&
-                <Card
-                  img="https://www.telediariodigital.net/wp-content/uploads/2014/09/art21-foto3.jpg"
-                  title={bloque.titulo}
-                  url={`/bloque/${bloque.id}`}
-                  button={{
-                    text: "Ver modulos",
-                    styles: "btn btn-primary",
-                  }}
-                  url={`${location}/${bloque.id}`}
-                />
-              ))}
+              {bloquesDelUser.map(
+                (bloque) =>
+                  bloque.minimo && (
+                    <Card
+                      img="https://www.telediariodigital.net/wp-content/uploads/2014/09/art21-foto3.jpg"
+                      title={bloque.titulo}
+                      url={`/bloque/${bloque.id}`}
+                      button={{
+                        text: "Ver modulos",
+                        styles: "button-style light-blue fs-4",
+                      }}
+                      url={`${location}/${bloque.id}`}
+                    />
+                  )
+              )}
             </div>
           </div>
           <h2>Bloques opcionales</h2>
@@ -48,7 +50,7 @@ const VolunteerContent = () => {
                       title={bloque.titulo}
                       button={{
                         text: "Ver modulos",
-                        styles: "btn btn-primary",
+                        styles: "button-style light-blue fs-4",
                       }}
                       url={`${location}/${bloque.id}`}
                     />
