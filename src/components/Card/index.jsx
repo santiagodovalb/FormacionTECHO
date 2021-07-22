@@ -1,10 +1,19 @@
 import React, { useState } from "react";
 import "./styles.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
-const Card = ({ keyU, img, title, button, icon, setState, stateIcon, url }) => {
+const Card = ({ keyU, img, title, button, icon, setState, stateIcon, url, bloque }) => {
+
+  const location = useLocation().pathname
+  const completed = []
+
+  for (let i = 0; i < bloque?.unidades?.length; i++) {
+    let status = localStorage.getItem(`check${bloque?.unidades[i]?.id}`) === 'true' ? true : false
+    if (status === true) completed.push(status)
+  }
   return (
     <div className="col-auto" key={keyU}>
+      {console.log(completed)}
       <div
         className="card position-relative"
         style={{ width: "20rem", borderRadius: "10px" }}
@@ -29,7 +38,7 @@ const Card = ({ keyU, img, title, button, icon, setState, stateIcon, url }) => {
           ""
         )}
 
-        <img src={img} alt="" />
+        {location === '/mis-bloques' ? <span>Modulos completados: {completed.length}/{bloque?.unidades.length}</span> : <img src={img} />}
         <Link to={url}>
           <div
             className={` ${button.styles} p-3 text-center`}

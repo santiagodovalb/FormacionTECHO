@@ -57,6 +57,8 @@ export default function CrearBloque() {
                     <input type='text' name='titulo' onChange={handleChange}></input>
                 <label htmlFor='descripcion'>Descripcion</label>
                     <input type='text' name='descripcion' onChange={handleChange}></input>
+                    <label htmlFor='pregunta'>Pregunta</label>
+                    <input type='text' name='pregunta' onChange={handleChange}></input>    
                 <p>Es bloque minimo?</p>
                     <label htmlFor='si'>Si</label>
                     <input type="radio" name='minimo' id='si' onChange={handleMinimo}/>

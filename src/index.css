@@ -23,6 +23,14 @@
   color: white;
 }
 
+.button-style:disabled {
+  background-color: grey;
+}
+
+.button-style:hover:disabled {
+  background-color: grey;
+}
+
 .light-blue {
   background-color: #0092dd;
 }

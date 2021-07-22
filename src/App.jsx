@@ -28,6 +28,7 @@ import AdminRoles from "./containers/Admin/AdminRoles";
 import VolunteerEntregas from "./containers/Volunteer/VolunteerEntregas";
 import GestorEntregas from "./containers/Gestor/GestorEntregas";
 import EntregaIndividual from "./containers/Gestor/EntregaIndividual";
+import "./App.css";
 
 function App() {
   const dispatch = useDispatch();
@@ -47,21 +48,23 @@ function App() {
   return (
     <div className="App">
       {!location.pathname.includes("login") && <Sidebar />}
+
       <Switch>
-        <Route exact path="/login" component={Login} />
         <Route exact path="/adminlogin" component={Login} />
+        <Route exact path="/login" component={Login} />
+      <div className='content'>
         <Route path="/sede" component={Sede} />
         <Route exact path="/user" component={VolunteerProfile} />
-        <Route path="/mis-bloques/:id" component={VolunteerModuls} />
+        <Route exact path="/mis-bloques/:id" component={VolunteerModuls} />
         <Route path="/mis-bloques" component={VolunteerContent} />
         <Route path="/mis-entregas" component={VolunteerEntregas} />
         <Route path="/bloque/:id" component={VolunteerModuls} />
         <Route path="/bloques" component={AdminContent} />
-        <Route path="/gestor-password" component={GestorContent} />
         <Route exact path="/gestor" component={GestorContent} />
         <Route path="/gestor/voluntarios" component={GestorVoluntarios} />
         <Route exact path="/gestor/entregas" component={GestorEntregas} />
         <Route exact path="/gestor/entregas/:id" component={EntregaIndividual} />
+        <Route path="/gestor-password" component={GestorContent} />
         <Route exact path="/admin-bloques" component={AdminBloques} />
         <Route path="/admin-bloques-crear" component={CrearBloque} />
         <Route path="/admin-bloques/:id" component={ModificarBloque} />
@@ -71,6 +74,7 @@ function App() {
         <Route path="/admin-usuarios/sede/:id" component={Users} />
         <Route path="/admin-crear-gestor" component={CrearGestor} />
         <Route path="/unauthorized" component={Unauthorized} />
+      </div>
         <Redirect from="*" to="/login" />
       </Switch>
     </div>

@@ -14,6 +14,9 @@ Bloques.init({
     },
     minimo: {
         type: S.BOOLEAN
+    },
+    pregunta:{
+        type: S.STRING,
     }
 }, { sequelize: db, timestamps: false, modelName: "bloques" })
 
