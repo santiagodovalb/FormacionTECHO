@@ -1,7 +1,7 @@
 const passport = require("passport");
 const session = require("express-session");
 const LocalStrategy = require("passport-local").Strategy;
-const { Users } = require("../models");
+const { Users, Sedes, Roles } = require("../models");
 
 module.exports = (app) => {
   app.use(session({ secret: "techo", resave: true, saveUninitialized: true }));
@@ -16,9 +16,8 @@ module.exports = (app) => {
         passwordField: "password",
       },
       function (email, password, done) {
-        console.log('PASSPORT')
         Users.findOne({
-          where: { email: email },
+          where: { email: email }
         })
           .then((user) => {
             if (!user) {

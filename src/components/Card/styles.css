@@ -2,6 +2,12 @@
   margin: 5px;
 }
 
+.circle {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
 .card:hover {
   transform: scale(1.05);
 }

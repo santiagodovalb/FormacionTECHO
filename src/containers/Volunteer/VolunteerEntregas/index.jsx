@@ -3,6 +3,8 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { Table } from "antd";
+import './index.css'
 
 export default function VolunteerEntregas() {
   const [entregas, setEntregas] = useState([]);
@@ -12,29 +14,50 @@ export default function VolunteerEntregas() {
     axios
       .get(`/api/entregas/user/${user.id}`)
       .then((res) => res.data)
-      .then((entregas) => setEntregas(entregas));
-  }, []);
+      .then((entregas) => {
+        setEntregas(entregas)});
+  }, [user]);
+
+  const dataSource = entregas.map((entrega) => {
+    return {
+      key: entrega.id,
+      bloque: entrega.bloque.titulo,
+      contenido: entrega.contenido,
+      estado: entrega.aprobado ? <p>Aprobado</p> : <p>Pendiente</p>
+    };
+  });
+
+  const columns = [
+    {
+      title: "Bloque",
+      dataIndex: "bloque",
+      key: "bloque",
+      width: 300
+    },
+    {
+      title: "Contenido",
+      dataIndex: "contenido",
+      key: "contenido",
+      width: 800
+    },
+    {
+      title: "Estado",
+      dataIndex: "estado",
+      key: "estado",
+      width: 150
+    },
+  ];
 
   return (
+    <>
     <div>
-        {console.log('ENTREGAS', entregas)}
+    <div className="volunteer_entregas_div">
       <h1>Mis entregas</h1>
-      <table>
-        <tr>
-          <th>Bloque</th>
-          <th>Contenido</th>
-          <th>Estado</th>
-        </tr>
-        {entregas.length  && entregas.map(entrega => {
-            return (
-                <tr>
-          <td>{entrega.bloque.titulo}</td>
-          <td>{entrega.contenido}</td>
-          <td>{entrega.aprobado ? 'Aprobada' : 'Pendiente'}</td>
-        </tr>
-            )
-        })}
-      </table>
+      <div className='table'>
+      <Table dataSource={dataSource} columns={columns} pagination={false} size='small' />
+      </div>
     </div>
+    </div>
+    </>
   );
 }

@@ -1,41 +1,33 @@
-import React from "react";
-import Sidebar from "../../../components/SideBar";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import "./styles.css"
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useHistory } from "react-router-dom";
+import Instructions from "./instructions";
+import {Button} from 'antd'
 
 
 const VolunteerProfile = () => {
 
-    const [rol, setRol] = useState({})
-    const [sede, setSede] = useState({})
     const user = useSelector(state => state.user)
-    
+    const history = useHistory();
 
-    useEffect(()=>{
-        if (user.sedeId) { 
-            axios.get(`/api/sedes/${user.sedeId}`)
-        .then(res => res.data)
-        .then((sede) => setSede(sede)) 
+    const handleClick = () => {
+        history.push('/sede')
     }
 
-         if (user.rolId) { 
-             axios.get(`/api/roles/${user.rolId}`)
-        .then(res => setRol(res.data))
-         }
-    },[user.rolId])
+    useEffect(() => {}, [user])
 
     return (
         <>
             <div>
                 <div className="volunteer_profile_div">
-                    <img src={user.img} alt="volunteer" />
-                    <h2>{user.full_name}</h2>
-                    <h5>Rol</h5>
-                    <p>{user.rolId ? rol.tipo : 'Por favor, pongase en contacto con su gestor para que se le asigne un rol'}</p>
-                    <h5>Sede</h5>
-                    <p>{sede.nombre ? sede.nombre : 'Debes elegir una sede'}</p>
+                    <h2>¡Bienvenid@, {user.full_name}!</h2>
+                    {user.rolId > 1 ? user.sedeId ? <h5>Tu sede es: {user.sede?.nombre}</h5> : <Button type="primary" onClick={handleClick}>Debes elegir una sede</Button> : ''}
+                    {user.rol?.tipo ? <h5>Tu rol es: {user.rol?.tipo}</h5> : <h5>Ponete en contacto con tu gestor para que te asigne un rol</h5>}
+                    <div className="instructions">
+                    <h6>¿Cómo funciona el sitio?</h6>
+                    <Instructions />
+                    </div>
                 </div>
             </div>
         </>
