@@ -30,12 +30,11 @@ const VolunteerContent = () => {
                       bloque={bloque}
                       img="https://www.telediariodigital.net/wp-content/uploads/2014/09/art21-foto3.jpg"
                       title={bloque.titulo}
-                      url={`/bloque/${bloque.id}`}
                       button={{
                         text: "Ver modulos",
                         styles: "btn btn-primary",
                       }}
-                      url={`bloque/${bloque.id}`}
+                      url={`mis-bloques/${bloque.id}`}
                     />
                   )
               )}
@@ -56,7 +55,7 @@ const VolunteerContent = () => {
                         text: "Ver modulos",
                         styles: "button-style light-blue fs-4",
                       }}
-                      url={`bloque/${bloque.id}`}
+                      url={`mis-bloques/${bloque.id}`}
                     />
                   )
               )}

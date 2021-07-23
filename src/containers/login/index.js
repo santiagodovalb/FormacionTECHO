@@ -12,6 +12,7 @@ const Login = () => {
   const location = useLocation();
 
   return (
+    <div >
     <div
       className="wh-100 m-0 row justify-content-center align-items-center"
       style={sectionStyle}
@@ -24,6 +25,7 @@ const Login = () => {
         {location.pathname === "/adminlogin" && LoginAdmin()}
         {location.pathname === "/login" && LoginUser()} 
       </div>
+    </div>
     </div>
   );
 };

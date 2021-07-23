@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import { Table, Button } from 'antd'
 
 export default function GestorEntregas() {
   const [entregas, setEntregas] = useState();
@@ -13,34 +14,63 @@ export default function GestorEntregas() {
       .get(`/api/entregas/sede/${user.sedeId}`)
       .then((res) => res.data)
       .then((entregas) => setEntregas(entregas));
-  }, []);
+    }, [user]);
+    
+    const handleClick = (id) => {
+      history.push(`/gestor/entregas/${id}`)
+    }
+    
+    const date = (entrega) => {
+      let fecha = entrega.slice(0,10)
+      let fechaCorrecta = `${fecha.slice(8,10)}/${fecha.slice(5,7)}/${fecha.slice(0,4)}`
+      return fechaCorrecta
+    }
 
-  const handleClick = (id) => {
-    history.push(`/gestor/entregas/${id}`)
-  }
+  const dataSource = entregas?.map(entrega => {
+    return (
+      {
+        key: entrega.id,
+        voluntario: entrega.user.full_name,
+        bloque: entrega.bloque.titulo,
+        estado: entrega.aprobado ? 'Completado' : 'Pendiente',
+        fecha: date(entrega.updatedAt),
+      }
+    )
+  })
+
+  const columns = [
+    {
+      title: 'Voluntario',
+      dataIndex: 'voluntario',
+      key: 'voluntario'
+    },
+    {
+      title: 'Bloque',
+      dataIndex: 'bloque',
+      key: 'bloque'
+    },
+    {
+      title: 'Estado',
+      dataIndex: 'estado',
+      key: 'estado'
+    },
+    {
+      title: 'Fecha',
+      dataIndex: 'fecha',
+      key: 'fecha'
+    },
+    {
+      title: '',
+      key: 'ver',
+      render: (text, record) => (<Button type='button' onClick={() => handleClick(record.key)}>Ver mas</Button>)
+    },
+  ]
   
+
   return (
     <div>
       <h1>Entregas de voluntarios</h1>
-      <table>
-        <tr>
-          <th>Bloque</th>
-          <th>Contenido</th>
-          <th>Estado</th>
-          <th></th>
-        </tr>
-        {entregas &&
-          entregas.map((entrega) => {
-            return (
-              <tr >
-                <td>{entrega.bloque.titulo}</td>
-                <td>{entrega.contenido}</td>
-                <td>{entrega.aprobado ? "Aprobada" : "Pendiente"}</td>
-                <td><button type='button' onClick = {() => handleClick(entrega.id)}>Ver</button></td>
-              </tr>
-            );
-          })}
-      </table>
+      <Table dataSource={dataSource} columns={columns} pagination={false} />
     </div>
   );
 }

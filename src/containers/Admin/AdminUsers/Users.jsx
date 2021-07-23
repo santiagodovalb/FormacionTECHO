@@ -23,7 +23,10 @@ function Users () {
     }
 
     const handleClick = (userId, rolId) => {
-        return axios.post('http://localhost:3001/api/roles/set/', {userId, rolId, user})
+        axios.post('/api/roles/set/', {userId, rolId, user})
+        .then(() => axios.get(`/api/users/sede/${id}`))
+        .then(res => res.data)
+        .then(users => setUsers(users))
     }
 
     const handleDelete = (userId) => {

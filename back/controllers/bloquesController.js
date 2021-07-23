@@ -24,6 +24,11 @@ const bloquesController = {
       })
       .catch(next);
   },
+  findByRol(req, res, next) {
+    Bloques.findByRol(req.params.id)
+    .then(bloques => res.status(200).send(bloques))
+    .catch(next)
+  },
   createBloque(req, res, next) {
     const { titulo, descripcion, minimo, pregunta, rolesId } = req.body;
     Bloques.create({ titulo, descripcion, minimo, pregunta })
