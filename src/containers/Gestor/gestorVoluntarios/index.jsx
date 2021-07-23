@@ -10,7 +10,7 @@ function GestorVoluntarios () {
     const [rol, setRol] = useState(0);
     const [users, setUsers] = useState([])
     const user = useSelector(state => state.user)
-    const roles = useSelector(state=>state.roles.filter((rol)=> rol.id!==1))
+    const roles = useSelector(state=>state.roles.filter((rol)=> rol.id > 2))
     const history = useHistory();
 
     useEffect(() => {
@@ -26,7 +26,7 @@ function GestorVoluntarios () {
  
 
     const handleClick = (userId, rolId) => {
-        return axios.post('http://localhost:3001/api/roles/set/', {userId, rolId, user}).then(()=>{
+        axios.post('http://localhost:3001/api/roles/set/', {userId, rolId, user}).then(()=>{
             axios.get(`/api/users/sede/${user.sedeId}`)
             .then(res => res.data)
             .then(users => setUsers(users.filter(userFilter=>userFilter.id !== user.id)))

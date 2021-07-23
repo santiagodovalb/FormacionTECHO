@@ -21,7 +21,7 @@ function Instructions() {
       <div>
         <ul>
             <li>En ver voluntarios vas a poder ver todos los voluntarios correspondientes a tu sede y asignarles un rol.</li>
-            <li>En gestionar entregas, podrás ver todas las entregas de tus voluntarios y aprobarlas.</li>
+            <li>En gestionar entregas, podrás ver todas las entregas de tus voluntarios y completarlas.</li>
             <li>Podés cambiar tu contraseña haciendo click en "cambiar contraseña".</li>
         </ul>
       </div>}
@@ -32,7 +32,7 @@ function Instructions() {
                 <li>Dentro de ellos, se encuentran los módulos correspondientes a cada uno.</li>
                 <li>Al finalizar un módulo, marcalo como completado.</li>
                 <li>Una vez completados todos, se te habilitará la entrega del bloque.</li>
-                <li>Para dar un módulo como finalizado, tenés que esperar a que tu gestor apruebe la entrega.</li>
+                <li>Para dar un módulo como finalizado, tenés que esperar a que tu gestor complete la entrega.</li>
             </ul>
         </div> 
       )}
