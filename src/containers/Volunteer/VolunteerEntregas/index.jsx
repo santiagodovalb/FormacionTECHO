@@ -23,7 +23,7 @@ export default function VolunteerEntregas() {
       key: entrega.id,
       bloque: entrega.bloque.titulo,
       contenido: entrega.contenido,
-      estado: entrega.aprobado ? <p>Aprobado</p> : <p>Pendiente</p>
+      estado: entrega.aprobado ? <p>Completado</p> : <p>Pendiente</p>
     };
   });
 

@@ -8,6 +8,7 @@ import Checkbox from 'antd/lib/checkbox/Checkbox';
 export default function Unidades({ setChecks }) {
 
     const [unidades, setUnidades] = useState([])
+    // const [validateRead, setValidateRead] = useState(true)
     const { id } = useParams();
 
     
@@ -25,18 +26,22 @@ export default function Unidades({ setChecks }) {
         setChecks()
     }
 
+    const handleClick = (e) => {
+        localStorage.setItem(e.target.id, 'true')
+        setChecks()
+    }
+
     return (
         <div>
             {unidades.map(unidad => {
-                const id = `check${unidad.id}`
                 return (
                 <div>
                 <a href={`${unidad.link}`} target='_blank' className="modul_button">
-                    <button className="mb-3 mt-3 p-3 fs-3 button-style light-blue" id={`unidad${unidad.id}`}>
+                    <button className="mb-3 mt-3 p-3 fs-3 button-style light-blue" id={`unidad${unidad.id}`} onClick={handleClick}>
                     {unidad.titulo}
                     </button>
                 </a>
-                <Checkbox defaultChecked={localStorage.getItem(id) === 'true' ? true : false} onChange={handleChange} id={id}>Completado</Checkbox>
+                <Checkbox disabled={localStorage.getItem(`unidad${unidad.id}`) === 'true' ? false : true} defaultChecked={localStorage.getItem(`check${unidad.id}`) === 'true' ? true : false} onChange={handleChange} id={`check${unidad.id}`} >Completado</Checkbox>
                 </div>
                 )
             })}
