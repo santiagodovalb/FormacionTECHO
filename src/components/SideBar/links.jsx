@@ -6,6 +6,7 @@ import { MdLocationOn } from "react-icons/md";
 import {FaPen} from 'react-icons/fa';
 import {FaUsers} from 'react-icons/fa';
 import {FaEdit} from 'react-icons/fa';
+import {AiOutlineIdcard} from 'react-icons/ai';
 
 
 function Links () {
@@ -47,7 +48,7 @@ function Links () {
 
         <Link to={`/admin-roles`}>
         <h6 className="nav-link link-light">
-            Gestionar Roles
+            <AiOutlineIdcard /> Gestionar Roles
         </h6>
         </Link>
         </div>

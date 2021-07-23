@@ -16,9 +16,22 @@
 }
 
 .volunteer_profile_div h5 {
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .volunteer_profile_div p {
   margin-top: 5px;
+}
+
+.volunteer_profile_div h6 {
+  text-align: center;
+}
+
+.volunteer_profile_div .instructions {
+  margin-top: 150px;
+}
+
+.volunteer_profile_div ul {
+  margin-top: 20px;
+  list-style-type: square;
 }

@@ -1,10 +1,22 @@
 .change_password_div {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
 }
 
 .change_password_div h3 {
   margin-top: 50px;
+}
+
+.change_password_div form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: initial;
+  width: 100%;
+}
+
+.change_password_div label {
+  float: right;
 }

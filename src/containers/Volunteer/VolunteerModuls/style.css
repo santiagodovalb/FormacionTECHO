@@ -1,9 +1,18 @@
-.img-style {
+/* .img-style {
   border-radius: 20px;
   width: 600px;
   height: 400px;
+} */
+
+/* .text-justify-2 {
+  text-align: justify;
+} */
+
+.modul_question {
+  display: flex;
+  flex-direction: column;
 }
 
-.text-justify-2 {
-  text-align: justify;
+.modul_button {
+  margin-right: 25px;
 }

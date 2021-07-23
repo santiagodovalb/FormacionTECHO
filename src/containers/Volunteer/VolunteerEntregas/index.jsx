@@ -23,7 +23,7 @@ export default function VolunteerEntregas() {
       key: entrega.id,
       bloque: entrega.bloque.titulo,
       contenido: entrega.contenido,
-      estado: entrega.aprobado ? "Aprobada" : "Pendiente"
+      estado: entrega.aprobado ? <p>Aprobado</p> : <p>Pendiente</p>
     };
   });
 
@@ -49,11 +49,15 @@ export default function VolunteerEntregas() {
   ];
 
   return (
+    <>
     <div>
+    <div className="volunteer_entregas_div">
       <h1>Mis entregas</h1>
       <div className='table'>
       <Table dataSource={dataSource} columns={columns} pagination={false} size='small' />
       </div>
     </div>
+    </div>
+    </>
   );
 }

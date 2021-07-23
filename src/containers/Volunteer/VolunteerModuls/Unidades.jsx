@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useParams } from "react-router";
+import "./style.css"
 import Checkbox from 'antd/lib/checkbox/Checkbox';
 
 export default function Unidades({ setChecks }) {
@@ -30,7 +31,7 @@ export default function Unidades({ setChecks }) {
                 const id = `check${unidad.id}`
                 return (
                 <div>
-                <a href={`${unidad.link}`} target='_blank'>
+                <a href={`${unidad.link}`} target='_blank' className="modul_button">
                     <button className="mb-3 mt-3 p-3 fs-3 button-style light-blue" id={`unidad${unidad.id}`}>
                     {unidad.titulo}
                     </button>
