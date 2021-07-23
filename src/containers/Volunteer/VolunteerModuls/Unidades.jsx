@@ -1,50 +1,66 @@
-import React from 'react'
-import { useEffect, useState } from 'react'
-import axios from 'axios'
+import React from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import { useParams } from "react-router";
-import "./style.css"
-import Checkbox from 'antd/lib/checkbox/Checkbox';
+import Checkbox from "antd/lib/checkbox/Checkbox";
+import "./style.css";
 
 export default function Unidades({ setChecks }) {
+  const [unidades, setUnidades] = useState([]);
+  const { id } = useParams();
 
-    const [unidades, setUnidades] = useState([])
-    // const [validateRead, setValidateRead] = useState(true)
-    const { id } = useParams();
-
-    
-    useEffect(() => {
-        axios
+  useEffect(() => {
+    axios
       .get(`/api/unidades/bloque/${id}`)
       .then((res) => res.data)
-      .then((data) => setUnidades(data))
-    }, [])
+      .then((data) => setUnidades(data));
+  }, []);
 
-    const handleChange = (e) => {
-        console.log('click')
-        const status = e.target.checked
-        localStorage.setItem(e.target.id, status ? 'true' : 'false')
-        setChecks()
-    }
+  const handleChange = (e) => {
+    console.log("click");
+    const status = e.target.checked;
+    localStorage.setItem(e.target.id, status ? "true" : "false");
+    setChecks();
+  };
 
-    const handleClick = (e) => {
-        localStorage.setItem(e.target.id, 'true')
-        setChecks()
-    }
+  const handleClick = (e) => {
+    localStorage.setItem(e.target.id, "true");
+    setChecks();
+  };
 
-    return (
-        <div>
-            {unidades.map(unidad => {
-                return (
-                <div>
-                <a href={`${unidad.link}`} target='_blank' className="modul_button">
-                    <button className="mb-3 mt-3 p-3 fs-3 button-style light-blue" id={`unidad${unidad.id}`} onClick={handleClick}>
-                    {unidad.titulo}
-                    </button>
-                </a>
-                <Checkbox disabled={localStorage.getItem(`unidad${unidad.id}`) === 'true' ? false : true} defaultChecked={localStorage.getItem(`check${unidad.id}`) === 'true' ? true : false} onChange={handleChange} id={`check${unidad.id}`} >Completado</Checkbox>
-                </div>
-                )
-            })}
-        </div>
-    )
+  return (
+    <div>
+      {unidades.map((unidad) => {
+        return (
+          <div key={`unidad-${unidad.id}`}>
+            <a href={`${unidad.link}`} target="_blank" className="modul_button">
+              <button
+                className="mb-3 mt-3 p-3 fs-3 button-style light-blue"
+                id={`unidad${unidad.id}`}
+                onClick={handleClick}
+              >
+                {unidad.titulo}
+              </button>
+            </a>
+            <Checkbox
+              disabled={
+                localStorage.getItem(`unidad${unidad.id}`) === "true"
+                  ? false
+                  : true
+              }
+              defaultChecked={
+                localStorage.getItem(`check${unidad.id}`) === "true"
+                  ? true
+                  : false
+              }
+              onChange={handleChange}
+              id={`check${unidad.id}`}
+            >
+              Completado
+            </Checkbox>
+          </div>
+        );
+      })}
+    </div>
+  );
 }
