@@ -123,6 +123,7 @@ const seed = () => {
   console.log("SEED STARTING");
 
   Rol.map(async (rol) => {
+    console.log(rol)
     await Roles.create({ tipo: rol });
   });
 
