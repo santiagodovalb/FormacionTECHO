@@ -35,7 +35,7 @@ export const listNavbars = [
       { link: "/gestor/entregas", name: "Gestionar entregas", icon: <FaPen /> },
       {
         link: "/gestor/dashboard",
-        name: "Dashboard",
+        name: "Panel de sede",
         icon: <FaThList />,
       },
     ],
