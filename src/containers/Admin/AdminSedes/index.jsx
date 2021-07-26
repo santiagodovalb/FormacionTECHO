@@ -34,14 +34,10 @@ export default function AdminSedes() {
 
   };
 
- /*  const onFinish = (values) => {
-    console.log("Success:", values);
-  }; */
+
 
   const handleChange = (e) => {
-      console.log(e.target.value)
       setForm({ nombre: e.target.value });
-      console.log("FORM",form)
   };
 
   const toggleForm = () => {
