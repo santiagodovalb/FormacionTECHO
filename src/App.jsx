@@ -28,6 +28,7 @@ import AdminRoles from "./containers/Admin/AdminRoles";
 import VolunteerEntregas from "./containers/Volunteer/VolunteerEntregas";
 import GestorEntregas from "./containers/Gestor/GestorEntregas";
 import EntregaIndividual from "./containers/Gestor/EntregaIndividual";
+import Navbar from "./components/Navbar";
 import "./App.css";
 
 function App() {
@@ -50,6 +51,7 @@ function App() {
   return (
     <div className="App">
       {!location.pathname.includes("login") && <Sidebar />}
+      <Navbar />
 
       <Switch>
         <Route exact path="/adminlogin" component={Login} />
