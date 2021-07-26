@@ -22,20 +22,22 @@ const VolunteerContent = () => {
           <h2>Bloques minimos</h2>
           <div className="content_div">
             <div className="single_content_div">
-              {bloquesDelUser.map((bloque) => (
-                bloque.minimo &&
-                <Card
-                  bloque={bloque}
-                  img="https://www.telediariodigital.net/wp-content/uploads/2014/09/art21-foto3.jpg"
-                  title={bloque.titulo}
-                  url={`/bloque/${bloque.id}`}
-                  button={{
-                    text: "Ver modulos",
-                    styles: "btn btn-primary",
-                  }}
-                  url={`bloque/${bloque.id}`}
-                />
-              ))}
+              {bloquesDelUser.map(
+                (bloque) =>
+                  bloque.minimo && (
+                    <Card
+                      key={bloque.id}
+                      bloque={bloque}
+                      img="https://www.telediariodigital.net/wp-content/uploads/2014/09/art21-foto3.jpg"
+                      title={bloque.titulo}
+                      button={{
+                        text: "Ver modulos",
+                        styles: "btn btn-primary",
+                      }}
+                      url={`mis-bloques/${bloque.id}`}
+                    />
+                  )
+              )}
             </div>
           </div>
           <h2>Bloques opcionales</h2>
@@ -45,14 +47,15 @@ const VolunteerContent = () => {
                 (bloque) =>
                   !bloque.minimo && (
                     <Card
+                      key={bloque.id}
                       bloque={bloque}
                       img="https://www.telediariodigital.net/wp-content/uploads/2014/09/art21-foto3.jpg"
                       title={bloque.titulo}
                       button={{
                         text: "Ver modulos",
-                        styles: "btn btn-primary",
+                        styles: "button-style light-blue fs-4",
                       }}
-                      url={`bloque/${bloque.id}`}
+                      url={`mis-bloques/${bloque.id}`}
                     />
                   )
               )}

@@ -2,16 +2,16 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { setUser } from "../../redux/user";
-import axios from 'axios';
+import axios from "axios";
 import Card from "../../components/Card";
 import localPeru from "../../assets/sedes/lima-peru.png";
 import "./style.css";
 
 const Sede = () => {
-  const dispatch = useDispatch()
-  const history = useHistory()
-  const user = useSelector(state => state.user)
-  const sedesPrueba = useSelector(state=>state.sedes)
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const user = useSelector((state) => state.user);
+  const sedesPrueba = useSelector((state) => state.sedes);
   const [form, setForm] = useState({});
   const [sedes, setSedes] = useState([]);
   const [selectSede, setSelectSede] = useState("");
@@ -19,9 +19,9 @@ const Sede = () => {
     key: "",
     style: "btn bi bi-check-circle-fill check-style",
   });
-  
+
   useEffect(() => {
-    if(!sedes.length) setSedes([...sedesPrueba])
+    if (!sedes.length) setSedes([...sedesPrueba]);
     setStateIcon({
       ...stateIcon,
       key: selectSede,
@@ -38,7 +38,8 @@ const Sede = () => {
     if (form.search && form.search.length)
       setSedes(
         sedesPrueba.filter(
-          (sede) => sede.nombre.toLowerCase().indexOf(form.search.toLowerCase()) >= 0
+          (sede) =>
+            sede.nombre.toLowerCase().indexOf(form.search.toLowerCase()) >= 0
         )
       );
     else {
@@ -51,23 +52,25 @@ const Sede = () => {
   };
 
   const onSaveSede = () => {
-    console.log("Sede", selectSede);
-    axios.put(`/api/users/${user.id}`, {sedeId: selectSede})
-    .then(res => res.data)
-    .then(user => {
-      console.log('USER', user)
-      dispatch(setUser(user))})
-    .then(() => history.push('/user'))
-    .catch(err => err)
+    axios
+      .put(`/api/users/${user.id}`, { sedeId: selectSede })
+      .then((res) => {
+        return res.data
+      })
+      .then((user) => {
+        dispatch(setUser(user));
+        history.push("/user")
+      })
+      .catch((err) => err);
   };
 
   useEffect(() => {
-    if(!sedes.length) setSedes([...sedesPrueba])
+    if (!sedes.length) setSedes([...sedesPrueba]);
     setStateIcon({
       ...stateIcon,
       key: selectSede,
     });
-  }, [form, selectSede,sedes]);
+  }, [form, selectSede, sedes]);
 
   return (
     <div>
@@ -95,20 +98,22 @@ const Sede = () => {
           </form>
         </div>
         <div className="row justify-content-center align-items-center mt-5">
-          {sedes?.map((sede, index) => {  return(
-            
-            <Card
-              keyU={`${sede.id}`}
-              img={localPeru}
-              button={{
-                text: `${sede.nombre}`,
-                styles: "button-style light-blue fs-4",
-              }}
-              icon="btn bi bi-circle-fill uncheck-style"
-              setState={setSelectSede}
-              stateIcon={stateIcon}
-            />
-            )})}
+          {sedes?.map((sede, index) => {
+            return (
+              <Card
+                key={`${sede.id}`}
+                id={`${sede.id}`}
+                img={localPeru}
+                button={{
+                  text: `${sede.nombre}`,
+                  styles: "button-style light-blue fs-4",
+                }}
+                icon="btn bi bi-circle-fill uncheck-style"
+                setState={setSelectSede}
+                stateIcon={stateIcon}
+              />
+            );
+          })}
         </div>
         <div className="col-auto">
           <button
@@ -120,7 +125,7 @@ const Sede = () => {
         </div>
       </div>
     </div>
-        );
+  );
 };
 
 export default Sede;

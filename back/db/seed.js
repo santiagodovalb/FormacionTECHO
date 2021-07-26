@@ -1,25 +1,25 @@
 const { Roles, Sedes, Users, Bloques, Unidades } = require("../models");
 
 const Rol = [
-  {tipo: "Admin"},
-  {tipo: "Gestor"},
-  {tipo: "Referente Comunitario"},
-  {tipo: "Coordinación de comunidad"},
-  {tipo: "Implementacion de programas"},
+  { tipo: "Admin" },
+  { tipo: "Gestor" },
+  { tipo: "Referente Comunitario" },
+  { tipo: "Coordinación de comunidad" },
+  { tipo: "Implementacion de programas" },
 ];
 
 const Sede = [
-  "Buenos Aires La Plata",
-  "Buenos Aires Sur",
-  "Buenos Aires Oeste",
-  "Buenos Aires Norte",
-  "Neuquen / Rio Negro",
-  "Rosario",
-  "Cordoba",
-  "Salta",
-  "Tucuman",
-  "Corrientes / Chaco",
-  "Misiones",
+  { nombre: "Buenos Aires La Plata" },
+  { nombre: "Buenos Aires Sur" },
+  { nombre: "Buenos Aires Oeste" },
+  { nombre: "Buenos Aires Norte" },
+  { nombre: "Neuquen / Rio Negro" },
+  { nombre: "Rosario" },
+  { nombre: "Cordoba" },
+  { nombre: "Salta" },
+  { nombre: "Tucuman" },
+  { nombre: "Corrientes / Chaco" },
+  { nombre: "Misiones" },
 ];
 
 const BloquesSeed = [
@@ -29,7 +29,7 @@ const BloquesSeed = [
       "Marco general del trabajo en las comunidades, los distintas formas de llegar al territorio y que buscamos alcanzar como organización",
     roles: [3, 4, 5],
     minimo: true,
-    pregunta:"que comiste hoy ?"
+    pregunta: "que comiste hoy ?",
   },
 
   {
@@ -38,7 +38,7 @@ const BloquesSeed = [
       "Misión, visión, valores e historia de TECHO. ¿Que esperamos del voluntariado? ¿Que nos identifica?",
     roles: [3, 4, 5],
     minimo: true,
-    pregunta:"que merendaste hoy ?"
+    pregunta: "que merendaste hoy ?",
   },
 
   {
@@ -47,7 +47,7 @@ const BloquesSeed = [
       "Voluntariado y participación activa en TECHO, ¿quienes conformamos la organización? ¿como nos organizamos?",
     roles: [3, 4, 5],
     minimo: false,
-    pregunta:"que desayunaste hoy ?"
+    pregunta: "que desayunaste hoy ?",
   },
 
   {
@@ -56,7 +56,7 @@ const BloquesSeed = [
       "Descripciones generales de las responsabilidades del rol y que es lo que buscamos alcanzar",
     roles: [4],
     minimo: true,
-    pregunta:"que cenaste hoy ?"
+    pregunta: "que cenaste hoy ?",
   },
 
   {
@@ -65,7 +65,7 @@ const BloquesSeed = [
       "Problematica habitacional y como se relaciona con el habitat y el trabajo de TECHO en territorio.",
     roles: [4],
     minimo: true,
-    pregunta:"que amorzaste hoy ?"
+    pregunta: "que amorzaste hoy ?",
   },
 ];
 
@@ -124,9 +124,7 @@ const seed = () => {
 
   Roles.bulkCreate(Rol)
 
-  Sede.map(async (sede) => {
-    await Sedes.create({ nombre: sede });
-  });
+  Sedes.bulkCreate(Sede);
 
   BloquesSeed.map((bloqueCreado) => {
     Bloques.create({

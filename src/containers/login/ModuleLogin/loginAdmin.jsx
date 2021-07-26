@@ -33,15 +33,17 @@ const LoginAdmin = () => {
       axios.post("/api/users/login", form)
       .then(res => res.data)
       .then(user => {
+        return axios.get(`/api/users/${user.id}`)
+      })
+      .then(res => res.data)
+      .then(user => {
         dispatch(setUser(user))
         message.success('Logged in')
-        return user
-        })
-        .then((user) => history.push(`/user/`))
+        history.push(`/user/`)
+      })
       .catch(err => {
         message.error('Bad credentials')
         return err
-      
       })
       
     }};
