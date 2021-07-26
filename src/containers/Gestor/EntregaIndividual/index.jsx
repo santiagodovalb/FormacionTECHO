@@ -24,6 +24,7 @@ export default function EntregaIndividual() {
     return (
         <div>
             <h1>Voluntario: {entrega?.user.full_name}</h1>
+            <h1>Mail: {entrega?.user.email}</h1>
             <h1>Bloque: {entrega?.bloque.titulo}</h1>
             <h1>Pregunta del bloque: {entrega?.bloque.pregunta}</h1>
             <h1>Contenido: {entrega?.contenido}</h1>
