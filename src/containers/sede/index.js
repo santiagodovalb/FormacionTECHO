@@ -57,10 +57,9 @@ const Sede = () => {
       .put(`/api/users/${user.id}`, { sedeId: selectSede })
       .then((res) => res.data)
       .then((user) => {
-        console.log("USER", user[1][0]);
-        dispatch(setUser(user[1][0]));
+        dispatch(setUser(user));
+        history.push("/user")
       })
-      .then(() => history.push("/user"))
       .catch((err) => err);
   };
 

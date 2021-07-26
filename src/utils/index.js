@@ -30,11 +30,11 @@ export const listNavbars = [
     rolId: 2,
     list: [
       {
-        link: "/voluntarios",
+        link: "/gestor/voluntarios",
         name: "Gestionar voluntarios",
         icon: <FaUsers />,
       },
-      { link: "/entregas", name: "Gestionar entregas", icon: <FaPen /> },
+      { link: "/gestor/entregas", name: "Gestionar entregas", icon: <FaPen /> },
     ],
   },
   {
