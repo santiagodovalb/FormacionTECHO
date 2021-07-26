@@ -1,11 +1,11 @@
 const { Roles, Sedes, Users, Bloques, Unidades } = require("../models");
 
 const Rol = [
-  "Admin",
-  "Gestor",
-  "Referente Comunitario",
-  "Coordinación de comunidad",
-  "Implementacion de programas",
+  {tipo: "Admin"},
+  {tipo: "Gestor"},
+  {tipo: "Referente Comunitario"},
+  {tipo: "Coordinación de comunidad"},
+  {tipo: "Implementacion de programas"},
 ];
 
 const Sede = [
@@ -122,9 +122,7 @@ const unidades = [
 const seed = () => {
   console.log("SEED STARTING");
 
-  Rol.map(async (rol) => {
-    await Roles.create({ tipo: rol });
-  });
+  Roles.bulkCreate(Rol)
 
   Sede.map(async (sede) => {
     await Sedes.create({ nombre: sede });

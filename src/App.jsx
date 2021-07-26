@@ -44,7 +44,8 @@ function App() {
       .then((res) => res.data)
       .then((user) => axios.get(`/api/users/${user.id}`))
       .then(res => res.data)
-      .then(user => dispatch(setUser(user)))
+      .then(user => {
+        dispatch(setUser(user))})
         
   }, [dispatch]);
 
@@ -55,7 +56,6 @@ function App() {
       <Switch>
         <Route exact path="/adminlogin" component={Login} />
         <Route exact path="/login" component={Login} />
-      <div className='content'>
         <Route path="/sede" component={Sede} />
         <Route exact path="/user" component={VolunteerProfile} />
         <Route exact path="/mis-bloques/:id" component={VolunteerModuls} />
@@ -77,7 +77,6 @@ function App() {
         <Route path="/admin-usuarios/sede/:id" component={Users} />
         <Route path="/admin-crear-gestor" component={CrearGestor} />
         <Route path="/unauthorized" component={Unauthorized} />
-      </div>
         <Redirect from="*" to="/login" />
       </Switch>
     </div>
