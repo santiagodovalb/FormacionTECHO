@@ -52,10 +52,11 @@ const Sede = () => {
   };
 
   const onSaveSede = () => {
-    console.log("Sede", selectSede);
     axios
       .put(`/api/users/${user.id}`, { sedeId: selectSede })
-      .then((res) => res.data)
+      .then((res) => {
+        return res.data
+      })
       .then((user) => {
         dispatch(setUser(user));
         history.push("/user")

@@ -34,6 +34,11 @@ export const listNavbars = [
         name: "Gestionar voluntarios",
         icon: <FaUsers />,
       },
+      {
+        link: "/gestor/dashboard",
+        name: "Dashboard",
+        icon: <FaUsers />,
+      },
       { link: "/gestor/entregas", name: "Gestionar entregas", icon: <FaPen /> },
     ],
   },

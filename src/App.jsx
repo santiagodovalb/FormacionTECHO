@@ -29,6 +29,7 @@ import VolunteerEntregas from "./containers/Volunteer/VolunteerEntregas";
 import GestorEntregas from "./containers/Gestor/GestorEntregas";
 import EntregaIndividual from "./containers/Gestor/EntregaIndividual";
 import "./App.css";
+import DashboardGestor from "./containers/Gestor/DashboardGestor";
 
 function App() {
   const dispatch = useDispatch();
@@ -64,6 +65,7 @@ function App() {
           <Route exact path="/gestor" component={GestorContent} />
           <Route path="/gestor/voluntarios" component={GestorVoluntarios} />
           <Route exact path="/gestor/entregas" component={GestorEntregas} />
+          <Route path='/gestor/dashboard' component={DashboardGestor} />
           <Route
             exact
             path="/gestor/entregas/:id"

@@ -17,6 +17,7 @@ Roles.belongsToMany(Bloques,{through:"bloques_rol"})
 
 Entregas.belongsTo(Bloques, {as: 'bloque'}, {foreignKey: 'bloqueID'})
 
+Users.hasMany(Entregas, {as: 'entregas'})
 Entregas.belongsTo(Users, {as: 'user'}, {foreignKey: 'userID'})
 
 module.exports = {Bloques, Roles, Sedes, Users, Entregas, Unidades}
