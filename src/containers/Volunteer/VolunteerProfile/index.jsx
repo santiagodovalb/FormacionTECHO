@@ -19,17 +19,17 @@ const VolunteerProfile = () => {
   return (
     <>
       <div>
+        {console.log(user)}
         <div className="volunteer_profile_div">
-          {console.log("asd", user)}
           <h2>¡Bienvenid@, {user.full_name}!</h2>
-          {
-            /* user.rolId > 1 ? */ user.sedeId ? (
-              <h5>Tu sede es: {user.sede?.nombre}</h5>
-            ) : (
+
+          {user.rolId === 2 && (user.sedeId ? <h5>Tu sede es: {user.sede?.nombre}</h5> : <h5>El admin debe asignarte una sede</h5>)}
+
+          {(user.rolId === null || user.rolId > 2) && (user.sedeId ? (<h5>Tu sede es: {user.sede?.nombre}</h5>) : (
               <Button type="primary" onClick={handleClick}>
                 Debes elegir una sede
               </Button>
-            ) /* : '' */
+            ))
           }
           {user.rol?.tipo ? (
             <h5>Tu rol es: {user.rol?.tipo}</h5>

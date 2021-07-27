@@ -62,7 +62,6 @@ const VolunteerModuls = () => {
         </div>
         <div className="row">
           <div className="col m-5">
-            <img src={CanchaFutbol} className="mx-5 img-style" alt="block" />
             <p className="m-5 fs-5 text-justify-2">{bloque.descripcion}</p>
           </div>
           <div className="col m-5 px-5 text-justify-2">

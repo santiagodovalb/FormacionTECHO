@@ -1,18 +1,21 @@
-.admin_entregas {
+.admin {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.admin_entregas h1 {
+
+.admin h1 {
   text-align: center;
   margin-top: 50px;
 }
 
-.admin_entregas_input {
+.admin_input {
     margin-left: 50px;
+    
 }
 
-.admin_entregas_check {
+.admin_check {
     margin-right: 20px;
 }
+

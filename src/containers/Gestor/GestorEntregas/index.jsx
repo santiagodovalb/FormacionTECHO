@@ -40,24 +40,48 @@ export default function GestorEntregas() {
 
   const columns = [
     {
+    title: "Voluntario",
+    render: (record) => (
+      <React.Fragment>
+        {record.voluntario}
+        <hr />
+        {record.estado}
+      </React.Fragment>
+    ),
+    responsive: ["xs"]
+    },
+    {
+      title: "Bloque",
+      render: (record) => (
+        <React.Fragment>
+          {record.bloque}
+        </React.Fragment>
+      ),
+      responsive: ["xs"]
+      },
+    {
       title: 'Voluntario',
       dataIndex: 'voluntario',
-      key: 'voluntario'
+      key: 'voluntario',
+      responsive: ["sm"],
     },
     {
       title: 'Bloque',
       dataIndex: 'bloque',
-      key: 'bloque'
+      key: 'bloque',
+      responsive: ["sm"],
     },
     {
       title: 'Estado',
       dataIndex: 'estado',
-      key: 'estado'
+      key: 'estado',
+      responsive: ["sm"],
     },
     {
       title: 'Fecha',
       dataIndex: 'fecha',
-      key: 'fecha'
+      key: 'fecha',
+      responsive: ["sm"],
     },
     {
       title: '',

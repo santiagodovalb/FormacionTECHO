@@ -58,6 +58,7 @@ const GestorContent = () => {
   return (
     <>
       <div className="change_password_div">
+      <div className="row justify-content-center align-items-center">
         <h3>Cambiar contraseña</h3>
         <Form 
               {...layout}
@@ -108,17 +109,13 @@ const GestorContent = () => {
             <Input.Password />
           </Form.Item>
 
-          <Form.Item
-            wrapperCol={{
-              offset: 8,
-              span: 16,
-            }}
-          >
+          <Form.Item>
             <Button type="primary" htmlType="submit">
               Cambiar
             </Button>
           </Form.Item>
         </Form>
+        </div>
       </div>
     </>
   );

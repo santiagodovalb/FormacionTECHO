@@ -1,7 +1,7 @@
 const Users = require ("../models/users")
 const Roles = require ("../models/roles")
 const { Op } = require("sequelize");
-const { Entregas, Sedes } = require("../models");
+const { Entregas, Sedes, Bloques } = require("../models");
 
 const usersController = {
     findAll(req,res,next){
@@ -27,7 +27,7 @@ const usersController = {
     findBySede(req, res, next) {
         const sedeId = req.params.id
         Users.findAll({
-            include: [{model: Roles, as: 'rol'}],
+            include: [{model: Roles, as: 'rol'}, {model: Entregas, as: 'entregas', include: [{model: Bloques, as: 'bloque'}]}],
             where: {
                 sedeId: sedeId
             }

@@ -61,7 +61,7 @@ const Sidebar = () => {
         )}
         <Link to="/login">
           {" "}
-          <button className="btn btn-secondary" onClick={handleLogout}>
+          <button  onClick={handleLogout}>
             {" "}
             Cerrar sesion
           </button>

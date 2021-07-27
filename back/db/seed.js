@@ -122,7 +122,7 @@ const unidades = [
 const seed = () => {
   console.log("SEED STARTING");
 
-  Roles.bulkCreate(Rol);
+  Roles.bulkCreate(Rol)
 
   Sedes.bulkCreate(Sede);
 

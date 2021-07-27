@@ -1,33 +1,39 @@
 import React, { useEffect, useState} from 'react';
 import { useParams, useHistory } from 'react-router-dom'
+import { Form, Input, message } from "antd";
+import "./index.css";
 import axios from 'axios'
 
-export default function AdminUnidades ( { bloque }) {
+export default function AdminUnidades ( { forceRender, bloque }) {
 
     const { id } = useParams();
     const [form, setForm] = useState({bloqueId: bloque.id})
     const history = useHistory();
+
 
     const handleChange = (e) => {
         setForm({...form, [e.target.name]: e.target.value})
     }
 
     const handleSubmit = (e) => {
-        e.preventDefault();
         axios.post('/api/unidades', form)
-        .then(() => history.push('/admin-bloques'))
+        .then(() => forceRender())
     }
 
     return (
         <div>
             <h1>Agregar unidad a {bloque?.titulo}</h1>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor='titulo'>Titulo</label>
-                <input type='text' onChange={handleChange} name='titulo' />
-                <label htmlFor='link'>Link</label>
-                <input type='text' onChange={handleChange} name='link' />
-                <button type='submit'>Agregar unidad</button>
-            </form>
+            <Form onFinish={handleSubmit}>
+                <Form.Item label="Titulo">
+                    <Input type="text" onChange={handleChange} name="titulo"></Input>
+                </Form.Item>
+                <Form.Item  label="Link">
+                    <Input type="text" onChange={handleChange} name="link"></Input>
+                </Form.Item>
+                <div className="admin_unidades">
+                <button type='submit' className="mb-3 mt-3 p-3 fs-3 button-style light-blue">Agregar unidad</button>
+                </div>
+            </Form>
         </div>
 
     )
