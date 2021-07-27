@@ -4,7 +4,7 @@ import { Form, Input, message } from "antd";
 import "./index.css";
 import axios from 'axios'
 
-export default function AdminUnidades ( { bloque }) {
+export default function AdminUnidades ( { forceRender, bloque }) {
 
     const { id } = useParams();
     const [form, setForm] = useState({bloqueId: bloque.id})
@@ -17,7 +17,7 @@ export default function AdminUnidades ( { bloque }) {
 
     const handleSubmit = (e) => {
         axios.post('/api/unidades', form)
-        .then(() => history.push("/admin-bloques"))
+        .then(() => forceRender())
     }
 
     return (

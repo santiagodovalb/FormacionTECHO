@@ -10,6 +10,7 @@ import Unidades from "./Unidades.jsx";
 const { TextArea } = Input;
 
 export default function ModificarBloque() {
+  const [count, setCount] = useState(0);
   const [bloque, setBloque] = useState();
   const [showForm, setShowForm] = useState(false);
   const [form, setForm] = useState({ bloque });
@@ -43,7 +44,7 @@ export default function ModificarBloque() {
         document.getElementById("minimoSi").checked = bloque.minimo && "true";
         document.getElementById("minimoNo").checked = !bloque.minimo && "true";
       });
-  }, [showForm]);
+  }, [showForm, count]);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -116,6 +117,10 @@ export default function ModificarBloque() {
         <h1>No autorizado</h1>
       </>
     );
+  }
+
+  const forceRender = () => {
+    setCount(count + 1)
   }
 
   return (
@@ -235,12 +240,12 @@ export default function ModificarBloque() {
         </Form>
       )}
       <div className="admin">
-        {showForm && <AdminUnidades bloque={bloque} />}
+        {showForm && <AdminUnidades forceRender={forceRender} bloque={bloque} />}
         <br />
         <h1>Unidades del bloque</h1>
         <br />
       </div>
-      <Unidades unidades={bloque?.unidades} />
+      <Unidades forceRender={forceRender} unidades={bloque?.unidades} />
     </div>
   );
 }

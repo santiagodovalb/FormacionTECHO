@@ -52,7 +52,6 @@ const entregasController = {
     try {
 
     if(currentEntrega){ 
-      console.log('ENTREGA', currentEntrega)
       currentEntrega.update({ contenido, aprobado: false });
       let gestor =  await Users.findOne({where: {sedeId: currentEntrega.user.sedeId, rolId: 2}})
       await sendNewEntrega(gestor, currentEntrega)
@@ -62,7 +61,6 @@ const entregasController = {
       currentEntrega.setUser(userId)
       currentEntrega.setBloque(bloqueId)
       let entregaInclude = await Entregas.findOne({where: {id: currentEntrega.id}, include: [{model: Users, as: 'user'}, {model: Bloques, as: 'bloque'}]})
-      console.log('CONINCLUDE', entregaInclude)
       let gestor =  await Users.findOne({where: {sedeId: entregaInclude.user.sedeId, rolId: 2}})
       await sendNewEntrega(gestor, entregaInclude)
     }

@@ -4,7 +4,7 @@ import { Form, Input, message } from "antd";
 import axios from "axios";
 import Swal from 'sweetalert2'
 
-export default function Unidades({ unidades }) {
+export default function Unidades({ forceRender, unidades }) {
   const [form, setForm] = useState({});
   const history = useHistory();
 
@@ -52,7 +52,7 @@ export default function Unidades({ unidades }) {
         )
         axios
           .delete(`/api/unidades/${id}`)
-          .then(() => history.push("/admin-bloques"));
+          .then(() => forceRender());
       } else if (
         result.dismiss === Swal.DismissReason.cancel
       ) {
@@ -80,6 +80,7 @@ export default function Unidades({ unidades }) {
             </button>
               </div>
             <Form
+              style={{display: 'none'}}
               labelCol={{
                 span: 5,
               }}
