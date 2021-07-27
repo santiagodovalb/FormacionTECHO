@@ -19,8 +19,8 @@ export default function Sedes() {
       document.getElementById(id).style.display === "block" ? "none" : "block";
   };
 
-  const handleSubmit = (id) => {
-      console.log("SUBMIT?")
+  const handleSubmit = (e, id) => {
+      e.preventDefault()
     axios
       .post(`/api/sedes/${id}`, form)
       .then((res) => res.data)
@@ -71,7 +71,7 @@ export default function Sedes() {
           >
             Modificar sede
           </Button>
-          <form onSubmit={() => handleSubmit(record.key)} id={`sedeForm${record.key}`} style={{display: 'none'}}>
+          <form onSubmit={(e) => handleSubmit(e, record.key)} id={`sedeForm${record.key}`} style={{display: 'none'}}>
                             <label htmlFor='nombre'>Nombre</label>
                             <input onChange={handleChange} type='text' name='nombre' placeholder={record.sede}></input>
                             <button type='submit'>Confirmar cambios</button>
