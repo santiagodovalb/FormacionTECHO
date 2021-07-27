@@ -1,25 +1,28 @@
-import React from 'react';
-import ListaSedes from './ListaSedes';
-import { useHistory } from 'react-router'
-import { useSelector } from 'react-redux';
+import React from "react";
+import ListaSedes from "./ListaSedes";
+import { useHistory } from "react-router";
+import { useSelector } from "react-redux";
+import "./index.css";
 
-function AdminUsers () {
+function AdminUsers() {
+  const history = useHistory();
+  const user = useSelector((state) => state.user);
 
-    const history = useHistory()
-    const user = useSelector(state => state.user)
-
-    if (user.rolId && user.rolId !== 1) {
-        history.push("/unauthorized");
-        return <><h1>No autorizado</h1></>;
-      }
-
+  if (user.rolId && user.rolId !== 1) {
+    history.push("/unauthorized");
     return (
-        <div>
-            
-            <h2>Acceder a una sede para ver sus voluntarios y gestores</h2>
-            <ListaSedes />
-        </div>    
-    )
+      <>
+        <h1>No autorizado</h1>
+      </>
+    );
+  }
+
+  return (
+    <div className="admin">
+      <h1>Acceder a una sede para ver sus voluntarios y gestores</h1>
+      <ListaSedes />
+    </div>
+  );
 }
 
-export default AdminUsers
+export default AdminUsers;
