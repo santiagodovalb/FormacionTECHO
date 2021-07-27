@@ -20,7 +20,6 @@ export default function Sedes() {
   };
 
   const handleSubmit = (id) => {
-      console.log("SUBMIT?")
     axios
       .post(`/api/sedes/${id}`, form)
       .then((res) => res.data)
