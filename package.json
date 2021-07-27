@@ -42,6 +42,7 @@
     "redux": "^4.1.0",
     "redux-logger": "^3.0.6",
     "sequelize": "^6.6.5",
+    "sweetalert2": "^11.0.20",
     "validator": "^13.6.0",
     "volleyball": "^1.5.1",
     "web-vitals": "^1.1.2"

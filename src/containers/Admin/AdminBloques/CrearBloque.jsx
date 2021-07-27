@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Form, Input, Radio, Checkbox } from "antd";
+import { Form, Input, Radio } from "antd";
 import { getBloques } from "../../../redux/bloques";
 import "antd/dist/antd.css";
 import "./index.css";
@@ -50,7 +50,6 @@ export default function CrearBloque() {
   }
 
   const handleSubmit = (e) => {
-    //e.preventDefault();
     axios.post("/api/bloques", form).then((res) => {
       dispatch(getBloques());
       history.push("/admin-bloques");
@@ -58,8 +57,8 @@ export default function CrearBloque() {
   };
 
   return (
-    <div>
-      <div className="admin_entregas">
+    <>
+      <div className="admin">
         <h1>Crear nuevo bloque de formación</h1>
       </div>
       <Form
@@ -72,7 +71,7 @@ export default function CrearBloque() {
         onFinish={handleSubmit}
       >
         <Form.Item
-          className="admin_entregas_input"
+          className="admin_input"
           label="Título"
           name="titulo"
           rules={[
@@ -86,7 +85,7 @@ export default function CrearBloque() {
         </Form.Item>
 
         <Form.Item
-          className="admin_entregas_input"
+          className="admin_input"
           label="Descripción"
           name="descripcion"
           rules={[
@@ -100,7 +99,7 @@ export default function CrearBloque() {
         </Form.Item>
 
         <Form.Item
-          className="admin_entregas_input"
+          className="admin_input"
           label="Pregunta"
           name="pregunta" 
           rules={[
@@ -112,7 +111,7 @@ export default function CrearBloque() {
         >
           <Input name="pregunta" onChange={handleChange} />
         </Form.Item>
-        <div className="admin_entregas">
+        <div className="admin">
           <h5>Es bloque mínimo?</h5>
           <Radio.Group>
             <Radio.Button id="si" value="si" onChange={handleMinimo}>
@@ -126,16 +125,17 @@ export default function CrearBloque() {
           <h5>A que roles esta destinado?</h5>
           {roles.map((rol) => {
             return (
-              <div>
-                <label className="admin_entregas_check" htmlFor={rol.tipo}>
+              <div value={rol.id}> 
+                <label className="admin_check" htmlFor={rol.tipo}>
                   {rol.tipo}
                 </label>
-                <Checkbox
-                  onChange={handleRoles}
-                  name="roles"
-                  value={rol.id}
-                  id={rol.id}
-                ></Checkbox>
+                  <input
+                    type="checkbox"
+                    name="roles"
+                    value={rol.id}
+                    id={rol.id}
+                    onChange={handleRoles}
+                  />
               </div>
             );
           })}
@@ -147,6 +147,6 @@ export default function CrearBloque() {
           </Form.Item>
         </div>
       </Form>
-    </div>
+    </>
   );
 }
