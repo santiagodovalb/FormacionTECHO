@@ -11,13 +11,21 @@ function AdminUsers () {
 
     useAuthorize(user, 1)
 
+  if (user.rolId && user.rolId !== 1) {
+    history.push("/unauthorized");
     return (
-        <div>
-            
-            <h2>Acceder a una sede para ver sus voluntarios y gestores</h2>
-            <ListaSedes />
-        </div>    
-    )
+      <>
+        <h1>No autorizado</h1>
+      </>
+    );
+  }
+
+  return (
+    <div className="admin">
+      <h1>Acceder a una sede para ver sus voluntarios y gestores</h1>
+      <ListaSedes />
+    </div>
+  );
 }
 
-export default AdminUsers
+export default AdminUsers;
