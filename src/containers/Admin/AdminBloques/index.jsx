@@ -2,9 +2,15 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Row, Col } from "antd";
+import useAuthorize from "../../../utils/authorization";
 
 export default function AdminBloques() {
+
+  const user = useSelector(state => state.user)
+
   const bloques = useSelector((state) => state.bloques);
+
+  useAuthorize(user, 1)
 
   return (
     <div className="admin">

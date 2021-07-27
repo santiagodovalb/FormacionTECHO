@@ -7,6 +7,8 @@ import { Form, Input, Button, Checkbox } from "antd";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "antd/dist/antd.css";
 import "./styles.css";
+import useAuthorize from "../../../utils/authorization";
+
 
 const GestorContent = () => {
   const [form, setForm] = useState({
@@ -14,37 +16,29 @@ const GestorContent = () => {
     newPassword: "",
     newPasswordConfirm: "",
   });
-  const history = useHistory();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
 
-  if (user.rolId && user.rolId !== 2) {
-    history.push("/unauthorized");
-    return (
-      <>
-        <h1>No autorizado</h1>
-      </>
-    );
-  }
+  useAuthorize(user, 2)
 
   const onChange = (e) => {
     const { id, value } = e.target;
     setForm({ ...form, [id]: value });
-    console.log("FOORRRM", form);
   };
 
   const onSubmit = async () => {
     if (
-      form.password === user.password &&
       form.newPassword === form.newPasswordConfirm
     ) {
       await dispatch(
-        updatePassword({ id: user.id, password: form.newPassword })
-      );
-      message.success("Password changed");
-    } else {
-      message.error("Bad credentials");
-    }
+        updatePassword({ id: user.id,oldP: form.password, newP: form.newPassword })
+      ).then((data)=>{
+        if(!data.payload) message.error("Bad credentials");
+        else{message.success("Password changed")}
+        
+      })
+    } 
+    
   };
 
   const layout = {

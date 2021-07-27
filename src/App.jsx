@@ -10,8 +10,6 @@ import { useLocation } from "react-router";
 import { getRoles } from "./redux/roles";
 import { getSedes } from "./redux/sedes";
 import { getBloques } from "../src/redux/bloques";
-
-import "./App.css";
 import Routes from "./Routes";
 
 function App() {

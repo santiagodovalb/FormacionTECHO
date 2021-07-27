@@ -1,19 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import useAuthorize from "../../../utils/authorization";
 
 
 const AdminContent = () => {
 
-    const history = useHistory();
   
     const user = useSelector((state) => state.user);
+
+    useEffect(() => {}, [user])
   
-    if (user.rolId && user.rolId !== 1) {
-      history.push("/unauthorized");
-      return <><h1>No autorizado</h1></>;
-    }
+    useAuthorize(user, 1)
 
     return (
         <>

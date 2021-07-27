@@ -23,15 +23,15 @@ module.exports = (app) => {
             if (!user) {
               return done(null, false, {
                 message: "Incorrect email or password ",
-              }); // user not found
+              }); 
             }
             
-              if (password !== user.password) {
-                return done(null, false, {
-                  message: "Incorrect email or password ",
-                }); // invalid password
+            user.hash(password, user.salt).then(hash => {
+              if (hash !== user.password) {
+                return done(null, false)
               }
-              done(null, user); // success :D
+              done(null, user)
+            })
             
           })
           .catch(done);

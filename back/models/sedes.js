@@ -7,6 +7,9 @@ Sedes.init({
     nombre: {
         type: S.STRING,
         allowNull: false
+    },
+    comunidadId: {
+        type: S.INTEGER
     }
 }, { sequelize: db, timestamps: false, modelName: "sedes" })
 

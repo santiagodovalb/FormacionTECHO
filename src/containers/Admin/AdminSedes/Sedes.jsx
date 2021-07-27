@@ -4,14 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getSedes } from "../../../redux/sedes";
 import { Table, Button, message} from "antd";
-
+import useAuthorize from "../../../utils/authorization";
 
 export default function Sedes() {
   const [form, setForm] = useState({});
 
   const sedes = useSelector((state) => state.sedes);
   const dispatch = useDispatch();
-  const history = useHistory();
   const user = useSelector((state) => state.user);
 
   const toggleForm = (id) => {
@@ -28,7 +27,7 @@ export default function Sedes() {
   };
 
   const handleChange = (e) => {
-    setForm({ nombre: e.target.value });
+    setForm({...form, [e.target.name]: e.target.value });
   };
 
   const handleDelete = (id) => {
@@ -36,33 +35,31 @@ export default function Sedes() {
     message.success("Sede eliminada correctamente")
   };
 
-  if (user.rolId && user.rolId !== 1) {
-    history.push("/unauthorized");
-    return (
-      <>
-        <h1>No autorizado</h1>
-      </>
-    );
-  }
+  useAuthorize(user, 1)
 
   const dataSource = sedes.map((sede) => {
     return {
       key: sede.id,
-      sede: sede.nombre,
+      nombre: sede.nombre,
+      comunidadId: sede.comunidadId
     };
   });
 
   const columns = [
     {
       title: "Sede",
-      dataIndex: "sede",
-      key: "sede",
+      dataIndex: "nombre",
+      key: "nombre",
+    },
+    {
+      title: "Comunidad ID",
+      dataIndex: "comunidadId",
+      key: "comunidadId",
     },
     {
       title: "Modificar/eliminar",
       key: "modificar/eliminar",
       render: (text, record) => {
-          console.log(record)
           return(
         <div>
           <Button
@@ -73,7 +70,9 @@ export default function Sedes() {
           </Button>
           <form onSubmit={(e) => handleSubmit(e, record.key)} id={`sedeForm${record.key}`} style={{display: 'none'}}>
                             <label htmlFor='nombre'>Nombre</label>
-                            <input onChange={handleChange} type='text' name='nombre' placeholder={record.sede}></input>
+                            <input onChange={handleChange} type='text' name='nombre' placeholder={record.nombre}></input>
+                            <label htmlFor='comunidadId'>Comunidad ID</label>
+                            <input onChange={handleChange} type='number' name='comunidadId' placeholder={record.comunidadId}></input>
                             <button type='submit'>Confirmar cambios</button>
                         </form>
           <Button onClick={() => handleDelete(record.key)} type='button'>Eliminar sede</Button>
@@ -86,22 +85,8 @@ export default function Sedes() {
 
   return (
     <div>
+      {console.log(form)}
       <Table dataSource={dataSource} columns={columns} pagination={false} />
-
-      {/* {sedes && sedes.map(sede => {
-                return (
-                    <div>
-                        <h3>{sede.nombre}</h3>
-                        <button onClick={() => toggleForm(`sedeForm${sede.id}`)} type='button'>Modificar sede</button>
-                        <form onSubmit={() => handleSubmit(sede.id)} id={`sedeForm${sede.id}`} style={{display: 'none'}}>
-                            <label htmlFor='nombre'>Nombre</label>
-                            <input onChange={handleChange} type='text' name='nombre' placeholder={sede.nombre}></input>
-                            <button type='submit'>Confirmar cambios</button>
-                        </form>
-                        <button onClick={() => handleDelete(sede.id)} type='button'>Borrar sede</button>
-                    </div>
-                )
-            })} */}
     </div>
   );
 }

@@ -8,7 +8,7 @@ class Entregas extends S.Model {}
 Entregas.init(
   {
     contenido: {
-      type: S.STRING,
+      type: S.TEXT,
       allowNull: false,
     },
     aprobado: {

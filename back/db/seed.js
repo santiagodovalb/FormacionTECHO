@@ -9,17 +9,49 @@ const Rol = [
 ];
 
 const Sede = [
-  { nombre: "Buenos Aires La Plata" },
-  { nombre: "Buenos Aires Sur" },
-  { nombre: "Buenos Aires Oeste" },
-  { nombre: "Buenos Aires Norte" },
-  { nombre: "Neuquen / Rio Negro" },
-  { nombre: "Rosario" },
-  { nombre: "Cordoba" },
-  { nombre: "Salta" },
-  { nombre: "Tucuman" },
-  { nombre: "Corrientes / Chaco" },
-  { nombre: "Misiones" },
+  { 
+    nombre: "Buenos Aires La Plata",
+    comunidadId: 1
+  },
+  { 
+    nombre: "Buenos Aires Sur",
+  comunidadId: 4 
+  },
+  { 
+    nombre: "Buenos Aires Oeste",
+    comunidadId: 3
+  },
+  { 
+    nombre: "Buenos Aires Norte",
+    comunidadId: 2
+  },
+  { 
+    nombre: "Neuquen / Rio Negro",
+    comunidadId: 9 
+  },
+  { 
+    nombre: "Rosario",
+    comunidadId: 10 
+  },
+  { 
+    nombre: "Cordoba",
+  comunidadId: 5
+  },
+  { 
+    nombre: "Salta",
+    comunidadId: 11
+  },
+  { 
+    nombre: "Tucuman",
+  comunidadId: 12
+  },
+  { 
+    nombre: "Corrientes / Chaco",
+    comunidadId: 7 },
+  { 
+    nombre: "Misiones",
+    comunidadId: 8
+  },
 ];
 
 const BloquesSeed = [
@@ -166,10 +198,12 @@ const seed = () => {
     full_name: "Sergio Gestor",
     email: "gestor@gestor.com",
     password: "gestor",
+    
     img: "https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg",
   }).then((user) => {
     Roles.findByPk(2).then((rol) => {
       user.setRol(rol);
+      user.setSede(3)
     });
   });
 
