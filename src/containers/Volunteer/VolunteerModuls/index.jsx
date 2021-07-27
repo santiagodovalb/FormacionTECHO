@@ -54,7 +54,7 @@ const VolunteerModuls = () => {
 
   return (
     <div>
-      <div className="container-fluid">
+      <div className="container-fluid moduls-div">
         <div className="row">
           <h1 className="p-5 fs-1 title">
             <strong>{bloque.titulo}</strong>

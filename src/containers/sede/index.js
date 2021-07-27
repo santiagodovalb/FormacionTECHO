@@ -73,7 +73,7 @@ const Sede = () => {
   }, [form, selectSede, sedes]);
 
   return (
-    <div>
+    <div className="div-sedes">
       <div className="row justify-content-center align-items-center">
         <div>
           <h1 className="p-5 fs-1 title">
@@ -117,7 +117,7 @@ const Sede = () => {
         </div>
         <div className="col-auto">
           <button
-            className="mb-3 mt-3 p-4 fs-3 button-style green"
+            className="mb-3 mt-3 p-4 fs-4 button-style green"
             onClick={onSaveSede}
           >
             Guardar

@@ -1,12 +1,12 @@
-/* .img-style {
+.img-style {
   border-radius: 20px;
   width: 600px;
   height: 400px;
-} */
+}
 
-/* .text-justify-2 {
+.text-justify-2 {
   text-align: justify;
-} */
+}
 
 .modul_question {
   display: flex;
@@ -15,4 +15,30 @@
 
 .modul_button {
   margin-right: 25px;
+}
+
+.moduls-div img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .moduls-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+  .modul_button {
+    margin-right: 0px;
+  }
+
+  .moduls-div .row {
+    box-sizing: border-box;
+  }
+
+  .moduls-div img {
+    width: 75%;
+  }
 }

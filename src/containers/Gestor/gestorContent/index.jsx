@@ -30,7 +30,6 @@ const GestorContent = () => {
   const onChange = (e) => {
     const { id, value } = e.target;
     setForm({ ...form, [id]: value });
-    console.log("FOORRRM", form);
   };
 
   const onSubmit = async () => {

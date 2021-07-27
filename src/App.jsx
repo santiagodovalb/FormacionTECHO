@@ -51,8 +51,7 @@ function App() {
   return (
     <div className="App">
       {!location.pathname.includes("login") && <Sidebar />}
-      <Navbar />
-
+      {!location.pathname.includes("login") && <Navbar />}
       <Switch>
         <Route exact path="/adminlogin" component={Login} />
         <Route exact path="/login" component={Login} />

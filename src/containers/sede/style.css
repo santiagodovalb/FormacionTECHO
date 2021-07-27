@@ -8,3 +8,14 @@
 .check-style:hover {
   color: #0092dd;
 }
+
+@media (min-width: 768px) {
+  .div-sedes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .div-sedes .button {
+  }
+}

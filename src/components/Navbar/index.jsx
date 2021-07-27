@@ -1,9 +1,21 @@
 import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { useSelector, useDispatch} from 'react-redux';
+import { userLogout } from "../../redux/login";
+import Links from './links';
 import './style.css'
 const Navbar = () => {
+
+  const location = useLocation();
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const handleLogout = () => {
+    if (user.id) dispatch(userLogout());
+  };
+
     return (
       <div>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light navbar">
+        <nav className="d-block d-sm-none navbar navbar-expand-lg navbar-dark">
           <div class="container-fluid">
             <a class="navbar-brand" href="#">
               TECHO
@@ -21,26 +33,26 @@ const Navbar = () => {
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">
-                    Mi perfil
-                  </a>
+                <li className="nav-item">
+                  <Link to={`/user`}>
+                    <p className="nav-link">Mi perfil</p>
+                  </Link>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    Mis bloques
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    Mis entregas
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
+                <Links />
+                <hr />
+                {user.rolId && user.rolId === 2 && (
+                  <Link to="/gestor-password">
+                    {" "}
+                    <button> Cambiar contraseña </button>
+                  </Link>
+                )}
+                <Link to="/login">
+                  {" "}
+                  <button className="btn btn-secondary" onClick={handleLogout}>
+                    {" "}
                     Cerrar sesión
-                  </a>
-                </li>
+                  </button>
+                </Link>
               </ul>
             </div>
           </div>
