@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useSelector} from 'react-redux'
 import { useHistory, useLocation } from 'react-router-dom';
+import useAuthorize from "../../../utils/authorization";
 
 function Users () {
 
@@ -9,14 +10,14 @@ function Users () {
     const [users, setUsers] = useState([])
     const user = useSelector(state => state.user)
     const roles = useSelector(state=>state.roles.filter((rol)=> rol.id!==1))
-    const history = useHistory();
     const location = useLocation()
     const id = location.pathname.slice(21)
+
     useEffect(() => {
         axios.get(`/api/users/sede/${id}`)
         .then(res => res.data)
         .then(users => setUsers(users))
-    }, [])
+    }, [user])
 
     const handleChange = (e) => {
         setRol(e.target.value)
@@ -37,15 +38,11 @@ function Users () {
     }
 
   
-    if (user.rolId && user.rolId !== 1) {
-      history.push("/unauthorized");
-      return <><h1>No autorizado</h1></>;
-    }
+    useAuthorize(user, 1)
 
     return (
         <div>
             <h1>Administrar roles</h1>
-            {console.log('USERS', users)}
             {!users.length && <h1>No hay voluntarios/gestores en esta sede</h1>}
             {users && users.map(user => {
                 return (

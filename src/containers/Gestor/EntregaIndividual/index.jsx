@@ -2,8 +2,11 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { Row, Col, Button } from "antd";
+import useAuthorize from "../../../utils/authorization";
+import { useSelector } from "react-redux";
 
 export default function EntregaIndividual() {
+  const user = useSelector(state => state.user)
   const [entrega, setEntrega] = useState();
   const { id } = useParams();
   const history = useHistory();
@@ -22,6 +25,8 @@ export default function EntregaIndividual() {
       .then(() => history.push("/gestor/entregas"))
       .catch((err) => console.log(err));
   };
+
+  useAuthorize(user, 2)
 
   return (
     <div>

@@ -2,22 +2,16 @@ import { getRoles } from '@testing-library/react'
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import axios from 'axios'
-import { useHistory } from 'react-router'
 import { useSelector } from 'react-redux'
 import Roles from './Roles'
+import useAuthorize from "../../../utils/authorization";
 
 export default function AdminRoles() {
     const [form, setForm] = useState({})
 
     const dispatch = useDispatch()
-    const history = useHistory()
 
     const user = useSelector(state => state.user)
-
-    if (user.rolId && user.rolId !== 1) {
-        history.push("/unauthorized");
-        return <><h1>No autorizado</h1></>;
-    }
 
     const handleSubmit = (id) => {
         axios.post('/api/roles/', form)
@@ -33,6 +27,8 @@ export default function AdminRoles() {
     const toggleForm = () => {
         document.getElementById('newRole').style.display = document.getElementById('newRole').style.display === 'block' ? 'none' : 'block'
     }
+
+    useAuthorize(user, 1)
 
     return (
         <div>

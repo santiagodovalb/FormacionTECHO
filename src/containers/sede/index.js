@@ -4,7 +4,7 @@ import { useHistory } from "react-router";
 import { setUser } from "../../redux/user";
 import axios from "axios";
 import Card from "../../components/Card";
-import localPeru from "../../assets/sedes/lima-peru.png";
+import mapa from '../../assets/sedes/lima-peru.png'
 import "./style.css";
 
 const Sede = () => {
@@ -103,7 +103,7 @@ const Sede = () => {
               <Card
                 key={`${sede.id}`}
                 id={`${sede.id}`}
-                img={localPeru}
+                img={mapa}
                 button={{
                   text: `${sede.nombre}`,
                   styles: "button-style light-blue fs-4",

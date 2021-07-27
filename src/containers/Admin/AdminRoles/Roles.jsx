@@ -2,20 +2,19 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import axios from 'axios'
-import { useHistory } from 'react-router'
 import { getRoles } from '../../../redux/roles'
+import useAuthorize from "../../../utils/authorization";
 
 export default function Roles() {
     const [form, setForm] = useState({})
 
     const roles = useSelector(state => state.roles).filter(rol => rol.id > 1)
     const dispatch = useDispatch()
-    const history = useHistory();
     const user = useSelector(state => state.user)
 
     useEffect(() => {
 
-    }, [roles])
+    }, [roles, user])
 
     const toggleForm = (id) => {
         document.getElementById(id).style.display = document.getElementById(id).style.display === 'block' ? 'none' : 'block'
@@ -37,10 +36,7 @@ export default function Roles() {
         .then(() => dispatch(getRoles()))
     }
 
-    if (user.rolId && user.rolId !== 1) {
-        history.push("/unauthorized");
-        return <><h1>No autorizado</h1></>;
-      }
+    useAuthorize(user, 1)
 
     return (
         <div>

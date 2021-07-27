@@ -1,28 +1,18 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { getSedes } from "../../../redux/sedes";
 import Sedes from "./Sedes";
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, InputNumber } from "antd";
 import { message } from "antd";
+import useAuthorize from "../../../utils/authorization";
 
 export default function AdminSedes() {
   const [form, setForm] = useState({});
 
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const user = useSelector((state) => state.user);
-
-  if (user.rolId && user.rolId !== 1) {
-    history.push("/unauthorized");
-    return (
-      <>
-        <h1>No autorizado</h1>
-      </>
-    );
-  }
 
   const onFinish = (id) => {
     axios
@@ -34,10 +24,9 @@ export default function AdminSedes() {
 
   };
 
-
-
-  const handleChange = (e) => {
-      setForm({ nombre: e.target.value });
+  const handleChange = (obj, obj2) => {
+    
+      setForm(obj2)
   };
 
   const toggleForm = () => {
@@ -46,6 +35,8 @@ export default function AdminSedes() {
         ? "none"
         : "block";
   };
+
+  useAuthorize(user, 1)
 
   return (
     <div>
@@ -65,24 +56,25 @@ export default function AdminSedes() {
         initialValues={{
           remember: true,
         }}
+        onValuesChange={(obj, obj2) => handleChange(obj, obj2)}
         onFinish={onFinish}
       >
+        <Form.Item 
+          label="Comunidad Id"
+          name="comunidadId">
+        <InputNumber />
+
+        </Form.Item>
         <Form.Item
-          onChange={handleChange}
+          
           label="nombre"
           name="nombre"
-          /* rules={[
-            {
-              required: true,
-              message: "Ingrese el nombre de la sede",
-            },
-          ]} */
         >
           <Input.TextArea/>
+        </Form.Item>
           <Button  style={{ display: form.nombre? "block" : "none" }} htmlType="submit" type="submit">
             Crear
           </Button>
-        </Form.Item>
       </Form>
       <Sedes />
     </div>

@@ -1,15 +1,15 @@
-import React, { useEffect, useState} from 'react';
-import { useParams, useHistory } from 'react-router-dom'
-import { Form, Input, message } from "antd";
+import React, { useState} from 'react';
+import { Form, Input } from "antd";
 import "./index.css";
 import axios from 'axios'
+import useAuthorize from "../../../utils/authorization";
+import { useSelector } from 'react-redux';
+
 
 export default function AdminUnidades ( { forceRender, bloque }) {
 
-    const { id } = useParams();
     const [form, setForm] = useState({bloqueId: bloque.id})
-    const history = useHistory();
-
+    const user = useSelector(state => state.user)
 
     const handleChange = (e) => {
         setForm({...form, [e.target.name]: e.target.value})
@@ -19,6 +19,8 @@ export default function AdminUnidades ( { forceRender, bloque }) {
         axios.post('/api/unidades', form)
         .then(() => forceRender())
     }
+
+    useAuthorize(user, 1)
 
     return (
         <div>

@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { Form, Input, message } from "antd";
 import axios from "axios";
 import Swal from 'sweetalert2'
+import useAuthorize from "../../../utils/authorization";
 
 export default function Unidades({ forceRender, unidades }) {
   const [form, setForm] = useState({});

@@ -7,9 +7,11 @@ import Swal from "sweetalert2";
 import { getBloques } from "../../../redux/bloques";
 import AdminUnidades from "../AdminUnidades/index.jsx";
 import Unidades from "./Unidades.jsx";
+import useAuthorize from "../../../utils/authorization";
 const { TextArea } = Input;
 
 export default function ModificarBloque() {
+
   const [count, setCount] = useState(0);
   const [bloque, setBloque] = useState();
   const [showForm, setShowForm] = useState(false);
@@ -44,7 +46,7 @@ export default function ModificarBloque() {
         document.getElementById("minimoSi").checked = bloque.minimo && "true";
         document.getElementById("minimoNo").checked = !bloque.minimo && "true";
       });
-  }, [showForm, count]);
+  }, [showForm, count, user]);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -110,18 +112,11 @@ export default function ModificarBloque() {
     setShowForm(!showForm);
   };
 
-  if (user.rolId && user.rolId !== 1) {
-    history.push("/unauthorized");
-    return (
-      <>
-        <h1>No autorizado</h1>
-      </>
-    );
-  }
-
   const forceRender = () => {
     setCount(count + 1)
   }
+
+  useAuthorize(user, 1)
 
   return (
     <div>
