@@ -14,7 +14,7 @@ export default function CrearGestor() {
     const history = useHistory()
 
     useEffect(() => {
-        let options = "<option>Seleccionar Sede</sede>";
+        let options = "<option value=''>Seleccionar Sede</sede>";
         for (var i = 0; i < sedes.length; i++) {
           options += `<option value=${sedes[i]?.id}>${sedes[i]?.nombre}</option>`;
         }
@@ -38,13 +38,13 @@ export default function CrearGestor() {
             <h1>Crear Gestor</h1>
             <form onSubmit={handleSubmit}>
                 <label htmlFor='full_name'>Nombre completo</label>
-                    <input type='text' onChange={handleChange} name='full_name' />
+                    <input required="true" type='text' onChange={handleChange} name='full_name' />
                 <label htmlFor='email'>Email</label>
-                    <input type='text' onChange={handleChange} name='email' />
+                    <input required="true" type='text' onChange={handleChange} name='email' />
                 <label htmlFor='password'>Contraseña de acceso</label>
-                    <input type='password' onChange={handleChange} name='password' />
+                    <input required="true" type='password' onChange={handleChange} name='password' />
                 <label htmlFor='sede'>Sede</label>
-                    <select name='sedeId' id='sedes' onChange={handleChange}>
+                    <select required name='sedeId' id='sedes' onChange={handleChange}>
                     </select>
                 <button type='submit'>Crear</button>
             </form>

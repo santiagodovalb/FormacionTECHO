@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./styles.css";
 import { Link, useLocation } from "react-router-dom";
 import { Progress } from "antd";
@@ -63,7 +63,7 @@ const Card = ({
         ) : (
           <img src={img} />
         )}
-        <Link to={url}>
+        <Link to={url ? url : "sede"}>
           <div
             className={` ${button.styles} p-3 text-center`}
             style={{ width: "100%" }}

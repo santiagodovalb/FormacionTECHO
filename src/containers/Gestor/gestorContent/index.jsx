@@ -47,11 +47,21 @@ const GestorContent = () => {
     }
   };
 
+  const layout = {
+    labelCol: {
+      span: 8,
+    },
+    wrapperCol: {
+      span: 8,
+    },
+  };
+
   return (
     <>
       <div className="change_password_div">
         <h3>Cambiar contraseña</h3>
         <Form 
+              {...layout}
               initialValues={{
                 remember: true,
               }}
@@ -88,6 +98,7 @@ const GestorContent = () => {
             onChange={onChange}
             label="Confirmá la nueva contraseña"
             name="newPasswordConfirm"
+            labelAlign="right-align"
             rules={[
               {
                 required: true,

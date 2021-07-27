@@ -1,3 +1,4 @@
+const { sendNewEntrega, sendEntregaCompletada } = require("../config/transporter");
 const { Entregas, Users, Bloques } = require("../models");
 
 const entregasController = {
@@ -46,23 +47,35 @@ const entregasController = {
   },
   createEntrega : async (req, res, next) => {
     const {contenido, bloqueId, userId}  = req.body
-    let currentEntrega = await Entregas.findOne({where: {bloqueId, userId}});
+    let currentEntrega = await Entregas.findOne({where: {bloqueId, userId}, include: [{model: Users, as: 'user'}, {model: Bloques, as: 'bloque'}]});
+
+    try {
 
     if(currentEntrega){ 
-      currentEntrega.update({ contenido });
+      currentEntrega.update({ contenido, aprobado: false });
+      let gestor =  await Users.findOne({where: {sedeId: currentEntrega.user.sedeId, rolId: 2}})
+      await sendNewEntrega(gestor, currentEntrega)
     }
     else {
       currentEntrega = await Entregas.create({ contenido })
+      currentEntrega.setUser(userId)
+      currentEntrega.setBloque(bloqueId)
+      let entregaInclude = await Entregas.findOne({where: {id: currentEntrega.id}, include: [{model: Users, as: 'user'}, {model: Bloques, as: 'bloque'}]})
+      let gestor =  await Users.findOne({where: {sedeId: entregaInclude.user.sedeId, rolId: 2}})
+      await sendNewEntrega(gestor, entregaInclude)
     }
-
-    currentEntrega.setUser(userId)
-    currentEntrega.setBloque(bloqueId)
     res.status(201).send(currentEntrega)
-
+    }
+    
+    catch(err) {next(err)}
   },
   aprobar(req, res, next){
-    Entregas.findByPk(req.params.id)
-    .then(entrega => entrega.aprobar())
+    Entregas.findByPk(req.params.id, {include: [{model: Users, as: 'user'}, {model: Bloques, as: 'bloque'}]})
+    .then(entrega => {
+      entrega.aprobar()
+      let voluntario = entrega.user
+      sendEntregaCompletada(voluntario, entrega)
+    })
     .then(() => res.sendStatus(200))
     .catch(next)
   },

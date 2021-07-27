@@ -26,7 +26,15 @@ const Sidebar = () => {
           alt="logo-techo"
         />
         <hr />
-        <img className="volunteer_sidebar_image" src={user.img} alt="" />
+        <img
+          className="volunteer_sidebar_image"
+          src={
+            user.img
+              ? user.img
+              : "https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg"
+          }
+          alt=""
+        />
         <h4>{user.full_name}</h4>
         <ul className="nav nav-pills flex-column mb-auto">
           <li className="nav-item">
@@ -52,7 +60,9 @@ const Sidebar = () => {
           </Link>
         )}
         <Link to="/login">
+          {" "}
           <button className="btn btn-secondary" onClick={handleLogout}>
+            {" "}
             Cerrar sesion
           </button>
         </Link>

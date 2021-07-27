@@ -62,24 +62,23 @@ const VolunteerModuls = () => {
         </div>
         <div className="row">
           <div className="col m-5">
-            <img src={CanchaFutbol} className="mx-5 img-style" alt="block" />
             <p className="m-5 fs-5 text-justify-2">{bloque.descripcion}</p>
           </div>
           <div className="col m-5 px-5 text-justify-2">
             <div className=" fs-4">
               <p>
-                <strong>Modulos</strong>
+                <strong>Módulos</strong>
               </p>
             </div>
             <div className="d-flex flex-column mb-5">
               <Unidades setChecks={() => setChecks(checks + 1)} />
             </div>
-            <div className="fs-4 my-3">
+            <div className="fs-4 my-3 modul_question">
               <p>
                 <strong>{bloque.pregunta}</strong>
               </p>
               <textarea
-                class="form-control"
+                className="form-control"
                 name="contenido"
                 onChange={handleChange}
               />

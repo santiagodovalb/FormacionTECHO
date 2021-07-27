@@ -1,81 +1,152 @@
-import axios from 'axios'
-import React, { useState } from 'react'
-import { useEffect } from 'react'
-import { useHistory } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { getBloques } from '../../../redux/bloques';
+import axios from "axios";
+import React, { useState } from "react";
+import { useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Form, Input, Radio } from "antd";
+import { getBloques } from "../../../redux/bloques";
+import "antd/dist/antd.css";
+import "./index.css";
 
 export default function CrearBloque() {
+  const [form, setForm] = useState({ rolesId: [] });
+  const [roles, setRoles] = useState([]);
+  const user = useSelector((state) => state.user);
+  const history = useHistory();
+  const dispatch = useDispatch();
 
-    const [form, setForm] = useState({rolesId: []})
-    const [roles, setRoles] = useState([])
-    const user = useSelector((state) => state.user);
-    const history = useHistory();
-    const dispatch = useDispatch();
+  useEffect(() => {
+    axios
+      .get("/api/roles")
+      .then((res) => res.data)
+      .then((roles) => roles.filter((rol) => rol.id >= 3))
+      .then((roles) => setRoles(roles));
+  }, []);
 
-    useEffect(() => {
-        axios.get('/api/roles')
-        .then(res => res.data)
-        .then(roles => roles.filter(rol => rol.id >= 3))
-        .then(roles => setRoles(roles))
-    }, [])
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
-    const handleChange = (e) => {
-        setForm({...form, [e.target.name]: e.target.value})
-    }
+  const handleMinimo = (e) => {
+    let boolean = e.target.id === "si" ? true : false;
+    setForm({ ...form, minimo: boolean });
+  };
 
-    const handleMinimo = (e) => {
-        let boolean = e.target.id === 'si' ? true : false
-        setForm({...form, minimo: boolean})
-    }
+  const handleRoles = (e) => {
+    let array = [...form.rolesId];
+    e.target.checked
+      ? (array = [...array, e.target.value])
+      : array.splice(form.rolesId.indexOf(e.target.value), 1);
+    setForm({ ...form, rolesId: [...array] });
+  };
 
-    const handleRoles = (e) => {
-        let array = [...form.rolesId]
-        e.target.checked ? array = [...array, e.target.value] : array.splice(form.rolesId.indexOf(e.target.value), 1)
-        setForm({...form, rolesId: [...array]})
-    }
-
-  
-    if (user.rolId && user.rolId !== 1) {
-      history.push("/unauthorized");
-      return <><h1>No autorizado</h1></>;
-    }
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        axios.post('/api/bloques', form)
-        .then(res => {
-            dispatch(getBloques())
-            history.push('/admin-bloques')})
-    }
-
+  if (user.rolId && user.rolId !== 1) {
+    history.push("/unauthorized");
     return (
-        <div>
-            <h1>Crear nuevo bloque de formacion</h1>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor='titulo'>Titulo</label>
-                    <input type='text' name='titulo' onChange={handleChange}></input>
-                <label htmlFor='descripcion'>Descripcion</label>
-                    <input type='text' name='descripcion' onChange={handleChange}></input>
-                    <label htmlFor='pregunta'>Pregunta</label>
-                    <input type='text' name='pregunta' onChange={handleChange}></input>    
-                <p>Es bloque minimo?</p>
-                    <label htmlFor='si'>Si</label>
-                    <input type="radio" name='minimo' id='si' onChange={handleMinimo}/>
-                    <label htmlFor='no'>No</label>
-                    <input type="radio" name='minimo' id='no' onChange={handleMinimo}/>
-                <p>A que roles esta destinado?</p>
+      <>
+        <h1>No autorizado</h1>
+      </>
+    );
+  }
 
-                {roles.map(rol => {
-                    return (
-                        <div>
-                            <label htmlFor={rol.tipo} >{rol.tipo}</label>
-                        <input type="checkbox" name='roles' value={rol.id} id={rol.id} onChange={handleRoles}/>
-                        </div>
-                    )
-                })}
-                <button type='submit'>Crear</button>
-            </form>
+  const handleSubmit = (e) => {
+    axios.post("/api/bloques", form).then((res) => {
+      dispatch(getBloques());
+      history.push("/admin-bloques");
+    });
+  };
+
+  return (
+    <>
+      <div className="admin">
+        <h1>Crear nuevo bloque de formación</h1>
+      </div>
+      <Form
+        labelCol={{
+          span: 5,
+        }}
+        wrapperCol={{
+          span: 13,
+        }}
+        onFinish={handleSubmit}
+      >
+        <Form.Item
+          className="admin_input"
+          label="Título"
+          name="titulo"
+          rules={[
+            {
+              required: true,
+              message: "Por favor complete el campo",
+            },
+          ]}
+        >
+          <Input name="titulo" onChange={handleChange} />
+        </Form.Item>
+
+        <Form.Item
+          className="admin_input"
+          label="Descripción"
+          name="descripcion"
+          rules={[
+            {
+              required: true,
+              message: "Por favor complete el campo",
+            },
+          ]}
+        >
+          <Input name="descripcion" onChange={handleChange} />
+        </Form.Item>
+
+        <Form.Item
+          className="admin_input"
+          label="Pregunta"
+          name="pregunta" 
+          rules={[
+            {
+              required: true,
+              message: "Por favor complete el campo",
+            },
+          ]}
+        >
+          <Input name="pregunta" onChange={handleChange} />
+        </Form.Item>
+        <div className="admin">
+          <h5>Es bloque mínimo?</h5>
+          <Radio.Group>
+            <Radio.Button id="si" value="si" onChange={handleMinimo}>
+              Si
+            </Radio.Button>
+            <Radio.Button id="no" value="no" onChange={handleMinimo}>
+              No
+            </Radio.Button>
+          </Radio.Group>
+          <br />
+          <h5>A que roles esta destinado?</h5>
+          {roles.map((rol) => {
+            return (
+              <div value={rol.id}> 
+                <label className="admin_check" htmlFor={rol.tipo}>
+                  {rol.tipo}
+                </label>
+                  <input
+                    type="checkbox"
+                    name="roles"
+                    value={rol.id}
+                    id={rol.id}
+                    onChange={handleRoles}
+                  />
+              </div>
+            );
+          })}
+          <br />
+          <Form.Item>
+            <button htmlType="submit" className="mb-3 mt-3 p-3 fs-3 button-style light-blue">
+              Crear
+            </button>
+          </Form.Item>
         </div>
-    )
+      </Form>
+    </>
+  );
 }

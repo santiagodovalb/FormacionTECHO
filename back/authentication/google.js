@@ -1,6 +1,6 @@
 const passport = require("passport");
 const session = require("express-session");
-const Users = require("../models/users");
+const { Users, Sedes, Roles } = require("../models");
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 require('dotenv').config()
 const { GOOGLE_CLIENT, GOOGLE_SECRET } = process.env
@@ -17,9 +17,8 @@ module.exports = (app) => {
         callbackURL: "http://localhost:3001/api/auth/google/callback",
       },
       function (token, tokenSecret, profile, done) {
-        console.log("SADDSADSA",profile)
         Users.findOne({ 
-          where: { googleId: profile.id },
+          where: { googleId: profile.id }
         }).then(
           async (user) => {
             if (user) {
@@ -37,10 +36,6 @@ module.exports = (app) => {
             }
           }
         );
-
-        /* Users.findOrCreate({ googleId: profile.id }, function (err, user) {
-          return done(err, user);
-        }); */
       }
     )
   );
@@ -50,6 +45,7 @@ module.exports = (app) => {
   });
 
   passport.deserializeUser((id, done) => {
-    Users.findByPk(id).then((user) => done(null, user));
+    Users.findByPk(id).then((user) => {
+      done(null, user)});
   });
 };

@@ -23,27 +23,41 @@ export default function Unidades({ setChecks }) {
     setChecks();
   };
 
+  const handleClick = (e) => {
+    localStorage.setItem(e.target.id, "true");
+    setChecks();
+  };
+
   return (
     <div>
       {unidades.map((unidad) => {
-        const id = `check${unidad.id}`;
         return (
-          <div key={`unidad${unidad.id}`}>
-            <a href={`${unidad.link}`}>
-              <Checkbox
-                defaultChecked={
-                  localStorage.getItem(id) === "true" ? true : false
-                }
-                onChange={handleChange}
-                id={id}
-              ></Checkbox>{" "}
+          <div key={`unidad-${unidad.id}`}>
+            <a href={`${unidad.link}`} target="_blank" className="modul_button">
               <button
-                className="btn btn-outline-secondary"
+                className="mb-3 mt-3 p-3 fs-3 button-style light-blue"
                 id={`unidad${unidad.id}`}
+                onClick={handleClick}
               >
                 {unidad.titulo}
               </button>
             </a>
+            <Checkbox
+              disabled={
+                localStorage.getItem(`unidad${unidad.id}`) === "true"
+                  ? false
+                  : true
+              }
+              defaultChecked={
+                localStorage.getItem(`check${unidad.id}`) === "true"
+                  ? true
+                  : false
+              }
+              onChange={handleChange}
+              id={`check${unidad.id}`}
+            >
+              Completado
+            </Checkbox>
           </div>
         );
       })}
