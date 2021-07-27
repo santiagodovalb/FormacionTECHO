@@ -8,6 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "antd/dist/antd.css";
 import "./styles.css";
 
+
 const GestorContent = () => {
   const [form, setForm] = useState({
     password: "",
@@ -30,21 +31,21 @@ const GestorContent = () => {
   const onChange = (e) => {
     const { id, value } = e.target;
     setForm({ ...form, [id]: value });
-    console.log("FOORRRM", form);
   };
 
   const onSubmit = async () => {
     if (
-      form.password === user.password &&
       form.newPassword === form.newPasswordConfirm
     ) {
       await dispatch(
-        updatePassword({ id: user.id, password: form.newPassword })
-      );
-      message.success("Password changed");
-    } else {
-      message.error("Bad credentials");
-    }
+        updatePassword({ id: user.id,oldP: form.password, newP: form.newPassword })
+      ).then((data)=>{
+        if(!data.payload) message.error("Bad credentials");
+        else{message.success("Password changed")}
+        
+      })
+    } 
+    
   };
 
   const layout = {
