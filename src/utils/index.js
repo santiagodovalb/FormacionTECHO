@@ -1,8 +1,6 @@
 import { BsFiles } from "react-icons/bs";
 import { MdLocationOn } from "react-icons/md";
-import { FaPen } from "react-icons/fa";
-import { FaUsers } from "react-icons/fa";
-import { FaEdit } from "react-icons/fa";
+import { FaPen, FaUsers, FaEdit, FaThList } from "react-icons/fa";
 
 export const listNavbars = [
   {
@@ -34,12 +32,12 @@ export const listNavbars = [
         name: "Gestionar voluntarios",
         icon: <FaUsers />,
       },
+      { link: "/gestor/entregas", name: "Gestionar entregas", icon: <FaPen /> },
       {
         link: "/gestor/dashboard",
-        name: "Dashboard",
-        icon: <FaUsers />,
+        name: "Panel de sede",
+        icon: <FaThList />,
       },
-      { link: "/gestor/entregas", name: "Gestionar entregas", icon: <FaPen /> },
     ],
   },
   {
