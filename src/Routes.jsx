@@ -18,7 +18,7 @@ import AdminRoles from "./containers/Admin/AdminRoles";
 import VolunteerEntregas from "./containers/Volunteer/VolunteerEntregas";
 import GestorEntregas from "./containers/Gestor/GestorEntregas";
 import EntregaIndividual from "./containers/Gestor/EntregaIndividual";
-import "./App.css";
+import "./Routes.css";
 import DashboardGestor from "./containers/Gestor/DashboardGestor";
 import CrearGestor from "./containers/Admin/CrearGestor";
 

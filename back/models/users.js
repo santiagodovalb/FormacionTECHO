@@ -37,7 +37,6 @@ Users.init({
     },
     password:{
         type: S.STRING,
-        defaultValue: 123
     },
     salt:{
         type: S.STRING,
@@ -47,19 +46,18 @@ Users.init({
 
 
 Users.addHook("beforeCreate", async user => {
-    user.salt = await bcrypt.genSalt(6)
-    user.password = await user.hash(user.password, user.salt)
+    if (user.password) {
+        user.salt = await bcrypt.genSalt(6)
+        user.password = await user.hash(user.password, user.salt)
+    }
   })
 
-
-  
-
-
   Users.addHook("afterBulkUpdate", async user => {
+      if (user.password){
       usuario = await Users.findByPk(user.where.id)
       usuario.password = await bcrypt.hash(usuario.password, usuario.salt)
       usuario.save()
-     
+      }
   })
 
  
