@@ -59,7 +59,9 @@ export default function CrearBloque() {
   return (
     <>
       <div className="admin">
-        <h1>Crear nuevo bloque de formación</h1>
+        <h1 className="fs-2 text-secondary m-5">
+          <strong>Crear nuevo bloque de formación</strong>
+        </h1>
       </div>
       <Form
         labelCol={{

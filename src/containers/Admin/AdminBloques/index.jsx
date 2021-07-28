@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Row, Col } from "antd";
 import useAuthorize from "../../../utils/authorization";
+import "./index.css";
 
 export default function AdminBloques() {
   const user = useSelector((state) => state.user);
@@ -30,9 +31,9 @@ export default function AdminBloques() {
               <Link to={`/admin-bloques/${bloque.id}`}>
                 <button
                   type="button"
-                  className="my-3 p-3 fs-3 button-style light-blue"
+                  className="my-3 p-3 fs-3 button-style light-blue blocks"
                 >
-                  {bloque.titulo}
+                  {bloque.titulo} <i className="bi bi-pencil-square"></i>
                 </button>
               </Link>
             </div>

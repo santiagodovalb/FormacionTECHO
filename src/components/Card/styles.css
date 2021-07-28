@@ -11,3 +11,7 @@
 .card:hover {
   transform: scale(1.05);
 }
+
+.card > a {
+  text-decoration: none;
+}

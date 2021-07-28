@@ -14,7 +14,7 @@ export default function ListaSedes() {
 
   return (
     <div>
-      <div className="wh-100 m-0 row justify-content-center align-items-center m-5">
+      <div className="wh-100 row justify-content-center align-items-center m-5 p-5">
         {sedes.map((sede) => {
           return (
             <div className="col-auto">
@@ -23,7 +23,7 @@ export default function ListaSedes() {
                   className="m-3 p-3 fs-3 button-style light-blue"
                   type="button"
                 >
-                  {sede.nombre}
+                  {sede.nombre} <i class="bi bi-pencil-square"></i>
                 </button>
               </Link>
             </div>

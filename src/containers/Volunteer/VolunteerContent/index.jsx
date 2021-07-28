@@ -18,8 +18,10 @@ const VolunteerContent = () => {
   return (
     <>
       <div>
-        <div className="volunteer_content_div">
-          <h2>Bloques minimos</h2>
+        <div className="volunteer_content_div text-center mx-5">
+          <h1 className="fs-3 text-secondary m-5">
+            <strong>Bloques minimos</strong>
+          </h1>
           <div className="content_div">
             <div className="single_content_div">
               {bloquesDelUser.map(
@@ -40,7 +42,9 @@ const VolunteerContent = () => {
               )}
             </div>
           </div>
-          <h2>Bloques opcionales</h2>
+          <h1 className="fs-3 text-secondary m-5">
+            <strong>Bloques opcionales</strong>
+          </h1>
           <div className="content_div">
             <div className="single_content_div">
               {bloquesDelUser.map(
