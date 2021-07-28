@@ -21,7 +21,7 @@ function Users() {
         axios.get(`/api/users/sede/${id}`)
         .then(res => res.data)
         .then(users => setUsers(users))
-    }, [user])
+    }, [user, id])
 
     const handleChange = (e) => {
       setRol(e);

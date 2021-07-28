@@ -2,3 +2,8 @@
     margin: auto;
     width: 90%;
   }
+.dashboard {
+  display: flex;
+  justify-self: center;
+  align-items: center;
+}

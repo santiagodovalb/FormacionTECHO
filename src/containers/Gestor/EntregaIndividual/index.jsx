@@ -16,7 +16,7 @@ export default function EntregaIndividual() {
       .get(`/api/entregas/${id}`)
       .then((res) => res.data)
       .then((entrega) => setEntrega(entrega));
-  }, []);
+  }, [id]);
 
   const handleClick = (e) => {
     e.preventDefault();

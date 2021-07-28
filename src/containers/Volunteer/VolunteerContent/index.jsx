@@ -1,15 +1,12 @@
 import React from "react";
 import Card from "../../../components/Card";
 import { useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
 import "./styles.css";
 
 const VolunteerContent = () => {
   const user = useSelector((state) => state.user);
 
   const bloques = useSelector((state) => state.bloques);
-
-  const location = useLocation().pathname;
 
   const bloquesDelUser = bloques.filter((bloque) =>
     bloque.roles.map((rol) => rol.id).includes(user.rolId)

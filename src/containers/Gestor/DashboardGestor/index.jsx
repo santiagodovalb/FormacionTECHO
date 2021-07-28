@@ -23,29 +23,52 @@ export default function DashboardGestor() {
 
     const columns = [
         {
+            title: "Entregas pendientes por voluntario",
+            render: (record) => (
+              <React.Fragment>
+                {record.voluntario}
+                <br />
+                {record.entregasPendientes}
+              </React.Fragment>
+            ),
+            responsive: ["xs"]
+          },
+        {
             title: '',
             dataIndex: 'total',
             key: 'total',
+            responsive: ["xs"]
         },
+        {
+            title: '',
+            dataIndex: 'total',
+            key: 'total',
+            responsive: ["sm"]
+        },
+        
         {
             title: 'Voluntario',
             dataIndex: 'voluntario',
             key: 'voluntario',
+            responsive: ['sm']
         },
         {
             title: 'Bloques minimos completados',
             dataIndex: 'bloquesMinimos',
             key: 'bloquesMinimos',
+            responsive: ['sm']
         },
         {
             title: 'Bloques opcionales completados',
             dataIndex: 'bloquesOpcionales',
             key: 'bloquesOpcionales',
+            responsive: ['sm']
         },
         {
             title: 'Entregas pendientes',
             dataIndex: 'entregasPendientes',
             key: 'entregasPendientes',
+            responsive: ['sm']
         }
     ]
     
@@ -67,19 +90,16 @@ export default function DashboardGestor() {
             key: 'total',
             total: 'Total',
             voluntario: voluntarios.length,
-            bloquesMinimos: totalMinimos(voluntarios, bloques),
-            bloquesOpcionales: totalOpcionales(voluntarios, bloques),
-            entregasPendientes: totalPendientes(voluntarios),
-          
+            bloquesMinimos: totalMinimos(),
+            bloquesOpcionales: totalOpcionales(),
+            entregasPendientes: totalPendientes(),
     }]
 
     return (
-        <div>
-            <h1 className="p-5 fs-1 title">
-            <strong>Panel de {user.sede?.nombre}</strong>
-          </h1>
-          <div className='table'>
-            <Table bordered columns={columns} dataSource={dataSource} pagination={false} />
+        <div className="dashboard">
+            <h1>Dashboard de {user.sede?.nombre}</h1>
+            <div className='table'>
+            <Table columns={columns} dataSource={dataSource} pagination={false} />
             </div>
         </div>
     )

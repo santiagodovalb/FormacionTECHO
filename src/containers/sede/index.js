@@ -19,15 +19,15 @@ const Sede = () => {
     key: "",
     style: "btn bi bi-check-circle-fill check-style",
   });
-
+  
   useEffect(() => {
     if (!sedes.length) setSedes([...sedesPrueba]);
     setStateIcon({
       ...stateIcon,
       key: selectSede,
     });
-  }, [form, selectSede, sedes]);
-
+  }, [form, selectSede, sedes, stateIcon, sedesPrueba]);
+  
   const onChange = (e) => {
     const { target } = e;
     setForm({ ...form, [target.name]: target.value });
@@ -64,16 +64,9 @@ const Sede = () => {
       .catch((err) => err);
   };
 
-  useEffect(() => {
-    if (!sedes.length) setSedes([...sedesPrueba]);
-    setStateIcon({
-      ...stateIcon,
-      key: selectSede,
-    });
-  }, [form, selectSede, sedes]);
 
   return (
-    <div>
+    <div className="div-sedes">
       <div className="row justify-content-center align-items-center">
         <div className='title'>
           <h1 className="p-5 fs-1 title">
@@ -117,7 +110,7 @@ const Sede = () => {
         </div>
         <div className="col-auto">
           <button
-            className="mb-3 mt-3 p-4 fs-3 button-style green"
+            className="mb-3 mt-3 p-4 fs-4 button-style green"
             onClick={onSaveSede}
           >
             Guardar

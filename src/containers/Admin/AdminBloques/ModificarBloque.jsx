@@ -46,7 +46,7 @@ export default function ModificarBloque() {
         document.getElementById("minimoSi").checked = bloque.minimo && "true";
         document.getElementById("minimoNo").checked = !bloque.minimo && "true";
       });
-  }, [showForm, count, user]);
+  }, [showForm, count, user, id, roles]);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -166,7 +166,6 @@ export default function ModificarBloque() {
             <h5>Es bloque mínimo?</h5>
             <Radio.Group>
               <Radio.Button
-                id="si"
                 id="minimoSi"
                 value="si"
                 onChange={handleMinimo}
@@ -174,7 +173,6 @@ export default function ModificarBloque() {
                 Si
               </Radio.Button>
               <Radio.Button
-                id="no"
                 id="minimoNo"
                 value="no"
                 onChange={handleMinimo}

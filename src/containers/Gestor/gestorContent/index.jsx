@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router";
 import { updatePassword } from "../../../redux/users";
 import { message } from "antd";
-import { Form, Input, Button, Checkbox } from "antd";
+import { Form, Input, Button } from "antd";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "antd/dist/antd.css";
 import "./styles.css";
@@ -53,6 +52,7 @@ const GestorContent = () => {
   return (
     <>
       <div className="change_password_div">
+      <div className="row justify-content-center align-items-center">
         <h3>Cambiar contraseña</h3>
         <Form 
               {...layout}
@@ -103,17 +103,13 @@ const GestorContent = () => {
             <Input.Password />
           </Form.Item>
 
-          <Form.Item
-            wrapperCol={{
-              offset: 8,
-              span: 16,
-            }}
-          >
+          <Form.Item>
             <Button type="primary" htmlType="submit">
               Cambiar
             </Button>
           </Form.Item>
         </Form>
+        </div>
       </div>
     </>
   );

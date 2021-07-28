@@ -49,14 +49,27 @@ function GestorVoluntarios() {
 
   const columns = [
     {
+      title: "Voluntario",
+      render: (record) => (
+        <React.Fragment>
+          {record.nombre}
+          <hr />
+          {record.rol}
+        </React.Fragment>
+      ),
+      responsive: ["xs"]
+    },
+    {
       title: "Nombre",
       dataIndex: "nombre",
       key: "nombre",
+      responsive: ["sm"]
     },
     {
       title: "Rol",
       dataIndex: "rol",
       key: "rol",
+      responsive: ["sm"]
     },
     {
       title: "Seleccionar rol",
