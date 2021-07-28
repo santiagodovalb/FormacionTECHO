@@ -22,6 +22,11 @@ export const listNavbars = [
         icon: <FaUsers />,
       },
       { link: "/admin-sedes", name: "Gestionar Sedes", icon: <MdLocationOn /> },
+      {
+        link: "/admin/dashboard",
+        name: "Panel Nacional",
+        icon: <FaThList />,
+      },
     ],
   },
   {

@@ -1,7 +1,7 @@
 
 import Login from "./containers/login";
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setUser } from "./redux/user";
 import { Route, Switch, useHistory } from "react-router-dom";
 import axios from "axios";
@@ -10,6 +10,7 @@ import { useLocation } from "react-router";
 import { getRoles } from "./redux/roles";
 import { getSedes } from "./redux/sedes";
 import { getBloques } from "../src/redux/bloques";
+import { setUsers } from "./redux/users";
 import Routes from "./Routes";
 import Loader from "react-loader-spinner";
 
@@ -20,6 +21,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
+    dispatch(setUsers())
     dispatch(getBloques());
     dispatch(getSedes());
     dispatch(getRoles());
@@ -34,7 +36,7 @@ function App() {
         if (!location.pathname.includes('login')) history.push('/login')
       })
     setIsLoading(false)
-  }, [dispatch]);
+  }, [dispatch, history, location.pathname]);
 
   return (
     <div className="App">

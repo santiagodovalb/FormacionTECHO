@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import Swal from "sweetalert2";
 import { getSedes } from "../../../redux/sedes";
 import { Table, Button, message} from "antd";
 import useAuthorize from "../../../utils/authorization";
@@ -30,10 +30,41 @@ export default function Sedes() {
     setForm({...form, [e.target.name]: e.target.value });
   };
 
+  const alertaEliminar = Swal.mixin({
+    buttonsStyling: true,
+  });
+
   const handleDelete = (id) => {
-    axios.delete(`/api/sedes/${id}`).then(() => dispatch(getSedes()));
-    message.success("Sede eliminada correctamente")
+    alertaEliminar
+      .fire({
+        title: "Estás seguro?",
+        text: "Si lo confirmas, no podrás deshacerlo!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Si, borrar!",
+        cancelButtonText: "No, cancelar!",
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        reverseButtons: true,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          alertaEliminar.fire(
+            "Eliminado!",
+            "El bloque fue eliminado correctamente.",
+            "success"
+          );
+          axios.delete(`/api/sedes/${id}`).then(() => dispatch(getSedes()));
+          message.success("Sede eliminada correctamente")
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          alertaEliminar.fire("Cancelado", "El bloque está a salvo", "error");
+        }
+      });
   };
+
+
+
+
 
   useAuthorize(user, 1)
 

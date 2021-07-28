@@ -46,9 +46,29 @@ const usersController = {
       .then((user) => res.status(200).json(user))
       .catch(next);
   },
+ 
   createUser(req, res, next) {
     Users.create(req.body)
       .then((user) => res.status(200).json(user))
+      .catch(next);
+  },
+  findAllEntregas(req, res, next) {
+    Users.findAll({
+      include: [
+        { model: Roles, as: "rol" },
+        {
+          model: Entregas,
+          as: "entregas",
+          include: [{ model: Bloques, as: "bloque" }],
+        },
+      ],
+      where: {
+        id: {
+          [Op.ne]: req.user.id,
+        },
+      },
+    })
+      .then((users) => res.status(200).send(users))
       .catch(next);
   },
   setUser(req, res, next) {
