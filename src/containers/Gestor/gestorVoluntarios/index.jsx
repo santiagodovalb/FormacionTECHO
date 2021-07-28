@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { Table, Button,Select } from "antd";
+import useAuthorize from "../../../utils/authorization";
 const { Option } = Select;
 
 function GestorVoluntarios() {
@@ -10,7 +10,6 @@ function GestorVoluntarios() {
   const [users, setUsers] = useState([]);
   const user = useSelector((state) => state.user);
   const roles = useSelector((state) => state.roles.filter((rol) => rol.id > 2));
-  const history = useHistory();
 
   useEffect(() => {
     axios
@@ -38,14 +37,7 @@ function GestorVoluntarios() {
       });
   };
 
-  if (user.rolId && user.rolId !== 2) {
-    history.push("/unauthorized");
-    return (
-      <>
-        <h1>No autorizado</h1>
-      </>
-    );
-  }
+  useAuthorize(user, 2)
 
   const dataSource = users.map((user) => {
     return {

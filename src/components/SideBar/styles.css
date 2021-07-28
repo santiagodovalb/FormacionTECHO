@@ -4,7 +4,7 @@
   min-height: 100vmin;
   background-color: #0092dd;
   color: white;
-  float: left;
+  float: left top;
   position: fixed;
 }
 
@@ -13,7 +13,7 @@
     margin-left: -250px;
   }
   .sidebar.active {
-    margin-left: 0;
+    margin-left: 0px;
   }
 }
 

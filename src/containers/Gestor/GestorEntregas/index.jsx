@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { Table, Button } from 'antd'
+import useAuthorize from "../../../utils/authorization";
 
 export default function GestorEntregas() {
   const [entregas, setEntregas] = useState();
@@ -15,6 +16,8 @@ export default function GestorEntregas() {
       .then((res) => res.data)
       .then((entregas) => setEntregas(entregas));
     }, [user]);
+
+  useAuthorize(user, 2)
     
     const handleClick = (id) => {
       history.push(`/gestor/entregas/${id}`)

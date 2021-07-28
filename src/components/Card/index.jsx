@@ -28,7 +28,6 @@ const Card = ({
     <div className="col-auto" key={id}>
       <div
         className="card position-relative"
-        style={{ width: "20rem", borderRadius: "10px" }}
       >
         {icon && icon.length ? (
           <div className="position-absolute top-0 end-0">

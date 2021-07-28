@@ -30,21 +30,42 @@ export default function VolunteerEntregas() {
   const columns = [
     {
       title: "Bloque",
+      render: (record) => (
+        <React.Fragment>
+          {record.bloque}
+        </React.Fragment>
+      ),
+      responsive: ["xs"]
+    },
+    {
+      title: "Estado",
+      render: (record) => (
+        <React.Fragment>
+          {record.estado}
+        </React.Fragment>
+      ),
+      responsive: ["xs"]
+    },
+    {
+      title: "Bloque",
       dataIndex: "bloque",
       key: "bloque",
-      width: 300
+      width: 300,
+      responsive: ["sm"]
     },
     {
       title: "Contenido",
       dataIndex: "contenido",
       key: "contenido",
-      width: 800
+      width: 800,
+      responsive: ["sm"]
     },
     {
       title: "Estado",
       dataIndex: "estado",
       key: "estado",
-      width: 150
+      width: 150,
+      responsive: ["sm"]
     },
   ];
 
@@ -56,6 +77,7 @@ export default function VolunteerEntregas() {
       <div className='table'>
       <Table dataSource={dataSource} columns={columns} pagination={false} size='small' />
       </div>
+      <p className="entregas">Si querés ver el contenido de tu respuesta, entra desde una computadora por favor.</p>
     </div>
     </div>
     </>

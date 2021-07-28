@@ -55,25 +55,25 @@ const VolunteerModuls = () => {
   return (
     <div>
       <div className="container-fluid moduls-div">
-        <div className="row">
+        <div>
           <h1 className="p-5 fs-1 title">
             <strong>{bloque.titulo}</strong>
           </h1>
         </div>
-        <div className="row">
-          <div className="col m-5">
-            <p className="m-5 fs-5 text-justify-2">{bloque.descripcion}</p>
+        <div className="moduls">
+          <div className="descripcion">
+            <p className="fs-5 text-justify-2">{bloque.descripcion}</p>
           </div>
-          <div className="col m-5 px-5 text-justify-2">
-            <div className=" fs-4">
+          <div className="text-justify-2">
+            <div className="fs-4">
               <p>
                 <strong>Módulos</strong>
               </p>
             </div>
-            <div className="d-flex flex-column mb-5">
+            <div className="">
               <Unidades setChecks={() => setChecks(checks + 1)} />
             </div>
-            <div className="fs-4 my-3 modul_question">
+            <div className="fs-4  modul_question">
               <p>
                 <strong>{bloque.pregunta}</strong>
               </p>

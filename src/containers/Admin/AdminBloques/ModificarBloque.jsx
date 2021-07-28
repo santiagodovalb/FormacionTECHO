@@ -2,14 +2,16 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { Form, Input, Radio, Checkbox, Col, Row } from "antd";
+import { Form, Input, Radio, Col, Row, message } from "antd";
 import Swal from "sweetalert2";
 import { getBloques } from "../../../redux/bloques";
 import AdminUnidades from "../AdminUnidades/index.jsx";
 import Unidades from "./Unidades.jsx";
+import useAuthorize from "../../../utils/authorization";
 const { TextArea } = Input;
 
 export default function ModificarBloque() {
+
   const [count, setCount] = useState(0);
   const [bloque, setBloque] = useState();
   const [showForm, setShowForm] = useState(false);
@@ -44,7 +46,7 @@ export default function ModificarBloque() {
         document.getElementById("minimoSi").checked = bloque.minimo && "true";
         document.getElementById("minimoNo").checked = !bloque.minimo && "true";
       });
-  }, [showForm, count]);
+  }, [showForm, count, user]);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -66,15 +68,12 @@ export default function ModificarBloque() {
   const handleSubmit = (e) => {
     axios.put(`/api/bloques/${id}`, form).then(() => {
       dispatch(getBloques());
+      message.success("Modificado correctamente");
       history.push("/admin-bloques");
     });
   };
 
   const alertaEliminar = Swal.mixin({
-    customClass: {
-      confirmButton: "btn btn-success",
-      cancelButton: "btn btn-danger",
-    },
     buttonsStyling: true,
   });
 
@@ -87,6 +86,8 @@ export default function ModificarBloque() {
         showCancelButton: true,
         confirmButtonText: "Si, borrar!",
         cancelButtonText: "No, cancelar!",
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
         reverseButtons: true,
       })
       .then((result) => {
@@ -110,23 +111,17 @@ export default function ModificarBloque() {
     setShowForm(!showForm);
   };
 
-  if (user.rolId && user.rolId !== 1) {
-    history.push("/unauthorized");
-    return (
-      <>
-        <h1>No autorizado</h1>
-      </>
-    );
-  }
-
   const forceRender = () => {
-    setCount(count + 1)
-  }
+    setCount(count + 1);
+  };
+
+  useAuthorize(user, 1)
 
   return (
     <div>
       <div className="admin">
         <h1>{bloque && bloque.titulo}</h1>
+        <br />
       </div>
       {bloque && (
         <Form
@@ -240,7 +235,9 @@ export default function ModificarBloque() {
         </Form>
       )}
       <div className="admin">
-        {showForm && <AdminUnidades forceRender={forceRender} bloque={bloque} />}
+        {showForm && (
+          <AdminUnidades forceRender={forceRender} bloque={bloque} />
+        )}
         <br />
         <h1>Unidades del bloque</h1>
         <br />
