@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import "./index.css";
 
 export default function CrearGestor() {
   const [form, setForm] = useState({ rolId: 2 });
@@ -35,7 +36,7 @@ export default function CrearGestor() {
 
   return (
     <div className="row justify-content-center align-items-center text-center p-5 mx-5">
-      <h1 className="fs-2">
+      <h1 className="fs-2 text-secondary">
         <strong>Crear Gestor</strong>
       </h1>
       <form onSubmit={handleSubmit} className="col-4 p-5 mx-5">
@@ -80,7 +81,10 @@ export default function CrearGestor() {
             className="form-control"
           />
         </div>
-        <button type="submit" className="button-style light-blue fs-4 p-1">
+        <button
+          type="submit"
+          className="button-style light-blue fs-3 my-3 py-2 button-style-form"
+        >
           Crear
         </button>
       </form>

@@ -10,26 +10,26 @@ export default function ListaSedes() {
   const sedes = useSelector((state) => state.sedes);
   const user = useSelector((state) => state.user);
 
-    useAuthorize(user, 1)
+  useAuthorize(user, 1);
 
   return (
     <div>
-      <Row>
+      <div className="wh-100 m-0 row justify-content-center align-items-center m-5">
         {sedes.map((sede) => {
           return (
-            <Col flex={1} span={4} offset={5} pull={2}>
+            <div className="col-auto">
               <Link to={`/admin-usuarios/sede/${sede.id}`}>
                 <button
-                  className="mb-3 mt-3 p-3 fs-3 button-style light-blue"
+                  className="m-3 p-3 fs-3 button-style light-blue"
                   type="button"
                 >
                   {sede.nombre}
                 </button>
               </Link>
-            </Col>
+            </div>
           );
         })}
-      </Row>
+      </div>
     </div>
   );
 }

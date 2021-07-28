@@ -16,7 +16,8 @@
   color: white;
   border: none;
   border-radius: 10px;
-  width: 100%;
+  width: 400px;
+  height: 100px;
 }
 
 .button-style:hover {
