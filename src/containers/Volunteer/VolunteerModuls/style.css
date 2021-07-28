@@ -46,6 +46,7 @@
   .descripcion {
     width: 100% !important;
     margin-bottom: 30px;
+    margin-right: 0px !important;
   }
 
   .modul_question {
