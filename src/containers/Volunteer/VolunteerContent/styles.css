@@ -4,11 +4,6 @@
   flex-direction: column;
 }
 
-.volunteer_content_div h1 {
-  margin: 25px auto;
-  border: 2px solid black;
-  padding: -2px
-}
 
 .content_div {
   display: flex;

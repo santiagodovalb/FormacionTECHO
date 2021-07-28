@@ -4,7 +4,7 @@ import { useHistory } from "react-router";
 import { setUser } from "../../redux/user";
 import axios from "axios";
 import Card from "../../components/Card";
-import mapa from '../../assets/sedes/lima-peru.png'
+import mapa from "../../assets/sedes/lima-peru.png";
 import "./style.css";
 
 const Sede = () => {
@@ -55,11 +55,11 @@ const Sede = () => {
     axios
       .put(`/api/users/${user.id}`, { sedeId: selectSede })
       .then((res) => {
-        return res.data
+        return res.data;
       })
       .then((user) => {
         dispatch(setUser(user));
-        history.push("/user")
+        history.push("/user");
       })
       .catch((err) => err);
   };
@@ -69,7 +69,7 @@ const Sede = () => {
     <div className="div-sedes">
       <div className="row justify-content-center align-items-center">
         <div className='title'>
-          <h1 className="p-5 fs-1 title">
+          <h1 className="fs-3 text-secondary m-5">
             <strong>Elegí tu sede</strong>
           </h1>
         </div>
@@ -82,7 +82,7 @@ const Sede = () => {
             <input
               type="text"
               name="search"
-              className="form-control me-2 fs-3"
+              className="form-control me-2 fs-4"
               placeholder="Buscar sede"
             />
             <button className="btn btn-outline-secondary" type="submit">

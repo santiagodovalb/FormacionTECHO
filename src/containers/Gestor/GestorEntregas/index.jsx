@@ -101,7 +101,7 @@ export default function GestorEntregas() {
 
   return (
     <div>
-      <h1 className="p-5 fs-1 title">
+      <h1 className="fs-3 text-secondary p-5 text-center">
         <strong>Entregas de voluntarios</strong>
       </h1>
       <div className="table">

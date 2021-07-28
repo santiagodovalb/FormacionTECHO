@@ -16,7 +16,7 @@ const VolunteerContent = () => {
     <>
       <div>
         <div className="volunteer_content_div">
-        <h1 className="p-5 fs-1 title">
+        <h1 className="fs-3 text-secondary m-5">
             <strong>Bloques mínimos</strong>
           </h1>
           <div className="content_div">
@@ -31,7 +31,7 @@ const VolunteerContent = () => {
                       title={bloque.titulo}
                       button={{
                         text: "Ver modulos",
-                        styles: "btn btn-primary",
+                        styles: "button-style green fs-4",
                       }}
                       url={`mis-bloques/${bloque.id}`}
                     />
@@ -39,7 +39,7 @@ const VolunteerContent = () => {
               )}
             </div>
           </div>
-          <h1 className="p-5 fs-1 title">
+          <h1 className="fs-3 text-secondary m-5">
             <strong>Bloques opcionales</strong>
           </h1>
           <div className="content_div">

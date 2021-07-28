@@ -59,7 +59,9 @@ export default function CrearBloque() {
   return (
     <>
       <div className="admin">
-        <h1>Crear nuevo bloque de formación</h1>
+        <h1 className="fs-2 text-secondary m-5">
+          <strong>Crear nuevo bloque de formación</strong>
+        </h1>
       </div>
       <Form
         labelCol={{
@@ -101,7 +103,7 @@ export default function CrearBloque() {
         <Form.Item
           className="admin_input"
           label="Pregunta"
-          name="pregunta" 
+          name="pregunta"
           rules={[
             {
               required: true,
@@ -125,23 +127,26 @@ export default function CrearBloque() {
           <h5>A que roles esta destinado?</h5>
           {roles.map((rol) => {
             return (
-              <div value={rol.id}> 
+              <div value={rol.id}>
                 <label className="admin_check" htmlFor={rol.tipo}>
                   {rol.tipo}
                 </label>
-                  <input
-                    type="checkbox"
-                    name="roles"
-                    value={rol.id}
-                    id={rol.id}
-                    onChange={handleRoles}
-                  />
+                <input
+                  type="checkbox"
+                  name="roles"
+                  value={rol.id}
+                  id={rol.id}
+                  onChange={handleRoles}
+                />
               </div>
             );
           })}
           <br />
           <Form.Item>
-            <button htmlType="submit" className="mb-3 mt-3 p-3 fs-3 button-style light-blue">
+            <button
+              htmlType="submit"
+              className="mb-3 mt-3 p-3 fs-3 button-style light-blue button-style-formm"
+            >
               Crear
             </button>
           </Form.Item>

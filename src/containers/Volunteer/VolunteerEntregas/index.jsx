@@ -73,8 +73,8 @@ export default function VolunteerEntregas() {
   return (
     <>
       <div>
-        <div className="volunteer_entregas_div">
-          <h1 className="p-5 fs-1 title">
+        <div className="volunteer_entregas_div text-center">
+          <h1 className="fs-3 text-secondary m-5">
             <strong>Mis entregas</strong>
           </h1>
           <div className="table">

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import { Table, Button,Select } from "antd";
+import { Table, Button, Select } from "antd";
 import useAuthorize from "../../../utils/authorization";
 const { Option } = Select;
 
@@ -37,7 +37,7 @@ function GestorVoluntarios() {
       });
   };
 
-  useAuthorize(user, 2)
+  useAuthorize(user, 2);
 
   const dataSource = users.map((user) => {
     return {
@@ -77,10 +77,14 @@ function GestorVoluntarios() {
       render: (text, record) => {
         return (
           <div>
-            <Select defaultValue="Seleccionar rol" style={{width:200}} onChange={handleChange}>
+            <Select
+              defaultValue="Seleccionar rol"
+              style={{ width: 200 }}
+              onChange={handleChange}
+            >
               {roles &&
                 roles.map((rol) => {
-                  return <Option value={rol.id}> {rol.tipo} </Option>;
+                  return <Option key={rol.id} value={rol.id}> {rol.tipo} </Option>;
                 })}
             </Select>
             <Button
@@ -95,15 +99,12 @@ function GestorVoluntarios() {
     },
   ];
 
-  
   return (
-    <div>
-       <h1 className="p-5 fs-1 title">
+    <div className="row text-center mx-5">
+      <h1 className="fs-3 text-secondary m-5">
         <strong>Administrar roles</strong>
       </h1>
-      <div className='table'>
       <Table dataSource={dataSource} columns={columns} pagination={false} />
-    </div>
     </div>
   );
 }
