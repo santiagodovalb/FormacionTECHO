@@ -4,9 +4,10 @@ import { useHistory, useParams } from "react-router-dom";
 import { Row, Col, Button } from "antd";
 import useAuthorize from "../../../utils/authorization";
 import { useSelector } from "react-redux";
+import "./index.css";
 
 export default function EntregaIndividual() {
-  const user = useSelector(state => state.user)
+  const user = useSelector((state) => state.user);
   const [entrega, setEntrega] = useState();
   const { id } = useParams();
   const history = useHistory();
@@ -26,42 +27,30 @@ export default function EntregaIndividual() {
       .catch((err) => console.log(err));
   };
 
-  useAuthorize(user, 2)
+  useAuthorize(user, 2);
 
   return (
-    <div>
-      <Row>
-        <Col span={6}></Col>
-        <Col span={12}>
-          <h1>Voluntario: {entrega?.user.full_name}</h1>
-        </Col>
-      </Row>
-      <Row>
-        <Col span={1}></Col>
-        <Col span={18}>
-          <h2>Bloque: {entrega?.bloque.titulo}</h2>
-        </Col>
-      </Row>
-      <Row>
-        <Col span={1}></Col>
-        <Col span={18}>
-          <h2>Pregunta: {entrega?.bloque.pregunta}</h2>
-        </Col>
-      </Row>
-      <Row>
-        <Col span={1}></Col>
-        <Col span={18}>
-          <h2>Respuesta del voluntario: {entrega?.contenido}</h2>
-        </Col>
-      </Row>
-      <Row>
-        <Col span={1}></Col>
-        <Col span={8}>
-          <Button type="button" onClick={(e) => handleClick(e)}>
-            Completar entrega
-          </Button>
-        </Col>
-      </Row>
+    <div className="wh-100 row justify-content-center align-items-center">
+      <div className="col-auto p-5">
+        <div className="text-center">
+          <img src={entrega?.user.img} />
+          <h1 className="fs-2 m-2 text-secondary">
+            <strong>{entrega?.user.full_name}</strong>
+          </h1>
+        </div>
+        <div className="m-5">
+          <h2 className="fs-4 text-left">Bloque: {entrega?.bloque.titulo}</h2>
+          <h2 className="fs-4">Pregunta: {entrega?.bloque.pregunta}</h2>
+          <h2 className="fs-4">
+            Respuesta del voluntario: {entrega?.contenido}
+          </h2>
+        </div>
+        <div className="text-center">
+          <button className="btn btn-secondary" onClick={(e) => handleClick(e)}>
+            Completar
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
