@@ -4,20 +4,17 @@
   flex-direction: column;
 }
 
+.volunteer_content_div h1 {
+  margin: 25px auto;
+  border: 2px solid black;
+  padding: -2px
+}
+
 .content_div {
   display: flex;
   flex-wrap: nowrap;
   overflow-x: scroll;
 }
-
-/* .content_div::-webkit-scrollbar {
-  display: none;
-}
-
-.content_div {
-  -ms-overflow-style: none; 
-  scrollbar-width: none;
-} */
 
 .content_div::-webkit-scrollbar {
   height: 7px;

@@ -75,8 +75,12 @@ export default function DashboardGestor() {
 
     return (
         <div>
-            <h1>Dashboard de {user.sede?.nombre}</h1>
-            <Table columns={columns} dataSource={dataSource} pagination={false} />
+            <h1 className="p-5 fs-1 title">
+            <strong>Panel de {user.sede?.nombre}</strong>
+          </h1>
+          <div className='table'>
+            <Table bordered columns={columns} dataSource={dataSource} pagination={false} />
+            </div>
         </div>
     )
 }

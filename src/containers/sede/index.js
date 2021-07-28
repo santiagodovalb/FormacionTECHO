@@ -75,9 +75,9 @@ const Sede = () => {
   return (
     <div>
       <div className="row justify-content-center align-items-center">
-        <div>
+        <div className='title'>
           <h1 className="p-5 fs-1 title">
-            <strong>Elige tu sede</strong>
+            <strong>Elegí tu sede</strong>
           </h1>
         </div>
         <div className="row justify-content-center align-items-center">

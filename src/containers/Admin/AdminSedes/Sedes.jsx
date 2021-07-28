@@ -85,8 +85,7 @@ export default function Sedes() {
 
   return (
     <div>
-      {console.log(form)}
-      <Table dataSource={dataSource} columns={columns} pagination={false} />
+      <Table bordered dataSource={dataSource} columns={columns} pagination={false} />
     </div>
   );
 }

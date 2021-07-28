@@ -85,9 +85,12 @@ function GestorVoluntarios() {
   
   return (
     <div>
-      <h1>Administrar roles</h1>
-      {!users.length && <h1>No hay voluntarios/gestores en esta sede</h1>}
+       <h1 className="p-5 fs-1 title">
+        <strong>Administrar roles</strong>
+      </h1>
+      <div className='table'>
       <Table dataSource={dataSource} columns={columns} pagination={false} />
+    </div>
     </div>
   );
 }

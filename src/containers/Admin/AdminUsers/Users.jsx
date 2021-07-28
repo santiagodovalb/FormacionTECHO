@@ -47,7 +47,9 @@ useAuthorize(user, 1)
 
 return (
     <div className="admin">
-      <h1>Administrar roles</h1>
+      <h1 className="fs-2">
+        <strong>Administrar roles</strong>
+      </h1>
       {!users.length && <h1>No hay voluntarios/gestores en esta sede</h1>}
       <br />
 

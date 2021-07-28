@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Row, Col } from "antd";
@@ -8,13 +8,17 @@ export default function AdminBloques() {
 
   const user = useSelector(state => state.user)
 
+  useEffect(() => {}, [user])
+
   const bloques = useSelector((state) => state.bloques);
 
   useAuthorize(user, 1)
 
   return (
     <div className="admin">
-      <h1>Gestionar o crear bloques</h1>
+      <h1 className="fs-2">
+        <strong>Gestionar o crear bloques</strong>
+      </h1>
       <Link to="/admin-bloques-crear">
         <button type="button" className="mb-3 mt-3 p-3 fs-3 button-style green">
           Crear nuevo bloque

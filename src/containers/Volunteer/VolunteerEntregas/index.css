@@ -6,7 +6,8 @@
 
 .volunteer_entregas_div h1 {
   text-align: center;
-  margin-top: 50px;
+  margin: 50px auto;
+  border: 2px solid black;
 }
 
 .table {

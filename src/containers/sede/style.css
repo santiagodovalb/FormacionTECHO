@@ -3,6 +3,14 @@
   color: white;
   font-size: 40px;
 }
+.title {
+  padding: -20px
+}
+.title h1 {
+  border: 2px solid black;
+  width: 40%;
+  margin: 20px auto
+}
 .check-style,
 .uncheck-style:hover,
 .check-style:hover {

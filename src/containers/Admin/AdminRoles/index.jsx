@@ -32,7 +32,9 @@ export default function AdminRoles() {
 
     return (
         <div>
-            <h1>Gestionar roles</h1>
+            <h1 className="fs-2">
+        <strong>Gestionar roles</strong>
+      </h1>
             <button type='button' onClick={toggleForm}>Crear nuevo rol</button>
             <form onSubmit={handleSubmit} id='newRole' style={{display: 'none'}}>
                             <label htmlFor='nombre'>Tipo</label>

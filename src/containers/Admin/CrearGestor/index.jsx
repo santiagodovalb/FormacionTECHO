@@ -4,24 +4,28 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import useAuthorize from "../../../utils/authorization";
 
 export default function CrearGestor() {
   const [form, setForm] = useState({ rolId: 2 });
+  const user = useSelector(state => state.user)
 
-  const sedes = useSelector((state) => state.sedes);
-
+  
+  const sedes =  useSelector((state) => state.sedes)
+  
   const history = useHistory();
-
+  
   useEffect(() => {
     let options = "<option value=''>Seleccionar Sede</sede>";
     for (var i = 0; i < sedes.length; i++) {
       options += `<option value=${sedes[i]?.id}>${sedes[i]?.nombre}</option>`;
     }
     document.getElementById("sedes").innerHTML = options;
-  }, [sedes]);
+  }, [sedes, user]);
+  
+  useAuthorize(user, 1)
 
   const handleChange = (e) => {
-    console.log(form);
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 

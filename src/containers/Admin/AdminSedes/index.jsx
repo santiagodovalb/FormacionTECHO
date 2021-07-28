@@ -6,6 +6,7 @@ import Sedes from "./Sedes";
 import { Button, Form, Input, InputNumber } from "antd";
 import { message } from "antd";
 import useAuthorize from "../../../utils/authorization";
+import './index.css'
 
 export default function AdminSedes() {
   const [form, setForm] = useState({});
@@ -39,11 +40,15 @@ export default function AdminSedes() {
   useAuthorize(user, 1)
 
   return (
-    <div>
-      <h1>Gestionar sedes</h1>
+    <div className='adminSedes'>
+      <h1 className="fs-2">
+        <strong>Gestionar sedes</strong>
+      </h1>
+      <div className='crearSede'>
       <Button type="button" onClick={toggleForm}>
         Crear nueva sede
       </Button>
+      </div>
       <Form
         style={{ display: "none" }}
         name="newSede"
@@ -76,7 +81,9 @@ export default function AdminSedes() {
             Crear
           </Button>
       </Form>
+      <div className='table'>
       <Sedes />
+      </div>
     </div>
   );
 }
