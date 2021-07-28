@@ -21,6 +21,7 @@ import EntregaIndividual from "./containers/Gestor/EntregaIndividual";
 import "./Routes.css";
 import DashboardGestor from "./containers/Gestor/DashboardGestor";
 import CrearGestor from "./containers/Admin/CrearGestor";
+import AdminDashboard from "./containers/Admin/adminDashboard";
 
 function Routes() {
 
@@ -46,6 +47,7 @@ function Routes() {
           <Route exact path="/admin-bloques" component={AdminBloques} />
           <Route path="/admin-bloques-crear" component={CrearBloque} />
           <Route path="/admin-bloques/:id" component={ModificarBloque} />
+          <Route exact path='/admin/dashboard' component={AdminDashboard} />
           <Route exact path="/admin-usuarios" component={AdminUsers} />
           <Route exact path="/admin-sedes" component={AdminSedes} />
           <Route exact path="/admin-roles" component={AdminRoles} />

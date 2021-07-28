@@ -210,12 +210,12 @@ const seed = () => {
   Users.create({
     full_name: "Victor Voluntario",
     email: "voluntario@voluntario.com",
-    sedeId: 1,
     password: "voluntario",
     img: "https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg",
   }).then((user) => {
     Roles.findByPk(3).then((rol) => {
       user.setRol(rol);
+      user.setSede(3);
     });
   });
 };

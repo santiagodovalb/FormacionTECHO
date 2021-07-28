@@ -10,6 +10,7 @@ import { useLocation } from "react-router";
 import { getRoles } from "./redux/roles";
 import { getSedes } from "./redux/sedes";
 import { getBloques } from "../src/redux/bloques";
+import { setUsers } from "./redux/users";
 import Routes from "./Routes";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
   let location = useLocation();
 
   useEffect(() => {
+    dispatch(setUsers())
     dispatch(getBloques());
     dispatch(getSedes());
     dispatch(getRoles());

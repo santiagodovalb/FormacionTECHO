@@ -53,11 +53,13 @@ Users.addHook("beforeCreate", async user => {
   })
 
   Users.addHook("afterBulkUpdate", async user => {
-      if (user.password){
-      usuario = await Users.findByPk(user.where.id)
-      usuario.password = await bcrypt.hash(usuario.password, usuario.salt)
-      usuario.save()
-      }
+      let usuario = await Users.findByPk(user.where.id)
+      if(usuario.password){
+          let pass = usuario.password
+          let salt = usuario.salt
+          usuario.password = await bcrypt.hash(pass, salt)
+          usuario.save()
+      }   
   })
 
  
