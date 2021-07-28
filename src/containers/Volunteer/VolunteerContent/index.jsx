@@ -34,7 +34,7 @@ const VolunteerContent = () => {
                       title={bloque.titulo}
                       button={{
                         text: "Ver modulos",
-                        styles: "btn btn-primary",
+                        styles: "button-style green fs-4",
                       }}
                       url={`mis-bloques/${bloque.id}`}
                     />
