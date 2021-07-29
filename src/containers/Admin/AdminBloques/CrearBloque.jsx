@@ -3,8 +3,10 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Form, Input, Radio } from "antd";
+import { Form, Input, Radio, message } from "antd";
 import { getBloques } from "../../../redux/bloques";
+import isValid from '../../../utils/specialChars'
+import useAuthorize from '../../../utils/authorization'
 import "antd/dist/antd.css";
 import "./index.css";
 
@@ -14,6 +16,8 @@ export default function CrearBloque() {
   const user = useSelector((state) => state.user);
   const history = useHistory();
   const dispatch = useDispatch();
+
+  useAuthorize(user, 1)
 
   useEffect(() => {
     axios
@@ -40,16 +44,9 @@ export default function CrearBloque() {
     setForm({ ...form, rolesId: [...array] });
   };
 
-  if (user.rolId && user.rolId !== 1) {
-    history.push("/unauthorized");
-    return (
-      <>
-        <h1>No autorizado</h1>
-      </>
-    );
-  }
 
   const handleSubmit = (e) => {
+    if (!isValid(form.titulo)) return message.error("No se permiten caracteres especiales")
     axios.post("/api/bloques", form).then((res) => {
       dispatch(getBloques());
       history.push("/admin-bloques");

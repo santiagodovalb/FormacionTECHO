@@ -6,6 +6,7 @@ import Sedes from "./Sedes";
 import { Button, Form, Input, InputNumber } from "antd";
 import { message } from "antd";
 import useAuthorize from "../../../utils/authorization";
+import isValid from "../../../utils/specialChars";
 import "./index.css";
 
 export default function AdminSedes() {
@@ -16,6 +17,7 @@ export default function AdminSedes() {
   const user = useSelector((state) => state.user);
 
   const onFinish = () => {
+    if (!isValid(form.nombre)) return message.error("No se permiten caracteres especiales")
     axios
       .post(`/api/sedes/`, form)
       .then((res) => {
@@ -26,7 +28,7 @@ export default function AdminSedes() {
       .then(() => {
         dispatch(getSedes());
       })
-      .catch(err=>message.warning("Sede ya existente"));
+      .catch(err=>message.warning("No se pudo crear la sede"));
   };
 
   const handleChange = (obj, obj2) => {

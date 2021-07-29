@@ -7,6 +7,7 @@ import Roles from "./Roles";
 import useAuthorize from "../../../utils/authorization";
 import "./index.css";
 import { message, Input, Form, Button } from "antd";
+import isValid from "../../../utils/specialChars";
 
 export default function AdminRoles() {
   const [form, setForm] = useState({});
@@ -16,6 +17,7 @@ export default function AdminRoles() {
   const user = useSelector((state) => state.user);
 
   const handleSubmit = () => {
+    if(!isValid(form.tipo)) return message.error("No se permiten caracteres especiales")
     axios.post("/api/roles/", form)
     .then((res) => {
       if(res.data){

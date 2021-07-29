@@ -8,3 +8,17 @@
 .newRolForm {
     border: 3px solid black
 }
+
+.table {
+    width: 90%
+}
+
+.rolesForm{
+    margin: 20px auto
+}
+.rolesForm button{
+    margin: 10px 5px
+}
+.rolesForm label{
+    margin: auto 5px
+}

@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import {message} from  "antd"
 import useAuthorize from "../../../utils/authorization";
+import isValid from "../../../utils/specialChars";
 import "./index.css";
 
 export default function CrearGestor() {
@@ -34,7 +35,9 @@ export default function CrearGestor() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if(form.confirmPassword === form.password){
-
+      if (!isValid(form.password) || !isValid(form.full_name)) {
+        return message.error("No se permiten caracteres especiales")
+      }
       axios
         .post("/api/users/create", form)
         .then((res) =>{
