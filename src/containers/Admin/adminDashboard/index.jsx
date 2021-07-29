@@ -4,7 +4,7 @@ import { Table } from 'antd'
 import axios from 'axios'
 import useAuthorize from '../../../utils/authorization'
 import { minimosCompletados,opcionalesCompletados,minimosTotal,opcionalesTotal} from '../../Gestor/DashboardGestor/dashUtils'
-
+import './index.css'
 
 export default function AdminDashboard(){
     const user = useSelector(state => state.user)
@@ -119,9 +119,13 @@ export default function AdminDashboard(){
       }]
 
     return (
-        <div>
-            <h1>Dashboard Nacional</h1>
-            <Table dataSource={dataSource} columns={columns} pagination={false} />
+        <div className='text-center'>
+            <h1 className="fs-2 text-secondary p-5">
+              <strong>Dashboard Nacional</strong>
+              </h1>
+              <div className='table'>
+            <Table bordered dataSource={dataSource} columns={columns} pagination={false} />
+            </div>
         </div>
     )
 

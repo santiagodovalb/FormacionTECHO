@@ -107,7 +107,7 @@ const usersController = {
     res.status(200).send({});
   },
   isLogged(req, res, next) {
-    if (!req.user) return res.sendStatus(401);
+    if (!req.user) return res.status(401).send({logged: false});
     return res.send(req.user);
   },
   updatePass(req, res, next) {

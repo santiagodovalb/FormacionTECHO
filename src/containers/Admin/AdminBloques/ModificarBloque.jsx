@@ -11,7 +11,6 @@ import useAuthorize from "../../../utils/authorization";
 const { TextArea } = Input;
 
 export default function ModificarBloque() {
-
   const [count, setCount] = useState(0);
   const [bloque, setBloque] = useState();
   const [showForm, setShowForm] = useState(false);
@@ -46,7 +45,7 @@ export default function ModificarBloque() {
         document.getElementById("minimoSi").checked = bloque.minimo && "true";
         document.getElementById("minimoNo").checked = !bloque.minimo && "true";
       });
-  }, [showForm, count, user]);
+  }, [showForm, count, user, id, roles]);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -115,12 +114,14 @@ export default function ModificarBloque() {
     setCount(count + 1);
   };
 
-  useAuthorize(user, 1)
+  useAuthorize(user, 1);
 
   return (
     <div>
       <div className="admin">
-        <h1>{bloque && bloque.titulo}</h1>
+        <h1 className="fs-2 text-secondary m-5">
+          <strong>{bloque && bloque.titulo}</strong>
+        </h1>
         <br />
       </div>
       {bloque && (
@@ -166,7 +167,6 @@ export default function ModificarBloque() {
             <h5>Es bloque mínimo?</h5>
             <Radio.Group>
               <Radio.Button
-                id="si"
                 id="minimoSi"
                 value="si"
                 onChange={handleMinimo}
@@ -174,7 +174,6 @@ export default function ModificarBloque() {
                 Si
               </Radio.Button>
               <Radio.Button
-                id="no"
                 id="minimoNo"
                 value="no"
                 onChange={handleMinimo}
@@ -239,7 +238,9 @@ export default function ModificarBloque() {
           <AdminUnidades forceRender={forceRender} bloque={bloque} />
         )}
         <br />
-        <h1>Unidades del bloque</h1>
+        <h1 className="fs-2 text-secondary mt-5">
+          <strong>Unidades del bloque</strong>
+        </h1>
         <br />
       </div>
       <Unidades forceRender={forceRender} unidades={bloque?.unidades} />

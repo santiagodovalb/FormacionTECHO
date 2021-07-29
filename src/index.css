@@ -17,6 +17,13 @@
   border: none;
   border-radius: 10px;
   width: 400px;
+  /* height: 100px; */
+}
+
+@media (max-width: 768px) {
+  .button-style {
+    width: 300px;
+  }
 }
 
 .button-style:hover {

@@ -1,7 +1,6 @@
 import VolunteerProfile from "../src/containers/Volunteer/VolunteerProfile";
 import VolunteerContent from "../src/containers/Volunteer/VolunteerContent";
 import VolunteerModuls from "../src/containers/Volunteer/VolunteerModuls";
-import AdminContent from "../src/containers/Admin/AdminContent";
 import GestorContent from "../src/containers/Gestor/gestorContent";
 import AdminUsers from "../src/containers/Admin/AdminUsers/index";
 import Unauthorized from "./containers/Unauthorized";
@@ -33,7 +32,6 @@ function Routes() {
           <Route path="/mis-bloques/:id" component={VolunteerModuls} />
           <Route exact path="/mis-bloques" component={VolunteerContent} />
           <Route path="/mis-entregas" component={VolunteerEntregas} />
-          <Route path="/bloques" component={AdminContent} />
           <Route exact path="/gestor" component={GestorContent} />
           <Route path="/gestor/voluntarios" component={GestorVoluntarios} />
           <Route exact path="/gestor/entregas" component={GestorEntregas} />
@@ -54,7 +52,7 @@ function Routes() {
           <Route path="/admin-usuarios/sede/:id" component={Users} />
           <Route path="/admin-crear-gestor" component={CrearGestor} />
           <Route path="/unauthorized" component={Unauthorized} />
-          <Redirect from="*" to="/login" />
+          <Redirect from="*" to="/user" />
       </Switch>
       </div>
     

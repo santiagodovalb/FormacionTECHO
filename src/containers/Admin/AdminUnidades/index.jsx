@@ -21,7 +21,9 @@ export default function AdminUnidades({ forceRender, bloque }) {
 
   return (
     <div>
-      <h1>Agregar unidad a {bloque?.titulo}</h1>
+      <h1 className="fs-2">
+        <strong>Agregar unidad a {bloque?.titulo}</strong>
+      </h1>
       <Form onFinish={handleSubmit}>
         <Form.Item
           label="Titulo"

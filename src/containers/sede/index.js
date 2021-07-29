@@ -4,7 +4,7 @@ import { useHistory } from "react-router";
 import { setUser } from "../../redux/user";
 import axios from "axios";
 import Card from "../../components/Card";
-import mapa from '../../assets/sedes/lima-peru.png'
+import mapa from "../../assets/sedes/lima-peru.png";
 import "./style.css";
 
 const Sede = () => {
@@ -19,15 +19,15 @@ const Sede = () => {
     key: "",
     style: "btn bi bi-check-circle-fill check-style",
   });
-
+  
   useEffect(() => {
     if (!sedes.length) setSedes([...sedesPrueba]);
     setStateIcon({
       ...stateIcon,
       key: selectSede,
     });
-  }, [form, selectSede, sedes]);
-
+  }, [form, selectSede, sedes, sedesPrueba]);
+  
   const onChange = (e) => {
     const { target } = e;
     setForm({ ...form, [target.name]: target.value });
@@ -55,32 +55,24 @@ const Sede = () => {
     axios
       .put(`/api/users/${user.id}`, { sedeId: selectSede })
       .then((res) => {
-        return res.data
+        return res.data;
       })
       .then((user) => {
         dispatch(setUser(user));
-        history.push("/user")
+        history.push("/user");
       })
       .catch((err) => err);
   };
 
-  useEffect(() => {
-    if (!sedes.length) setSedes([...sedesPrueba]);
-    setStateIcon({
-      ...stateIcon,
-      key: selectSede,
-    });
-  }, [form, selectSede, sedes]);
 
   return (
-    <div>
-      <div className="row justify-content-center align-items-center">
-        <div>
-          <h1 className="p-5 fs-1 title">
-            <strong>Elige tu sede</strong>
+    <div className="div-sedes">
+        
+          <h1 className="fs-3 text-secondary p-5 title">
+            <strong>Elegí tu sede</strong>
           </h1>
-        </div>
-        <div className="row justify-content-center align-items-center">
+
+        <div className="justify-content-center align-items-center">
           <form
             className="d-flex col-auto text-center"
             onChange={onChange}
@@ -89,7 +81,7 @@ const Sede = () => {
             <input
               type="text"
               name="search"
-              className="form-control me-2 fs-3"
+              className="form-control me-2 fs-4"
               placeholder="Buscar sede"
             />
             <button className="btn btn-outline-secondary" type="submit">
@@ -97,7 +89,7 @@ const Sede = () => {
             </button>
           </form>
         </div>
-        <div className="row justify-content-center align-items-center mt-5">
+        <div className="sedes mt-5">
           {sedes?.map((sede, index) => {
             return (
               <Card
@@ -115,15 +107,15 @@ const Sede = () => {
             );
           })}
         </div>
-        <div className="col-auto">
+        <div className=" guardarButton ">
           <button
-            className="mb-3 mt-3 p-4 fs-3 button-style green"
+            className="mb-3 mt-3 p-4 fs-4 button-style green"
             onClick={onSaveSede}
           >
             Guardar
           </button>
         </div>
-      </div>
+      
     </div>
   );
 };

@@ -1,44 +1,46 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { Row, Col } from "antd";
 import useAuthorize from "../../../utils/authorization";
+import "./index.css";
 
 export default function AdminBloques() {
+  const user = useSelector((state) => state.user);
 
-  const user = useSelector(state => state.user)
+  useEffect(() => {}, [user])
 
   const bloques = useSelector((state) => state.bloques);
 
-  useAuthorize(user, 1)
+  useAuthorize(user, 1);
 
   return (
-    <div className="admin">
-      <h1>Gestionar o crear bloques</h1>
-      <Link to="/admin-bloques-crear">
-        <button type="button" className="mb-3 mt-3 p-3 fs-3 button-style green">
-          Crear nuevo bloque
-        </button>
-      </Link>
-      <br />
-      <Row >
+    <div className="wh-100 m-0 row justify-content-center align-items-center">
+      <div className="col-auto m-5">
+        <h1 className="fs-2 text-secondary">
+          <strong>Gestionar o crear bloques</strong>
+        </h1>
+        <Link to="/admin-bloques-crear">
+          <button type="button" className="my-5 p-3 fs-3 button-style green">
+            Crear nuevo bloque
+          </button>
+        </Link>
+      </div>
+      <div className="wh-100 my-3 row justify-content-center align-items-center">
         {bloques.map((bloque) => {
           return (
-            <Col flex={1} span={4} offset={5} pull={2}>
+            <div className="col-auto">
               <Link to={`/admin-bloques/${bloque.id}`}>
                 <button
                   type="button"
-                  className="mb-3 mt-3 p-3 fs-3 button-style light-blue"
+                  className="my-3 p-3 fs-3 button-style light-blue blocks"
                 >
-                  {bloque.titulo}
+                  {bloque.titulo} <i className="bi bi-pencil-square"></i>
                 </button>
               </Link>
-            </Col>
+            </div>
           );
         })}
-      </Row>
+      </div>
     </div>
   );
 }
-
-

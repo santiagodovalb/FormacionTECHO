@@ -1,0 +1,10 @@
+.adminRoles {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.newRolForm {
+    border: 3px solid black
+}

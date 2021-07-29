@@ -14,7 +14,7 @@ export default function Unidades({ setChecks }) {
       .get(`/api/unidades/bloque/${id}`)
       .then((res) => res.data)
       .then((data) => setUnidades(data));
-  }, []);
+  }, [id]);
 
   const handleChange = (e) => {
     console.log("click");
@@ -33,7 +33,7 @@ export default function Unidades({ setChecks }) {
       {unidades.map((unidad) => {
         return (
           <div key={`unidad-${unidad.id}`}>
-            <a href={`${unidad.link}`} target="_blank" className="modul_button">
+            <a href={`${unidad.link}`} target="_blank" rel="noreferrer" className="modul_button">
               <button
                 className="mb-3 mt-3 p-3 fs-3 button-style light-blue"
                 id={`unidad${unidad.id}`}
