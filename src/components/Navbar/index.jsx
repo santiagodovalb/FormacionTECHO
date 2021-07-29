@@ -17,9 +17,7 @@ const Navbar = () => {
       <div>
         <nav className="d-block d-sm-none navbar navbar-expand-lg navbar-dark">
           <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-              TECHO
-            </a>
+            <img className="navbar-header" src="https://static.wixstatic.com/media/602b79_9aea50902ee84caeafdbaf5b85ddfd19~mv2.png/v1/fill/w_420,h_140,al_c,q_95/Logo%20PNG%20en%20negativo.webp" alt="logo-techo" />
             <button
               class="navbar-toggler"
               type="button"
