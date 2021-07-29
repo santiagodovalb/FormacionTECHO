@@ -22,10 +22,11 @@ const Sede = () => {
   
   useEffect(() => {
     if (!sedes.length) setSedes([...sedesPrueba]);
-    setStateIcon({
-      ...stateIcon,
+    setStateIcon(s => {
+      return {
+      ...s,
       key: selectSede,
-    });
+    }});
   }, [form, selectSede, sedes, sedesPrueba]);
   
   const onChange = (e) => {

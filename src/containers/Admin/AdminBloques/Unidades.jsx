@@ -63,7 +63,7 @@ export default function Unidades({ forceRender, unidades }) {
     <>
       {unidades?.map((unidad) => {
         return (
-          <div>
+          <div key={unidad.id}>
             <div className="admin">
               <button
                 className="mb-3 mt-3 p-3 fs-3 button-style light-blue"

@@ -45,7 +45,7 @@ export default function ModificarBloque() {
         document.getElementById("minimoSi").checked = bloque.minimo && "true";
         document.getElementById("minimoNo").checked = !bloque.minimo && "true";
       });
-  }, [showForm, count, user, id, roles]);
+  }, [id]);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -186,7 +186,7 @@ export default function ModificarBloque() {
 
             {roles.map((rol) => {
               return (
-                <div>
+                <div key={rol.id}>
                   <label className="admin_check" htmlFor={rol.tipo}>
                     {rol.tipo}
                   </label>
