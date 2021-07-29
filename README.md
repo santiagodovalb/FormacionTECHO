@@ -34,8 +34,8 @@ Las rutas del BackEnd se encuentran en el puerto 3001, todos los pedidos se redi
 
 ### Colaboradores
 
-[Santiago Doval](https://github.com/santiagodovalb)
-[Lucas Taboada](https://github.com/lucastaboada111)
-[Jackelin Perez](https://github.com/JackelinPerez)
-[Matías Zuñiga](https://github.com/matiasfzuniga)
-[Santiago Videla](https://github.com/santiagovidela)
+- [Santiago Doval](https://github.com/santiagodovalb)
+- [Lucas Taboada](https://github.com/lucastaboada111)
+- [Jackelin Perez](https://github.com/JackelinPerez)
+- [Matías Zuñiga](https://github.com/matiasfzuniga)
+- [Santiago Videla](https://github.com/santiagovidela)
