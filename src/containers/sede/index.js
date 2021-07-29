@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { setUser } from "../../redux/user";
 import axios from "axios";
-import Card from "../../components/Card";
+import SedeCard from "./sedeCard";
 import mapa from "../../assets/sedes/lima-peru.png";
 import "./style.css";
 
@@ -29,12 +29,12 @@ const Sede = () => {
     }});
   }, [form, selectSede, sedes, sedesPrueba]);
   
-  const onChange = (e) => {
+  const handleChange = (e) => {
     const { target } = e;
     setForm({ ...form, [target.name]: target.value });
   };
 
-  const onSearch = (e) => {
+  const handleSearch = (e) => {
     e.preventDefault();
     if (form.search && form.search.length)
       setSedes(
@@ -76,8 +76,8 @@ const Sede = () => {
         <div className="justify-content-center align-items-center">
           <form
             className="d-flex col-auto text-center"
-            onChange={onChange}
-            onSubmit={onSearch}
+            onChange={handleChange}
+            onSubmit={handleSearch}
           >
             <input
               type="text"
@@ -93,13 +93,12 @@ const Sede = () => {
         <div className="sedes mt-5">
           {sedes?.map((sede, index) => {
             return (
-              <Card
+              <SedeCard
                 key={`${sede.id}`}
                 id={`${sede.id}`}
-                img={mapa}
                 button={{
                   text: `${sede.nombre}`,
-                  styles: "button-style light-blue fs-4",
+                  styles: "button-style  light-blue fs-5",
                 }}
                 icon="btn bi bi-circle-fill uncheck-style"
                 setState={setSelectSede}

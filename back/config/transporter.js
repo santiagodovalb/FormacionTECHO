@@ -28,11 +28,11 @@ async function sendNewEntrega(gestor, entrega) {
       text: "Formacion TECHO | Nueva entrega", // plain textbody
       attachments: [{
         filename: 'logoCeleste.png',
-        path: '/home/santi/P5/TECHO/formacion-techo/src/assets/logoCeleste.png',
+        path: '/Users/santiagovidela/Desktop/FormacionTECHO/src/assets/logoCeleste.png',
         cid: 'logo'
     }],
       html: `
-              <img src="cid:logo" alt='techoLogo' />
+              <img src="cid:logo" alt='techoLogo' style="width:300px; height:100px;" />
               <h1>${gestor.full_name}, tenes una nueva entrega para revisar</h1>
               <h3>Voluntario:</h3> <p>${entrega.user.full_name}</p>
               <h3>Bloque:</h3> <p>${entrega.bloque.titulo}</p>
@@ -49,7 +49,7 @@ async function sendEntregaCompletada(voluntario, entrega) {
       text: "Formacion TECHO | Entrega completada", // plain textbody
       attachments: [{
         filename: 'logoCeleste.png',
-        path: '/home/santi/P5/TECHO/formacion-techo/src/assets/logoCeleste.png',
+        path: '/Users/santiagovidela/Desktop/FormacionTECHO/src/assets/logoCeleste.png',
         cid: 'logo'
     }],
       html: `

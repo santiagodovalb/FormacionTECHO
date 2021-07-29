@@ -4,6 +4,7 @@ import "./index.css";
 import axios from "axios";
 import useAuthorize from "../../../utils/authorization";
 import { useSelector } from "react-redux";
+import isValid from "../../../utils/specialChars"
 
 export default function AdminUnidades({ forceRender, bloque }) {
   const user = useSelector(state => state.user)
@@ -14,9 +15,14 @@ export default function AdminUnidades({ forceRender, bloque }) {
   };
 
   const handleSubmit = (e) => {
-    axios
-      .post("/api/unidades", form)
-      .then(() => forceRender(), message.success("Agregado correctamente"));
+    if(! isValid(form.titulo)){
+      message.error("No se permiten caracteres especiales")
+    }else{
+
+      axios
+        .post("/api/unidades", form)
+        .then(() => forceRender(), message.success("Agregado correctamente"));
+    }
   };
 
   return (

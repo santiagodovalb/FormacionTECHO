@@ -45,7 +45,7 @@ export default function ModificarBloque() {
         document.getElementById("minimoSi").checked = bloque.minimo && "true";
         document.getElementById("minimoNo").checked = !bloque.minimo && "true";
       });
-  }, [id]);
+  }, [showForm, count, user, id]);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -64,7 +64,7 @@ export default function ModificarBloque() {
     setForm({ ...form, rolesId: [...array] });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = () => {
     axios.put(`/api/bloques/${id}`, form).then(() => {
       dispatch(getBloques());
       message.success("Modificado correctamente");
