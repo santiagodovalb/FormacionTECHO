@@ -21,6 +21,7 @@ function Links() {
         <strong>
         <h6
           className="btn btn-toggle link-light fs-5 fw-bolder"
+          style={{padding: "0px 16px"}}
           data-bs-toggle="collapse"
           data-bs-target="#orders-collapse"
         >
