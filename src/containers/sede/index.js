@@ -26,7 +26,7 @@ const Sede = () => {
       ...stateIcon,
       key: selectSede,
     });
-  }, [form, selectSede, sedes, stateIcon, sedesPrueba]);
+  }, [form, selectSede, sedes, sedesPrueba]);
   
   const onChange = (e) => {
     const { target } = e;
@@ -67,13 +67,12 @@ const Sede = () => {
 
   return (
     <div className="div-sedes">
-      <div className="row justify-content-center align-items-center">
-        <div className='title'>
-          <h1 className="fs-3 text-secondary m-5">
+        
+          <h1 className="fs-3 text-secondary p-5 title">
             <strong>Elegí tu sede</strong>
           </h1>
-        </div>
-        <div className="row justify-content-center align-items-center">
+
+        <div className="justify-content-center align-items-center">
           <form
             className="d-flex col-auto text-center"
             onChange={onChange}
@@ -90,7 +89,7 @@ const Sede = () => {
             </button>
           </form>
         </div>
-        <div className="row justify-content-center align-items-center mt-5">
+        <div className="sedes mt-5">
           {sedes?.map((sede, index) => {
             return (
               <Card
@@ -108,7 +107,7 @@ const Sede = () => {
             );
           })}
         </div>
-        <div className="col-auto">
+        <div className=" guardarButton ">
           <button
             className="mb-3 mt-3 p-4 fs-4 button-style green"
             onClick={onSaveSede}
@@ -116,7 +115,7 @@ const Sede = () => {
             Guardar
           </button>
         </div>
-      </div>
+      
     </div>
   );
 };

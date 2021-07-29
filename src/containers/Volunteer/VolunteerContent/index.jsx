@@ -16,7 +16,7 @@ const VolunteerContent = () => {
     <>
       <div>
         <div className="volunteer_content_div">
-        <h1 className="fs-3 text-secondary m-5">
+        <h1 className="fs-3 text-secondary m-5 title">
             <strong>Bloques mínimos</strong>
           </h1>
           <div className="content_div">
@@ -39,7 +39,7 @@ const VolunteerContent = () => {
               )}
             </div>
           </div>
-          <h1 className="fs-3 text-secondary m-5">
+          <h1 className="fs-3 text-secondary m-5 title">
             <strong>Bloques opcionales</strong>
           </h1>
           <div className="content_div">

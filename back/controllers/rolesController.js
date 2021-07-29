@@ -17,7 +17,8 @@ const rolesController = {
 
     createRole(req, res, next) {
         Roles.create(req.body)
-        .then(role => res.status(201).json(role))
+        .then(role => {
+            res.status(201).json(role)})
         .catch(next)
     },
 

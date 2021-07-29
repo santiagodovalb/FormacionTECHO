@@ -1,8 +1,37 @@
-/* .img-style {
-  border-radius: 20px;
-  width: 600px;
-  height: 400px;
-} */
+.moduls-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 80%;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.titulo {
+  text-align: center;
+}
+
+.descripcion {
+  width: 50%;
+  text-align: center;
+}
+
+.modulos {
+  margin: 20px auto;
+}
+
+.moduls-div textarea {
+  margin: 20px auto;
+  width: 50%;
+}
+
+.unidades {
+  margin: 20px auto;
+}
+
+.pregunta {
+  margin: 20px auto;
+}
 
 .text-justify-2 {
   text-align: justify;
@@ -15,17 +44,6 @@
 
 .modul_button {
   margin-right: 25px;
-}
-
-/* .moduls-div img {
-  max-width: 100%;
-  height: auto;
-} */
-
-.moduls {
-  display: flex;
-  flex-direction: row;
-  margin-top: 50px;
 }
 
 @media (max-width: 768px) {

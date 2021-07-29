@@ -52,7 +52,7 @@ function Routes() {
           <Route path="/admin-usuarios/sede/:id" component={Users} />
           <Route path="/admin-crear-gestor" component={CrearGestor} />
           <Route path="/unauthorized" component={Unauthorized} />
-          <Redirect from="*" to="/login" />
+          <Redirect from="*" to="/user" />
       </Switch>
       </div>
     

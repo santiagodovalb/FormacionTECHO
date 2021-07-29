@@ -43,10 +43,10 @@ const GestorContent = () => {
 
   const layout = {
     labelCol: {
-      span: 8,
+      span: 12,
     },
     wrapperCol: {
-      span: 8,
+      span: 12,
     },
   };
 
@@ -57,7 +57,6 @@ const GestorContent = () => {
           <strong>Cambiar contraseña</strong>
         </h1>
         <Form
-          {...layout}
           initialValues={{
             remember: true,
           }}
@@ -95,7 +94,7 @@ const GestorContent = () => {
             onChange={onChange}
             label="Confirmá la nueva contraseña"
             name="newPasswordConfirm"
-            labelAlign="right-align"
+            
             rules={[
               {
                 required: true,
@@ -105,12 +104,10 @@ const GestorContent = () => {
           >
             <Input.Password />
           </Form.Item>
-
-          <Form.Item>
             <Button type="primary" htmlType="submit">
               Cambiar
             </Button>
-          </Form.Item>
+          
         </Form>
         </div>
     </>
