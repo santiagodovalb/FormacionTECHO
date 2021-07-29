@@ -12,9 +12,7 @@ export default function Roles() {
     const dispatch = useDispatch()
     const user = useSelector(state => state.user)
 
-    useEffect(() => {
-
-    }, [roles, user])
+    
 
     const toggleForm = (id) => {
         document.getElementById(id).style.display = document.getElementById(id).style.display === 'block' ? 'none' : 'block'
