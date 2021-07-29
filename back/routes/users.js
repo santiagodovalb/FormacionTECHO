@@ -7,6 +7,7 @@ router.get('/me', usersController.isLogged)
 router.post("/login", passport.authenticate("local"), usersController.login);
 router.post("/logout", usersController.logOut)
 router.put("/updatePass/:id",usersController.updatePass)
+router.get('/entregas', usersController.findAllEntregas)
 router.post('/create', usersController.createUser)
 router.get("/:id", usersController.findOne)
 router.put("/:id", usersController.setUser)

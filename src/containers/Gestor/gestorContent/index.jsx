@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router";
 import { updatePassword } from "../../../redux/users";
 import { message } from "antd";
-import { Form, Input, Button, Checkbox } from "antd";
+import { Form, Input, Button } from "antd";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "antd/dist/antd.css";
 import "./styles.css";
 import useAuthorize from "../../../utils/authorization";
-
 
 const GestorContent = () => {
   const [form, setForm] = useState({
@@ -19,7 +17,7 @@ const GestorContent = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
 
-  useAuthorize(user, 2)
+  useAuthorize(user, 2);
 
   const onChange = (e) => {
     const { id, value } = e.target;
@@ -27,40 +25,43 @@ const GestorContent = () => {
   };
 
   const onSubmit = async () => {
-    if (
-      form.newPassword === form.newPasswordConfirm
-    ) {
+    if (form.newPassword === form.newPasswordConfirm) {
       await dispatch(
-        updatePassword({ id: user.id,oldP: form.password, newP: form.newPassword })
-      ).then((data)=>{
-        if(!data.payload) message.error("Bad credentials");
-        else{message.success("Password changed")}
-        
-      })
-    } 
-    
+        updatePassword({
+          id: user.id,
+          oldP: form.password,
+          newP: form.newPassword,
+        })
+      ).then((data) => {
+        if (!data.payload) message.error("Bad credentials");
+        else {
+          message.success("Password changed");
+        }
+      });
+    }
   };
 
   const layout = {
     labelCol: {
-      span: 8,
+      span: 12,
     },
     wrapperCol: {
-      span: 8,
+      span: 12,
     },
   };
 
   return (
     <>
       <div className="change_password_div">
-      <div className="row justify-content-center align-items-center">
-        <h3>Cambiar contraseña</h3>
-        <Form 
-              {...layout}
-              initialValues={{
-                remember: true,
-              }}
-        onFinish={onSubmit}>
+        <h1 className="fs-3 text-secondary m-5">
+          <strong>Cambiar contraseña</strong>
+        </h1>
+        <Form
+          initialValues={{
+            remember: true,
+          }}
+          onFinish={onSubmit}
+        >
           <Form.Item
             onChange={onChange}
             label="Actual contraseña:"
@@ -93,7 +94,7 @@ const GestorContent = () => {
             onChange={onChange}
             label="Confirmá la nueva contraseña"
             name="newPasswordConfirm"
-            labelAlign="right-align"
+            
             rules={[
               {
                 required: true,
@@ -103,15 +104,12 @@ const GestorContent = () => {
           >
             <Input.Password />
           </Form.Item>
-
-          <Form.Item>
             <Button type="primary" htmlType="submit">
               Cambiar
             </Button>
-          </Form.Item>
+          
         </Form>
         </div>
-      </div>
     </>
   );
 };

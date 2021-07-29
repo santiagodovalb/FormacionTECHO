@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import { useHistory, useLocation } from "react-router-dom";
-import { Select } from "antd";
+import {useLocation } from "react-router-dom";
+import Swal from "sweetalert2";
+import { Select, message } from "antd";
 import "./index.css";
 import useAuthorize from "../../../utils/authorization";
 const { Option } = Select;
@@ -20,7 +21,7 @@ function Users() {
         axios.get(`/api/users/sede/${id}`)
         .then(res => res.data)
         .then(users => setUsers(users))
-    }, [user])
+    }, [user, id])
 
     const handleChange = (e) => {
       setRol(e);
@@ -33,21 +34,54 @@ function Users() {
       .then((res) => res.data)
       .then((users) => setUsers(users));
   };
+  const alertaEliminar = Swal.mixin({
+    buttonsStyling: true,
+  });
 
   const handleDelete = (userId) => {
-    return axios.delete(`/api/users/${userId}`).then(() =>
+    alertaEliminar
+      .fire({
+        title: "Estás seguro?",
+        text: "Si lo confirmas, no podrás deshacerlo!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Si, borrar!",
+        cancelButtonText: "No, cancelar!",
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        reverseButtons: true,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          alertaEliminar.fire(
+            "Eliminado!",
+            "El bloque fue eliminado correctamente.",
+            "success"
+          );
+          axios.delete(`/api/users/${userId}`).then(() =>
       axios
         .get(`/api/users/sede/${id}`)
         .then((res) => res.data)
         .then((users) => setUsers(users))
     );
+          message.success("Sede eliminada correctamente")
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          alertaEliminar.fire("Cancelado", "El bloque está a salvo", "error");
+        }
+      });
   };
+
+
+  
+  
 
 useAuthorize(user, 1)
 
 return (
     <div className="admin">
-      <h1>Administrar roles</h1>
+      <h1 className="fs-2">
+        <strong>Administrar roles</strong>
+      </h1>
       {!users.length && <h1>No hay voluntarios/gestores en esta sede</h1>}
       <br />
 

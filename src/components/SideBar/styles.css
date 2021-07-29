@@ -4,7 +4,7 @@
   min-height: 100vmin;
   background-color: #0092dd;
   color: white;
-  float: left top;
+  float: left;
   position: fixed;
 }
 
@@ -19,7 +19,6 @@
 
 .sidebar a {
   text-decoration: none;
-  margin-top: 15px;
 }
 
 .volunteer_sidebar_image {
@@ -32,7 +31,7 @@
 }
 
 .sidebar h4 {
-  margin: 20px auto;
+  margin: 10px auto;
   color: white;
 }
 

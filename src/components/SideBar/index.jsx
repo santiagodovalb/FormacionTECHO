@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { userLogout } from "../../redux/login";
 import Links from "./links";
@@ -10,9 +10,17 @@ import "./styles.css";
 const Sidebar = () => {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
+  const history = useHistory();
+
   const handleLogout = () => {
     if (user.id) dispatch(userLogout());
+    history.push('/login')
   };
+
+  const handlePassword = () => {
+    history.push('/gestor-password')
+  }
+
   const location = useLocation().pathname;
 
   return (
@@ -54,18 +62,16 @@ const Sidebar = () => {
         </ul>
         <hr />
         {user.rolId && user.rolId === 2 && (
-          <Link to="/gestor-password">
-            {" "}
-            <button> Cambiar contraseña </button>
-          </Link>
+        
+            
+            <button className="btn btn-secondary" onClick={handlePassword}> Cambiar contraseña </button>
+          
         )}
-        <Link to="/login">
-          {" "}
-          <button  onClick={handleLogout}>
-            {" "}
+          
+          <button className="btn btn-secondary" onClick={handleLogout}>
+            
             Cerrar sesion
           </button>
-        </Link>
       </div>
     </>
   );

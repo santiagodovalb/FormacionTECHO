@@ -5,7 +5,6 @@ import { useParams } from "react-router";
 import axios from "axios";
 import Unidades from "./Unidades";
 import { useHistory } from "react-router-dom";
-import CanchaFutbol from "../../../assets/volunteer/CanchaFutbol.png";
 
 const VolunteerModuls = () => {
   const [contenido, setContenido] = useState("");
@@ -16,10 +15,8 @@ const VolunteerModuls = () => {
   const user = useSelector((state) => state.user);
   const history = useHistory();
 
-  const completed = [];
-
   useEffect(() => {
-    console.log("asd", checks);
+    const completed = [];
     axios
       .get(`/api/bloques/${id}`)
       .then((res) => res.data)
@@ -36,7 +33,7 @@ const VolunteerModuls = () => {
         setDisabled(status);
         setBloque(bloque);
       });
-  }, [checks]);
+  }, [checks, id]);
 
   const handleSubmit = () => {
     axios
@@ -53,46 +50,33 @@ const VolunteerModuls = () => {
   };
 
   return (
-    <div>
-      <div className="container-fluid moduls-div">
-        <div>
-          <h1 className="p-5 fs-1 title">
-            <strong>{bloque.titulo}</strong>
-          </h1>
-        </div>
-        <div className="moduls">
-          <div className="descripcion">
-            <p className="fs-5 text-justify-2">{bloque.descripcion}</p>
-          </div>
-          <div className="text-justify-2">
-            <div className="fs-4">
-              <p>
-                <strong>Módulos</strong>
-              </p>
-            </div>
-            <div className="">
-              <Unidades setChecks={() => setChecks(checks + 1)} />
-            </div>
-            <div className="fs-4  modul_question">
-              <p>
-                <strong>{bloque.pregunta}</strong>
-              </p>
-              <textarea
-                className="form-control"
-                name="contenido"
-                onChange={handleChange}
-              />
-              <button
-                disabled={disabled}
-                onClick={() => handleSubmit()}
-                className="my-3 p-4 fs-3 button-style green"
-              >
-                Entregar
-              </button>
-            </div>
-          </div>
-        </div>
+    <div className="moduls-div">
+      <h1 className="p-5 title">
+        <strong>{bloque.titulo}</strong>
+      </h1>
+      <p className="fs-5 descripcion">{bloque.descripcion}</p>
+
+      <p className="fs-4 modulos">
+        <strong>Módulos</strong>
+      </p>
+      <div className="unidades">
+        <Unidades setChecks={() => setChecks(checks + 1)} />
       </div>
+      <p className="fs-4 pregunta">
+        <strong>Pregunta del bloque: {bloque.pregunta}</strong>
+      </p>
+      <textarea
+        className="form-control"
+        name="contenido"
+        onChange={handleChange}
+      />
+      <button
+        disabled={disabled}
+        onClick={() => handleSubmit()}
+        className="my-3 p-4 fs-3 button-style green"
+      >
+        Entregar
+      </button>
     </div>
   );
 };

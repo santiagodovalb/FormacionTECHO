@@ -46,9 +46,29 @@ const usersController = {
       .then((user) => res.status(200).json(user))
       .catch(next);
   },
+ 
   createUser(req, res, next) {
     Users.create(req.body)
       .then((user) => res.status(200).json(user))
+      .catch(next);
+  },
+  findAllEntregas(req, res, next) {
+    Users.findAll({
+      include: [
+        { model: Roles, as: "rol" },
+        {
+          model: Entregas,
+          as: "entregas",
+          include: [{ model: Bloques, as: "bloque" }],
+        },
+      ],
+      where: {
+        id: {
+          [Op.ne]: req.user.id,
+        },
+      },
+    })
+      .then((users) => res.status(200).send(users))
       .catch(next);
   },
   setUser(req, res, next) {
@@ -87,7 +107,7 @@ const usersController = {
     res.status(200).send({});
   },
   isLogged(req, res, next) {
-    if (!req.user) return res.sendStatus(401);
+    if (!req.user) return res.status(401).send({logged: false});
     return res.send(req.user);
   },
   updatePass(req, res, next) {

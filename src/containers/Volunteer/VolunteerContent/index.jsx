@@ -1,15 +1,12 @@
 import React from "react";
 import Card from "../../../components/Card";
 import { useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
 import "./styles.css";
 
 const VolunteerContent = () => {
   const user = useSelector((state) => state.user);
 
   const bloques = useSelector((state) => state.bloques);
-
-  const location = useLocation().pathname;
 
   const bloquesDelUser = bloques.filter((bloque) =>
     bloque.roles.map((rol) => rol.id).includes(user.rolId)
@@ -19,7 +16,9 @@ const VolunteerContent = () => {
     <>
       <div>
         <div className="volunteer_content_div">
-          <h2>Bloques minimos</h2>
+        <h1 className="fs-3 text-secondary m-5 title">
+            <strong>Bloques mínimos</strong>
+          </h1>
           <div className="content_div">
             <div className="single_content_div">
               {bloquesDelUser.map(
@@ -32,7 +31,7 @@ const VolunteerContent = () => {
                       title={bloque.titulo}
                       button={{
                         text: "Ver modulos",
-                        styles: "btn btn-primary",
+                        styles: "button-style green fs-4",
                       }}
                       url={`mis-bloques/${bloque.id}`}
                     />
@@ -40,7 +39,9 @@ const VolunteerContent = () => {
               )}
             </div>
           </div>
-          <h2>Bloques opcionales</h2>
+          <h1 className="fs-3 text-secondary m-5 title">
+            <strong>Bloques opcionales</strong>
+          </h1>
           <div className="content_div">
             <div className="single_content_div">
               {bloquesDelUser.map(

@@ -60,7 +60,7 @@ const Card = ({
             />
           </div>
         ) : (
-          <img src={img} />
+          <img src={img} alt='sedeIMG' />
         )}
         <Link to={url ? url : "sede"}>
           <div
