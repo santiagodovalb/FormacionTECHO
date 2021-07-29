@@ -6,7 +6,7 @@ import Sedes from "./Sedes";
 import { Button, Form, Input, InputNumber } from "antd";
 import { message } from "antd";
 import useAuthorize from "../../../utils/authorization";
-import './index.css'
+import "./index.css";
 
 export default function AdminSedes() {
   const [form, setForm] = useState({});
@@ -15,13 +15,18 @@ export default function AdminSedes() {
 
   const user = useSelector((state) => state.user);
 
-  const onFinish = (id) => {
+  const onFinish = () => {
     axios
       .post(`/api/sedes/`, form)
-      .then((res) => res.data)
-      .then(() => dispatch(getSedes()));
-
-    message.success("Sede creada correctamente");
+      .then((res) => {
+        if (res.data) {
+          message.success("Sede creada correctamente");
+        }
+      })
+      .then(() => {
+        dispatch(getSedes());
+      })
+      .catch(err=>message.warning("Sede ya existente"));
   };
 
   const handleChange = (obj, obj2) => {
@@ -81,8 +86,8 @@ export default function AdminSedes() {
           Crear
         </Button>
       </Form>
-      <div className='table'>
-      <Sedes />
+      <div className="table">
+        <Sedes />
       </div>
     </div>
   );

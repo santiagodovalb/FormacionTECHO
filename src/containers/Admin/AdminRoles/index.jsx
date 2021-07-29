@@ -1,4 +1,4 @@
-import { getRoles } from "@testing-library/react";
+import { getRoles } from "../../../redux/roles";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import axios from "axios";
@@ -17,10 +17,12 @@ export default function AdminRoles() {
 
   const handleSubmit = () => {
     axios.post("/api/roles/", form)
-    .then(() => {
-      message.success("Rol creado correctamente");
-      return dispatch(getRoles());
+    .then((res) => {
+      if(res.data){
+        message.success("Rol creado correctamente");
+      }
     })
+    .then(()=> dispatch(getRoles()))
     .catch(err => message.error('Rol no creado'))
   };
 

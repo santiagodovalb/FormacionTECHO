@@ -51,13 +51,13 @@ export default function Sedes() {
         if (result.isConfirmed) {
           alertaEliminar.fire(
             "Eliminado!",
-            "El bloque fue eliminado correctamente.",
+            "La sede fue eliminada correctamente.",
             "success"
           );
           axios.delete(`/api/sedes/${id}`).then(() => dispatch(getSedes()));
           message.success("Sede eliminada correctamente")
         } else if (result.dismiss === Swal.DismissReason.cancel) {
-          alertaEliminar.fire("Cancelado", "El bloque está a salvo", "error");
+          alertaEliminar.fire("Cancelado", "La sede está a salvo", "error");
         }
       });
   };

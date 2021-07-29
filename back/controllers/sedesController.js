@@ -17,10 +17,19 @@ const sedesController = {
         .catch(next)
     },
     createSede(req,res,next){
-        Sedes.create(req.body).then((sede)=>{
-            return res.status(201).send(sede)
+        Sedes.findOne({where: {nombre: req.body.nombre}}).then((encontroSede)=>{
+            if(!encontroSede){
+                Sedes.create(req.body).then((sede)=>{
+                    return res.status(201).send(sede)
+                })
+                .catch(next)
+            }
+            else{
+                return res.status(400).send({message: "Sede ya existente"})
+            }
         })
         .catch(next)
+       
     },
     updateSede(req,res,next){
         const id = req.params.id

@@ -21,11 +21,6 @@ export const listNavbars = [
         name: "Gestionar Usuarios",
         icon: <FaUsers />,
       },
-      {
-        link: "/admin-roles",
-        name: "Gestionar Roles",
-        icon: <FaUsers />,
-      },
       { link: "/admin-sedes", name: "Gestionar Sedes", icon: <MdLocationOn /> },
       {
         link: "/admin-roles",
