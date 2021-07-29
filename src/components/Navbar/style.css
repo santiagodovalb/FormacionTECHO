@@ -12,3 +12,7 @@
 .navbar .nav-item .active {
   color: white;
 }
+
+.nav-item > a {
+  text-decoration: none;
+}

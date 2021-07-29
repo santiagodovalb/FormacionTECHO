@@ -17,5 +17,6 @@ thead[class*="ant-table-thead"] th {
 @media (max-width: 768px) {
   .entregas {
     display: block;
+    margin-top: 50px;
   }
 }
