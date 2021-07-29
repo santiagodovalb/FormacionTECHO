@@ -9,48 +9,49 @@ const Rol = [
 ];
 
 const Sede = [
-  { 
+  {
     nombre: "Buenos Aires La Plata",
-    comunidadId: 1
+    comunidadId: 1,
   },
-  { 
+  {
     nombre: "Buenos Aires Sur",
-  comunidadId: 4 
+    comunidadId: 4,
   },
-  { 
+  {
     nombre: "Buenos Aires Oeste",
-    comunidadId: 3
+    comunidadId: 3,
   },
-  { 
+  {
     nombre: "Buenos Aires Norte",
-    comunidadId: 2
+    comunidadId: 2,
   },
-  { 
+  {
     nombre: "Neuquen / Rio Negro",
-    comunidadId: 9 
+    comunidadId: 9,
   },
-  { 
+  {
     nombre: "Rosario",
-    comunidadId: 10 
+    comunidadId: 10,
   },
-  { 
+  {
     nombre: "Cordoba",
-  comunidadId: 5
+    comunidadId: 5,
   },
-  { 
+  {
     nombre: "Salta",
-    comunidadId: 11
+    comunidadId: 11,
   },
-  { 
+  {
     nombre: "Tucuman",
-  comunidadId: 12
+    comunidadId: 12,
   },
-  { 
+  {
     nombre: "Corrientes / Chaco",
-    comunidadId: 7 },
-  { 
+    comunidadId: 7,
+  },
+  {
     nombre: "Misiones",
-    comunidadId: 8
+    comunidadId: 8,
   },
 ];
 
@@ -61,7 +62,7 @@ const BloquesSeed = [
       "Marco general del trabajo en las comunidades, los distintas formas de llegar al territorio y que buscamos alcanzar como organización",
     roles: [3, 4, 5],
     minimo: true,
-    pregunta: "que comiste hoy ?",
+    pregunta: "¿ Qué comiste hoy ?",
   },
 
   {
@@ -70,7 +71,7 @@ const BloquesSeed = [
       "Misión, visión, valores e historia de TECHO. ¿Que esperamos del voluntariado? ¿Que nos identifica?",
     roles: [3, 4, 5],
     minimo: true,
-    pregunta: "que merendaste hoy ?",
+    pregunta: "¿ Qué merendaste hoy ?",
   },
 
   {
@@ -79,7 +80,7 @@ const BloquesSeed = [
       "Voluntariado y participación activa en TECHO, ¿quienes conformamos la organización? ¿como nos organizamos?",
     roles: [3, 4, 5],
     minimo: false,
-    pregunta: "que desayunaste hoy ?",
+    pregunta: "¿ Qué desayunaste hoy ?",
   },
 
   {
@@ -88,7 +89,7 @@ const BloquesSeed = [
       "Descripciones generales de las responsabilidades del rol y que es lo que buscamos alcanzar",
     roles: [4],
     minimo: true,
-    pregunta: "que cenaste hoy ?",
+    pregunta: "¿ Qué cenaste hoy ?",
   },
 
   {
@@ -97,7 +98,7 @@ const BloquesSeed = [
       "Problematica habitacional y como se relaciona con el habitat y el trabajo de TECHO en territorio.",
     roles: [4],
     minimo: true,
-    pregunta: "que amorzaste hoy ?",
+    pregunta: "¿ Qué amorzaste hoy ?",
   },
 ];
 
@@ -154,7 +155,7 @@ const unidades = [
 const seed = () => {
   console.log("SEED STARTING");
 
-  Roles.bulkCreate(Rol)
+  Roles.bulkCreate(Rol);
 
   Sedes.bulkCreate(Sede);
 
@@ -198,24 +199,24 @@ const seed = () => {
     full_name: "Sergio Gestor",
     email: "gestor@gestor.com",
     password: "gestor",
-    
+
     img: "https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg",
   }).then((user) => {
     Roles.findByPk(2).then((rol) => {
       user.setRol(rol);
-      user.setSede(3)
+      user.setSede(3);
     });
   });
 
   Users.create({
     full_name: "Victor Voluntario",
     email: "voluntario@voluntario.com",
-    sedeId: 1,
     password: "voluntario",
     img: "https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg",
   }).then((user) => {
     Roles.findByPk(3).then((rol) => {
       user.setRol(rol);
+      user.setSede(2);
     });
   });
 };

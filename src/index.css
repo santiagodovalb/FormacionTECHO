@@ -19,6 +19,12 @@
   width: 400px;
 }
 
+@media (max-width: 768px) {
+  .button-style {
+    width: 300px;
+  }
+}
+
 .button-style:hover {
   color: white;
 }

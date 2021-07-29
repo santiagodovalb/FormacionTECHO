@@ -17,7 +17,6 @@ const LoginAdmin = () => {
     const  dispatch = useDispatch()
     const history = useHistory()
     const [form, setForm] = useState({});
-    const [other, setOther] = useState("");
   
     const onChange = (e) => {
       const { target } = e;
@@ -48,7 +47,6 @@ const LoginAdmin = () => {
       
     }};
   
-    const onOtherSubmit = (e) => setOther(e.target.id);
 
     
 
@@ -60,7 +58,7 @@ const LoginAdmin = () => {
               className="form-control"
               name="email"
               placeholder="Correo"
-              required="true"
+              required
             />
           </div>
           <div className="mb-3">
@@ -69,14 +67,12 @@ const LoginAdmin = () => {
               className="form-control"
               name="password"
               placeholder="Contraseña"
-              required="true"
+              required
             />
           </div>
           <button type="submit" className="btn btn-secondary mt-3">
             Ingresar
           </button>
-          <div className="m-3" onClick={onOtherSubmit}>
-          </div>
         </form>
     )
 

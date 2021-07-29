@@ -1,5 +1,7 @@
 .card {
   margin: 5px;
+  width: 20rem;
+  border-radius: 10px;
 }
 
 .circle {
@@ -10,4 +12,14 @@
 
 .card:hover {
   transform: scale(1.05);
+}
+
+.card > a {
+  text-decoration: none;
+}
+
+@media (max-width: 786px) {
+  .card {
+    width: 16rem;
+  }
 }

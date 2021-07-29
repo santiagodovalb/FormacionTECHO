@@ -3,8 +3,10 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Form, Input, Radio } from "antd";
+import { Form, Input, Radio, message } from "antd";
 import { getBloques } from "../../../redux/bloques";
+import isValid from '../../../utils/specialChars'
+import useAuthorize from '../../../utils/authorization'
 import "antd/dist/antd.css";
 import "./index.css";
 
@@ -14,6 +16,8 @@ export default function CrearBloque() {
   const user = useSelector((state) => state.user);
   const history = useHistory();
   const dispatch = useDispatch();
+
+  useAuthorize(user, 1)
 
   useEffect(() => {
     axios
@@ -40,16 +44,9 @@ export default function CrearBloque() {
     setForm({ ...form, rolesId: [...array] });
   };
 
-  if (user.rolId && user.rolId !== 1) {
-    history.push("/unauthorized");
-    return (
-      <>
-        <h1>No autorizado</h1>
-      </>
-    );
-  }
 
   const handleSubmit = (e) => {
+    if (!isValid(form.titulo)) return message.error("No se permiten caracteres especiales")
     axios.post("/api/bloques", form).then((res) => {
       dispatch(getBloques());
       history.push("/admin-bloques");
@@ -59,7 +56,9 @@ export default function CrearBloque() {
   return (
     <>
       <div className="admin">
-        <h1>Crear nuevo bloque de formación</h1>
+        <h1 className="fs-2 text-secondary m-5">
+          <strong>Crear nuevo bloque de formación</strong>
+        </h1>
       </div>
       <Form
         labelCol={{
@@ -101,7 +100,7 @@ export default function CrearBloque() {
         <Form.Item
           className="admin_input"
           label="Pregunta"
-          name="pregunta" 
+          name="pregunta"
           rules={[
             {
               required: true,
@@ -125,23 +124,26 @@ export default function CrearBloque() {
           <h5>A que roles esta destinado?</h5>
           {roles.map((rol) => {
             return (
-              <div value={rol.id}> 
+              <div value={rol.id}>
                 <label className="admin_check" htmlFor={rol.tipo}>
                   {rol.tipo}
                 </label>
-                  <input
-                    type="checkbox"
-                    name="roles"
-                    value={rol.id}
-                    id={rol.id}
-                    onChange={handleRoles}
-                  />
+                <input
+                  type="checkbox"
+                  name="roles"
+                  value={rol.id}
+                  id={rol.id}
+                  onChange={handleRoles}
+                />
               </div>
             );
           })}
           <br />
           <Form.Item>
-            <button htmlType="submit" className="mb-3 mt-3 p-3 fs-3 button-style light-blue">
+            <button
+              htmlType="submit"
+              className="mb-3 mt-3 p-3 fs-3 button-style light-blue button-style-formm"
+            >
               Crear
             </button>
           </Form.Item>

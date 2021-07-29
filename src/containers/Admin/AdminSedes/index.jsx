@@ -6,6 +6,8 @@ import Sedes from "./Sedes";
 import { Button, Form, Input, InputNumber } from "antd";
 import { message } from "antd";
 import useAuthorize from "../../../utils/authorization";
+import isValid from "../../../utils/specialChars";
+import "./index.css";
 
 export default function AdminSedes() {
   const [form, setForm] = useState({});
@@ -14,19 +16,23 @@ export default function AdminSedes() {
 
   const user = useSelector((state) => state.user);
 
-  const onFinish = (id) => {
+  const onFinish = () => {
+    if (!isValid(form.nombre)) return message.error("No se permiten caracteres especiales")
     axios
       .post(`/api/sedes/`, form)
-      .then((res) => res.data)
-      .then(() => dispatch(getSedes()));
-
-      message.success("Sede creada correctamente")
-
+      .then((res) => {
+        if (res.data) {
+          message.success("Sede creada correctamente");
+        }
+      })
+      .then(() => {
+        dispatch(getSedes());
+      })
+      .catch(err=>message.warning("No se pudo crear la sede"));
   };
 
   const handleChange = (obj, obj2) => {
-    
-      setForm(obj2)
+    setForm(obj2);
   };
 
   const toggleForm = () => {
@@ -36,14 +42,23 @@ export default function AdminSedes() {
         : "block";
   };
 
-  useAuthorize(user, 1)
+  useAuthorize(user, 1);
 
   return (
-    <div>
-      <h1>Gestionar sedes</h1>
-      <Button type="button" onClick={toggleForm}>
-        Crear nueva sede
-      </Button>
+    <div className="wh-100 text-center p-5 justify-content-center align-items-center">
+      <div className="col-auto">
+        <h1 className="fs-2 text-secondary text-center">
+          <strong>Gestionar sedes</strong>
+        </h1>
+        <button
+          type="button"
+          onClick={toggleForm}
+          className="my-5 p-3 fs-3 button-style green"
+        >
+          Crear nueva sede
+        </button>
+      </div>
+
       <Form
         style={{ display: "none" }}
         name="newSede"
@@ -59,24 +74,23 @@ export default function AdminSedes() {
         onValuesChange={(obj, obj2) => handleChange(obj, obj2)}
         onFinish={onFinish}
       >
-        <Form.Item 
-          label="Comunidad Id"
-          name="comunidadId">
-        <InputNumber />
-
+        <Form.Item label="Comunidad Id" name="comunidadId">
+          <InputNumber />
         </Form.Item>
-        <Form.Item
-          
-          label="nombre"
-          name="nombre"
+        <Form.Item label="nombre" name="nombre">
+          <Input.TextArea />
+        </Form.Item>
+        <Button
+          style={{ display: form.nombre ? "block" : "none" }}
+          htmlType="submit"
+          type="submit"
         >
-          <Input.TextArea/>
-        </Form.Item>
-          <Button  style={{ display: form.nombre? "block" : "none" }} htmlType="submit" type="submit">
-            Crear
-          </Button>
+          Crear
+        </Button>
       </Form>
-      <Sedes />
+      <div className="table">
+        <Sedes />
+      </div>
     </div>
   );
 }

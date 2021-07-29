@@ -32,7 +32,7 @@ function Instructions() {
                 <li>Dentro de ellos, se encuentran los módulos correspondientes a cada uno.</li>
                 <li>Al finalizar un módulo, marcalo como completado.</li>
                 <li>Una vez completados todos, se te habilitará la entrega del bloque.</li>
-                <li>Para dar un módulo como finalizado, tenés que esperar a que tu gestor complete la entrega.</li>
+                <li>Para dar un bloque como finalizado, tenés que esperar a que tu gestor complete la entrega.</li>
             </ul>
         </div> 
       )}

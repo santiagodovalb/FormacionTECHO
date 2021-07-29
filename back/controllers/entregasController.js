@@ -52,9 +52,10 @@ const entregasController = {
     try {
 
     if(currentEntrega){ 
-      currentEntrega.update({ contenido, aprobado: false });
-      let gestor =  await Users.findOne({where: {sedeId: currentEntrega.user.sedeId, rolId: 2}})
-      await sendNewEntrega(gestor, currentEntrega)
+      await currentEntrega.update({ contenido, aprobado: false });
+      let gestores =  await Users.findAll({where: {sedeId: currentEntrega.user.sedeId, rolId: 2}})
+      console.log("GESTORES", gestores)
+      gestores.forEach(gestor => sendNewEntrega(gestor, currentEntrega))
     }
     else {
       currentEntrega = await Entregas.create({ contenido })

@@ -1,4 +1,5 @@
 const nodemailer = require("nodemailer");
+const { MAIL_USER, MAIL_PASSWORD} = process.env
 
 // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
@@ -6,8 +7,8 @@ const nodemailer = require("nodemailer");
     port: 465,
     secure: true, 
     auth: {
-        user: 'santikundera',
-        pass: 'juanroman378', 
+        user: MAIL_USER,
+        pass: MAIL_PASSWORD, 
     },
   });
 
@@ -25,15 +26,19 @@ async function sendNewEntrega(gestor, entrega) {
       to: gestor.email, 
       subject: "Formacion TECHO | Nueva entrega", // Subject line
       text: "Formacion TECHO | Nueva entrega", // plain textbody
-      html: `<div className='checkoutDiv'>
+      attachments: [{
+        filename: 'logoCeleste.png',
+        path: '/Users/santiagovidela/Desktop/FormacionTECHO/src/assets/logoCeleste.png',
+        cid: 'logo'
+    }],
+      html: `
+              <img src="cid:logo" alt='techoLogo' style="width:300px; height:100px;" />
               <h1>${gestor.full_name}, tenes una nueva entrega para revisar</h1>
-              <h2>Voluntario: ${entrega.user.full_name}</h2>
-              <h2>Bloque: ${entrega.bloque.titulo}</h2>
-              <h2>Pregunta del bloque: ${entrega.bloque.pregunta}
-              <h2>Contenido</h2>
-              <p>${entrega.contenido}
-              
-          </div>`,
+              <h3>Voluntario:</h3> <p>${entrega.user.full_name}</p>
+              <h3>Bloque:</h3> <p>${entrega.bloque.titulo}</p>
+              <h3>Pregunta del bloque:</h3> <p>${entrega.bloque.pregunta}</p>
+              <h3>Contenido</h3>
+              <p>${entrega.contenido}</p>`,
 })}
 
 async function sendEntregaCompletada(voluntario, entrega) {
@@ -42,13 +47,18 @@ async function sendEntregaCompletada(voluntario, entrega) {
       to: voluntario.email, 
       subject: "Formacion TECHO | Entrega completada", // Subject line
       text: "Formacion TECHO | Entrega completada", // plain textbody
-      html: `<div className='checkoutDiv'>
+      attachments: [{
+        filename: 'logoCeleste.png',
+        path: '/Users/santiagovidela/Desktop/FormacionTECHO/src/assets/logoCeleste.png',
+        cid: 'logo'
+    }],
+      html: `
+              <img src="cid:logo" alt='techoLogo' />
               <h1>${voluntario.full_name}, ¡tu entrega fue completada!</h1>
-              <h2>Bloque: ${entrega.bloque.titulo}</h2>
-              <h2>Pregunta de bloque: ${entrega.bloque.pregunta}
+              <h3>Bloque:</h3> <p>${entrega.bloque.titulo}</p>
+              <h3>Pregunta de bloque:</h3> <p>${entrega.bloque.pregunta}</p>
               <h2>Contenido</h2>
-              <p>${entrega.contenido}
-          </div>`,
+              <p>${entrega.contenido}</p>`,
 })}
 
 module.exports = { sendNewEntrega, sendEntregaCompletada }

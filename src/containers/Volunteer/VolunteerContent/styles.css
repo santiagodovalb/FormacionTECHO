@@ -4,20 +4,12 @@
   flex-direction: column;
 }
 
+
 .content_div {
   display: flex;
   flex-wrap: nowrap;
   overflow-x: scroll;
 }
-
-/* .content_div::-webkit-scrollbar {
-  display: none;
-}
-
-.content_div {
-  -ms-overflow-style: none; 
-  scrollbar-width: none;
-} */
 
 .content_div::-webkit-scrollbar {
   height: 7px;

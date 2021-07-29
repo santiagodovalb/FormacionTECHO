@@ -5,7 +5,7 @@
   height: 100vh;
   overflow: hidden;
   position: relative;
-  width: 100%
+  width: 100%;
 }
 
 .user_profile {
@@ -27,12 +27,12 @@
   top: 0;
   width: 100%;
   height: auto;
-  filter: blur(1px)
+  filter: blur(1px);
 }
 
 .volunteer_profile_div h2 {
   margin: 30px auto;
-  color: white
+  color: white;
 }
 
 .volunteer_profile_div button {
@@ -41,17 +41,17 @@
 
 .volunteer_profile_div h5 {
   margin-top: 20px;
-  color: white
+  color: white;
 }
 
 .volunteer_profile_div p {
   margin-top: 5px;
-  color: white
+  color: white;
 }
 
 .volunteer_profile_div h4 {
   margin-left: 20px;
-  color: white
+  color: white;
 }
 
 .volunteer_profile_div .instructions {
@@ -61,4 +61,15 @@
 .volunteer_profile_div ul {
   margin-top: 20px;
   list-style-type: square;
+}
+
+@media (max-width: 768px) {
+  .profileImageBackground {
+    display: none;
+  }
+  .user_profile {
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
 }
