@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { userLogout } from "../../redux/login";
 import Links from "./links";
 import "./style.css";
+import logoMobile from "../../assets/logoMobile.png"
 const Navbar = () => {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ const Navbar = () => {
     <div>
       <nav className="d-block d-sm-none navbar navbar-expand-lg navbar-dark">
         <div className="container-fluid">
-          <p className="navbar-brand">TECHO</p>
+          <img src={logoMobile} alt="logo techo" />
           <button
             className="navbar-toggler"
             type="button"
