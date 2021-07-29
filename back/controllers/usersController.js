@@ -48,9 +48,18 @@ const usersController = {
   },
  
   createUser(req, res, next) {
-    Users.create(req.body)
-      .then((user) => res.status(200).json(user))
-      .catch(next);
+    console.log(req.body)
+    Users.findOne({where:{email: req.body.email}}).then((encontroUser)=>{
+      if(!encontroUser){
+        Users.create(req.body)
+        .then((user) => res.status(200).json(user))
+        .catch(next);
+      }else{
+        return res.status(400).send({message:"Ya existe un usuario con ese email"})
+      }
+    })
+    .catch(next)
+    
   },
   findAllEntregas(req, res, next) {
     Users.findAll({

@@ -1,4 +1,4 @@
-import { getRoles } from "@testing-library/react";
+import { getRoles } from "../../../redux/roles";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import axios from "axios";
@@ -7,6 +7,7 @@ import Roles from "./Roles";
 import useAuthorize from "../../../utils/authorization";
 import "./index.css";
 import { message, Input, Form, Button } from "antd";
+import isValid from "../../../utils/specialChars";
 
 export default function AdminRoles() {
   const [form, setForm] = useState({});
@@ -16,11 +17,14 @@ export default function AdminRoles() {
   const user = useSelector((state) => state.user);
 
   const handleSubmit = () => {
+    if(!isValid(form.tipo)) return message.error("No se permiten caracteres especiales")
     axios.post("/api/roles/", form)
-    .then(() => {
-      message.success("Rol creado correctamente");
-      return dispatch(getRoles());
+    .then((res) => {
+      if(res.data){
+        message.success("Rol creado correctamente");
+      }
     })
+    .then(()=> dispatch(getRoles()))
     .catch(err => message.error('Rol no creado'))
   };
 

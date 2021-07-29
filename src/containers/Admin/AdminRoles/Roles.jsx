@@ -5,12 +5,13 @@ import Swal from "sweetalert2";
 import { getRoles } from "../../../redux/roles";
 import { Table, Button, message} from "antd";
 import useAuthorize from "../../../utils/authorization";
-import './roles.css'
+import isValid from "../../../utils/specialChars";
+import './index.css'
 
 export default function Roles() {
   const [form, setForm] = useState({});
 
-  const roles = useSelector((state) => state.roles);
+  const roles = useSelector((state) => state.roles).filter(rol => rol.id > 1)
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
 
@@ -21,11 +22,13 @@ export default function Roles() {
 
   const handleSubmit = (e, id) => {
       e.preventDefault()
+      if(!isValid(form.tipo)) return message.error("No se permiten caracteres especiales")
       axios
       .put(`/api/roles/${id}`, form)
       .then(() => {
         dispatch(getRoles())
-        message.success("Rol modificado correctamente");});
+        message.success("Rol modificado correctamente")})
+      .catch(() => message.error("No se pudo modificar"))
   };
 
   const handleChange = (e) => {
@@ -91,7 +94,7 @@ export default function Roles() {
           >
             Modificar rol
           </Button>
-          <form onSubmit={(e) => handleSubmit(e, record.key)} id={`rolForm${record.key}`} style={{display: 'none'}}>
+          <form className='rolesForm' onSubmit={(e) => handleSubmit(e, record.key)} id={`rolForm${record.key}`} style={{display: 'none'}}>
                             <label htmlFor='nombre'>Nombre</label>
                             <input onChange={handleChange} type='text' name='tipo' placeholder={record.tipo}></input>
                             <button type='submit'>Confirmar cambios</button>

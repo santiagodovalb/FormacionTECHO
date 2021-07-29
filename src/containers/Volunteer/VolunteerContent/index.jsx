@@ -27,11 +27,10 @@ const VolunteerContent = () => {
                     <Card
                       key={bloque.id}
                       bloque={bloque}
-                      img="https://www.telediariodigital.net/wp-content/uploads/2014/09/art21-foto3.jpg"
                       title={bloque.titulo}
                       button={{
                         text: "Ver modulos",
-                        styles: "button-style green fs-4",
+                        styles: "button-style light-blue fs-4",
                       }}
                       url={`mis-bloques/${bloque.id}`}
                     />

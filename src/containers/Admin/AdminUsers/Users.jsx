@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import { Select, message } from "antd";
 import "./index.css";
 import useAuthorize from "../../../utils/authorization";
+
 const { Option } = Select;
 
 function Users() {
@@ -55,7 +56,7 @@ function Users() {
         if (result.isConfirmed) {
           alertaEliminar.fire(
             "Eliminado!",
-            "El bloque fue eliminado correctamente.",
+            "El usuario fue eliminado correctamente.",
             "success"
           );
           axios.delete(`/api/users/${userId}`).then(() =>
@@ -64,9 +65,9 @@ function Users() {
         .then((res) => res.data)
         .then((users) => setUsers(users))
     );
-          message.success("Sede eliminada correctamente")
+          message.success("Usuario eliminado correctamente")
         } else if (result.dismiss === Swal.DismissReason.cancel) {
-          alertaEliminar.fire("Cancelado", "El bloque está a salvo", "error");
+          alertaEliminar.fire("Cancelado", "El usuario está a salvo", "error");
         }
       });
   };
@@ -88,7 +89,7 @@ return (
       {users &&
         users.map((user) => {
           return (
-            <div key={user.id}>
+            <div className="divAdminUser"key={user.id}>
               <h5>
                 Nombre:<h6>{user.full_name}</h6>
               </h5>

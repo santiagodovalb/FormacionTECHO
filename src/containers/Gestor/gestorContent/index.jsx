@@ -7,6 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "antd/dist/antd.css";
 import "./styles.css";
 import useAuthorize from "../../../utils/authorization";
+import isValid from '../../../utils/specialChars'
 
 const GestorContent = () => {
   const [form, setForm] = useState({
@@ -26,6 +27,9 @@ const GestorContent = () => {
 
   const onSubmit = async () => {
     if (form.newPassword === form.newPasswordConfirm) {
+      if (!isValid(form.newPassword)) {
+        return message.error("No se permiten caracteres especiales")
+      }
       await dispatch(
         updatePassword({
           id: user.id,

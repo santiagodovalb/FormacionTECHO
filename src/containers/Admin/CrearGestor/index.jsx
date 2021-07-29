@@ -4,7 +4,9 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import {message} from  "antd"
 import useAuthorize from "../../../utils/authorization";
+import isValid from "../../../utils/specialChars";
 import "./index.css";
 
 export default function CrearGestor() {
@@ -32,18 +34,33 @@ export default function CrearGestor() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post("/api/users/create", form)
-      .then((res) => res.data)
-      .then(() => history.push("/admin-usuarios"));
+    if(form.confirmPassword === form.password){
+      if (!isValid(form.password) || !isValid(form.full_name)) {
+        return message.error("No se permiten caracteres especiales")
+      }
+      axios
+        .post("/api/users/create", form)
+        .then((res) =>{
+          if(res.data){
+              message.success("Gestor creado correctamente");
+            }
+          })
+          .then(()=>{
+            history.push("/admin-usuarios")
+          })
+          .catch(err=>message.warning("Mail ya existente"))
+    }else{
+      message.warning("Las constraseñas no coinciden")
+    }
+      
   };
 
   return (
-    <div className="row justify-content-center align-items-center text-center p-5 mx-5">
+    <div className="justify-content-center align-items-center text-center py-5">
       <h1 className="fs-2 text-secondary">
         <strong>Crear Gestor</strong>
       </h1>
-      <form onSubmit={handleSubmit} className="col-4 p-5 mx-5">
+      <form onSubmit={handleSubmit} id="formGestor"className="col col-xl-4 my-5">
         <div className="mb-3">
           <input
             required="true"
@@ -71,6 +88,16 @@ export default function CrearGestor() {
             onChange={handleChange}
             name="password"
             placeholder="Contraseña de acceso"
+            className="form-control"
+          />
+        </div>
+        <div className="mb-3">
+          <input
+            required="true"
+            type="password"
+            onChange={handleChange}
+            name="confirmPassword"
+            placeholder="Confirme la contraseña"
             className="form-control"
           />
         </div>

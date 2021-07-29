@@ -5,6 +5,8 @@ import Swal from "sweetalert2";
 import { getSedes } from "../../../redux/sedes";
 import { Table, Button, message} from "antd";
 import useAuthorize from "../../../utils/authorization";
+import isValid from "../../../utils/specialChars";
+import './index.css'
 
 export default function Sedes() {
   const [form, setForm] = useState({});
@@ -20,6 +22,7 @@ export default function Sedes() {
 
   const handleSubmit = (e, id) => {
       e.preventDefault()
+      if (!isValid(form.nombre)) return message.error("No se permiten caracteres especiales")
     axios
       .post(`/api/sedes/${id}`, form)
       .then((res) => res.data)
@@ -51,13 +54,13 @@ export default function Sedes() {
         if (result.isConfirmed) {
           alertaEliminar.fire(
             "Eliminado!",
-            "El bloque fue eliminado correctamente.",
+            "La sede fue eliminada correctamente.",
             "success"
           );
           axios.delete(`/api/sedes/${id}`).then(() => dispatch(getSedes()));
           message.success("Sede eliminada correctamente")
         } else if (result.dismiss === Swal.DismissReason.cancel) {
-          alertaEliminar.fire("Cancelado", "El bloque está a salvo", "error");
+          alertaEliminar.fire("Cancelado", "La sede está a salvo", "error");
         }
       });
   };
@@ -99,7 +102,7 @@ export default function Sedes() {
           >
             Modificar sede
           </Button>
-          <form onSubmit={(e) => handleSubmit(e, record.key)} id={`sedeForm${record.key}`} style={{display: 'none'}}>
+          <form className='sedesForm' onSubmit={(e) => handleSubmit(e, record.key)} id={`sedeForm${record.key}`} style={{display: 'none'}}>
                             <label htmlFor='nombre'>Nombre</label>
                             <input onChange={handleChange} type='text' name='nombre' placeholder={record.nombre}></input>
                             <label htmlFor='comunidadId'>Comunidad ID</label>
