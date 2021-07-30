@@ -53,7 +53,7 @@ export default function AdminRoles() {
       >
         Crear nuevo rol
       </button>
-      <div>
+      <div className="createRol">
       <Form
         style={{ display: "none" }}
         name="newRole"

@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles.css";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Progress } from "antd";
 
 const Card = ({

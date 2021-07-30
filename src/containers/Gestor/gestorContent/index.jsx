@@ -45,15 +45,6 @@ const GestorContent = () => {
     }
   };
 
-  const layout = {
-    labelCol: {
-      span: 12,
-    },
-    wrapperCol: {
-      span: 12,
-    },
-  };
-
   return (
     <>
       <div className="change_password_div">
