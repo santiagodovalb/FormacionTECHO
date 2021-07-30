@@ -1,9 +1,15 @@
 .table {
-    margin: auto;
-    width: 90%;
-  }
-.dashboard {
-  display: flex;
-  justify-self: center;
-  align-items: center;
+  margin: auto;
+  width: 90%;
+}
+
+.gestorDashboard {
+  margin: auto;
+  width: 90%;
+  margin-top: 20px;
+  padding: 8px;
+}
+
+.gestorDashboard button {
+  float: left;
 }

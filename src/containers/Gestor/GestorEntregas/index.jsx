@@ -4,6 +4,7 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { Table, Button } from "antd";
 import useAuthorize from "../../../utils/authorization";
+import {CSVLink} from 'react-csv';
 import './index.css'
 
 export default function GestorEntregas() {
@@ -109,9 +110,14 @@ export default function GestorEntregas() {
           bordered
           dataSource={dataSource}
           columns={columns}
-          pagination={false}
+          pagination={true}
         />
       </div>
+      {console.log("usuario", user)}
+      <div className="gestorEntregas">{dataSource && <Button><CSVLink 
+      data={dataSource}
+      filename={`entregas-${user.sede.nombre}.csv`}
+      >Descargar tabla</CSVLink></Button>}</div>
     </div>
   );
 }
