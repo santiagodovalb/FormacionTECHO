@@ -1,4 +1,15 @@
 .table {
-    margin: auto;
-    width: 90%;
-  }
+  margin: auto;
+  width: 90%;
+}
+
+.gestorEntregas {
+  margin: auto;
+  width: 90%;
+  margin-top: 20px;
+  padding: 8px;
+}
+
+.gestorEntregas button {
+  float: left;
+}

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import { Table } from "antd";
+import { Table, Button } from "antd";
+import {CSVLink} from 'react-csv';
 import {
   totalMinimos,
   totalOpcionales,
@@ -11,6 +12,7 @@ import {
   pendientes,
 } from "./dashUtils";
 import useAuthorize from "../../../utils/authorization";
+import "./index.css"
 
 export default function DashboardGestor() {
   const user = useSelector((state) => state.user);
@@ -103,13 +105,21 @@ export default function DashboardGestor() {
   ];
 
   return (
-    <div className="dashboard text-center">
-      <h1 className="fs-3 text-secondary p-5">
+    <>
+    <div className="dashboard">
+      <h1 className="fs-3 text-secondary p-5 text-center">
         <strong>Dashboard de {user.sede?.nombre}</strong>
       </h1>
       <div className="table">
-        <Table bordered columns={columns} dataSource={dataSource} pagination={false} />
+        <Table bordered columns={columns} dataSource={dataSource} pagination={true} />
       </div>
-    </div>
+      </div>
+      <div className="gestorDashboard">
+        {dataSource && <Button><CSVLink 
+        data={dataSource}
+        filename={`dashboard-${user.sede.nombre}.csv`}
+        >Descargar tabla</CSVLink></Button>}
+      </div>
+    </> 
   );
 }

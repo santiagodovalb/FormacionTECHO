@@ -4,7 +4,6 @@ import { useHistory } from "react-router";
 import { setUser } from "../../redux/user";
 import axios from "axios";
 import SedeCard from "./sedeCard";
-import mapa from "../../assets/sedes/lima-peru.png";
 import "./style.css";
 
 const Sede = () => {

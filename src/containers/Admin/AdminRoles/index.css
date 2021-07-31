@@ -1,24 +1,28 @@
 .adminRoles {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .newRolForm {
-    border: 3px solid black
+  border: 3px solid black;
 }
 
 .table {
-    width: 90%
+  width: 90%;
 }
 
-.rolesForm{
-    margin: 20px auto
+.rolesForm {
+  margin: 20px auto;
 }
-.rolesForm button{
-    margin: 10px 5px
+.rolesForm button {
+  margin: 10px 5px;
 }
-.rolesForm label{
-    margin: auto 5px
+.rolesForm label {
+  margin: auto 5px;
+}
+
+.createRol button {
+  margin: 10px auto;
 }

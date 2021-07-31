@@ -58,12 +58,12 @@ export default function AdminSedes() {
           Crear nueva sede
         </button>
       </div>
-
+      <div className="createSede">
       <Form
         style={{ display: "none" }}
         name="newSede"
         labelCol={{
-          span: 6,
+          span: 8,
         }}
         wrapperCol={{
           span: 8,
@@ -77,7 +77,7 @@ export default function AdminSedes() {
         <Form.Item label="Comunidad Id" name="comunidadId">
           <InputNumber />
         </Form.Item>
-        <Form.Item label="nombre" name="nombre">
+        <Form.Item label="Nombre" name="nombre">
           <Input.TextArea />
         </Form.Item>
         <Button
@@ -85,9 +85,10 @@ export default function AdminSedes() {
           htmlType="submit"
           type="submit"
         >
-          Crear
+          Crear sede
         </Button>
       </Form>
+      </div>
       <div className="table">
         <Sedes />
       </div>
