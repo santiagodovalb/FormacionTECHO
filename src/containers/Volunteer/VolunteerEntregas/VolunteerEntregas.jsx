@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Table } from "antd";
-import "./index.css";
+import "./VolunteerEntregas.css";
 
 export default function VolunteerEntregas() {
   const [entregas, setEntregas] = useState([]);

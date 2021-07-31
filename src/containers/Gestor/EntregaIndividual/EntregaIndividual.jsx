@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import useAuthorize from "../../../utils/authorization";
 import { useSelector } from "react-redux";
-import "./index.css";
+import "./EntregaIndividual.css";
 
 export default function EntregaIndividual() {
   const user = useSelector((state) => state.user);

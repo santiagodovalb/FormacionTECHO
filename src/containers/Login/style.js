@@ -1,4 +1,4 @@
-import Background from "../../assets/loggin/login.jpg";
+import Background from "../../assets/login/login.jpg";
 
 export const sectionStyle = {
   width: "100vw",

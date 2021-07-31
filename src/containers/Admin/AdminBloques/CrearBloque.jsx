@@ -8,7 +8,7 @@ import { getBloques } from "../../../redux/bloques";
 import isValid from '../../../utils/specialChars'
 import useAuthorize from '../../../utils/authorization'
 import "antd/dist/antd.css";
-import "./index.css";
+import "./AdminBloques.css";
 
 export default function CrearBloque() {
   const [form, setForm] = useState({ rolesId: [] });

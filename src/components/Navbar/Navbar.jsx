@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { userLogout } from "../../redux/login";
-import Links from "./links";
-import "./style.css";
+import Links from "./Links";
+import "./Navbar.css";
 import logoMobile from "../../assets/logoMobile.png"
 const Navbar = () => {
   const user = useSelector((state) => state.user);

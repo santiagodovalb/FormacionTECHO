@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom";
 import {message} from  "antd"
 import useAuthorize from "../../../utils/authorization";
 import isValid from "../../../utils/specialChars";
-import "./index.css";
+import "./CrearGestor.css";
 
 export default function CrearGestor() {
   const [form, setForm] = useState({ rolId: 2 });

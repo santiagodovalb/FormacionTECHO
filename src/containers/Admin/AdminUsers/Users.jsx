@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import {useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Select, message } from "antd";
-import "./index.css";
+import "./AdminUsers.css";
 import useAuthorize from "../../../utils/authorization";
 
 const { Option } = Select;

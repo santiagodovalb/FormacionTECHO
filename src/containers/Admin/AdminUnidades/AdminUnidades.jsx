@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form, Input, message } from "antd";
-import "./index.css";
+import "./AdminUnidades.css";
 import axios from "axios";
 import useAuthorize from "../../../utils/authorization";
 import { useSelector } from "react-redux";

@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { Table, Button } from "antd";
 import useAuthorize from "../../../utils/authorization";
 import {CSVLink} from 'react-csv';
-import './index.css'
+import './GestorEntregas.css'
 
 export default function GestorEntregas() {
   const [entregas, setEntregas] = useState();

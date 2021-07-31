@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import "./styles.css";
+import "./VolunteerProfile.css";
 import { useHistory } from "react-router-dom";
 import Instructions from "./instructions";
 import { Button } from "antd";
-import fondo from '../../../assets/loggin/adminLogin.JPG'
+import fondo from '../../../assets/login/adminLogin.JPG'
 
 const VolunteerProfile = () => {
   const user = useSelector((state) => state.user);

@@ -5,7 +5,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import Roles from "./Roles";
 import useAuthorize from "../../../utils/authorization";
-import "./index.css";
+import "./AdminRoles.css";
 import { message, Input, Form, Button } from "antd";
 import isValid from "../../../utils/specialChars";
 

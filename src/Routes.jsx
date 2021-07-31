@@ -1,26 +1,26 @@
-import VolunteerProfile from "../src/containers/Volunteer/VolunteerProfile";
-import VolunteerContent from "../src/containers/Volunteer/VolunteerContent";
-import VolunteerModuls from "../src/containers/Volunteer/VolunteerModuls";
-import GestorContent from "../src/containers/Gestor/gestorContent";
-import AdminUsers from "../src/containers/Admin/AdminUsers/index";
-import Unauthorized from "./containers/Unauthorized";
-import Sede from "./containers/sede";
+import VolunteerProfile from "./containers/Volunteer/VolunteerProfile/VolunteerProfile";
+import VolunteerContent from "../src/containers/Volunteer/VolunteerContent/VolunteerContent";
+import VolunteerModuls from "./containers/Volunteer/VolunteerModuls/VolunteerModules";
+import GestorContent from "./containers/Gestor/gestorContent/GestorContent";
+import AdminUsers from "./containers/Admin/AdminUsers/AdminUsers";
+import Unauthorized from "./containers/Unauthorized/Unauthorized";
+import Sede from "./containers/Sedes/Sedes";
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Users from "./containers/Admin/AdminUsers/Users";
-import GestorVoluntarios from "./containers/Gestor/gestorVoluntarios";
-import AdminSedes from "./containers/Admin/AdminSedes";
+import GestorVoluntarios from "./containers/Gestor/gestorVoluntarios/GestorVoluntarios";
+import AdminSedes from "./containers/Admin/AdminSedes/AdminSedes";
 import CrearBloque from "./containers/Admin/AdminBloques/CrearBloque";
-import AdminBloques from "./containers/Admin/AdminBloques";
+import AdminBloques from "./containers/Admin/AdminBloques/AdminBloques";
 import ModificarBloque from "./containers/Admin/AdminBloques/ModificarBloque";
-import AdminRoles from "./containers/Admin/AdminRoles";
-import VolunteerEntregas from "./containers/Volunteer/VolunteerEntregas";
-import GestorEntregas from "./containers/Gestor/GestorEntregas";
-import EntregaIndividual from "./containers/Gestor/EntregaIndividual";
+import AdminRoles from "./containers/Admin/AdminRoles/AdminRoles";
+import VolunteerEntregas from "./containers/Volunteer/VolunteerEntregas/VolunteerEntregas";
+import GestorEntregas from "./containers/Gestor/GestorEntregas/GestorEntregas";
+import EntregaIndividual from "./containers/Gestor/EntregaIndividual/EntregaIndividual";
 import "./Routes.css";
-import DashboardGestor from "./containers/Gestor/DashboardGestor";
-import CrearGestor from "./containers/Admin/CrearGestor";
-import AdminDashboard from "./containers/Admin/adminDashboard";
+import DashboardGestor from "./containers/Gestor/DashboardGestor/DashboardGestor";
+import CrearGestor from "./containers/Admin/CrearGestor/CrearGestor";
+import AdminDashboard from "./containers/Admin/adminDashboard/DashboardAdmin";
 
 function Routes() {
 

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import useAuthorize from "../../../utils/authorization";
-import "./index.css";
+import "./AdminBloques.css";
 
 export default function AdminBloques() {
   const user = useSelector((state) => state.user);

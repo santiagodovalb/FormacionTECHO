@@ -6,7 +6,7 @@ import { getSedes } from "../../../redux/sedes";
 import { Table, Button, message} from "antd";
 import useAuthorize from "../../../utils/authorization";
 import isValid from "../../../utils/specialChars";
-import './index.css'
+import './AdminSedes.css'
 
 export default function Sedes() {
   const [form, setForm] = useState({});

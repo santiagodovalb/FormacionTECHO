@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { listNavbars } from "./../../utils";
+import { listNavbars } from "../../utils/sidebarLinks";
 import { BsPlusCircle } from 'react-icons/bs'
 
 function Links() {

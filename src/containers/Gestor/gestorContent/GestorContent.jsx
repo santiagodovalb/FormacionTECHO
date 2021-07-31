@@ -5,7 +5,7 @@ import { message } from "antd";
 import { Form, Input, Button } from "antd";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "antd/dist/antd.css";
-import "./styles.css";
+import "./GestorContent.css";
 import useAuthorize from "../../../utils/authorization";
 import isValid from '../../../utils/specialChars'
 

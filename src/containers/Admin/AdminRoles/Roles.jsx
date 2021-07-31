@@ -6,7 +6,7 @@ import { getRoles } from "../../../redux/roles";
 import { Table, Button, message} from "antd";
 import useAuthorize from "../../../utils/authorization";
 import isValid from "../../../utils/specialChars";
-import './index.css'
+import './AdminRoles.css'
 
 export default function Roles() {
   const [form, setForm] = useState({});

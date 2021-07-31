@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import "../index";
+import "../Login";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../../redux/user";
-// import { sectionStyle } from "../style";
-// import Logo from "../../../assets/logo.png";
+
 import { useHistory } from "react-router";
 import axios from 'axios'
 import { message } from 'antd'

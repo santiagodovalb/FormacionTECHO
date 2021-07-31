@@ -4,7 +4,7 @@ import { Table } from 'antd'
 import axios from 'axios'
 import useAuthorize from '../../../utils/authorization'
 import { minimosCompletados,opcionalesCompletados,minimosTotal,opcionalesTotal} from '../../Gestor/DashboardGestor/dashUtils'
-import './index.css'
+import './DashboardAdmin.css'
 
 export default function AdminDashboard(){
     const user = useSelector(state => state.user)

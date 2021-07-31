@@ -1,9 +1,9 @@
 import React from "react";
-import "./styles.css";
+import "./VolunteerContent.css";
 import { Link } from "react-router-dom";
 import { Progress } from "antd";
 
-const Card = ({
+const CardBloques = ({
   id,
   title,
   button,
@@ -53,5 +53,5 @@ const Card = ({
   );
 };
 
-export default Card;
+export default CardBloques;
 

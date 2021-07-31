@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import "./index.css";
+import "./AdminUsers.css";
 import useAuthorize from "../../../utils/authorization";
 
 export default function ListaSedes() {

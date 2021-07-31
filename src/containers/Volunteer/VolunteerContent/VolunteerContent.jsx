@@ -1,7 +1,7 @@
 import React from "react";
-import Card from "../../../components/Card";
+import CardBloques from "./CardBloques";
 import { useSelector } from "react-redux";
-import "./styles.css";
+import "./VolunteerContent.css";
 
 const VolunteerContent = () => {
   const user = useSelector((state) => state.user);
@@ -24,7 +24,7 @@ const VolunteerContent = () => {
               {bloquesDelUser.map(
                 (bloque) =>
                   bloque.minimo && (
-                    <Card
+                    <CardBloques
                       key={bloque.id}
                       bloque={bloque}
                       title={bloque.titulo}
@@ -46,7 +46,7 @@ const VolunteerContent = () => {
               {bloquesDelUser.map(
                 (bloque) =>
                   !bloque.minimo && (
-                    <Card
+                    <CardBloques
                       key={bloque.id}
                       bloque={bloque}
                       img="https://www.telediariodigital.net/wp-content/uploads/2014/09/art21-foto3.jpg"

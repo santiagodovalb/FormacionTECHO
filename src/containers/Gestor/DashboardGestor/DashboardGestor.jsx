@@ -12,7 +12,7 @@ import {
   pendientes,
 } from "./dashUtils";
 import useAuthorize from "../../../utils/authorization";
-import "./index.css"
+import "./DashboardGestor.css"
 
 export default function DashboardGestor() {
   const user = useSelector((state) => state.user);

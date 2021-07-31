@@ -1,12 +1,12 @@
 
-import Login from "./containers/login";
+import Login from "./containers/Login/Login";
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setUser } from "./redux/user";
 import { Route, Switch, useHistory } from "react-router-dom";
 import axios from "axios";
-import Sidebar from "./components/SideBar";
-import Navbar from "./components/Navbar";
+import Sidebar from "./components/SideBar/Sidebar";
+import Navbar from "./components/Navbar/Navbar";
 import { useLocation } from "react-router";
 import { getRoles } from "./redux/roles";
 import { getSedes } from "./redux/sedes";

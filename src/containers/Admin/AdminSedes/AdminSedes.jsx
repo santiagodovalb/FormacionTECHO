@@ -2,12 +2,12 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSedes } from "../../../redux/sedes";
-import Sedes from "./Sedes";
+import Sedes from "./ListaSedes";
 import { Button, Form, Input, InputNumber } from "antd";
 import { message } from "antd";
 import useAuthorize from "../../../utils/authorization";
 import isValid from "../../../utils/specialChars";
-import "./index.css";
+import "./AdminSedes.css";
 
 export default function AdminSedes() {
   const [form, setForm] = useState({});

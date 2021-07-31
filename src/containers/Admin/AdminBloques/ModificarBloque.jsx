@@ -5,7 +5,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { Form, Input, Radio, Col, Row, message } from "antd";
 import Swal from "sweetalert2";
 import { getBloques } from "../../../redux/bloques";
-import AdminUnidades from "../AdminUnidades/index.jsx";
+import AdminUnidades from "../AdminUnidades/AdminUnidades.jsx";
 import Unidades from "./Unidades.jsx";
 import useAuthorize from "../../../utils/authorization";
 const { TextArea } = Input;

@@ -1,10 +1,10 @@
 import React from "react";
-import "./index.css";
+import "./Login.css";
 import { sectionStyle } from "./style";
 import Logo from "../../assets/logo.png";
 import 'antd/dist/antd.css';
-import LoginAdmin from "./ModuleLogin/loginAdmin"
-import LoginUser from "./ModuleLogin/loginUser"
+import LoginAdmin from "./ModuleLogin/LoginAdmin"
+import LoginUser from "./ModuleLogin/LoginUser"
 import { useLocation } from "react-router-dom";
 
 const Login = () => {

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { listNavbars } from "./../../utils";
+import { listNavbars } from "../../utils/sidebarLinks";
 
 function Links() {
   const user = useSelector((state) => state.user);
