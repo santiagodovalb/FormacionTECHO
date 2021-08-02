@@ -1,0 +1,14 @@
+.table {
+  width: 90%;
+}
+
+.adminDashboard {
+  margin: auto;
+  width: 90%;
+  margin-top: 30px;
+  padding: 8px;
+}
+
+.adminDashboard button {
+  float: left;
+}

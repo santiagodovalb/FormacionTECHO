@@ -2,16 +2,16 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
-import { getRoles } from "../../../redux/roles";
+import { getSedes } from "../../../redux/sedes";
 import { Table, Button, message} from "antd";
 import useAuthorize from "../../../utils/authorization";
 import isValid from "../../../utils/specialChars";
-import './AdminRoles.css'
+import './AdminSedes.css'
 
-export default function Roles() {
+export default function Sedes() {
   const [form, setForm] = useState({});
 
-  const roles = useSelector((state) => state.roles).filter(rol => rol.id > 1)
+  const sedes = useSelector((state) => state.sedes);
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
 
@@ -22,17 +22,15 @@ export default function Roles() {
 
   const handleSubmit = (e, id) => {
       e.preventDefault()
-      if(!isValid(form.tipo)) return message.error("No se permiten caracteres especiales")
-      axios
-      .put(`/api/roles/${id}`, form)
-      .then(() => {
-        dispatch(getRoles())
-        message.success("Rol modificado correctamente")})
-      .catch(() => message.error("No se pudo modificar"))
+      if (!isValid(form.nombre)) return message.error("No se permiten caracteres especiales")
+    axios
+      .post(`/api/sedes/${id}`, form)
+      .then((res) => res.data)
+      .then(() => dispatch(getSedes()));
   };
 
   const handleChange = (e) => {
-    setForm({[e.target.name]: e.target.value });
+    setForm({...form, [e.target.name]: e.target.value });
   };
 
   const alertaEliminar = Swal.mixin({
@@ -56,31 +54,41 @@ export default function Roles() {
         if (result.isConfirmed) {
           alertaEliminar.fire(
             "Eliminado!",
-            "El rol fue eliminado correctamente.",
+            "La sede fue eliminada correctamente.",
             "success"
           );
-          axios.delete(`/api/roles/${id}`).then(() => dispatch(getRoles()));
-          message.success("Rol eliminado correctamente")
+          axios.delete(`/api/sedes/${id}`).then(() => dispatch(getSedes()));
+          message.success("Sede eliminada correctamente")
         } else if (result.dismiss === Swal.DismissReason.cancel) {
-          alertaEliminar.fire("Cancelado", "El rol está a salvo", "error");
+          alertaEliminar.fire("Cancelado", "La sede está a salvo", "error");
         }
       });
   };
 
+
+
+
+
   useAuthorize(user, 1)
 
-  const dataSource = roles.map((rol) => {
+  const dataSource = sedes.map((sede) => {
     return {
-      key: rol.id,
-      tipo: rol.tipo
+      key: sede.id,
+      nombre: sede.nombre,
+      comunidadId: sede.comunidadId
     };
   });
 
   const columns = [
     {
-      title: "Rol",
-      dataIndex: "tipo",
-      key: "tipo",
+      title: "Sede",
+      dataIndex: "nombre",
+      key: "nombre",
+    },
+    {
+      title: "Comunidad ID",
+      dataIndex: "comunidadId",
+      key: "comunidadId",
     },
     {
       title: "Modificar/eliminar",
@@ -89,17 +97,19 @@ export default function Roles() {
           return(
         <div>
           <Button
-            onClick={() => toggleForm(`rolForm${record.key}`)}
+            onClick={() => toggleForm(`sedeForm${record.key}`)}
             type="button"
           >
-            Modificar rol
+            Modificar sede
           </Button>
-          <form className='rolesForm' onSubmit={(e) => handleSubmit(e, record.key)} id={`rolForm${record.key}`} style={{display: 'none'}}>
+          <form className='sedesForm' onSubmit={(e) => handleSubmit(e, record.key)} id={`sedeForm${record.key}`} style={{display: 'none'}}>
                             <label htmlFor='nombre'>Nombre</label>
-                            <input onChange={handleChange} type='text' name='tipo' placeholder={record.tipo}></input>
+                            <input onChange={handleChange} type='text' name='nombre' placeholder={record.nombre}></input>
+                            <label htmlFor='comunidadId'>Comunidad ID</label>
+                            <input onChange={handleChange} type='number' name='comunidadId' placeholder={record.comunidadId}></input>
                             <button type='submit'>Confirmar cambios</button>
                         </form>
-          <Button onClick={() => handleDelete(record.key)} type='button'>Eliminar rol</Button>
+          <Button onClick={() => handleDelete(record.key)} type='button'>Eliminar sede</Button>
         </div>
           )
       },
@@ -108,7 +118,7 @@ export default function Roles() {
   ];
 
   return (
-    <div className='table'>
+    <div>
       <Table bordered dataSource={dataSource} columns={columns} pagination={false} />
     </div>
   );

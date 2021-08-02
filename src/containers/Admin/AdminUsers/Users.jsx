@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import {useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Select, message } from "antd";
-import "./index.css";
+import "./AdminUsers.css";
 import useAuthorize from "../../../utils/authorization";
 
 const { Option } = Select;
@@ -91,11 +91,13 @@ return (
           return (
             <div className="divAdminUser"key={user.id}>
               <h5>
-                Nombre:<h6>{user.full_name}</h6>
+                Nombre:
               </h5>
+              <h6>{user.full_name}</h6>
               <h5>
-              Rol:<h6> {user.rol && user.rol.tipo}</h6>
+              Rol:
               </h5>
+              <h6> {user.rol && user.rol.tipo}</h6>
               <Select
                 style={{ width: 200 }}
                 placeholder="Seleccionar rol"

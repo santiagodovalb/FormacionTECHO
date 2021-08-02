@@ -94,6 +94,53 @@ const entregasController = {
       })
       .catch(next)
   },
+  getCompletadas(req, res, next){
+    const sedeId = parseInt(req.params.sedeId)
+    Entregas.findAll({
+      where: {
+        aprobado: true
+      },
+      include: [{
+        model: Users, as: 'user'
+      }, {
+        model: Bloques, as: 'bloque'
+      }]
+    })
+    .then(entregas => entregas.filter(entrega => entrega.user.sedeId === sedeId))
+    .then(entregas => res.status(200).send(entregas))
+    .catch(next)
+  },
+  getPendientes(req, res, next){
+    const sedeId = parseInt(req.params.sedeId)
+    Entregas.findAll({
+      where: {
+        aprobado: false
+      },
+      include: [{
+        model: Users, as: 'user'
+      }, {
+        model: Bloques, as: 'bloque'
+      }]
+    })
+    .then(entregas => entregas.filter(entrega => entrega.user.sedeId === sedeId))
+    .then(entregas => {
+      return res.status(200).send(entregas)})
+    .catch(next)
+  },
+  findByName(req, res, next){
+    Entregas.findAll({
+      where: {
+        aprobado: false
+      },
+      include: [{
+        model: Users, as: 'user'
+      }, {
+        model: Bloques, as: 'bloque'
+      }]
+    })
+    .then(entregas => entregas.filter(entrega => entrega.user.full_name.toLowerCase().includes(req.body.nombre.toLowerCase())))
+    .then(entregas => res.status(200).send(entregas))
+  }
 };
 
 module.exports = entregasController;

@@ -3,10 +3,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { setUser } from "../../redux/user";
 import axios from "axios";
-import SedeCard from "./sedeCard";
-import "./style.css";
+import SedeCard from "./SedeCard";
+import "./Sedes.css";
 
-const Sede = () => {
+const Sedes = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((state) => state.user);
@@ -119,4 +119,4 @@ const Sede = () => {
   );
 };
 
-export default Sede;
+export default Sedes;
