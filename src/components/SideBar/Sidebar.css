@@ -1,14 +1,14 @@
 .sidebar {
   min-width: 250px;
   max-width: 250px;
-  min-height: 100vmin;
+  height: 100vh;
   background-color: #0092dd;
   color: white;
   float: left;
   position: fixed;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .sidebar {
     margin-left: -250px;
   }

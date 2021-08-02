@@ -120,21 +120,27 @@ export default function AdminDashboard(){
       }]
 
     return (
-        <div className='text-center'>
-            <h1 className="fs-2 text-secondary p-5">
-              <strong>Dashboard Nacional</strong>
-              </h1>
-              <div className='table'>
-            <Table bordered dataSource={dataSource} columns={columns} pagination={false} />
-            </div>
-            <div className="adminDashboard">
-        {dataSource && <Button><CSVLink 
-        data={dataSource}
-        filename={`dashboard-nacional.csv`}
-        >Descargar tabla</CSVLink></Button>}
-      </div>
+      <div className="text-center">
+        <h1 className="fs-2 text-secondary p-5">
+          <strong>Dashboard Nacional</strong>
+        </h1>
+        <div className="table">
+          <Table
+            bordered
+            dataSource={dataSource}
+            columns={columns}
+            pagination={false}
+          />
         </div>
-    )
-
-
+        <div className="adminDashboard">
+          {dataSource && (
+            <Button>
+              <CSVLink data={dataSource} filename={`dashboard-nacional.csv`}>
+                Descargar tabla
+              </CSVLink>
+            </Button>
+          )}
+          </div>
+      </div>
+    );
 }

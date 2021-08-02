@@ -14,7 +14,4 @@ router.post("/", entregasController.createEntrega)
 router.put("/:id",entregasController.updateEntrega) 
 router.delete("/:id", entregasController.deleteEntrega)
 
-
-
-
 module.exports = router

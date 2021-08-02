@@ -1,4 +1,5 @@
 const nodemailer = require("nodemailer");
+const path = require('path')
 const { MAIL_USER, MAIL_PASSWORD} = process.env
 
 // create reusable transporter object using the default SMTP transport
@@ -21,6 +22,7 @@ const { MAIL_USER, MAIL_PASSWORD} = process.env
   });
 
 async function sendNewEntrega(gestor, entrega) {
+    console.log('DIRNAME', __dirname)
     let info = await transporter.sendMail({
         from: '"Formacion TECHO" <santikundera@gmail.com>', // sender address
       to: gestor.email, 
@@ -28,7 +30,7 @@ async function sendNewEntrega(gestor, entrega) {
       text: "Formacion TECHO | Nueva entrega", // plain textbody
       attachments: [{
         filename: 'logoCeleste.png',
-        path: '/Users/santiagovidela/Desktop/FormacionTECHO/src/assets/logoCeleste.png',
+        path: path.resolve(__dirname, '../../src/assets/logoCeleste.png'),
         cid: 'logo'
     }],
       html: `
@@ -42,6 +44,7 @@ async function sendNewEntrega(gestor, entrega) {
 })}
 
 async function sendEntregaCompletada(voluntario, entrega) {
+    console.log('DIRNAME', __dirname)
     let info = await transporter.sendMail({
         from: '"Formacion TECHO" <santikundera@gmail.com>', // sender address
       to: voluntario.email, 
@@ -49,11 +52,11 @@ async function sendEntregaCompletada(voluntario, entrega) {
       text: "Formacion TECHO | Entrega completada", // plain textbody
       attachments: [{
         filename: 'logoCeleste.png',
-        path: '/Users/santiagovidela/Desktop/FormacionTECHO/src/assets/logoCeleste.png',
+        path: path.resolve(__dirname, '../../src/assets/logoCeleste.png'),
         cid: 'logo'
     }],
       html: `
-              <img src="cid:logo" alt='techoLogo' />
+              <img src="cid:logo" alt='techoLogo' style="width:300px; height:100px;" />
               <h1>${voluntario.full_name}, ¡tu entrega fue completada!</h1>
               <h3>Bloque:</h3> <p>${entrega.bloque.titulo}</p>
               <h3>Pregunta de bloque:</h3> <p>${entrega.bloque.pregunta}</p>
