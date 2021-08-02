@@ -30,6 +30,7 @@
 }
 
 .pregunta {
+  text-align: center !important;
   margin: 20px auto;
 }
 

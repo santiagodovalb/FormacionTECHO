@@ -1,14 +1,14 @@
-import VolunteerProfile from "./containers/Volunteer/VolunteerProfile/VolunteerProfile";
+import VolunteerProfile from "./containers/UserProfile/UserProfile";
 import VolunteerContent from "../src/containers/Volunteer/VolunteerContent/VolunteerContent";
 import VolunteerModuls from "./containers/Volunteer/VolunteerModuls/VolunteerModules";
-import GestorContent from "./containers/Gestor/gestorContent/GestorContent";
+import GestorContent from "./containers/Gestor/GestorPassword/GestorContent";
 import AdminUsers from "./containers/Admin/AdminUsers/AdminUsers";
 import Unauthorized from "./containers/Unauthorized/Unauthorized";
 import Sede from "./containers/Sedes/Sedes";
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Users from "./containers/Admin/AdminUsers/Users";
-import GestorVoluntarios from "./containers/Gestor/gestorVoluntarios/GestorVoluntarios";
+import GestorVoluntarios from "./containers/Gestor/GestorVoluntarios/GestorVoluntarios.jsx";
 import AdminSedes from "./containers/Admin/AdminSedes/AdminSedes";
 import CrearBloque from "./containers/Admin/AdminBloques/CrearBloque";
 import AdminBloques from "./containers/Admin/AdminBloques/AdminBloques";

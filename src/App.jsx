@@ -1,11 +1,4 @@
-
-<<<<<<< HEAD
-import Login from "./containers/Login/Login";
-import React, { useEffect} from "react";
-=======
-// import Login from "./containers/login/Login";
 import React, { useEffect } from "react";
->>>>>>> 1f48c140aebc2ce533bb8b14c0cdc227376c50f3
 import { useDispatch } from "react-redux";
 import { setUser } from "./redux/user";
 import { Route, Switch, useHistory } from "react-router-dom";

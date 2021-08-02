@@ -99,7 +99,7 @@ export default function CrearBloque() {
 
         <Form.Item
           className="admin_input"
-          label="Pregunta"
+          label="Preguntas"
           name="pregunta"
           rules={[
             {
@@ -108,7 +108,7 @@ export default function CrearBloque() {
             },
           ]}
         >
-          <Input name="pregunta" onChange={handleChange} />
+          <Input.TextArea name="pregunta" onChange={handleChange} />
         </Form.Item>
         <div className="admin">
           <h5>Es bloque mínimo?</h5>

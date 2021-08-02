@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import "./VolunteerProfile.css";
+import "./UserProfile.css";
 import { useHistory } from "react-router-dom";
 import Instructions from "./instructions";
 import { Button } from "antd";
-import fondo from '../../../assets/login/adminLogin.JPG'
+import fondo from '../../assets/login/adminLogin.JPG'
 
-const VolunteerProfile = () => {
+const UserProfile = () => {
   const user = useSelector((state) => state.user);
 
   const history = useHistory();
@@ -47,4 +47,4 @@ const VolunteerProfile = () => {
   );
 };
 
-export default VolunteerProfile;
+export default UserProfile;
