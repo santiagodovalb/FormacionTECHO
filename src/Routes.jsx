@@ -20,7 +20,7 @@ import EntregaIndividual from "./containers/Gestor/EntregaIndividual/EntregaIndi
 import "./Routes.css";
 import DashboardGestor from "./containers/Gestor/DashboardGestor/DashboardGestor";
 import CrearGestor from "./containers/Admin/CrearGestor/CrearGestor";
-import AdminDashboard from "./containers/Admin/adminDashboard/DashboardAdmin";
+import AdminDashboard from "./containers/Admin/AdminDashboard/DashboardAdmin";
 
 function Routes() {
 
