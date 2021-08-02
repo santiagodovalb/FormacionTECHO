@@ -44,7 +44,6 @@ async function sendNewEntrega(gestor, entrega) {
 })}
 
 async function sendEntregaCompletada(voluntario, entrega) {
-    console.log('DIRNAME', __dirname)
     let info = await transporter.sendMail({
         from: '"Formacion TECHO" <santikundera@gmail.com>', // sender address
       to: voluntario.email, 
