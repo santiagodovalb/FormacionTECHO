@@ -1,8 +1,9 @@
 import React,{useState,useEffect} from 'react'
 import { useSelector } from 'react-redux'
-import { Table } from 'antd'
+import { Table, Button } from 'antd'
 import axios from 'axios'
 import useAuthorize from '../../../utils/authorization'
+import {CSVLink} from 'react-csv';
 import { minimosCompletados,opcionalesCompletados,minimosTotal,opcionalesTotal} from '../../Gestor/DashboardGestor/dashUtils'
 import './DashboardAdmin.css'
 
@@ -126,6 +127,12 @@ export default function AdminDashboard(){
               <div className='table'>
             <Table bordered dataSource={dataSource} columns={columns} pagination={false} />
             </div>
+            <div className="adminDashboard">
+        {dataSource && <Button><CSVLink 
+        data={dataSource}
+        filename={`dashboard-nacional.csv`}
+        >Descargar tabla</CSVLink></Button>}
+      </div>
         </div>
     )
 

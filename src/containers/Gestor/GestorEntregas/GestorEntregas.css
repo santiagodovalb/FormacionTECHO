@@ -13,3 +13,9 @@
 .gestorEntregas button {
   float: left;
 }
+
+.busquedas {
+  display: flex;
+  justify-content: space-around;
+  margin: 15px auto;
+}

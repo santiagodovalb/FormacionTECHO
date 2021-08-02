@@ -9,6 +9,7 @@ import './GestorEntregas.css'
 
 export default function GestorEntregas() {
   const [entregas, setEntregas] = useState();
+  const [form, setForm] = useState('')
   const user = useSelector((state) => state.user);
   const history = useHistory();
 
@@ -24,6 +25,42 @@ export default function GestorEntregas() {
   const handleClick = (id) => {
     history.push(`/gestor/entregas/${id}`);
   };
+
+  const handleChange = (e) => {
+
+    console.log('CHANGE', e.target.value)
+
+    if (e.target.value === 'completadas') {
+      axios.get(`/api/entregas/completadas/${user.sedeId}`)
+      .then(res => res.data)
+      .then(entregas => setEntregas(entregas))
+    }
+
+    if (e.target.value === 'pendientes') {
+      axios.get(`/api/entregas/pendientes/${user.sedeId}`)
+      .then(res => res.data)
+      .then(entregas => setEntregas(entregas))
+    }
+
+    if (e.target.value === 'todas') {
+      axios
+      .get(`/api/entregas/sede/${user.sedeId}`)
+      .then((res) => res.data)
+      .then((entregas) => setEntregas(entregas))
+    }
+
+  }
+
+  const handleInput = (e) => {
+    setForm(e.target.value)
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    axios.post('/api/entregas/user/nombre', {nombre: form})
+    .then(res => res.data)
+    .then(entregas => setEntregas(entregas))
+  }
 
   const date = (entrega) => {
     let fecha = entrega.slice(0, 10);
@@ -105,6 +142,19 @@ export default function GestorEntregas() {
       <h1 className="fs-3 text-secondary p-5 text-center">
         <strong>Entregas de voluntarios</strong>
       </h1>
+      <div className='busquedas'>
+        <select onChange={handleChange}>
+          <option>Filtrar por estado</option>
+          <option value='completadas'>Completadas</option>
+          <option value='pendientes'>Pendientes</option>
+          <option value='todas'>Todas</option>
+        </select>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor='nombre'>Buscar por voluntari@</label>
+          <input type='text' name='nombre' onChange={handleInput} />
+          <button type='submit'>Buscar</button>
+        </form>
+      </div>
       <div className="table">
         <Table
           bordered
@@ -113,10 +163,9 @@ export default function GestorEntregas() {
           pagination={true}
         />
       </div>
-      {console.log("usuario", user)}
       <div className="gestorEntregas">{dataSource && <Button><CSVLink 
       data={dataSource}
-      filename={`entregas-${user.sede.nombre}.csv`}
+      filename={`entregas-${user.sede?.nombre}.csv`}
       >Descargar tabla</CSVLink></Button>}</div>
     </div>
   );
