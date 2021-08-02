@@ -1,6 +1,6 @@
 
 import Login from "./containers/Login/Login";
-import React, { useEffect } from "react";
+import React, { useEffect} from "react";
 import { useDispatch } from "react-redux";
 import { setUser } from "./redux/user";
 import { Route, Switch, useHistory } from "react-router-dom";
