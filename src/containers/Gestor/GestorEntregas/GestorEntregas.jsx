@@ -57,7 +57,7 @@ export default function GestorEntregas() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    axios.post('/api/entregas/user/nombre', {nombre: form})
+    axios.post('/api/entregas/user/nombre', {nombre: form, sedeId: user.sedeId})
     .then(res => res.data)
     .then(entregas => setEntregas(entregas))
   }
@@ -150,7 +150,7 @@ export default function GestorEntregas() {
           <option value='todas'>Todas</option>
         </select>
         <form onSubmit={handleSubmit}>
-          <label htmlFor='nombre'>Buscar por voluntari@</label>
+          <label htmlFor='nombre'>Buscar por voluntari@:</label>
           <input type='text' name='nombre' onChange={handleInput} />
           <button type='submit'>Buscar</button>
         </form>

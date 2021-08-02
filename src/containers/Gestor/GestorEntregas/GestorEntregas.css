@@ -19,3 +19,7 @@
   justify-content: space-around;
   margin: 15px auto;
 }
+
+.busquedas label {
+  margin-right: 10px;
+}

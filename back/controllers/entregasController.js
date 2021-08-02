@@ -129,16 +129,13 @@ const entregasController = {
   },
   findByName(req, res, next){
     Entregas.findAll({
-      where: {
-        aprobado: false
-      },
       include: [{
         model: Users, as: 'user'
       }, {
         model: Bloques, as: 'bloque'
       }]
     })
-    .then(entregas => entregas.filter(entrega => entrega.user.full_name.toLowerCase().includes(req.body.nombre.toLowerCase())))
+    .then(entregas => entregas.filter(entrega => (entrega.user.full_name.toLowerCase().includes(req.body.nombre.toLowerCase()) && entrega.user.sedeId === req.body.sedeId)))
     .then(entregas => res.status(200).send(entregas))
   }
 };

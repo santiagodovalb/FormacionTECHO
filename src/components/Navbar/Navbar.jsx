@@ -14,7 +14,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <nav className="d-block d-sm-none navbar navbar-expand-lg navbar-dark">
+      <nav className="d-block d-md-none navbar navbar-expand-lg navbar-dark">
         <div className="container-fluid">
           <img src={logoMobile} alt="logo techo" />
           <button
