@@ -3,6 +3,11 @@
   flex-direction: row;
 }
 
+#loader {
+  position: absolute;
+  margin: 0 auto
+}
+
 .content {
   margin-left: 250px;
 }

@@ -8,7 +8,7 @@ import { getBloques } from "../../../redux/bloques";
 import isValid from '../../../utils/specialChars'
 import useAuthorize from '../../../utils/authorization'
 import "antd/dist/antd.css";
-import "./index.css";
+import "./AdminBloques.css";
 
 export default function CrearBloque() {
   const [form, setForm] = useState({ rolesId: [] });
@@ -99,7 +99,7 @@ export default function CrearBloque() {
 
         <Form.Item
           className="admin_input"
-          label="Pregunta"
+          label="Preguntas"
           name="pregunta"
           rules={[
             {
@@ -108,7 +108,7 @@ export default function CrearBloque() {
             },
           ]}
         >
-          <Input name="pregunta" onChange={handleChange} />
+          <Input.TextArea name="pregunta" onChange={handleChange} />
         </Form.Item>
         <div className="admin">
           <h5>Es bloque mínimo?</h5>

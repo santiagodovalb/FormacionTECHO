@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router";
 import Checkbox from "antd/lib/checkbox/Checkbox";
-import "./style.css";
+import "./VolunteerModules.css";
 
 export default function Unidades({ setChecks }) {
   const [unidades, setUnidades] = useState([]);
