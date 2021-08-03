@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import { Table, Button } from "antd";
-import {CSVLink} from 'react-csv';
+import { Table } from "antd";
+import { CSVLink } from "react-csv";
 import {
   totalMinimos,
   totalOpcionales,
@@ -12,7 +12,7 @@ import {
   pendientes,
 } from "./dashUtils";
 import useAuthorize from "../../../utils/authorization";
-import "./DashboardGestor.css"
+import "./DashboardGestor.css";
 
 export default function DashboardGestor() {
   const user = useSelector((state) => state.user);
@@ -106,20 +106,33 @@ export default function DashboardGestor() {
 
   return (
     <>
-    <div className="dashboard">
-      <h1 className="fs-3 text-secondary p-5 text-center">
-        <strong>Dashboard de {user.sede?.nombre}</strong>
-      </h1>
-      <div className="table">
-        <Table bordered columns={columns} dataSource={dataSource} pagination={true} />
+      <div className="dashboard">
+        <h1 className="fs-3 text-secondary p-5 text-center">
+          <strong>Dashboard de {user.sede?.nombre}</strong>
+        </h1>
+        <div className="d-flex justify-content-center">
+          {dataSource && (
+            <button className="btn btn-success my-3 fs-5">
+              <CSVLink
+                data={dataSource}
+                filename={`dashboard-${user.sede?.nombre}.csv`}
+              >
+                <p className="text-light m-0">
+                  Descargar <i class="bi bi-file-earmark-excel-fill"></i>
+                </p>
+              </CSVLink>
+            </button>
+          )}
+        </div>
+        <div className="table">
+          <Table
+            bordered
+            columns={columns}
+            dataSource={dataSource}
+            pagination={true}
+          />
+        </div>
       </div>
-      </div>
-      <div className="gestorDashboard">
-        {dataSource && <Button><CSVLink 
-        data={dataSource}
-        filename={`dashboard-${user.sede?.nombre}.csv`}
-        >Descargar tabla</CSVLink></Button>}
-      </div>
-    </> 
+    </>
   );
 }

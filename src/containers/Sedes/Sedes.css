@@ -20,13 +20,13 @@
 }
 
 .title {
-  padding: -20px
+  padding: -20px;
 }
 
 .check-style,
 .uncheck-style:hover,
 .check-style:hover {
-  color: #77d352;
+  color: white;
 }
 
 .guardarButton {
@@ -42,4 +42,3 @@
     flex-direction: column;
   }
 }
-

@@ -7,7 +7,7 @@ import "./AdminBloques.css";
 export default function AdminBloques() {
   const user = useSelector((state) => state.user);
 
-  useEffect(() => {}, [user])
+  useEffect(() => {}, [user]);
 
   const bloques = useSelector((state) => state.bloques);
 
@@ -20,7 +20,7 @@ export default function AdminBloques() {
           <strong>Gestionar o crear bloques</strong>
         </h1>
         <Link to="/admin-bloques-crear">
-          <button type="button" className="my-5 p-3 fs-3 button-style green">
+          <button type="button" className="my-5 p-3 fs-4 button-style green">
             Crear nuevo bloque
           </button>
         </Link>
@@ -32,7 +32,7 @@ export default function AdminBloques() {
               <Link to={`/admin-bloques/${bloque.id}`}>
                 <button
                   type="button"
-                  className="my-3 p-3 fs-3 button-style light-blue blocks"
+                  className="m-3 p-4 fs-5 button-style light-blue"
                 >
                   {bloque.titulo} <i className="bi bi-pencil-square"></i>
                 </button>

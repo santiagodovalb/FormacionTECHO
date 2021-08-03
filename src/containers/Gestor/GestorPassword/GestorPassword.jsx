@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updatePassword } from "../../../redux/users";
 import { message } from "antd";
-import { Form, Input, Button } from "antd";
+import { Form, Input } from "antd";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "antd/dist/antd.css";
 import "./GestorPassword.css";
 import useAuthorize from "../../../utils/authorization";
-import isValid from '../../../utils/specialChars'
+import isValid from "../../../utils/specialChars";
 
 const GestorPassword = () => {
   const [form, setForm] = useState({
@@ -28,7 +28,7 @@ const GestorPassword = () => {
   const onSubmit = async () => {
     if (form.newPassword === form.newPasswordConfirm) {
       if (!isValid(form.newPassword)) {
-        return message.error("No se permiten caracteres especiales")
+        return message.error("No se permiten caracteres especiales");
       }
       await dispatch(
         updatePassword({
@@ -89,7 +89,6 @@ const GestorPassword = () => {
             onChange={onChange}
             label="Confirmá la nueva contraseña"
             name="newPasswordConfirm"
-            
             rules={[
               {
                 required: true,
@@ -99,12 +98,14 @@ const GestorPassword = () => {
           >
             <Input.Password />
           </Form.Item>
-            <Button type="primary" htmlType="submit">
-              Cambiar
-            </Button>
-          
+          <button
+            type="submit"
+            className="button-style green button-style-form my-3 p-2 fs-4"
+          >
+            Cambiar
+          </button>
         </Form>
-        </div>
+      </div>
     </>
   );
 };
