@@ -4,21 +4,20 @@ import "./AdminUnidades.css";
 import axios from "axios";
 import useAuthorize from "../../../utils/authorization";
 import { useSelector } from "react-redux";
-import isValid from "../../../utils/specialChars"
+import isValid from "../../../utils/specialChars";
 
 export default function AdminUnidades({ forceRender, bloque }) {
-  const user = useSelector(state => state.user)
+  const user = useSelector((state) => state.user);
   const [form, setForm] = useState({ bloqueId: bloque.id });
-  useAuthorize(user, 1)
+  useAuthorize(user, 1);
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
-    if(! isValid(form.titulo)){
-      message.error("No se permiten caracteres especiales")
-    }else{
-
+    if (!isValid(form.titulo)) {
+      message.error("No se permiten caracteres especiales");
+    } else {
       axios
         .post("/api/unidades", form)
         .then(() => forceRender(), message.success("Agregado correctamente"));
@@ -58,7 +57,7 @@ export default function AdminUnidades({ forceRender, bloque }) {
         <div className="admin_unidades">
           <button
             type="submit"
-            className="mb-3 mt-3 p-3 fs-3 button-style light-blue"
+            className="mb-3 mt-3 p-3 fs-4 button-style green"
           >
             Agregar unidad
           </button>

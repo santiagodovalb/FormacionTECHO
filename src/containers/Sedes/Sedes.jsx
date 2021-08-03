@@ -18,16 +18,17 @@ const Sedes = () => {
     key: "",
     style: "btn bi bi-check-circle-fill check-style",
   });
-  
+
   useEffect(() => {
     if (!sedes.length) setSedes([...sedesPrueba]);
-    setStateIcon(s => {
+    setStateIcon((s) => {
       return {
-      ...s,
-      key: selectSede,
-    }});
+        ...s,
+        key: selectSede,
+      };
+    });
   }, [form, selectSede, sedes, sedesPrueba]);
-  
+
   const handleChange = (e) => {
     const { target } = e;
     setForm({ ...form, [target.name]: target.value });
@@ -64,57 +65,54 @@ const Sedes = () => {
       .catch((err) => err);
   };
 
-
   return (
     <div className="div-sedes">
-        
-          <h1 className="fs-3 text-secondary p-5 title">
-            <strong>Elegí tu sede</strong>
-          </h1>
+      <h1 className="fs-3 text-secondary p-5 title">
+        <strong>Elegí tu sede</strong>
+      </h1>
 
-        <div className="justify-content-center align-items-center">
-          <form
-            className="d-flex col-auto text-center"
-            onChange={handleChange}
-            onSubmit={handleSearch}
-          >
-            <input
-              type="text"
-              name="search"
-              className="form-control me-2 fs-4"
-              placeholder="Buscar sede"
-            />
-            <button className="btn btn-outline-secondary" type="submit">
-              <i className="bi bi-search"></i>
-            </button>
-          </form>
-        </div>
-        <div className="sedes mt-5">
-          {sedes?.map((sede, index) => {
-            return (
-              <SedeCard
-                key={`${sede.id}`}
-                id={`${sede.id}`}
-                button={{
-                  text: `${sede.nombre}`,
-                  styles: "button-style  light-blue fs-5",
-                }}
-                icon="btn bi bi-circle-fill uncheck-style"
-                setState={setSelectSede}
-                stateIcon={stateIcon}
-              />
-            );
-          })}
-        </div>
-        <div className=" guardarButton ">
-          <button
-            className="mb-3 mt-3 p-4 fs-4 button-style green"
-            onClick={onSaveSede}
-          >
-            Guardar
+      <div className="justify-content-center align-items-center">
+        <form
+          className="d-flex col-auto text-center"
+          onChange={handleChange}
+          onSubmit={handleSearch}
+        >
+          <input
+            type="text"
+            name="search"
+            className="form-control me-2 fs-4"
+            placeholder="Buscar sede"
+          />
+          <button className="btn btn-outline-secondary" type="submit">
+            <i className="bi bi-search"></i>
           </button>
-        </div>
-      
+        </form>
+      </div>
+      <div className="sedes mt-5">
+        {sedes?.map((sede, index) => {
+          return (
+            <SedeCard
+              key={`${sede.id}`}
+              id={`${sede.id}`}
+              button={{
+                text: `${sede.nombre}`,
+                styles: "button-style  light-blue fs-5",
+              }}
+              icon="btn bi bi-circle-fill uncheck-style"
+              setState={setSelectSede}
+              stateIcon={stateIcon}
+            />
+          );
+        })}
+      </div>
+      <div className=" guardarButton ">
+        <button
+          className="my-4 p-3 fs-4 button-style green"
+          onClick={onSaveSede}
+        >
+          Guardar
+        </button>
+      </div>
     </div>
   );
 };

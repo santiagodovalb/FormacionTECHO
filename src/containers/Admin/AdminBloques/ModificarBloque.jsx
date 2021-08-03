@@ -166,18 +166,10 @@ export default function ModificarBloque() {
           <div className="admin">
             <h5>Es bloque mínimo?</h5>
             <Radio.Group>
-              <Radio.Button
-                id="minimoSi"
-                value="si"
-                onChange={handleMinimo}
-              >
+              <Radio.Button id="minimoSi" value="si" onChange={handleMinimo}>
                 Si
               </Radio.Button>
-              <Radio.Button
-                id="minimoNo"
-                value="no"
-                onChange={handleMinimo}
-              >
+              <Radio.Button id="minimoNo" value="no" onChange={handleMinimo}>
                 No
               </Radio.Button>
             </Radio.Group>
@@ -202,43 +194,39 @@ export default function ModificarBloque() {
             })}
           </div>
 
-          <div className="admin">
-            <Row>
-              <Col pull={1}>
-                <button
-                  className="mb-3 mt-3 p-3 fs-3 button-style green"
-                  type="button"
-                  onClick={handleDelete}
-                >
-                  Eliminar bloque
-                </button>
-              </Col>
-              <Col push={1}>
-                <button
-                  className="mb-3 mt-3 p-3 fs-3 button-style light-blue"
-                  type="submit"
-                >
-                  Modificar
-                </button>
-              </Col>
-            </Row>
-
+          <div className="d-flex justify-content-center">
             <button
-              className="mb-3 mt-3 p-3 fs-3 button-style light-blue"
+              className="btn btn-outline-danger m-4 px-3 fs-4"
               type="button"
-              onClick={toggleUnidad}
+              onClick={handleDelete}
             >
-              Agregar unidad al bloque
+              Eliminar
+            </button>
+            <button
+              className="btn btn-outline-primary m-4 px-3 fs-4"
+              type="submit"
+            >
+              Modificar
             </button>
           </div>
         </Form>
       )}
-      <div className="admin">
+      <div className="my-5 d-flex justify-content-center">
+        <button
+          className="mb-3 mt-3 p-3 fs-4 button-style button-style green"
+          type="button"
+          onClick={toggleUnidad}
+          style={{ display: showForm ? "none" : "block" }}
+        >
+          Agregar unidad al bloque
+        </button>
         {showForm && (
           <AdminUnidades forceRender={forceRender} bloque={bloque} />
         )}
         <br />
-        <h1 className="fs-2 text-secondary mt-5">
+      </div>
+      <div className="admin">
+        <h1 className="fs-2 text-secondary">
           <strong>Unidades del bloque</strong>
         </h1>
         <br />

@@ -18,7 +18,7 @@ export default function ListaSedes() {
             <div className="col-auto">
               <Link to={`/admin-usuarios/sede/${sede.id}`}>
                 <button
-                  className="m-3 p-3 fs-3 button-style light-blue"
+                  className="m-3 p-4 fs-5 button-style light-blue"
                   type="button"
                 >
                   {sede.nombre} <i class="bi bi-pencil-square"></i>
