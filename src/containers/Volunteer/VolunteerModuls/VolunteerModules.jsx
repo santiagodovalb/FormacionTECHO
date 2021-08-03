@@ -63,7 +63,7 @@ const VolunteerModuls = () => {
         <Unidades setChecks={() => setChecks(checks + 1)} />
       </div>
       <p className="fs-4 pregunta">
-        <strong>Pregunta del bloque: {bloque.pregunta}</strong>
+        <strong>Preguntas del bloque: <br/> {bloque.pregunta} </strong>
       </p>
       <textarea
         className="form-control"

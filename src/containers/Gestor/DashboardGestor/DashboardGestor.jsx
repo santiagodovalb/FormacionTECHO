@@ -117,7 +117,7 @@ export default function DashboardGestor() {
       <div className="gestorDashboard">
         {dataSource && <Button><CSVLink 
         data={dataSource}
-        filename={`dashboard-${user.sede.nombre}.csv`}
+        filename={`dashboard-${user.sede?.nombre}.csv`}
         >Descargar tabla</CSVLink></Button>}
       </div>
     </> 

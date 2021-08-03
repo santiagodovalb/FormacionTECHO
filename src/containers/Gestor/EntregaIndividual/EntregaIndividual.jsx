@@ -39,7 +39,7 @@ export default function EntregaIndividual() {
         </div>
         <div className="m-5">
           <h2 className="fs-4 text-left">Bloque:</h2> <p>{entrega?.bloque.titulo}</p>
-          <h2 className="fs-4">Pregunta:</h2> <p>{entrega?.bloque.pregunta}</p>
+          <h2 className="fs-4">Preguntas:</h2> <p>{entrega?.bloque.pregunta}</p>
           <h2 className="fs-4">
             Respuesta del voluntario:</h2> <p>{entrega?.contenido}</p>
           

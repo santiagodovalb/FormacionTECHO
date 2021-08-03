@@ -41,7 +41,7 @@ function Routes() {
             path="/gestor/entregas/:id"
             component={EntregaIndividual}
           />
-          <Route path="/gestor-password" component={GestorContent} />
+          <Route path="/gestor-password" component={GestorPassword} />
           <Route exact path="/admin-bloques" component={AdminBloques} />
           <Route path="/admin-bloques-crear" component={CrearBloque} />
           <Route path="/admin-bloques/:id" component={ModificarBloque} />
