@@ -1,5 +1,6 @@
 const { Roles, Sedes, Users, Bloques, Unidades } = require("../models");
-const { USER_MAIL, USER_PASSWORD} = process.env;
+require("dotenv").config();
+const { MAIL_USER, MAIL_PASSWORD} = process.env;
 
 const Rol = [
   { tipo: "Admin" },
@@ -154,7 +155,7 @@ const unidades = [
 ];
 
 const seed = () => {
-  console.log("SEED STARTING", USER_MAIL, USER_PASSWORD);
+
 
   Roles.bulkCreate(Rol);
 
@@ -187,8 +188,8 @@ const seed = () => {
   });
   Users.create({
     full_name: "Admin",
-    email: USER_MAIL,
-    password: USER_PASSWORD,
+    email: MAIL_USER,
+    password:MAIL_PASSWORD,
     img: "https://w7.pngwing.com/pngs/429/434/png-transparent-computer-icons-icon-design-business-administration-admin-icon-hand-monochrome-silhouette.png",
   }).then((user) => {
     Roles.findByPk(1).then((rol) => {
