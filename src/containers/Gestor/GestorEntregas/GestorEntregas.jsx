@@ -28,8 +28,6 @@ export default function GestorEntregas() {
 
   const handleChange = (e) => {
 
-    console.log('CHANGE', e.target.value)
-
     if (e.target.value === 'completadas') {
       axios.get(`/api/entregas/completadas/${user.sedeId}`)
       .then(res => res.data)

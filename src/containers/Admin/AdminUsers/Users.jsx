@@ -106,7 +106,7 @@ return (
                 {roles &&
                   roles.map((rol) => {
                     return (
-                      <Option label="children" value={rol.id}>
+                      <Option key={rol.id} label="children" value={rol.id}>
                         {" "}
                         {rol.tipo}{" "}
                       </Option>

@@ -21,7 +21,7 @@ export default function ListaSedes() {
                   className="m-3 p-3 fs-3 button-style light-blue"
                   type="button"
                 >
-                  {sede.nombre} <i class="bi bi-pencil-square"></i>
+                  {sede.nombre} <i className="bi bi-pencil-square"></i>
                 </button>
               </Link>
             </div>

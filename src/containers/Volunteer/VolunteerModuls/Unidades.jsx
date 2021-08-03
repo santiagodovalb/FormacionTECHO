@@ -17,7 +17,6 @@ export default function Unidades({ setChecks }) {
   }, [id]);
 
   const handleChange = (e) => {
-    console.log("click");
     const status = e.target.checked;
     localStorage.setItem(e.target.id, status ? "true" : "false");
     setChecks();
