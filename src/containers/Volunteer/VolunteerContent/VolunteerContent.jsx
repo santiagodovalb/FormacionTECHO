@@ -29,7 +29,7 @@ const VolunteerContent = () => {
                       bloque={bloque}
                       title={bloque.titulo}
                       button={{
-                        text: "Ver modulos",
+                        text: "Ver módulos",
                         styles: "button-style light-blue fs-4",
                       }}
                       url={`mis-bloques/${bloque.id}`}
@@ -49,10 +49,9 @@ const VolunteerContent = () => {
                     <CardBloques
                       key={bloque.id}
                       bloque={bloque}
-                      img="https://www.telediariodigital.net/wp-content/uploads/2014/09/art21-foto3.jpg"
                       title={bloque.titulo}
                       button={{
-                        text: "Ver modulos",
+                        text: "Ver módulos",
                         styles: "button-style light-blue fs-4",
                       }}
                       url={`mis-bloques/${bloque.id}`}

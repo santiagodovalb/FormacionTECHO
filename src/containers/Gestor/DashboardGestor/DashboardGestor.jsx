@@ -73,7 +73,7 @@ export default function DashboardGestor() {
       responsive: ["sm"],
     },
     {
-      title: "Bloques minimos completados",
+      title: "Bloques mínimos completados",
       dataIndex: "bloquesMinimos",
       key: "bloquesMinimos",
       responsive: ["sm"],

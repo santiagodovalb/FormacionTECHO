@@ -10,25 +10,25 @@ function Instructions() {
       {user.rolId === 1 && 
       <div>
             <ul>
-                <li>En <b>"Crear Gestor"</b> vas a poder generar un nuevo usuario con rol Gestor.</li>
-                <li>En <b>"Gestionar Bloques"</b> podés crear, eliminar y editar bloques y módulos.</li>
-                <li>Para ver y eliminar los usuarios que hay registrado en la plataforma podés ir a <b>"Gestionar Usuarios"</b>.</li>
-                <li>Si querés crear o eliminar una sede, andá a <b>"Gestionar Sedes"</b>.</li>
-                <li>Por último, para eliminar o crear nuevos roles, visitá <b>"Gestionar Roles"</b>.</li>
+                <li>En Crear Gestor vas a poder generar un nuevo usuario con rol Gestor.</li>
+                <li>En Gestionar Bloques podés crear, eliminar y editar bloques y módulos.</li>
+                <li>Para ver y eliminar los usuarios que hay registrado en la plataforma podés ir a Gestionar Usuarios.</li>
+                <li>Si querés crear o eliminar una sede, andá a Gestionar Sedes.</li>
+                <li>Por último, para eliminar o crear nuevos roles, visitá Gestionar Roles.</li>
             </ul>
       </div>}
       {user.rolId === 2 && 
       <div>
         <ul>
-            <li>En ver voluntarios vas a poder ver todos los voluntarios correspondientes a tu sede y asignarles un rol.</li>
-            <li>En gestionar entregas, podrás ver todas las entregas de tus voluntarios y completarlas.</li>
+            <li>En Ver Voluntarios vas a poder ver todos los voluntarios correspondientes a tu sede y asignarles un rol.</li>
+            <li>En Gestionar Entregas, podrás ver todas las entregas de tus voluntarios y completarlas.</li>
             <li>Podés cambiar tu contraseña haciendo click en "cambiar contraseña".</li>
         </ul>
       </div>}
       {((user.rolId && user.rolId > 2) || user.rolId === null) && (
         <div>
             <ul>
-                <li>En mis bloques encontrarás todos tus bloques de formación.</li>
+                <li>En Mis Bloques encontrarás todos tus bloques de formación.</li>
                 <li>Dentro de ellos, se encuentran los módulos correspondientes a cada uno.</li>
                 <li>Al finalizar un módulo, marcalo como completado.</li>
                 <li>Una vez completados todos, se te habilitará la entrega del bloque.</li>

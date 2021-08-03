@@ -70,7 +70,7 @@ const Sidebar = () => {
           
           <button className="btn btn-secondary" onClick={handleLogout}>
             
-            Cerrar sesion
+            Cerrar sesión
           </button>
       </div>
     </>

@@ -68,7 +68,7 @@ const Sedes = () => {
   return (
     <div className="div-sedes">
         
-          <h1 className="fs-3 text-secondary p-5 title">
+          <h1 className="fs-3 text-secondary p-5">
             <strong>Elegí tu sede</strong>
           </h1>
 

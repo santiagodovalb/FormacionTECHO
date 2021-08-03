@@ -111,7 +111,7 @@ export default function CrearBloque() {
           <Input.TextArea name="pregunta" onChange={handleChange} />
         </Form.Item>
         <div className="admin">
-          <h5>Es bloque mínimo?</h5>
+          <h5>¿Es bloque mínimo?</h5>
           <Radio.Group>
             <Radio.Button id="si" value="si" onChange={handleMinimo}>
               Si
@@ -121,7 +121,7 @@ export default function CrearBloque() {
             </Radio.Button>
           </Radio.Group>
           <br />
-          <h5>A que roles esta destinado?</h5>
+          <h5>¿A que roles está destinado?</h5>
           {roles.map((rol) => {
             return (
               <div value={rol.id}>

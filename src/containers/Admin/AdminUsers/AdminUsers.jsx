@@ -22,7 +22,7 @@ function AdminUsers() {
   return (
     <div className="admin">
       <h1 className="fs-2 text-secondary">
-        <strong>Acceder a una sede para ver sus voluntarios y gestores</strong>
+        <strong>Accedé a una sede para ver sus voluntarios y gestores</strong>
       </h1>
       <ListaSedes />
     </div>
