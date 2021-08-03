@@ -9,7 +9,7 @@ import "./GestorPassword.css";
 import useAuthorize from "../../../utils/authorization";
 import isValid from '../../../utils/specialChars'
 
-const GestorContent = () => {
+const GestorPassword = () => {
   const [form, setForm] = useState({
     password: "",
     newPassword: "",
@@ -109,4 +109,4 @@ const GestorContent = () => {
   );
 };
 
-export default GestorContent;
+export default GestorPassword;

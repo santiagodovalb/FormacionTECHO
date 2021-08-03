@@ -6,7 +6,7 @@ import Instructions from "./instructions";
 import { Button } from "antd";
 import fondo from '../../assets/login/adminLogin.JPG'
 
-const VolunteerProfile = () => {
+const UserProfile = () => {
   const user = useSelector((state) => state.user);
 
   const history = useHistory();
@@ -24,7 +24,7 @@ const VolunteerProfile = () => {
           <div className="user_profile">
           <h2>¡Bienvenid@, {user.full_name}!</h2>
 
-          {user.rolId === 2 && (user.sedeId ? <h5>- Tu sede es: {user.sede?.nombre}</h5> : <h5>- El admin debe asignarte una sede</h5>)}
+          {user.rolId === 2 && (user.sedeId ? <h5>- Tu sede es: {user.sede?.nombre}</h5> : <h5>- El admind debe asignarte una sede</h5>)}
 
           {(user.rolId === null || user.rolId > 2) && (user.sedeId ? (<h5>- Tu sede es: {user.sede?.nombre}</h5>) : (
               <Button type="dashed" onClick={handleClick}>
@@ -47,4 +47,4 @@ const VolunteerProfile = () => {
   );
 };
 
-export default VolunteerProfile;
+export default UserProfile;

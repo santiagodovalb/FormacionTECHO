@@ -73,7 +73,7 @@ export default function DashboardGestor() {
       responsive: ["sm"],
     },
     {
-      title: "Bloques minimos completados",
+      title: "Bloques mínimos completados",
       dataIndex: "bloquesMinimos",
       key: "bloquesMinimos",
       responsive: ["sm"],
@@ -117,7 +117,7 @@ export default function DashboardGestor() {
       <div className="gestorDashboard">
         {dataSource && <Button><CSVLink 
         data={dataSource}
-        filename={`dashboard-${user.sede.nombre}.csv`}
+        filename={`dashboard-${user.sede?.nombre}.csv`}
         >Descargar tabla</CSVLink></Button>}
       </div>
     </> 

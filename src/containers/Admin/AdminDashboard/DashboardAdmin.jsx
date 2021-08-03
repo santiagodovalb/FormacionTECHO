@@ -46,7 +46,7 @@ export default function AdminDashboard(){
             key:'gestores'
         },
         {
-            title: 'Bloques minimos completados',
+            title: 'Bloques mínimos completados',
             dataIndex: 'minimos',
             key:'minimos'
         },
