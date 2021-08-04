@@ -1,5 +1,4 @@
 const { Roles, Sedes, Users, Bloques, Unidades } = require("../models");
-const { USER_MAIL, USER_PASSWORD} = process.env;
 
 const Rol = [
   { tipo: "Admin" },
