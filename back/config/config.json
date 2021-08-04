@@ -1,0 +1,9 @@
+{
+  "username": "formacionuser",
+  "password": "]h-X{(*{raM{",
+  "database": "techoar_formacion",
+  "host": "localhost",
+  "port": "3306",
+  "dialect": "mysql",
+  "operatorsAliases": false
+}
