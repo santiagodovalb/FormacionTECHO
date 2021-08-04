@@ -60,7 +60,7 @@ const Sedes = () => {
       })
       .then((user) => {
         dispatch(setUser(user));
-        history.push("/user");
+        history.push("/formacion/user");
       })
       .catch((err) => err);
   };

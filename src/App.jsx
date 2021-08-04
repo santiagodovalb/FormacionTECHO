@@ -32,7 +32,7 @@ function App() {
       .then((res) => res.data)
       .then((user) => dispatch(setUser(user)))
       .catch(err => {
-        if (!location.pathname.includes('login')) history.push('/login')
+        if (!location.pathname.includes('login')) history.push('/formacion/login')
       })
 
   }, [dispatch, history, location.pathname]);
@@ -42,8 +42,8 @@ function App() {
       {!location.pathname.includes("login") && <Sidebar />}
       {!location.pathname.includes("login") && <Navbar />}
         <Switch>
-          <Route exact path="/adminlogin" component={Login} />
-          <Route exact path="/login" component={Login} />
+          <Route exact path="/formacion/adminlogin" component={Login} />
+          <Route exact path="/formacion/login" component={Login} />
           <Route component={Routes} />
         </Switch>
     </div>

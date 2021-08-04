@@ -49,7 +49,7 @@ export default function CrearBloque() {
       return message.error("No se permiten caracteres especiales");
     axios.post("/api/bloques", form).then((res) => {
       dispatch(getBloques());
-      history.push("/admin-bloques");
+      history.push("/formacion/admin-bloques");
     });
   };
 

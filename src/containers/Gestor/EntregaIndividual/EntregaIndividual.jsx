@@ -22,7 +22,7 @@ export default function EntregaIndividual() {
     e.preventDefault();
     axios
       .get(`/api/entregas/aprobar/${id}`)
-      .then(() => history.push("/gestor/entregas"))
+      .then(() => history.push("/formacion/gestor/entregas"))
       .catch((err) => console.log(err));
   };
 

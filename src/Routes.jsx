@@ -27,32 +27,32 @@ function Routes() {
   return (
         <div className="content">
       <Switch>
-          <Route path="/sede" component={Sedes} />
-          <Route exact path="/user" component={VolunteerProfile} />
-          <Route path="/mis-bloques/:id" component={VolunteerModuls} />
-          <Route exact path="/mis-bloques" component={VolunteerContent} />
-          <Route path="/mis-entregas" component={VolunteerEntregas} />
-          <Route exact path="/gestor" component={GestorPassword} />
-          <Route path="/gestor/voluntarios" component={GestorVoluntarios} />
-          <Route exact path="/gestor/entregas" component={GestorEntregas} />
-          <Route path='/gestor/dashboard' component={DashboardGestor} />
+          <Route path="/formacion/sede" component={Sedes} />
+          <Route exact path="/formacion/user" component={VolunteerProfile} />
+          <Route path="/formacion/mis-bloques/:id" component={VolunteerModuls} />
+          <Route exact path="/formacion/mis-bloques" component={VolunteerContent} />
+          <Route path="/formacion/mis-entregas" component={VolunteerEntregas} />
+          <Route exact path="/formacion/gestor" component={GestorPassword} />
+          <Route path="/formacion/gestor/voluntarios" component={GestorVoluntarios} />
+          <Route exact path="/formacion/gestor/entregas" component={GestorEntregas} />
+          <Route path='/formacion/gestor/dashboard' component={DashboardGestor} />
           <Route
             exact
-            path="/gestor/entregas/:id"
+            path="/formacion/gestor/entregas/:id"
             component={EntregaIndividual}
           />
-          <Route path="/gestor-password" component={GestorPassword} />
-          <Route exact path="/admin-bloques" component={AdminBloques} />
-          <Route path="/admin-bloques-crear" component={CrearBloque} />
-          <Route path="/admin-bloques/:id" component={ModificarBloque} />
-          <Route exact path='/admin/dashboard' component={AdminDashboard} />
-          <Route exact path="/admin-usuarios" component={AdminUsers} />
-          <Route exact path="/admin-sedes" component={AdminSedes} />
-          <Route exact path="/admin-roles" component={AdminRoles} />
-          <Route path="/admin-usuarios/sede/:id" component={Users} />
-          <Route path="/admin-crear-gestor" component={CrearGestor} />
-          <Route path="/unauthorized" component={Unauthorized} />
-          <Redirect from="*" to="/user" />
+          <Route path="/formacion/gestor-password" component={GestorPassword} />
+          <Route exact path="/formacion/admin-bloques" component={AdminBloques} />
+          <Route path="/formacion/admin-bloques-crear" component={CrearBloque} />
+          <Route path="/formacion/admin-bloques/:id" component={ModificarBloque} />
+          <Route exact path='/formacion/admin/dashboard' component={AdminDashboard} />
+          <Route exact path="/formacion/admin-usuarios" component={AdminUsers} />
+          <Route exact path="/formacion/admin-sedes" component={AdminSedes} />
+          <Route exact path="/formacion/admin-roles" component={AdminRoles} />
+          <Route path="/formacion/admin-usuarios/sede/:id" component={Users} />
+          <Route path="/formacion/admin-crear-gestor" component={CrearGestor} />
+          <Route path="/formacion/unauthorized" component={Unauthorized} />
+          <Redirect from="*" to="/formacion/user" />
       </Switch>
       </div>
     

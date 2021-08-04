@@ -7,28 +7,28 @@ export const listNavbars = [
     rolId: 1,
     list: [
       {
-        link: "/admin-crear-gestor",
+        link: "/formacion/admin-crear-gestor",
         name: "Crear Gestor",
         icon: <FaEdit />,
       },
       {
-        link: "/admin-bloques",
+        link: "/formacion/admin-bloques",
         name: "Gestionar Bloques",
         icon: <BsFiles />,
       },
       {
-        link: "/admin-usuarios",
+        link: "/formacion/admin-usuarios",
         name: "Gestionar Usuarios",
         icon: <FaUsers />,
       },
-      { link: "/admin-sedes", name: "Gestionar Sedes", icon: <MdLocationOn /> },
+      { link: "/formacion/admin-sedes", name: "Gestionar Sedes", icon: <MdLocationOn /> },
       {
-        link: "/admin-roles",
+        link: "/formacion/admin-roles",
         name: "Gestionar Roles",
         icon: <FaEdit />,
       },
       {
-        link: "/admin/dashboard",
+        link: "/formacion/admin/dashboard",
         name: "Panel Nacional",
         icon: <FaThList />,
       },
@@ -38,13 +38,13 @@ export const listNavbars = [
     rolId: 2,
     list: [
       {
-        link: "/gestor/voluntarios",
+        link: "/formacion/gestor/voluntarios",
         name: "Gestionar voluntarios",
         icon: <FaUsers />,
       },
-      { link: "/gestor/entregas", name: "Gestionar entregas", icon: <FaPen /> },
+      { link: "/formacion/gestor/entregas", name: "Gestionar entregas", icon: <FaPen /> },
       {
-        link: "/gestor/dashboard",
+        link: "/formacion/gestor/dashboard",
         name: "Panel de sede",
         icon: <FaThList />,
       },
@@ -53,10 +53,10 @@ export const listNavbars = [
   {
     rolId: 3,
     list: [
-      { link: "/mis-bloques", name: "Mis Bloques", icon: <BsFiles /> },
-      { link: "/mis-entregas", name: "Mis Entregas", icon: <FaPen /> },
+      { link: "/formacion/mis-bloques", name: "Mis Bloques", icon: <BsFiles /> },
+      { link: "/formacion/mis-entregas", name: "Mis Entregas", icon: <FaPen /> },
       {
-        link: "/sede",
+        link: "/formacion/sede",
         name: "Elegir o modificar sede",
         icon: <MdLocationOn />,
       },

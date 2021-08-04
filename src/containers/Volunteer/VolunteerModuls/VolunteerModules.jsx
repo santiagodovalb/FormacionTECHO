@@ -42,7 +42,7 @@ const VolunteerModuls = () => {
         bloqueId: id,
         userId: user.id,
       })
-      .then(() => history.push("/mis-entregas"));
+      .then(() => history.push("/formacion/mis-entregas"));
   };
 
   const handleChange = (e) => {

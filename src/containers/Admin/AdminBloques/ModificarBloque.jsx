@@ -68,7 +68,7 @@ export default function ModificarBloque() {
     axios.put(`/api/bloques/${id}`, form).then(() => {
       dispatch(getBloques());
       message.success("Modificado correctamente");
-      history.push("/admin-bloques");
+      history.push("/formacion/admin-bloques");
     });
   };
 
@@ -98,7 +98,7 @@ export default function ModificarBloque() {
           );
           axios.delete(`/api/bloques/${id}`).then(() => {
             dispatch(getBloques());
-            history.push("/admin-bloques");
+            history.push("/formacion/admin-bloques");
           });
         } else if (result.dismiss === Swal.DismissReason.cancel) {
           alertaEliminar.fire("Cancelado", "El bloque está a salvo", "error");

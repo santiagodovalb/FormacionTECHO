@@ -45,7 +45,7 @@ export default function CrearGestor() {
           }
         })
         .then(() => {
-          history.push("/admin-usuarios");
+          history.push("/formacion/admin-usuarios");
         })
         .catch((err) => message.warning("Mail ya existente"));
     } else {
