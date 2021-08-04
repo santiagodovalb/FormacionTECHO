@@ -17,7 +17,8 @@ export default function AdminSedes() {
   const user = useSelector((state) => state.user);
 
   const onFinish = () => {
-    if (!isValid(form.nombre)) return message.error("No se permiten caracteres especiales")
+    if (!isValid(form.nombre))
+      return message.error("No se permiten caracteres especiales");
     axios
       .post(`/api/sedes/`, form)
       .then((res) => {
@@ -28,7 +29,7 @@ export default function AdminSedes() {
       .then(() => {
         dispatch(getSedes());
       })
-      .catch(err=>message.warning("No se pudo crear la sede"));
+      .catch((err) => message.warning("No se pudo crear la sede"));
   };
 
   const handleChange = (obj, obj2) => {
@@ -53,41 +54,41 @@ export default function AdminSedes() {
         <button
           type="button"
           onClick={toggleForm}
-          className="my-5 p-3 fs-3 button-style green"
+          className="my-5 p-3 fs-4 button-style green"
         >
           Crear nueva sede
         </button>
       </div>
       <div className="createSede">
-      <Form
-        style={{ display: "none" }}
-        name="newSede"
-        labelCol={{
-          span: 8,
-        }}
-        wrapperCol={{
-          span: 8,
-        }}
-        initialValues={{
-          remember: true,
-        }}
-        onValuesChange={(obj, obj2) => handleChange(obj, obj2)}
-        onFinish={onFinish}
-      >
-        <Form.Item label="Comunidad Id" name="comunidadId">
-          <InputNumber />
-        </Form.Item>
-        <Form.Item label="Nombre" name="nombre">
-          <Input.TextArea />
-        </Form.Item>
-        <Button
-          style={{ display: form.nombre ? "block" : "none" }}
-          htmlType="submit"
-          type="submit"
+        <Form
+          style={{ display: "none" }}
+          name="newSede"
+          labelCol={{
+            span: 8,
+          }}
+          wrapperCol={{
+            span: 8,
+          }}
+          initialValues={{
+            remember: true,
+          }}
+          onValuesChange={(obj, obj2) => handleChange(obj, obj2)}
+          onFinish={onFinish}
         >
-          Crear sede
-        </Button>
-      </Form>
+          <Form.Item label="Comunidad Id" name="comunidadId">
+            <InputNumber />
+          </Form.Item>
+          <Form.Item label="Nombre" name="nombre">
+            <Input.TextArea />
+          </Form.Item>
+          <Button
+            style={{ display: form.nombre ? "block" : "none" }}
+            htmlType="submit"
+            type="submit"
+          >
+            Crear sede
+          </Button>
+        </Form>
       </div>
       <div className="table">
         <Sedes />

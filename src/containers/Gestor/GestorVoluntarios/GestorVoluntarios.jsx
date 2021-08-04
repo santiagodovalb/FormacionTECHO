@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import { Table, Button, Select } from "antd";
+import { Table, Select } from "antd";
 import useAuthorize from "../../../utils/authorization";
 const { Option } = Select;
 
@@ -57,19 +57,19 @@ function GestorVoluntarios() {
           {record.rol}
         </React.Fragment>
       ),
-      responsive: ["xs"]
+      responsive: ["xs"],
     },
     {
       title: "Nombre",
       dataIndex: "nombre",
       key: "nombre",
-      responsive: ["sm"]
+      responsive: ["sm"],
     },
     {
       title: "Rol",
       dataIndex: "rol",
       key: "rol",
-      responsive: ["sm"]
+      responsive: ["sm"],
     },
     {
       title: "Seleccionar rol",
@@ -84,15 +84,20 @@ function GestorVoluntarios() {
             >
               {roles &&
                 roles.map((rol) => {
-                  return <Option key={rol.id} value={rol.id}> {rol.tipo} </Option>;
+                  return (
+                    <Option key={rol.id} value={rol.id}>
+                      {" "}
+                      {rol.tipo}{" "}
+                    </Option>
+                  );
                 })}
             </Select>
-            <Button
+            <button
               onClick={(e) => handleClick(record.key, parseInt(rol))}
-              type="button"
+              className="btn btn-outline-primary mx-1"
             >
               Asignar rol
-            </Button>
+            </button>
           </div>
         );
       },

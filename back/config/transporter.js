@@ -22,7 +22,6 @@ const { MAIL_USER, MAIL_PASSWORD} = process.env
   });
 
 async function sendNewEntrega(gestor, entrega) {
-    console.log('DIRNAME', __dirname)
     let info = await transporter.sendMail({
         from: `"Formacion TECHO" <${MAIL_USER}>`, // sender address
       to: gestor.email, 

@@ -48,7 +48,6 @@ const usersController = {
   },
  
   createUser(req, res, next) {
-    console.log(req.body)
     Users.findOne({where:{email: req.body.email}}).then((encontroUser)=>{
       if(!encontroUser){
         Users.create(req.body)
@@ -94,7 +93,6 @@ const usersController = {
         });
       })
       .then((user) => {
-        console.log(user);
         res.status(200).json(user);
       })
       .catch(next);

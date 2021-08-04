@@ -19,7 +19,6 @@ module.exports = (app) => {
         profileFields: ["id", "email", "name", "picture"],
       },
       function (accessToken, refreshToken, profile, done) {
-        console.log("ASDADS",profile)
         Users.findOne({ where: { facebookId: profile._json.id }, include: [{model: Sedes, as: 'sede'}, {model: Roles, as: 'rol'}]}).then(
           async (user) => {
             if (user) {

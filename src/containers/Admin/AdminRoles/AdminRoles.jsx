@@ -17,15 +17,17 @@ export default function AdminRoles() {
   const user = useSelector((state) => state.user);
 
   const handleSubmit = () => {
-    if(!isValid(form.tipo)) return message.error("No se permiten caracteres especiales")
-    axios.post("/api/roles/", form)
-    .then((res) => {
-      if(res.data){
-        message.success("Rol creado correctamente");
-      }
-    })
-    .then(()=> dispatch(getRoles()))
-    .catch(err => message.error('Rol no creado'))
+    if (!isValid(form.tipo))
+      return message.error("No se permiten caracteres especiales");
+    axios
+      .post("/api/roles/", form)
+      .then((res) => {
+        if (res.data) {
+          message.success("Rol creado correctamente");
+        }
+      })
+      .then(() => dispatch(getRoles()))
+      .catch((err) => message.error("Rol no creado"));
   };
 
   const handleChange = (obj1, obj2) => {
@@ -49,38 +51,38 @@ export default function AdminRoles() {
       <button
         type="button"
         onClick={toggleForm}
-        className="mb-5 p-3 fs-3 button-style green"
+        className="mb-5 p-3 fs-4 button-style green"
       >
         Crear nuevo rol
       </button>
       <div className="createRol">
-      <Form
-        style={{ display: "none" }}
-        name="newRole"
-        labelCol={{
-          span: 8,
-        }}
-        wrapperCol={{
-          span: 16,
-        }}
-        initialValues={{
-          remember: true,
-        }}
-        onValuesChange={(obj, obj2) => handleChange(obj, obj2)}
-        onFinish={handleSubmit}
-      >
-        <Form.Item label="Tipo de rol" name="tipo">
-          <Input.TextArea />
-        </Form.Item>
-
-        <Button
-          style={{ display: form.tipo ? "block" : "none" }}
-          htmlType="submit"
-          type="submit"
+        <Form
+          style={{ display: "none" }}
+          name="newRole"
+          labelCol={{
+            span: 8,
+          }}
+          wrapperCol={{
+            span: 16,
+          }}
+          initialValues={{
+            remember: true,
+          }}
+          onValuesChange={(obj, obj2) => handleChange(obj, obj2)}
+          onFinish={handleSubmit}
         >
-          Crear rol
-        </Button>
-      </Form>
+          <Form.Item label="Tipo de rol" name="tipo">
+            <Input.TextArea />
+          </Form.Item>
+
+          <Button
+            style={{ display: form.tipo ? "block" : "none" }}
+            htmlType="submit"
+            type="submit"
+          >
+            Crear rol
+          </Button>
+        </Form>
       </div>
       <Roles />
     </div>

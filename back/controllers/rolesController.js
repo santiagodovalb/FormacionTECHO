@@ -51,7 +51,6 @@ const rolesController = {
   },
 
   setUserRole(req, res, next) {
-    console.log("LLEGA", req.user);
     const id = req.body.userId;
     const rolId = req.body.rolId;
     const userRole = req.body.user.rolId;
