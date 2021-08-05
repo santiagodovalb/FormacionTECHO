@@ -85,6 +85,7 @@ const usersController = {
       returning: true,
     })
       .then((user) => {
+        console.log('ASD', user)
         return Users.findByPk(user[1][0].id, {
           include: [
             { model: Roles, as: "rol" },
