@@ -11,7 +11,7 @@ function AdminUsers() {
   useAuthorize(user, 1);
 
   if (user.rolId && user.rolId !== 1) {
-    history.push("/formacion/unauthorized");
+    history.push("/unauthorized");
     return (
       <>
         <h1>No autorizado</h1>

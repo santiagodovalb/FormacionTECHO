@@ -14,11 +14,11 @@ const Sidebar = () => {
 
   const handleLogout = () => {
     if (user.id) dispatch(userLogout());
-    history.push('/formacion/login')
+    history.push('/login')
   };
 
   const handlePassword = () => {
-    history.push('/formacion/gestor-password')
+    history.push('/gestor-password')
   }
 
   const location = useLocation().pathname;

@@ -31,19 +31,17 @@ function App() {
       .then((user) => axios.get(`/api/users/${user.id}`))
       .then((res) => res.data)
       .then((user) => dispatch(setUser(user)))
-      .catch(err => {
-        if (!location.pathname.includes('login')) history.push('/formacion/login')
-      })
+      .catch(err => history.push('/'))
 
   }, [dispatch, history, location.pathname]);
 
   return (
     <div className="App">
-      {!location.pathname.includes("login") && <Sidebar />}
-      {!location.pathname.includes("login") && <Navbar />}
+      {(location.pathname !== '/' && location.pathname !== '/adminlogin') && <Sidebar />}
+      {(location.pathname !== '/' && location.pathname !== '/adminlogin') && <Navbar />}
         <Switch>
-          <Route exact path="/formacion/adminlogin" component={Login} />
-          <Route exact path="/formacion/login" component={Login} />
+          <Route exact path="/" component={Login} />
+          <Route exact path="/adminlogin" component={Login} />
           <Route component={Routes} />
         </Switch>
     </div>

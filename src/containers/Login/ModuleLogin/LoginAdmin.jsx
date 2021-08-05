@@ -37,7 +37,7 @@ const LoginAdmin = () => {
       .then(user => {
         dispatch(setUser(user))
         message.success('Logged in')
-        history.push(`/formacion/user/`)
+        history.push(`/user`)
       })
       .catch(err => {
         message.error('Bad credentials')

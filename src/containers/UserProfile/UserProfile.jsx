@@ -13,7 +13,7 @@ const UserProfile = () => {
   const history = useHistory();
 
   const handleClick = () => {
-    history.push("/formacion/sede");
+    history.push("/sede");
   };
 
   useEffect(() => {}, [user]);

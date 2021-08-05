@@ -22,8 +22,8 @@ const Login = () => {
         <div className="m-4">
           <i className="bi bi-person-circle form-img" />
         </div>
-        {location.pathname === "/formacion/adminlogin" && LoginAdmin()}
-        {location.pathname === "/formacion/login" && LoginUser()} 
+        {location.pathname === "/adminlogin" && LoginAdmin()}
+        {location.pathname === "/login" && LoginUser()} 
       </div>
     </div>
     </div>
