@@ -4,11 +4,11 @@ import VolunteerModuls from "./containers/Volunteer/VolunteerModuls/VolunteerMod
 import GestorPassword from "./containers/Gestor/GestorPassword/GestorPassword";
 import AdminUsers from "./containers/Admin/AdminUsers/AdminUsers";
 import Unauthorized from "./containers/Unauthorized/Unauthorized";
-import Sede from "./containers/Sedes/Sedes";
+import Sedes from "./containers/Sedes/Sedes";
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Users from "./containers/Admin/AdminUsers/Users";
-import GestorVoluntarios from "./containers/Gestor/GestorVoluntarios/GestorVoluntarios.jsx";
+import GestorVoluntarios from "./containers/Gestor/GestorVoluntarios/GestorVoluntarios";
 import AdminSedes from "./containers/Admin/AdminSedes/AdminSedes";
 import CrearBloque from "./containers/Admin/AdminBloques/CrearBloque";
 import AdminBloques from "./containers/Admin/AdminBloques/AdminBloques";
@@ -27,7 +27,7 @@ function Routes() {
   return (
         <div className="content">
       <Switch>
-          <Route path="/sede" component={Sede} />
+          <Route path="/sede" component={Sedes} />
           <Route exact path="/user" component={VolunteerProfile} />
           <Route path="/mis-bloques/:id" component={VolunteerModuls} />
           <Route exact path="/mis-bloques" component={VolunteerContent} />

@@ -1,4 +1,6 @@
 const { Roles, Sedes, Users, Bloques, Unidades } = require("../models");
+require("dotenv").config();
+const { MAIL_USER, MAIL_PASSWORD} = process.env;
 
 const Rol = [
   { tipo: "Admin" },
@@ -153,7 +155,7 @@ const unidades = [
 ];
 
 const seed = () => {
-  console.log("SEED STARTING");
+
 
   Roles.bulkCreate(Rol);
 
@@ -185,40 +187,16 @@ const seed = () => {
     });
   });
   Users.create({
-    full_name: "Juancito Admin",
-    email: "admin@admin.com",
-    password: "admin",
-    img: "https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg",
+    full_name: "Admin",
+    email: MAIL_USER,
+    password:MAIL_PASSWORD,
+    img: "https://w7.pngwing.com/pngs/429/434/png-transparent-computer-icons-icon-design-business-administration-admin-icon-hand-monochrome-silhouette.png",
   }).then((user) => {
     Roles.findByPk(1).then((rol) => {
       user.setRol(rol);
     });
   });
 
-  Users.create({
-    full_name: "Sergio Gestor",
-    email: "gestor@gestor.com",
-    password: "gestor",
-
-    img: "https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg",
-  }).then((user) => {
-    Roles.findByPk(2).then((rol) => {
-      user.setRol(rol);
-      user.setSede(3);
-    });
-  });
-
-  Users.create({
-    full_name: "Victor Voluntario",
-    email: "voluntario@voluntario.com",
-    password: "voluntario",
-    img: "https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg",
-  }).then((user) => {
-    Roles.findByPk(3).then((rol) => {
-      user.setRol(rol);
-      user.setSede(2);
-    });
-  });
 };
 
 seed();

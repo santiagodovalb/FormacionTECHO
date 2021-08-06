@@ -54,7 +54,6 @@ const entregasController = {
     if(currentEntrega){ 
       await currentEntrega.update({ contenido, aprobado: false });
       let gestores =  await Users.findAll({where: {sedeId: currentEntrega.user.sedeId, rolId: 2}})
-      console.log("GESTORES", gestores)
       gestores.forEach(gestor => sendNewEntrega(gestor, currentEntrega))
     }
     else {
@@ -63,7 +62,6 @@ const entregasController = {
       await currentEntrega.setBloque(bloqueId)
       let entregaInclude = await Entregas.findOne({where: {id: currentEntrega.id}, include: [{model: Users, as: 'user'}, {model: Bloques, as: 'bloque'}]})
       let gestores =  await Users.findAll({where: {sedeId: entregaInclude.user.sedeId, rolId: 2}})
-      console.log("GESTORES", gestores)
       gestores.forEach(gestor => sendNewEntrega(gestor, entregaInclude))
     }
     res.status(201).send(currentEntrega)

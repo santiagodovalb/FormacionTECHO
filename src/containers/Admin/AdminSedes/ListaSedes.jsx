@@ -3,10 +3,10 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import { getSedes } from "../../../redux/sedes";
-import { Table, Button, message} from "antd";
+import { Table, message } from "antd";
 import useAuthorize from "../../../utils/authorization";
 import isValid from "../../../utils/specialChars";
-import './AdminSedes.css'
+import "./AdminSedes.css";
 
 export default function Sedes() {
   const [form, setForm] = useState({});
@@ -21,8 +21,9 @@ export default function Sedes() {
   };
 
   const handleSubmit = (e, id) => {
-      e.preventDefault()
-      if (!isValid(form.nombre)) return message.error("No se permiten caracteres especiales")
+    e.preventDefault();
+    if (!isValid(form.nombre))
+      return message.error("No se permiten caracteres especiales");
     axios
       .post(`/api/sedes/${id}`, form)
       .then((res) => res.data)
@@ -30,7 +31,7 @@ export default function Sedes() {
   };
 
   const handleChange = (e) => {
-    setForm({...form, [e.target.name]: e.target.value });
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const alertaEliminar = Swal.mixin({
@@ -58,68 +59,105 @@ export default function Sedes() {
             "success"
           );
           axios.delete(`/api/sedes/${id}`).then(() => dispatch(getSedes()));
-          message.success("Sede eliminada correctamente")
+          message.success("Sede eliminada correctamente");
         } else if (result.dismiss === Swal.DismissReason.cancel) {
           alertaEliminar.fire("Cancelado", "La sede está a salvo", "error");
         }
       });
   };
 
-
-
-
-
-  useAuthorize(user, 1)
+  useAuthorize(user, 1);
 
   const dataSource = sedes.map((sede) => {
     return {
       key: sede.id,
       nombre: sede.nombre,
-      comunidadId: sede.comunidadId
+      comunidadId: sede.comunidadId,
     };
   });
 
   const columns = [
     {
       title: "Sede",
+      render: (record) => (
+        <React.Fragment>
+          {record.nombre}
+          <hr />
+          {record.comunidadId}
+        </React.Fragment>
+      ),
+      responsive: ["xs"],
+    },
+    {
+      title: "Sede",
       dataIndex: "nombre",
       key: "nombre",
+      responsive: ["sm"],
     },
     {
       title: "Comunidad ID",
       dataIndex: "comunidadId",
       key: "comunidadId",
+      responsive: ["sm"]
     },
     {
       title: "Modificar/eliminar",
       key: "modificar/eliminar",
       render: (text, record) => {
-          return(
-        <div>
-          <Button
-            onClick={() => toggleForm(`sedeForm${record.key}`)}
-            type="button"
-          >
-            Modificar sede
-          </Button>
-          <form className='sedesForm' onSubmit={(e) => handleSubmit(e, record.key)} id={`sedeForm${record.key}`} style={{display: 'none'}}>
-                            <label htmlFor='nombre'>Nombre</label>
-                            <input onChange={handleChange} type='text' name='nombre' placeholder={record.nombre}></input>
-                            <label htmlFor='comunidadId'>Comunidad ID</label>
-                            <input onChange={handleChange} type='number' name='comunidadId' placeholder={record.comunidadId}></input>
-                            <button type='submit'>Confirmar cambios</button>
-                        </form>
-          <Button onClick={() => handleDelete(record.key)} type='button'>Eliminar sede</Button>
-        </div>
-          )
+        return (
+          <div>
+            <button
+              onClick={() => handleDelete(record.key)}
+              className="btn btn-outline-danger mx-1"
+            >
+              Eliminar
+            </button>
+            <button
+              onClick={() => toggleForm(`sedeForm${record.key}`)}
+              className="btn btn-outline-primary mx-1"
+            >
+              Modificar
+            </button>
+            <form
+              className="sedesForm"
+              onSubmit={(e) => handleSubmit(e, record.key)}
+              id={`sedeForm${record.key}`}
+              style={{ display: "none" }}
+            >
+              <label htmlFor="nombre">Nombre</label>
+              <input
+                onChange={handleChange}
+                type="text"
+                name="nombre"
+                placeholder={record.nombre}
+                class="form-control"
+              ></input>
+              <label htmlFor="comunidadId">Comunidad ID</label>
+              <input
+                onChange={handleChange}
+                type="number"
+                name="comunidadId"
+                placeholder={record.comunidadId}
+                class="form-control"
+              ></input>
+              <button className="btn btn-success mx-1" type="submit">
+                Confirmar cambios
+              </button>
+            </form>
+          </div>
+        );
       },
-        
     },
   ];
 
   return (
     <div>
-      <Table bordered dataSource={dataSource} columns={columns} pagination={false} />
+      <Table
+        bordered
+        dataSource={dataSource}
+        columns={columns}
+        pagination={false}
+      />
     </div>
   );
 }

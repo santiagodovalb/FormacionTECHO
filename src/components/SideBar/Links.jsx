@@ -28,8 +28,8 @@ function Links() {
           <BsPlusCircle/> Ver más
         </h6>
         </strong>
-        <div class="collapse" id="orders-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+        <div className="collapse" id="orders-collapse">
+          <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
             {navbar.list.map((ele, index) => (
               <li className="nav-item" key={`navbar-${rolId}-${index}`}>
                 <Link to={`${ele.link}`} key={rolId}>

@@ -5,8 +5,8 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Form, Input, Radio, message } from "antd";
 import { getBloques } from "../../../redux/bloques";
-import isValid from '../../../utils/specialChars'
-import useAuthorize from '../../../utils/authorization'
+import isValid from "../../../utils/specialChars";
+import useAuthorize from "../../../utils/authorization";
 import "antd/dist/antd.css";
 import "./AdminBloques.css";
 
@@ -17,7 +17,7 @@ export default function CrearBloque() {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  useAuthorize(user, 1)
+  useAuthorize(user, 1);
 
   useEffect(() => {
     axios
@@ -44,9 +44,9 @@ export default function CrearBloque() {
     setForm({ ...form, rolesId: [...array] });
   };
 
-
   const handleSubmit = (e) => {
-    if (!isValid(form.titulo)) return message.error("No se permiten caracteres especiales")
+    if (!isValid(form.titulo))
+      return message.error("No se permiten caracteres especiales");
     axios.post("/api/bloques", form).then((res) => {
       dispatch(getBloques());
       history.push("/admin-bloques");
@@ -121,7 +121,7 @@ export default function CrearBloque() {
             </Radio.Button>
           </Radio.Group>
           <br />
-          <h5>¿A que roles está destinado?</h5>
+          <h5>¿A qué roles está destinado?</h5>
           {roles.map((rol) => {
             return (
               <div value={rol.id}>
@@ -142,7 +142,7 @@ export default function CrearBloque() {
           <Form.Item>
             <button
               htmlType="submit"
-              className="mb-3 mt-3 p-3 fs-3 button-style light-blue button-style-formm"
+              className="my-3 p-2 fs-4 button-style green"
             >
               Crear
             </button>

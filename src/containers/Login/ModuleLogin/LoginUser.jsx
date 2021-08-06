@@ -12,7 +12,7 @@ const LoginUser = () => {
         </a>
         <br />
         <a href="http://localhost:3001/api/auth/facebook">
-          <button id="Facebook" className="btn btn-primary">
+          <button id="Facebook" className="btn btn-primary ">
             Ingresar con Facebook
           </button>
         </a>

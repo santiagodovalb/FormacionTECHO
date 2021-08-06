@@ -17,11 +17,12 @@
   margin-right: 20px;
 }
 
-.button-style-formm {
-  width: 200px;
-  height: 70px;
-}
-
 .blocks {
   height: 100px;
+}
+
+@media screen and (max-width: 767px) {
+  .admin_input {
+    margin-left: 0px !important;
+  }
 }

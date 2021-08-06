@@ -48,7 +48,6 @@ const usersController = {
   },
  
   createUser(req, res, next) {
-    console.log(req.body)
     Users.findOne({where:{email: req.body.email}}).then((encontroUser)=>{
       if(!encontroUser){
         Users.create(req.body)
@@ -86,6 +85,7 @@ const usersController = {
       returning: true,
     })
       .then((user) => {
+        console.log('ASD', user)
         return Users.findByPk(user[1][0].id, {
           include: [
             { model: Roles, as: "rol" },
@@ -94,7 +94,6 @@ const usersController = {
         });
       })
       .then((user) => {
-        console.log(user);
         res.status(200).json(user);
       })
       .catch(next);

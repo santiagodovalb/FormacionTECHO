@@ -42,8 +42,8 @@ function App() {
       {!location.pathname.includes("login") && <Sidebar />}
       {!location.pathname.includes("login") && <Navbar />}
         <Switch>
-          <Route exact path="/adminlogin" component={Login} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/adminlogin" component={Login} />
           <Route component={Routes} />
         </Switch>
     </div>

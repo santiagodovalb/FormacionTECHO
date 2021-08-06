@@ -4,29 +4,28 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import {message} from  "antd"
+import { message } from "antd";
 import useAuthorize from "../../../utils/authorization";
 import isValid from "../../../utils/specialChars";
 import "./CrearGestor.css";
 
 export default function CrearGestor() {
   const [form, setForm] = useState({ rolId: 2 });
-  const user = useSelector(state => state.user)
+  const user = useSelector((state) => state.user);
 
-  
-  const sedes =  useSelector((state) => state.sedes)
-  
+  const sedes = useSelector((state) => state.sedes);
+
   const history = useHistory();
-  
+
   useEffect(() => {
-    let options = "<option value=''>Seleccionar Sede</sede>";
+    let options = "<option selected>Seleccionar Sede</sede>";
     for (var i = 0; i < sedes.length; i++) {
       options += `<option value=${sedes[i]?.id}>${sedes[i]?.nombre}</option>`;
     }
     document.getElementById("sedes").innerHTML = options;
   }, [sedes, user]);
-  
-  useAuthorize(user, 1)
+
+  useAuthorize(user, 1);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -34,25 +33,24 @@ export default function CrearGestor() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(form.confirmPassword === form.password){
+    if (form.confirmPassword === form.password) {
       if (!isValid(form.password) || !isValid(form.full_name)) {
-        return message.error("No se permiten caracteres especiales")
+        return message.error("No se permiten caracteres especiales");
       }
       axios
         .post("/api/users/create", form)
-        .then((res) =>{
-          if(res.data){
-              message.success("Gestor creado correctamente");
-            }
-          })
-          .then(()=>{
-            history.push("/admin-usuarios")
-          })
-          .catch(err=>message.warning("Mail ya existente"))
-    }else{
-      message.warning("Las constraseñas no coinciden")
+        .then((res) => {
+          if (res.data) {
+            message.success("Gestor creado correctamente");
+          }
+        })
+        .then(() => {
+          history.push("/admin-usuarios");
+        })
+        .catch((err) => message.warning("Mail ya existente"));
+    } else {
+      message.warning("Las constraseñas no coinciden");
     }
-      
   };
 
   return (
@@ -60,7 +58,11 @@ export default function CrearGestor() {
       <h1 className="fs-2 text-secondary">
         <strong>Crear Gestor</strong>
       </h1>
-      <form onSubmit={handleSubmit} id="formGestor"className="col col-xl-4 my-5">
+      <form
+        onSubmit={handleSubmit}
+        id="formGestor"
+        className="col col-xl-4 my-5"
+      >
         <div className="mb-3">
           <input
             required="true"
@@ -109,12 +111,12 @@ export default function CrearGestor() {
             onChange={handleChange}
             name="sedeId"
             placeholder="Sede"
-            className="form-control"
+            className="form-select"
           />
         </div>
         <button
           type="submit"
-          className="button-style light-blue fs-3 my-3 py-2 button-style-form"
+          className="button-style green button-style-form my-3 p-2 fs-4"
         >
           Crear
         </button>

@@ -17,7 +17,6 @@ export default function Unidades({ setChecks }) {
   }, [id]);
 
   const handleChange = (e) => {
-    console.log("click");
     const status = e.target.checked;
     localStorage.setItem(e.target.id, status ? "true" : "false");
     setChecks();
@@ -33,9 +32,14 @@ export default function Unidades({ setChecks }) {
       {unidades.map((unidad) => {
         return (
           <div key={`unidad-${unidad.id}`}>
-            <a href={`${unidad.link}`} target="_blank" rel="noreferrer" className="modul_button">
+            <a
+              href={`${unidad.link}`}
+              target="_blank"
+              rel="noreferrer"
+              className="modul_button"
+            >
               <button
-                className="mb-3 mt-3 p-3 fs-3 button-style light-blue"
+                className="my-3 p-3 fs-4 button-style light-blue"
                 id={`unidad${unidad.id}`}
                 onClick={handleClick}
               >

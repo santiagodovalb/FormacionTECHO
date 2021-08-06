@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { Form, Input, message } from "antd";
 import axios from "axios";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 import useAuthorize from "../../../utils/authorization";
 import { useSelector } from "react-redux";
 
 export default function Unidades({ forceRender, unidades }) {
   const [form, setForm] = useState({});
-  const user = useSelector(state => state.user)
+  const user = useSelector((state) => state.user);
 
-  useAuthorize(user, 1)
+  useAuthorize(user, 1);
 
   const handleClick = (id) => {
     document.getElementById(`unidad${id}`).style.display =
@@ -66,7 +66,7 @@ export default function Unidades({ forceRender, unidades }) {
           <div key={unidad.id}>
             <div className="admin">
               <button
-                className="mb-3 mt-3 p-3 fs-3 button-style light-blue"
+                className="my-3 p-3 fs-4 button-style light-blue"
                 onClick={() => handleClick(unidad.id)}
                 type="button"
               >
@@ -100,19 +100,19 @@ export default function Unidades({ forceRender, unidades }) {
                   defaultValue={unidad.link}
                 ></Input>
               </Form.Item>
-              <div className="admin">
+              <div className="d-flex justify-content-center">
                 <button
-                  className="mb-3 mt-3 p-3 fs-3 button-style light-blue"
-                  htmlType="submit"
-                >
-                  Modificar unidad
-                </button>
-                <button
-                  className="mb-3 mt-3 p-3 fs-3 button-style green"
+                  className="btn btn-outline-danger m-4 px-3 fs-4 "
                   type="button"
                   onClick={() => handleDelete(unidad.id)}
                 >
-                  Eliminar Unidad{" "}
+                  Eliminar
+                </button>
+                <button
+                  className="btn btn-outline-primary m-4 px-3 fs-4"
+                  htmlType="submit"
+                >
+                  Modificar
                 </button>
               </div>
             </Form>

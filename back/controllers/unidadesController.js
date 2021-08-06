@@ -5,7 +5,6 @@ const unidadesController = {
     
     findAll(req,res,next){
         const bloque = req.params.id
-        console.log(bloque)
         Unidades.findAll({where:{bloqueId: bloque}})
         .then((unidades)=>{
             return res.status(200).send(unidades)

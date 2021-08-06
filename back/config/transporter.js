@@ -22,9 +22,8 @@ const { MAIL_USER, MAIL_PASSWORD} = process.env
   });
 
 async function sendNewEntrega(gestor, entrega) {
-    console.log('DIRNAME', __dirname)
     let info = await transporter.sendMail({
-        from: '"Formacion TECHO" <santikundera@gmail.com>', // sender address
+        from: `"Formacion TECHO" <${MAIL_USER}>`, // sender address
       to: gestor.email, 
       subject: "Formacion TECHO | Nueva entrega", // Subject line
       text: "Formacion TECHO | Nueva entrega", // plain textbody
@@ -44,9 +43,8 @@ async function sendNewEntrega(gestor, entrega) {
 })}
 
 async function sendEntregaCompletada(voluntario, entrega) {
-    console.log('DIRNAME', __dirname)
     let info = await transporter.sendMail({
-        from: '"Formacion TECHO" <santikundera@gmail.com>', // sender address
+        from: `"Formacion TECHO" <${MAIL_USER}>`, // sender address
       to: voluntario.email, 
       subject: "Formacion TECHO | Entrega completada", // Subject line
       text: "Formacion TECHO | Entrega completada", // plain textbody
