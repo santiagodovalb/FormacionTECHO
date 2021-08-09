@@ -81,8 +81,10 @@ const entregasController = {
   },
   updateEntrega(req,res,next){
       const {contenido,aprobado} = req.body
-    Entregas.update({contenido,aprobado},{where: {id:req.params.id},returning:true}).then((entrega)=>{    
-        return res.status(201).send(entrega[1][0])
+    Entregas.update({contenido,aprobado},{where: {id:req.params.id}})
+    .then(()=> Entregas.findByPk(req.params.id))
+    .then((entrega)=>{    
+        return res.status(201).send(entrega)
     })
     .catch(next)
   },

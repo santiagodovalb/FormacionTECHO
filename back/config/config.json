@@ -1,8 +1,8 @@
 {
-  "username": "formacionuser",
-  "password": "]h-X{(*{raM{",
-  "database": "techoar_formacion",
-  "host": "localhost",
+  "username": "P8gI8kPfvr",
+  "password": "srVCgo8TIT",
+  "database": "P8gI8kPfvr",
+  "host": "remotemysql.com",
   "port": "3306",
   "dialect": "mysql",
   "operatorsAliases": false

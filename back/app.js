@@ -10,6 +10,8 @@ require('./authentication')(app)
 //redirigimos todos los pedidos con /api
 app.use('/api', require('./routes'))
 
+/* app.use(express.static("./build")) */
+
 //error endware. Para que se active este endware es necesario que todas las rutas manejen el next(err) ya que express entiende que un .use() con un solo parametro es un error endware.
 app.use((err, req, res, next) => {
     console.error(err, typeof next);

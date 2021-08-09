@@ -1,6 +1,6 @@
 {
   "name": "formacion-techo",
-  "homepage": ".",
+  "homepage": "https://techo.org.ar/formacion",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -60,7 +60,7 @@
     "eject": "react-scripts eject",
     "seed": "node back/db/seed"
   },
-  "proxy": "http://localhost:3306/",
+  "proxy": "http://localhost:3001/",
   "eslintConfig": {
     "extends": [
       "react-app",

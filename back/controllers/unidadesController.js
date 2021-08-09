@@ -30,9 +30,10 @@ const unidadesController = {
     },
     updateUnidad(req,res,next){
         const id = req.params.id
-        Unidades.update(req.body,{where:{id},returning:true}).then((unidad)=>{
-            return res.status(201).send(unidad)
+        Unidades.update(req.body,{where:{id}}).then(()=>{
+            return Unidades.findByPk(id)    
         })
+        .then((unidad)=> res.status(200).send(unidad))
         .catch(next)
     },
     deleteUnidad(req,res,next){

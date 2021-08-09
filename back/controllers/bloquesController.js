@@ -47,13 +47,14 @@ const bloquesController = {
     const { titulo, descripcion, minimo, pregunta, rolesId } = req.body;
     Bloques.update(
       { titulo, descripcion, minimo, pregunta },
-      { where: { id }, returning: true }
+      { where: { id } }
     )
+      .then(()=> Bloques.findByPk(id))
       .then((bloque) => {
-        bloque[1][0].removeRoles([3, 4, 5]);
+        bloque.removeRoles([3, 4, 5]);
         for (let i = 0; i < rolesId.length; i++) {
           Roles.findByPk(rolesId[i]).then((rol) => {
-            bloque[1][0].addRole(rol);
+            bloque.addRole(rol);
           });
         }
         return res.status(201).send(bloque);

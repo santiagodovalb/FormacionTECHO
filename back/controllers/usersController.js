@@ -82,10 +82,9 @@ const usersController = {
   setUser(req, res, next) {
     Users.update(req.body, {
       where: { id: req.params.id },
-      returning: true,
     })
-      .then((user) => {
-        return Users.findByPk(user[1][0].id, {
+      .then(() => {
+        return Users.findByPk(req.params.id ,{
           include: [
             { model: Roles, as: "rol" },
             { model: Sedes, as: "sede" },
@@ -126,10 +125,9 @@ const usersController = {
           if (result) {
             Users.update({password: req.body.newP}, {
               where: { id: req.params.id },
-              returning: true,
             })
-              .then((user) => {
-                return Users.findByPk(user[1][0].id, {
+              .then(() => {
+                return Users.findByPk(req.params.id , {
                   include: [
                     { model: Roles, as: "rol" },
                     { model: Sedes, as: "sede" },
