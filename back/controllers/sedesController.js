@@ -33,7 +33,9 @@ const sedesController = {
     },
     updateSede(req,res,next){
         const id = req.params.id
-        Sedes.update(req.body,{where:{id},returning:true}).then((sede)=>{
+        Sedes.update(req.body,{where:{id}})
+        .then(()=> Sedes.findByPk(id))
+        .then((sede)=>{
             return res.status(201).send(sede)
         })
         .catch(next)

@@ -35,8 +35,9 @@ const rolesController = {
       where: {
         id: req.params.id,
       },
-      returning: true,
+      
     })
+      .then(()=> Roles.findByPk(req.params.id))
       .then((role) => res.status(204).json(role))
       .catch(next);
   },

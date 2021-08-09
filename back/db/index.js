@@ -1,14 +1,18 @@
 const Sequelize = require("sequelize")
-const dbConfig = require("../config/config.json");
+require("dotenv").config();
+const { DB_USERNAME, DB_PASSWORD, DB_HOST, DB_DATABASE, DB_PORT } = process.env;
 
-const client = new Sequelize("postgres://postgres:postgres@localhost/techo", {
-    logging: false,
-    dialect: "postgres"
-})
 
-// const client = new Sequelize(dbConfig.database, dbConfig.username, dbConfig.password, {
-//    host: dbConfig.host,
-//    dialect: dbConfig.dialect,
-//   })
+// const client = new Sequelize("postgres://postgres:postgres@localhost/techo", {
+//     logging: false,
+//     dialect: "postgres"
+// })
+
+const client = new Sequelize(DB_DATABASE,DB_USERNAME, DB_PASSWORD, {
+   host: DB_HOST,
+   dialect: 'mysql',
+  })
+
+
 
 module.exports = client;

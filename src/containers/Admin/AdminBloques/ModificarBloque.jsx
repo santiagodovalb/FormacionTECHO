@@ -8,7 +8,6 @@ import { getBloques } from "../../../redux/bloques";
 import AdminUnidades from "../AdminUnidades/AdminUnidades.jsx";
 import Unidades from "./Unidades.jsx";
 import useAuthorize from "../../../utils/authorization";
-const { TextArea } = Input;
 
 export default function ModificarBloque() {
   const [count, setCount] = useState(0);
@@ -48,7 +47,6 @@ export default function ModificarBloque() {
   }, [showForm, count, user, id]);
 
   const handleChange = (e) => {
-    console.log('TARGET', e)
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
@@ -66,12 +64,14 @@ export default function ModificarBloque() {
   };
 
   const handleSubmit = () => {
-    console.log('FORM', form)
-    axios.put(`/api/bloques/${id}`, form).then(() => {
+    axios.put(`/api/bloques/${id}`, form)
+    .then(() => {
       dispatch(getBloques());
-      message.success("Modificado correctamente");
-      history.push("/admin-bloques");
-    });
+    })
+    .then(() =>{
+      message.success("Modificado correctamente")
+      history.push("/admin-bloques")
+    })
   };
 
   const alertaEliminar = Swal.mixin({
@@ -136,16 +136,16 @@ export default function ModificarBloque() {
           }}
           onFinish={handleSubmit}
         >
-          <Form.Item name="titulo" label="Titulo">
+          <Form.Item label="Titulo">
             <Input
               className="admin_input"
               type="text"
-              
+              name="titulo"
               onChange={handleChange}
               defaultValue={bloque.titulo}
             ></Input>
           </Form.Item>
-          <Form.Item   label="Descripción">
+          <Form.Item label="Descripción">
             <Input.TextArea
             defaultValue={bloque.descripcion}
               autoSize={true}
