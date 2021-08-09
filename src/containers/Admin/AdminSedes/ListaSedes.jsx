@@ -130,7 +130,7 @@ export default function Sedes() {
                 type="text"
                 name="nombre"
                 placeholder={record.nombre}
-                class="form-control"
+                className="form-control"
               ></input>
               <label htmlFor="comunidadId">Comunidad ID</label>
               <input
@@ -138,7 +138,7 @@ export default function Sedes() {
                 type="number"
                 name="comunidadId"
                 placeholder={record.comunidadId}
-                class="form-control"
+                className="form-control"
               ></input>
               <button className="btn btn-success mx-1" type="submit">
                 Confirmar cambios

@@ -15,7 +15,7 @@ export default function ListaSedes() {
       <div className="wh-100 row justify-content-center align-items-center m-5 p-5">
         {sedes.map((sede) => {
           return (
-            <div className="col-auto">
+            <div key={sede.id} className="col-auto">
               <Link to={`/admin-usuarios/sede/${sede.id}`}>
                 <button
                   className="m-3 p-4 fs-5 button-style light-blue"

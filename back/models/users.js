@@ -43,8 +43,6 @@ Users.init(
     },
 },{sequelize:db , modelName:"users"})
 
-
-
 Users.addHook("beforeCreate", async user => {
     if (user.password) {
         user.salt = await bcrypt.genSalt(6)

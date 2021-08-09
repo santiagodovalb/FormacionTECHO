@@ -7,14 +7,3 @@
   position: absolute;
   margin: 0 auto
 }
-
-.content {
-  margin-left: 250px;
-}
-
-@media (max-width: 768px) {
-  .content {
-    margin-left: 0px;
-    padding: 10px;
-  }
-}

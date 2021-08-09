@@ -1,5 +1,7 @@
 .navbar {
   background-color: #0092dd;
+  z-index: 1;
+  width: 100vw;
 }
 
 .navbar button {

@@ -28,7 +28,7 @@ export default function AdminBloques() {
       <div className="wh-100 my-3 row justify-content-center align-items-center">
         {bloques.map((bloque) => {
           return (
-            <div className="col-auto">
+            <div key={bloque.id} className="col-auto">
               <Link to={`/admin-bloques/${bloque.id}`}>
                 <button
                   type="button"

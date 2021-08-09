@@ -109,7 +109,7 @@ export default function Roles() {
               id={`rolForm${record.key}`}
               style={{ display: "none" }}
             >
-              <label for="rol-type" class="form-label">
+              <label htmlFor="rol-type" className="form-label">
                 <strong>Nombre: </strong>
               </label>
               <input
@@ -118,7 +118,7 @@ export default function Roles() {
                 name="tipo"
                 id="rol-type"
                 placeholder={record.tipo}
-                class="form-control"
+                className="form-control"
               ></input>
               <button className="btn btn-success mx-1" type="submit">
                 Confirmar cambios

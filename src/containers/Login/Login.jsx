@@ -23,7 +23,7 @@ const Login = () => {
           <i className="bi bi-person-circle form-img" />
         </div>
         {location.pathname === "/adminlogin" && LoginAdmin()}
-        {location.pathname === "/login" && LoginUser()} 
+        {location.pathname === "/" && LoginUser()} 
       </div>
     </div>
     </div>

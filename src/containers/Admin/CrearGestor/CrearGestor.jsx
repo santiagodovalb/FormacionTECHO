@@ -65,7 +65,7 @@ export default function CrearGestor() {
       >
         <div className="mb-3">
           <input
-            required="true"
+            required
             type="text"
             onChange={handleChange}
             name="full_name"
@@ -75,7 +75,7 @@ export default function CrearGestor() {
         </div>
         <div className="mb-3">
           <input
-            required="true"
+            required
             type="text"
             onChange={handleChange}
             name="email"
@@ -85,7 +85,7 @@ export default function CrearGestor() {
         </div>
         <div className="mb-3">
           <input
-            required="true"
+            required
             type="password"
             onChange={handleChange}
             name="password"
@@ -95,7 +95,7 @@ export default function CrearGestor() {
         </div>
         <div className="mb-3">
           <input
-            required="true"
+            required
             type="password"
             onChange={handleChange}
             name="confirmPassword"

@@ -48,6 +48,7 @@ export default function ModificarBloque() {
   }, [showForm, count, user, id]);
 
   const handleChange = (e) => {
+    console.log('TARGET', e)
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
@@ -65,6 +66,7 @@ export default function ModificarBloque() {
   };
 
   const handleSubmit = () => {
+    console.log('FORM', form)
     axios.put(`/api/bloques/${id}`, form).then(() => {
       dispatch(getBloques());
       message.success("Modificado correctamente");
@@ -134,42 +136,42 @@ export default function ModificarBloque() {
           }}
           onFinish={handleSubmit}
         >
-          <Form.Item label="Titulo">
+          <Form.Item name="titulo" label="Titulo">
             <Input
               className="admin_input"
               type="text"
-              name="titulo"
+              
               onChange={handleChange}
               defaultValue={bloque.titulo}
             ></Input>
           </Form.Item>
-          <Form.Item label="Descripción">
-            <TextArea
+          <Form.Item   label="Descripción">
+            <Input.TextArea
+            defaultValue={bloque.descripcion}
               autoSize={true}
+              name='descripcion'
               className="admin_input"
               showCount
               maxLength={350}
-              defaultValue={bloque.descripcion}
               onChange={handleChange}
-            ></TextArea>
+            ></Input.TextArea>
           </Form.Item>
-          <Form.Item label="Preguntas">
-            <Input
+          <Form.Item  label="Preguntas" >
+            <Input.TextArea
               className="admin_input"
-              type="text"
-              name="titulo"
               onChange={handleChange}
+              name="pregunta"
               defaultValue={bloque.pregunta}
-            ></Input>
+            ></Input.TextArea>
           </Form.Item>
 
           <div className="admin">
             <h5>¿Es bloque mínimo?</h5>
             <Radio.Group>
-              <Radio.Button id="minimoSi" value="si" onChange={handleMinimo}>
+              <Radio.Button id="minimoSi" value={true} onChange={handleMinimo}>
                 Si
               </Radio.Button>
-              <Radio.Button id="minimoNo" value="no" onChange={handleMinimo}>
+              <Radio.Button id="minimoNo" value={false} onChange={handleMinimo}>
                 No
               </Radio.Button>
             </Radio.Group>

@@ -181,7 +181,7 @@ export default function AdminDashboard(){
           <button className="btn btn-success my-3 fs-5">
             <CSVLink data={dataSource} filename={`dashboard-nacional.csv`}>
               <p className="text-light m-0">
-                Descargar <i class="bi bi-file-earmark-excel-fill"></i>
+                Descargar <i className="bi bi-file-earmark-excel-fill"></i>
               </p>
             </CSVLink>
           </button>

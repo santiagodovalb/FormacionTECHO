@@ -14,7 +14,7 @@ const Sidebar = () => {
 
   const handleLogout = () => {
     if (user.id) dispatch(userLogout());
-    history.push('/login')
+    history.push('/')
   };
 
   const handlePassword = () => {

@@ -10,6 +10,51 @@ const Rol = [
   { tipo: "Implementacion de programas" },
 ];
 
+const Voluntarios = [
+  {
+    full_name: 'Juan Perez',
+    email: 'juan@perez.com',
+    password: 'asd123',
+    rolId: 3,
+    sedeId: 1,
+  },
+  {
+    full_name: 'Juana Gomez',
+    email: 'juana@gomez.com',
+    password: 'asd123',
+    rolId: 4,
+    sedeId: 1,
+  },
+  {
+    full_name: 'Adrian Gimenez',
+    email: 'adrian@gimenez.com',
+    password: 'asd123',
+    rolId: 5,
+    sedeId: 1,
+  },
+  {
+    full_name: 'Mariana Gonzalez',
+    email: 'mariana@gonzalez.com',
+    password: 'asd123',
+    rolId: 3,
+    sedeId: 1,
+  },
+  {
+    full_name: 'Javier Hernandez',
+    email: 'javier@hernandez.com',
+    password: 'asd123',
+    rolId: 4,
+    sedeId: 1,
+  },
+  {
+    full_name: 'Gabriela Ruiz',
+    email: 'gabriela@ruiz.com',
+    password: 'asd123',
+    rolId: 5,
+    sedeId: 1,
+  },
+]
+
 const Sede = [
   {
     nombre: "Buenos Aires La Plata",
@@ -155,12 +200,13 @@ const unidades = [
 ];
 
 const seed = () => {
-
-
+  
+  
   Roles.bulkCreate(Rol);
-
-  Sedes.bulkCreate(Sede);
-
+  
+  Sedes.bulkCreate(Sede)
+  .then(() => Voluntarios.forEach(voluntario => Users.create(voluntario)))
+  
   BloquesSeed.map((bloqueCreado) => {
     Bloques.create({
       titulo: bloqueCreado.titulo,
@@ -176,6 +222,7 @@ const seed = () => {
     });
   });
 
+  
   unidades.map((unidadCreada) => {
     Unidades.create({
       link: unidadCreada.link,
@@ -196,7 +243,7 @@ const seed = () => {
       user.setRol(rol);
     });
   });
-
+  
 };
 
 seed();
