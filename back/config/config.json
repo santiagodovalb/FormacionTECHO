@@ -1,0 +1,9 @@
+{
+  "username": "lucas",
+  "password": "lucas",
+  "database": "techo2",
+  "host": "localhost",
+  "port": "3306",
+  "dialect": "mysql",
+  "operatorsAliases": false
+}
