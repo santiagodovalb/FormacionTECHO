@@ -56,10 +56,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "seed": "node back/db/seed",
-    "heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
+    "seed": "node back/db/seed"
   },
-  "proxy": "http://localhost:3001/",
   "eslintConfig": {
     "extends": [
       "react-app",
