@@ -1,7 +1,6 @@
 {
   "name": "formacion-techo",
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.0",
     "@testing-library/jest-dom": "^5.14.1",
@@ -57,7 +56,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "seed": "node back/db/seed"
+    "seed": "node back/db/seed",
+    "heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
   },
   "proxy": "http://localhost:3001/",
   "eslintConfig": {
@@ -65,6 +65,9 @@
       "react-app",
       "react-app/jest"
     ]
+  },
+  "engines": {
+    "node": "16.x"
   },
   "browserslist": {
     "production": [

@@ -8,7 +8,7 @@ const login = (req, res, next) => {
 router.get("/facebook", passport.authenticate('facebook', { scope: ['email'] }), login)
 
 router.get("/facebook/callback", passport.authenticate('facebook', {
-        successRedirect: `http://localhost:3000/user/`,
+        successRedirect: `/user`,
         failureRedirect:'/login'
     }))
 
@@ -19,7 +19,7 @@ passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.
 router.get('/google/callback', 
 passport.authenticate('google', { failureRedirect: '/login' }),
 function(req, res) {
-  res.redirect(`http://localhost:3000/user/`);
+  res.redirect(`/user/`);
 });
     
 
