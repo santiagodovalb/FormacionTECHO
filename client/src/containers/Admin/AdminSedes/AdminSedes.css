@@ -1,0 +1,37 @@
+.adminSedes {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.adminSedes h1 {
+  margin: 30px auto;
+}
+
+.table {
+  width: 90%;
+}
+
+.crearSede {
+  margin: 30px auto;
+}
+
+.sedesForm {
+  margin: 20px auto;
+}
+.sedesForm button {
+  margin: 10px auto;
+}
+.sedesForm label {
+  margin: auto 5px;
+}
+
+.createSede {
+  margin: 10px auto;
+}
+
+.createSede button {
+  margin: 10px auto;
+}

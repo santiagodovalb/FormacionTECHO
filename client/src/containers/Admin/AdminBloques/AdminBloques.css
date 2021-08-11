@@ -1,0 +1,28 @@
+.admin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.admin h1 {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.admin_input {
+  margin-left: 50px;
+}
+
+.admin_check {
+  margin-right: 20px;
+}
+
+.blocks {
+  height: 100px;
+}
+
+@media screen and (max-width: 767px) {
+  .admin_input {
+    margin-left: 0px !important;
+  }
+}
