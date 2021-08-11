@@ -1,9 +1,0 @@
-.app {
-  display: flex;
-  flex-direction: row;
-}
-
-#loader {
-  position: absolute;
-  margin: 0 auto
-}
