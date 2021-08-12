@@ -2,13 +2,10 @@ const express = require("express");
 const volleyball = require("volleyball");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
-const helmet = require("helmet");
 
 module.exports = (app) => {
 
-  app.use(helmet());
-
-  app.use(cors({ allowedHeaders: "*", origin: '*'}));
+  app.use(cors());
 
   app.use(cookieParser());
   
