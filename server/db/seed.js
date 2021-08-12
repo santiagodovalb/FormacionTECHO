@@ -236,7 +236,7 @@ const seed = () => {
   Users.create({
     full_name: "Admin",
     email: MAIL_USER,
-    password:MAIL_PASSWORD,
+    password: MAIL_PASSWORD,
     img: "https://w7.pngwing.com/pngs/429/434/png-transparent-computer-icons-icon-design-business-administration-admin-icon-hand-monochrome-silhouette.png",
   }).then((user) => {
     Roles.findByPk(1).then((rol) => {
