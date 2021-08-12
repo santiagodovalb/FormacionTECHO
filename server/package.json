@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "build": "cd .. && cd client && npm install && npm run build"
+    "build": "cd .. && cd client && npm install && npm run build",
+    "seed": "node /db/seed"
   },
   "engines": {
     "node": "16.6.1"
