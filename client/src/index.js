@@ -9,7 +9,7 @@ import { BrowserRouter } from "react-router-dom";
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter basename="/formacion">
+      <BrowserRouter>
         <App/>
       </BrowserRouter>
     </Provider>
