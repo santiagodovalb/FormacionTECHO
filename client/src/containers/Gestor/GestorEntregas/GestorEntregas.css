@@ -1,0 +1,44 @@
+.table {
+  margin: auto;
+  width: 90%;
+}
+
+.gestorEntregas {
+  margin: auto;
+  width: 90%;
+  margin-top: 20px;
+  padding: 8px;
+}
+
+.gestorEntregas button {
+  float: left;
+}
+
+.busquedas {
+  display: flex;
+  justify-content: space-around;
+  margin: 15px auto;
+}
+
+.busquedas label {
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 767px) {
+  .gestor-entregas {
+    padding: 20px !important;
+  }
+  .botones {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .descargar {
+    margin-bottom: 10px;
+  }
+
+  .busqueda {
+    margin-bottom: 10px;
+  }
+}
