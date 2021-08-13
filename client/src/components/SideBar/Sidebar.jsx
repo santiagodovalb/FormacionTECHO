@@ -13,8 +13,9 @@ const Sidebar = () => {
   const history = useHistory();
 
   const handleLogout = () => {
-    if (user.id) dispatch(userLogout());
-    history.push('/')
+    axios.post("/api/users/logout")
+    .then(() => dispatch(setUser({})))
+    .then(() => history.push('/'))
   };
 
   const handlePassword = () => {
