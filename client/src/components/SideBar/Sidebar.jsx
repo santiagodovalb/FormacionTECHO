@@ -6,6 +6,8 @@ import Links from "./Links";
 import { BsPeopleCircle } from "react-icons/bs";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Sidebar.css";
+import axios from "axios";
+import { setUser } from "../../redux/login";
 
 const Sidebar = () => {
   const user = useSelector((state) => state.user);
