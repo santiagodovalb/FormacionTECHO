@@ -14,7 +14,7 @@ module.exports = (app) => {
       {
         clientID: GOOGLE_CLIENT,
         clientSecret: GOOGLE_SECRET,
-        callbackURL: "http://localhost:3001/api/auth/google/callback",
+        callbackURL: "/api/auth/google/callback",
       },
       function (token, tokenSecret, profile, done) {
         Users.findOne({ 
