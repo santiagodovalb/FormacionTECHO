@@ -1,15 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { userLogout } from "../../redux/login";
+import { setUser, userLogout } from "../../redux/login";
 import Links from "./Links";
 import "./Navbar.css";
 import logoMobile from "../../assets/logoMobile.png"
 const Navbar = () => {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
+
   const handleLogout = () => {
-    if (user.id) dispatch(userLogout());
+    axios.post("/api/users/logout")
+    .then(() => dispatch(setUser({})))
+    .then(() => history.push('/'))
   };
 
   return (

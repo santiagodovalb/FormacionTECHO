@@ -160,7 +160,6 @@ const seed = () => {
   Roles.bulkCreate(Rol);
   
   Sedes.bulkCreate(Sede)
-  .then(() => Voluntarios.forEach(voluntario => Users.create(voluntario)))
   
   BloquesSeed.map((bloqueCreado) => {
     Bloques.create({
