@@ -74,7 +74,7 @@ const entregasController = {
     .then(entrega => {
       entrega.aprobar()
       let voluntario = entrega.user
-      sendEntregaCompletada(voluntario, entrega)
+      return sendEntregaCompletada(voluntario, entrega)
     })
     .then(() => res.sendStatus(200))
     .catch(next)

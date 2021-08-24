@@ -10,7 +10,7 @@ const usersController = {
       include: [{ model: Roles, as: "rol" }],
       where: {
         id: {
-          [Op.ne]: req.user.id,
+          [Op.ne]: req.user?.id,
         },
       },
     })
@@ -72,7 +72,7 @@ const usersController = {
       ],
       where: {
         id: {
-          [Op.ne]: req.user.id,
+          [Op.ne]: req.user?.id,
         },
       },
     })
@@ -113,7 +113,7 @@ const usersController = {
     res.status(200).send({});
   },
   isLogged(req, res, next) {
-    if (!req.user) return res.status(401).send({logged: false});
+    if (!req.user) return;
     return res.send(req.user);
   },
   updatePass(req, res, next) {

@@ -29,7 +29,7 @@ async function sendNewEntrega(gestor, entrega) {
       text: "Formacion TECHO | Nueva entrega", // plain textbody
       attachments: [{
         filename: 'logoCeleste.png',
-        path: path.resolve(__dirname, '../../src/assets/logoCeleste.png'),
+        path: path.resolve(__dirname, '../../client/src/assets/logoCeleste.png'),
         cid: 'logo'
     }],
       html: `
@@ -50,7 +50,7 @@ async function sendEntregaCompletada(voluntario, entrega) {
       text: "Formacion TECHO | Entrega completada", // plain textbody
       attachments: [{
         filename: 'logoCeleste.png',
-        path: path.resolve(__dirname, '../../src/assets/logoCeleste.png'),
+        path: path.resolve(__dirname, '../../client/src/assets/logoCeleste.png'),
         cid: 'logo'
     }],
       html: `
