@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { setUser, userLogout } from "../../redux/login";
+import { setUser, userLogout } from "../../redux/user";
 import Links from "./Links";
 import "./Navbar.css";
 import logoMobile from "../../assets/logoMobile.png"

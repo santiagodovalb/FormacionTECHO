@@ -1,13 +1,12 @@
 import React from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { userLogout } from "../../redux/login";
 import Links from "./Links";
 import { BsPeopleCircle } from "react-icons/bs";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Sidebar.css";
 import axios from "axios";
-import { setUser } from "../../redux/login";
+import { setUser } from "../../redux/user";
 
 const Sidebar = () => {
   const user = useSelector((state) => state.user);
