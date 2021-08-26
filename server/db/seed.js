@@ -4,7 +4,7 @@ const { MAIL_USER, MAIL_PASSWORD} = process.env;
 
 const Rol = [
   { tipo: "Admin" },
-  { tipo: "Gestor" },
+  { tipo: "Coordinación de equipo" },
   { tipo: "Referente Comunitario" },
   { tipo: "Coordinación de comunidad" },
   { tipo: "Implementacion de programas" },
@@ -64,7 +64,7 @@ const BloquesSeed = [
       "Marco general del trabajo en las comunidades, los distintas formas de llegar al territorio y que buscamos alcanzar como organización",
     roles: [3, 4, 5],
     minimo: true,
-    pregunta: "¿ Qué comiste hoy ?",
+    pregunta: "AGREGAR PREGUNTA DESDE ADMIN",
   },
 
   {
@@ -73,7 +73,7 @@ const BloquesSeed = [
       "Misión, visión, valores e historia de TECHO. ¿Que esperamos del voluntariado? ¿Que nos identifica?",
     roles: [3, 4, 5],
     minimo: true,
-    pregunta: "¿ Qué merendaste hoy ?",
+    pregunta: "AGREGAR PREGUNTA DESDE ADMIN",
   },
 
   {
@@ -82,7 +82,7 @@ const BloquesSeed = [
       "Voluntariado y participación activa en TECHO, ¿quienes conformamos la organización? ¿como nos organizamos?",
     roles: [3, 4, 5],
     minimo: false,
-    pregunta: "¿ Qué desayunaste hoy ?",
+    pregunta: "AGREGAR PREGUNTA DESDE ADMIN",
   },
 
   {
@@ -91,7 +91,7 @@ const BloquesSeed = [
       "Descripciones generales de las responsabilidades del rol y que es lo que buscamos alcanzar",
     roles: [4],
     minimo: true,
-    pregunta: "¿ Qué cenaste hoy ?",
+    pregunta: "AGREGAR PREGUNTA DESDE ADMIN",
   },
 
   {
@@ -100,7 +100,7 @@ const BloquesSeed = [
       "Problematica habitacional y como se relaciona con el habitat y el trabajo de TECHO en territorio.",
     roles: [4],
     minimo: true,
-    pregunta: "¿ Qué amorzaste hoy ?",
+    pregunta: "AGREGAR PREGUNTA DESDE ADMIN",
   },
 ];
 
