@@ -72,7 +72,7 @@ const usersController = {
       ],
       where: {
         id: {
-          [Op.ne]: req.user?.id,
+          [Op.ne]: req.user.id,
         },
       },
     })
