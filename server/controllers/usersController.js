@@ -10,7 +10,7 @@ const usersController = {
       include: [{ model: Roles, as: "rol" }],
       where: {
         id: {
-          [Op.ne]: req.user?.id,
+          [Op.ne]: req.user.id,
         },
       },
     })
